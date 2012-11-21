@@ -1,0 +1,25 @@
+extends ../layouts/default
+
+block main
+  h1= article.date + ' ' + article.series + ' ' + article.title
+
+block content
+  #segments
+    ul.head
+      li Title
+      li Time
+      li Type
+      li Options
+    ul.body
+      each segment in article.segments
+        include ../segments/segment
+    a.btn(href='#') Add Segment
+
+  hr
+  p Ignore below
+    br
+    form.center.form-inline.confirm(action="/articles/"+article.id, method="post")
+      a.btn(href='/articles/'+article._id+'/edit', title="edit") Edit
+      &nbsp;&nbsp;
+      input(type="hidden", name="_method", value="DELETE")
+      button.btn.btn-danger(type="submit") delete

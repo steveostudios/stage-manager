@@ -1,0 +1,222 @@
+@font-face {
+	font-family: 'BebasNeueRegular';
+	src: url('../fonts/bebasneue-webfont.eot');
+	src: url('../fonts/bebasneue-webfont.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/bebasneue-webfont.woff') format('woff'),
+		url('../fonts/bebasneue-webfont.ttf') format('truetype'),
+		url('../fonts/bebasneue-webfont.svg#BebasNeueRegular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+header#header {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: grey;
+  display: block;
+}
+header#header a {
+  text-decoration: none;
+  color: white;
+}
+ul.nav {
+  display: inline-block;
+}
+ul.nav.pull-right {
+  float: right;
+  display: inline-block;
+}
+ul.nav li {
+  margin: 0 25px 0 0;
+  display: inline-block;
+}
+
+table th {
+  background: black;
+  color: white;
+}
+
+table#events {
+	
+}
+table#events tr th {
+	background: #d0d0d0;
+  font-size: 14px;
+}
+table#events tr.event td {
+  font-size: 14px;
+}
+/* !----- Segments -----*/
+div#segments {
+  width: 700px;
+}
+div#segments ul.head {
+  margin: 0;
+  background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(1, #606060),
+		color-stop(0, #4d4d4d)
+	);
+	border-top: 1px solid #737373;
+	border-bottom: 1px solid #171717;
+	color: #929292;
+	display: block;
+	list-style: none;
+}
+div#segments ul.head li {
+  height: 19px;
+  font-family: sans-serif;
+  font-size: 12px;
+  display: inline-block;
+  border-left: 1px solid #737373;
+  border-right: 1px solid #171717;
+}
+div#segments ul.body {
+  margin: 0;
+  padding: 0;
+  width: 700px;
+  list-style: none;
+  font-family: 'BebasNeueRegular';
+  font-size: 24px;
+  color: #393939;
+}
+div#segments ul.body li.segment {
+  height: 52px;
+  overflow: hidden;
+  display: block;
+}
+div#segments ul.body li.segment:nth-child(odd) {
+  background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(1, #e1e1e1),
+		color-stop(0, #e1e1e1)
+	);
+	border-bottom: 1px solid #cdcdcd;
+}
+div#segments ul.body li.segment:nth-child(even) {
+  background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(1, #D5D5D5),
+		color-stop(0, #D8D8D8)
+	);
+	border-bottom: 1px solid #d3d3d3;
+}
+
+div#segments ul.body li.segment div.segment, div#segments ul.body li.segment div.segment_edit {
+  width: 700px;
+  height: 52px;
+  
+}
+div#segments ul li.segment div.segment_edit {
+  display: none;
+}
+
+div#segments div.title {
+  width: 380px;
+}
+div#segments div.trt {
+  width: 100px;
+  text-align: right;
+}
+div#segments div.type {
+  width: 35px; 
+}
+
+div#segments div.title input {
+  padding: 5px 12px;
+  width: 100%;
+  height: 42px;
+  font-family: 'BebasNeueRegular';
+  font-size: 24px;
+  border: none;
+}
+div#segments div.trt input {
+  padding: 5px 12px;
+  width: 100%;
+  height: 42px;
+  font-family: 'BebasNeueRegular';
+  font-size: 24px;
+  border: none;
+}
+div#segments div.options a, div#segments div.options span {
+  padding: 10px 0 0 0;
+  margin: 0 15px 0 0; 
+  display: inline-block;
+}
+div#segments div.title, div#segments div.trt, div#segments div.type, div#segments div.options {
+  padding: 12px;
+  height: 52px;
+  border-right: 1px solid #c7c7c7;
+  float: left;
+  display: inline-block;
+}
+div#segments div.withInput {
+  padding: 0 24px 0 0;
+  margin: 0;
+}
+div#segments div.options {
+  margin: 0;
+  padding: 0;
+  width: 110px;
+  text-align: right;
+  border-right: none;
+}
+
+
+
+
+
+
+div.date {
+  font-size: 11px;
+  color: #aaa;
+}
+
+a.title span.title_date {
+	color: red;
+}
+.author {
+  color: #aaa;
+}
+
+div.title {
+  padding: 5px 0 15px 0;
+  display: block;
+  font-size: 24px;
+}
+
+.article, .comment {
+  padding: 15px 0;
+  border-top: 1px solid #e8e8e8;
+}
+
+.main-head {
+  padding: 20px;
+}
+
+
+
+.center {
+  text-align: center;
+}
+
+.tags {
+  margin-top: 10px;
+}
+
+a.tag {
+  margin: 0 10px 0 0;
+}
+
+/*form.signup { display: none; }*/

@@ -1,0 +1,26 @@
+if (segment)
+  li.segment
+    .segment
+      .title
+        =segment.segment_title
+      .trt
+        =segment.segment_trt
+      .type
+        img(src='../img/ico_'+ segment.segment_type +'.png', width='35', height='35')
+      .options.hidable
+        a(href='#').rowEdit
+          img(src='../img/ico_editRow.png', width='17', height='17')
+        a(href='#').hidable
+          img(src='../img/ico_removeRow.png', width='17', height='17')
+        span.handle.hidable
+          img(src='../img/ico_moveRow.png', width='17', height='17')
+    .segment_edit
+      .title.withInput
+        input(type='text', value=segment.segment_title, placeholder='Title')
+      .trt.withInput
+        input(type='text', value=segment.segment_trt, placeholder='Time')
+      .type
+        img(src='../img/ico_'+ segment.segment_type +'.png', width='35', height='35')
+      .options
+        a(href='#').rowSave S
+        a(href='#').rowCancel C

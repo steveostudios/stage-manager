@@ -1,0 +1,36 @@
+{
+    "name": "stagemanager"
+  , "description": "Cloud-based leve event production timer system"
+  , "version": "0.0.1"
+  , "private": true
+  , "author": "Digital Stache <info@digitalstache.com> (http://digitalstache.com)"
+  , "contributors": [
+    { "name": "Steve Stone", "email": "steve@digitalstache.com"}
+    , { "name": "Dave Harris", "email": "dave@digitalstache.com"}
+  ]
+  , "engines": {
+        "node": "0.6.18"
+      , "npm": "1.1.9"
+    }
+  , "scripts": {
+      "start": "./node_modules/.bin/nodemon server.js"
+    }
+  , "dependencies": {
+      "express": "latest"
+    , "express-namespace": "latest"
+    , "jade": "latest"
+    , "mongoose": "latest"
+    , "connect-mongodb": "latest"
+    , "passport": "latest"
+    , "passport-local": "latest"
+    , "passport-facebook": "latest"
+    , "passport-twitter": "latest"
+    , "passport-github": "latest"
+    , "passport-google-oauth": "latest"
+    , "underscore": "latest"
+    , "gzippo": "latest"
+    , "async": "latest"
+    , "nodemon": "latest"
+    , "socket.io": "latest"
+  }
+}
