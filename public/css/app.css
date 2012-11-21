@@ -12,13 +12,16 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: #212121;
+  color: white;
 }
 header#header {
   margin: 0;
   padding: 0;
   width: 100%;
-  background: grey;
+  background: #1c1c1c;
   display: block;
+  box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.8);
 }
 header#header a {
   text-decoration: none;
@@ -53,10 +56,20 @@ table#events tr.event td {
 }
 /* !----- Segments -----*/
 div#segments {
-  width: 700px;
+  position: absolute;
+    top: 150px;
+    bottom: 70px;
+    right: 380px;
+    left: 0;
+  /* width: 700px; */
+  background: #d4d4d4;
+  box-shadow: 10px 0px 20px -10px rgba(0,0,0,0.8);
 }
 div#segments ul.head {
+  
+  padding: 0;
   margin: 0;
+  height: 19px;
   background-image: -webkit-gradient(
 		linear,
 		left bottom,
@@ -71,21 +84,40 @@ div#segments ul.head {
 	list-style: none;
 }
 div#segments ul.head li {
+line-height: 18px;
+  padding: 0;
+  margin: 0;
   height: 19px;
   font-family: sans-serif;
   font-size: 12px;
-  display: inline-block;
+  display: block;
   border-left: 1px solid #737373;
   border-right: 1px solid #171717;
+  
+}
+div#segments ul.head li.segment {
+  position: absolute;
+    left: 0;
+    right: 112px;
+  padding: 0 10px;
+  height: 19px;
+}
+div#segments ul.head li.options {
+  position: absolute;
+    right: 0;
+  padding: 0 10px;
+  height: 19px;
+  width: 90px;
 }
 div#segments ul.body {
   margin: 0;
   padding: 0;
-  width: 700px;
+  width: 100%;
   list-style: none;
-  font-family: 'BebasNeueRegular';
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
   font-size: 24px;
-  color: #393939;
+  color: #3d3d3d;
 }
 div#segments ul.body li.segment {
   height: 52px;
@@ -93,26 +125,16 @@ div#segments ul.body li.segment {
   display: block;
 }
 div#segments ul.body li.segment:nth-child(odd) {
-  background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(1, #e1e1e1),
-		color-stop(0, #e1e1e1)
-	);
-	border-bottom: 1px solid #cdcdcd;
+  background: #ededed;
+	border-bottom: 1px solid #d2d2d2;
 }
 div#segments ul.body li.segment:nth-child(even) {
-  background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(1, #D5D5D5),
-		color-stop(0, #D8D8D8)
-	);
-	border-bottom: 1px solid #d3d3d3;
+  background: #f1f1f1;
+	border-bottom: 1px solid #d1d1d1;
 }
-
+div#segments ul.body li.segment:last-child {
+  box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.5);
+}
 div#segments ul.body li.segment div.segment, div#segments ul.body li.segment div.segment_edit {
   width: 700px;
   height: 52px;
@@ -123,11 +145,19 @@ div#segments ul li.segment div.segment_edit {
 }
 
 div#segments div.title {
-  width: 380px;
+  position: absolute;
+    right: 210px;
+    left: 45px;
 }
 div#segments div.trt {
+  position: absolute;
+    right: 110px;
+  line-height: 32px;
   width: 100px;
+  height: 100px;
   text-align: right;
+  font-size: 18px;
+  border-right: 1px solid #c7c7c7;
 }
 div#segments div.type {
   width: 35px; 
@@ -137,7 +167,8 @@ div#segments div.title input {
   padding: 5px 12px;
   width: 100%;
   height: 42px;
-  font-family: 'BebasNeueRegular';
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
   font-size: 24px;
   border: none;
 }
@@ -145,8 +176,10 @@ div#segments div.trt input {
   padding: 5px 12px;
   width: 100%;
   height: 42px;
-  font-family: 'BebasNeueRegular';
-  font-size: 24px;
+  font-family: 'PT Sans', sans-serif;
+  text-align: right;
+  font-weight: bold;
+  font-size: 18px;
   border: none;
 }
 div#segments div.options a, div#segments div.options span {
@@ -157,7 +190,6 @@ div#segments div.options a, div#segments div.options span {
 div#segments div.title, div#segments div.trt, div#segments div.type, div#segments div.options {
   padding: 12px;
   height: 52px;
-  border-right: 1px solid #c7c7c7;
   float: left;
   display: inline-block;
 }
@@ -166,13 +198,55 @@ div#segments div.withInput {
   margin: 0;
 }
 div#segments div.options {
+  position: absolute;
+    right: 0;
   margin: 0;
   padding: 0;
   width: 110px;
   text-align: right;
   border-right: none;
+  opacity: 0.5;
+}
+div#segments div#controls {
+  position: absolute;
+    bottom: 0;
+  width: 100%;
+  height: 50px;
+  background: #282828;
+  display: block;
 }
 
+a#btn_addSegment {
+  margin: 13px 18px 13px 0;
+	width: 36px;
+	height: 24px;
+	background-image:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ababab), color-stop(1, #6e6e6e) );
+	-webkit-border-radius: 3px;
+	float: right;
+	display: block;
+}
+a#btn_addSegment img {
+	margin: 4px 10px;
+	width: 16px;
+	height: 16px;
+}
+a#btn_addHeader {
+  margin: 13px 18px 13px 0;
+	width: 46px;
+	height: 26px;
+	float: right;
+	display: block;
+}
+
+footer {
+  position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  height: 70px;
+  background: -webkit-linear-gradient(#3d3d3d 0%, #313131 100%);
+  border-top: 1px solid #4d4d4d;
+}
 
 
 

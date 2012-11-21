@@ -6,20 +6,24 @@ block main
 block content
   #segments
     ul.head
-      li Title
-      li Time
-      li Type
-      li Options
+      li.segment Segment
+      li.options Options
     ul.body
       each segment in event.segments
         include ../segments/segment
-    a.btn(href='#') Add Segment
+    #controls
+      a#btn_addSegment(href='#')
+        img(src='../img/btn_addSegment.png', width='16', height='16')
+      a#btn_addHeader(href='#')
+        img(src='../img/btn_addHeader.png', width='46', height='26')
 
-  hr
-  p Ignore below
-    br
-    form.center.form-inline.confirm(action="/events/"+event.id, method="post")
-      a.btn(href='/events/'+event._id+'/edit', title="edit") Edit
-      &nbsp;&nbsp;
-      input(type="hidden", name="_method", value="DELETE")
-      button.btn.btn-danger(type="submit") delete
+  //p Ignore below
+    //br
+    //form.center.form-inline.confirm(action="/events/"+event.id, method="post")
+      //a.btn(href='/events/'+event._id+'/edit', title="edit") Edit
+      //&nbsp;&nbsp;
+      //input(type="hidden", name="_method", value="DELETE")
+      //button.btn.btn-danger(type="submit") delete
+  footer
+    a(href='#') Play
+    a.btn(href='/events/'+event._id+'/edit', title="edit") Edit
