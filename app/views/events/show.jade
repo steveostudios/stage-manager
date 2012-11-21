@@ -1,0 +1,25 @@
+extends ../layouts/default
+
+block main
+  h1= event.date + ' ' + event.series + ' ' + event.title
+
+block content
+  #segments
+    ul.head
+      li Title
+      li Time
+      li Type
+      li Options
+    ul.body
+      each segment in event.segments
+        include ../segments/segment
+    a.btn(href='#') Add Segment
+
+  hr
+  p Ignore below
+    br
+    form.center.form-inline.confirm(action="/events/"+event.id, method="post")
+      a.btn(href='/events/'+event._id+'/edit', title="edit") Edit
+      &nbsp;&nbsp;
+      input(type="hidden", name="_method", value="DELETE")
+      button.btn.btn-danger(type="submit") delete

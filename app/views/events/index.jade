@@ -1,0 +1,45 @@
+extends ../layouts/default
+
+block main
+  h1 Events
+
+block content
+  table#events
+    thread
+      tr
+        th Date
+        th Program
+        th Series
+        th Title
+      each event in events
+        tr.event
+          td.date
+            =event.date 
+          td.program
+            =event.program 
+          td.series
+            =event.series 
+          td.title
+            a.title(href='/events/'+event._id, title=event.title) #{event.title}  
+//            span= "Created on "+formatDate(event.createdAt, "%b %d, %Y at %I:%M %p")
+//            p=event.body
+//            .author
+//              span Author :&nbsp;
+//              a(href="/users/"+event.user._id)=event.user.name
+//              | &nbsp;|&nbsp;
+//              if (event.tags)
+//                span.tags
+//                  span Tags :&nbsp;
+//                  each tag in event.tags.split(',')
+//                    a.tag(href="/tags/"+tag)
+//                      i.icon-tags
+//                      |  #{tag}
+
+        if (pages > 1)
+          .pagination
+            ul
+              != createPagination(pages, page)
+script
+  $(document).ready(function() {
+    alert("hello");
+  })
