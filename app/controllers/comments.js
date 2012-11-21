@@ -3,16 +3,16 @@ var mongoose = require('mongoose')
 
 exports.create = function (req, res) {
   var comment = new Comment(req.body)
-    , article = req.article
+    , event = req.event
 
   comment._user = req.user
 
   comment.save(function (err) {
     if (err) throw new Error('Error while saving comment')
-    article.comments.push(comment._id)
-    article.save(function (err) {
-      if (err) throw new Error('Error while saving article')
-      res.redirect('/articles/'+article.id+'#comments')
+    event.comments.push(comment._id)
+    event.save(function (err) {
+      if (err) throw new Error('Error while saving event')
+      res.redirect('/events/'+event.id+'#comments')
     })
   })
 }

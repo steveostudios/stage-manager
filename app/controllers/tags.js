@@ -1,22 +1,22 @@
 var mongoose = require('mongoose')
-  , Article = mongoose.model('Article')
+  , Event = mongoose.model('Event')
 
 exports.index = function (req, res) {
   var perPage = 5
     , page = req.param('page') > 0 ? req.param('page') : 0
 
-  Article
+  Event
     .find({ tags: req.param('tag') })
     .populate('user', 'name')
     .sort({'createdAt': -1}) // sort by date
     .limit(perPage)
     .skip(perPage * page)
-    .exec(function(err, articles) {
+    .exec(function(err, events) {
       if (err) return res.render('500')
-      Article.count({ tags: req.param('tag') }).exec(function (err, count) {
-        res.render('articles/index', {
+      Event.count({ tags: req.param('tag') }).exec(function (err, count) {
+        res.render('events/index', {
             title: 'List of Events'
-          , articles: articles
+          , events: events
           , page: page
           , pages: count / perPage
         })

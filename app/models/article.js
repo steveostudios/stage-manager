@@ -1,4 +1,4 @@
-// Article schema
+// Event schema
 
 var mongoose = require('mongoose')
   , Schema = mongoose.Schema
@@ -11,7 +11,7 @@ var setTags = function (tags) {
   return tags.split(',')
 }
 
-var ArticleSchema = new Schema({
+var EventSchema = new Schema({
 	program: {type : String, default : '', trim : true}
   , series: {type : String, default : '', trim : true}
   , title: {type : String, default : '', trim : true}
@@ -25,14 +25,14 @@ var ArticleSchema = new Schema({
   , createdAt  : {type : Date, default : Date.now}
 })
 
-ArticleSchema.path('title').validate(function (title) {
+EventSchema.path('title').validate(function (title) {
   return title.length > 0
-}, 'Article title cannot be blank')
+}, 'Event title cannot be blank')
 
-//ArticleSchema.path('body').validate(function (body) {
+//EventSchema.path('body').validate(function (body) {
 //  return body.length > 0
-//}, 'Article body cannot be blank')
+//}, 'Event body cannot be blank')
 
 
 
-mongoose.model('Article', ArticleSchema)
+mongoose.model('Event', EventSchema)

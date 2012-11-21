@@ -1,8 +1,9 @@
 
 var mongoose = require('mongoose')
-  , Article = mongoose.model('Article')
+  , Event = mongoose.model('Event')
   , User = mongoose.model('User')
   , async = require('async')
+  
 
 module.exports = function (app, passport, auth) {
 
@@ -33,27 +34,27 @@ module.exports = function (app, passport, auth) {
         next()
       })
   })
-  // article routes
-  var articles = require('../app/controllers/articles')
-  app.get('/articles', articles.index)
-  app.get('/articles/new', auth.requiresLogin, articles.new)
-  app.post('/articles', auth.requiresLogin, articles.create)
-  app.get('/articles/:id', articles.show)
-  app.get('/articles/:id/edit', auth.requiresLogin, auth.article.hasAuthorization, articles.edit)
-  app.put('/articles/:id', auth.requiresLogin, auth.article.hasAuthorization, articles.update)
-  app.del('/articles/:id', auth.requiresLogin, auth.article.hasAuthorization, articles.destroy)
+  // event routes
+  var events = require('../app/controllers/events')
+  app.get('/events', events.index)
+  app.get('/events/new', auth.requiresLogin, events.new)
+  app.post('/events', auth.requiresLogin, events.create)
+  app.get('/events/:id', events.show)
+  app.get('/events/:id/edit', auth.requiresLogin, auth.event.hasAuthorization, events.edit)
+  app.put('/events/:id', auth.requiresLogin, auth.event.hasAuthorization, events.update)
+  app.del('/events/:id', auth.requiresLogin, auth.event.hasAuthorization, events.destroy)
 
   app.param('id', function(req, res, next, id){
-    Article
+    Event
       .findOne({ _id : id })
       .populate('user', 'name')
       .populate('segments', null, null, { sort: 'order' }) //! need to sort by 'order'
       .populate('comments')
       
-      .exec(function (err, article) {
+      .exec(function (err, event) {
         if (err) return next(err)
-        if (!article) return next(new Error('Failed to load article ' + id))
-        req.article = article
+        if (!event) return next(new Error('Failed to load event ' + id))
+        req.event = event
         
         var populateComments = function (comment, cb) {
           User
@@ -65,8 +66,8 @@ module.exports = function (app, passport, auth) {
               cb(null, comment)
             })
         }
-        if (article.comments.length) {
-          async.map(req.article.comments, populateComments, function (err, results) {
+        if (event.comments.length) {
+          async.map(req.event.comments, populateComments, function (err, results) {
             next(err)
           })
         }
@@ -76,15 +77,15 @@ module.exports = function (app, passport, auth) {
   })
 
   // home route
-  app.get('/', articles.index)
+  app.get('/', events.index)
   
   // comment routes
   var comments = require('../app/controllers/comments')
-  app.post('/articles/:id/comments', auth.requiresLogin, comments.create)
+  app.post('/events/:id/comments', auth.requiresLogin, comments.create)
 
 // segment routes
   var segments = require('../app/controllers/segments')
-  app.post('/articles/:id/segments', segments.create)
+  app.post('/events/:id/segments', segments.create)
 
   // tag routes
   var tags = require('../app/controllers/tags')

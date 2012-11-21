@@ -11,26 +11,26 @@ block content
         th Program
         th Series
         th Title
-      each article in articles
+      each event in events
         tr.event
           td.date
-            =article.date 
+            =event.date 
           td.program
-            =article.program 
+            =event.program 
           td.series
-            =article.series 
+            =event.series 
           td.title
-            a.title(href='/articles/'+article._id, title=article.title) #{article.title}  
-//            span= "Created on "+formatDate(article.createdAt, "%b %d, %Y at %I:%M %p")
-//            p=article.body
+            a.title(href='/events/'+event._id, title=event.title) #{event.title}  
+//            span= "Created on "+formatDate(event.createdAt, "%b %d, %Y at %I:%M %p")
+//            p=event.body
 //            .author
 //              span Author :&nbsp;
-//              a(href="/users/"+article.user._id)=article.user.name
+//              a(href="/users/"+event.user._id)=event.user.name
 //              | &nbsp;|&nbsp;
-//              if (article.tags)
+//              if (event.tags)
 //                span.tags
 //                  span Tags :&nbsp;
-//                  each tag in article.tags.split(',')
+//                  each tag in event.tags.split(',')
 //                    a.tag(href="/tags/"+tag)
 //                      i.icon-tags
 //                      |  #{tag}
