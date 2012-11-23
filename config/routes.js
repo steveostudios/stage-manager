@@ -75,9 +75,17 @@ module.exports = function (app, passport, auth) {
           next()
       })
   })
+  //var socket = require('../node_modules/socket.io/node_modules/socket.io-client/')
+  //app.get('/socket.io/socket.io.js', function() {socket.connect})
 
   // home route
   app.get('/', events.index)
+  
+/*
+app.get('/', function (req, res) {
+    res.sendfile(__dirname + '/index.html');
+});
+*/
   
   // comment routes
   var comments = require('../app/controllers/comments')

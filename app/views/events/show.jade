@@ -1,7 +1,7 @@
 extends ../layouts/default
 
 block main
-  h1= event.date + ' ' + event.series + ' ' + event.title
+  h1= event.date + ' | ' + event.series + ' | ' + event.title
 
 block content
   #segments
@@ -16,7 +16,6 @@ block content
         img(src='../img/btn_addSegment.png', width='16', height='16')
       a#btn_addHeader(href='#')
         img(src='../img/btn_addHeader.png', width='46', height='26')
-
   //p Ignore below
     //br
     //form.center.form-inline.confirm(action="/events/"+event.id, method="post")
@@ -25,5 +24,14 @@ block content
       //input(type="hidden", name="_method", value="DELETE")
       //button.btn.btn-danger(type="submit") delete
   footer
-    a(href='#') Play
+    a#btn_clockPlayPause(href='#')
+      img(src='../img/btn_play.png', width='15', height='17')
+    a#btn_clockPrevious(href='#')
+      img(src='../img/btn_prev.png', width='13', height='9')
+    a#btn_clockNext(href='#')
+      img(src='../img/btn_next.png', width='13', height='9')
+    a#btn_clockReset(href='#')
+      img(src='../img/btn_reset.png', width='28', height='18')
+    a(href='#') Clear
+      img(src='../img/btn_play.png', width='15', height='17')
     a.btn(href='/events/'+event._id+'/edit', title="edit") Edit

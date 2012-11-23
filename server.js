@@ -6,7 +6,7 @@ var express = require('express')
   , passport = require('passport')
   , http = require('http')
   , server = http.createServer(app)
-  , io = require('socket.io').listen(server);
+  
 
 require('express-namespace')
 
@@ -38,12 +38,15 @@ require('./config/routes')(app, passport, auth)
 
 // Start the app by listening on <port>
 var port = process.env.PORT || 3000
-app.listen(port)
+var io = require('socket.io').listen(app.listen(port))
+//app.listen(port)
 console.log('Express app started on port '+port)
 
+
+
 io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
+    socket.emit('news', { hello: 'world' });
+    socket.on('my other event', function (data) {
+        console.log(data);
+    });
 });

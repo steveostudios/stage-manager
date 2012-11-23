@@ -18,7 +18,8 @@ function bootApplication(app, config, passport) {
 
   app.use(express.static(__dirname + '/public'))
   
-  app.use(express.static(__dirname + '/'))
+  //app.use(express.static('node_modules/socket.io'))
+
 
   app.use(express.logger(':method :url :status'))
   
