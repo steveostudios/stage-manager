@@ -94,6 +94,7 @@ app.get('/', function (req, res) {
 // segment routes
   var segments = require('../app/controllers/segments')
   app.post('/events/:id/segments', segments.create)
+  app.post('/events/:id/segments/:id', segments.saveRow)
 
   // tag routes
   var tags = require('../app/controllers/tags')

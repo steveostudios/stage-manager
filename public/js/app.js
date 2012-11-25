@@ -34,8 +34,21 @@ $(document).ready(function () {
   })
   $('.rowCancel').click(function(e) {
     e.preventDefault();
+    
+    // Close Edit
     $(this).parent().parent().toggle();
     $(this).parent().parent().prev().toggle();
   })
-
+  
+  $('.rowSave').click(function(e) {
+    var id = $(this).parent().parent().parent().attr('id');
+    var title = $(this).parent().parent().find('.title').find('.input_title').val();
+    var trt = $(this).parent().parent().find('.trt').find('.input_trt').val();
+    e.preventDefault();
+    socket.emit('segmentSave', { rowId: id , rowTitle: title, rowTrt: trt});
+    
+    // Close Edit
+    $(this).parent().parent().toggle();
+    $(this).parent().parent().prev().toggle();
+  })
 });

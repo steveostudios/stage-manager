@@ -304,7 +304,9 @@ a#btn_clockReset img {
 	height: 18px;
 }
 
-
+.hidable {
+  display: none;
+}
 
 
 div.date {

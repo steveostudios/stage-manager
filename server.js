@@ -42,11 +42,25 @@ var io = require('socket.io').listen(app.listen(port))
 //app.listen(port)
 console.log('Express app started on port '+port)
 
-
-
 io.sockets.on('connection', function (socket) {
-    socket.emit('news', { hello: 'world' });
-    socket.on('my other event', function (data) {
-        console.log(data);
+    //socket.emit('news', { hello: 'world' });
+    //socket.on('my other event', function (data) {
+    //    console.log(data);
+    //});
+    socket.on('segmentSave', function (data) {
+      // Save to the DB
+      var mongoose = require('mongoose')
+  , Segment = mongoose.model('Segment')
+      Segment.findOne({_id: data.rowId }, function(err, segment) {
+        if (err) {return next(err); }
+        segment.segment_title = data.rowTitle;
+        segment.segment_trt = data.rowTrt;
+        segment.save(function(err) {
+          if (err) {return next(err); }
+        })
+      })
+      // Push new data back to clients
+      console.log(data.rowId);
+        
     });
 });

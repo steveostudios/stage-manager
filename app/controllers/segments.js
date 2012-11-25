@@ -15,3 +15,7 @@ exports.create = function (req, res) {
     })
   })
 }
+
+exports.saveRow = function (req, res) {
+  console.log('saved')
+}

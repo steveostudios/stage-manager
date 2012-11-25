@@ -1,5 +1,5 @@
 if (segment)
-  li.segment
+  li.segment(id=segment._id)
     .segment
       .type
           img(src='../img/ico_'+ segment.segment_type +'.png', width='35', height='35')
@@ -19,9 +19,9 @@ if (segment)
       .type
         img(src='../img/ico_'+ segment.segment_type +'.png', width='35', height='35')
       .title.withInput
-        input(type='text', value=segment.segment_title, placeholder='Title')
+        input(type='text', value=segment.segment_title, placeholder='Title').input_title
       .trt.withInput
-        input(type='text', value=segment.segment_trt, placeholder='Time')
+        input(type='text', value=segment.segment_trt, placeholder='Time').input_trt
       .options
         a(href='#').rowSave S
         a(href='#').rowCancel C

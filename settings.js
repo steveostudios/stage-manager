@@ -17,9 +17,6 @@ function bootApplication(app, config, passport) {
   app.set('showStackError', true)
 
   app.use(express.static(__dirname + '/public'))
-  
-  //app.use(express.static('node_modules/socket.io'))
-
 
   app.use(express.logger(':method :url :status'))
   
@@ -109,21 +106,7 @@ function bootApplication(app, config, passport) {
     })
 
   })
-  /*
-var fs = require('fs');
-  app.get('/socket.io/socket.io.js', function(req, res) {
-    fs.readFile(__dirname + '/node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js', function(error, content) {
-        if (error) {
-            res.writeHead(500);
-            res.end();
-        }
-        else {
-            res.writeHead(200, { 'Content-Type': 'text/javascript' });
-            res.end(content, 'utf-8');
-        }
-   });
-});
-*/
+
   app.set('showStackError', false)
 
 }
