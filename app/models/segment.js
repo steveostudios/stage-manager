@@ -5,9 +5,9 @@ var mongoose = require('mongoose')
 
 var SegmentSchema = new Schema({
     _id: {type: Schema.ObjectId}
-  , segment_title: {type : String, default : ''}
-  , segment_trt: {type : String, default : ''}
-  , segment_type: {type : String, default : ''}
+  , title: {type : String, default : ''}
+  , trt: {type : String, default : ''}
+  , type: {type : String, default : ''}
   , order: {type : Number, default : 0}
 })
 

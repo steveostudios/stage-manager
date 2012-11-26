@@ -2,12 +2,12 @@ if (segment)
   li.segment(id=segment._id)
     .segment
       .type
-          img(src='../img/ico_'+ segment.segment_type +'.png', width='35', height='35')
+          img(src='../img/ico_'+ segment.type +'.png', width='35', height='35')
       .title
-        =segment.segment_title
+        =segment.title
         = ' order#: ' + segment.order
       .trt
-        =segment.segment_trt
+        =segment.trt
       .options
         a(href='#').rowEdit
           img(src='../img/ico_editRow.png', width='17', height='17').hidable
@@ -17,11 +17,11 @@ if (segment)
           img(src='../img/ico_moveRow.png', width='17', height='17').hidable
     .segment_edit
       .type
-        img(src='../img/ico_'+ segment.segment_type +'.png', width='35', height='35')
+        img(src='../img/ico_'+ segment.type +'.png', width='35', height='35')
       .title.withInput
-        input(type='text', value=segment.segment_title, placeholder='Title').input_title
+        input(type='text', value=segment.title, placeholder='Title').input_title
       .trt.withInput
-        input(type='text', value=segment.segment_trt, placeholder='Time').input_trt
+        input(type='text', value=segment.trt, placeholder='Time').input_trt
       .options
         a(href='#').rowSave S
         a(href='#').rowCancel C

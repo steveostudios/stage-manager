@@ -16,6 +16,14 @@ exports.create = function (req, res) {
   })
 }
 
-exports.saveRow = function (req, res) {
+exports.saveRow = function (data, res) {
+  Segment.findOne({_id: data.rowId }, function(err, segment) {
+        if (err) {return next(err); }
+        segment.title = data.rowTitle;
+        segment.trt = data.rowTrt;
+        segment.save(function(err) {
+          if (err) {return next(err); }
+        })
+      })
   console.log('saved')
 }

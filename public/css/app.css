@@ -148,6 +148,10 @@ div#segments div.title {
   position: absolute;
     right: 210px;
     left: 45px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 200px;
+	overflow: hidden;
 }
 div#segments div.trt {
   position: absolute;
