@@ -42,7 +42,7 @@ exports.edit = function (req, res) {
 }
 
 
-// Update event
+// Update an event
 exports.update = function(req, res){
   var event = req.event
 
@@ -63,7 +63,7 @@ exports.update = function(req, res){
 }
 
 
-// View an event
+// Show an event
 exports.show = function(req, res){
   res.render('events/show', {
     title: req.event.title,
@@ -78,7 +78,6 @@ exports.show = function(req, res){
 exports.destroy = function(req, res){
   var event = req.event
   event.remove(function(err){
-    // req.flash('notice', 'Deleted successfully')
     res.redirect('/events')
   })
 }
@@ -108,44 +107,6 @@ exports.index = function(req, res){
     })
 }
 
-/*
-  var segment = new Segment();
-    
-  segment.title = data.rowTitle;
-  segment.trt = data.rowTrt;
-  
-  segment.save(function (err) {
-    if (err) throw new Error('Error while saving comment')
-    Event.findOne({_id: data.eventId}, function(err, event) {
-      if (err) {return next(err); }
-      event.segments.push(segment._id)
-      event.save(function (err) {
-        if (err) throw new Error('Error while saving event')
-      })
-    })
-  })
-*/
-
 exports.saveCurrent = function (data, res) {
   Event.update({ _id: data.eventId }, { $set: { size: 'large' }},{upsert: true});
-  /*
-var event = Event.findOne({_id: data.eventId}, function(err, event) {
-    //event.date = "12/25/12";
-     
-    event.currently = 'foo';
-    event.date = '123456';
-    event.save(function (err) {
-      if (err) throw new Error('Error while saving event')
-    })
-    console.log('currently: ' + event.currently);
-  })
-*/
-  /*
-Event.findOne({ _id: mongoose.Types.ObjectId(data.eventId) }, function (err, event){
-    event.current = segment;
-    event.save();
-  });
-*/
-  //console.log('rowId: ' + data.rowId)
-  //console.log('eventId: ' + data.eventId)
 }

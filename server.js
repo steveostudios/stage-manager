@@ -6,7 +6,6 @@ var express = require('express')
   , passport = require('passport')
   , http = require('http')
   , server = http.createServer(app)
-  
 
 require('express-namespace')
 
@@ -39,26 +38,31 @@ require('./config/routes')(app, passport, auth)
 // Start the app by listening on <port>
 var port = process.env.PORT || 3000
 var io = require('socket.io').listen(app.listen(port))
-//app.listen(port)
+
 console.log('Express app started on port '+port)
 
 io.sockets.on('connection', function (socket) {
-  socket.join('room1')
+  //console.log(room)
+  var room = '';
+  socket.on('setRoom', function (data) {
+    room = data.room;
+    socket.join(room)
+  });
+  
   var events = require('./app/controllers/events')
   var segments = require('./app/controllers/segments')
-
     socket.on('segmentSave', function (data) {
       segments.saveRow(data)
-      io.sockets.in('room1').emit('updateSegment', data)
+      io.sockets.in(room).emit('updateSegment', data)
     });
     socket.on('segmentCreate', function (data) {
       segments.createRow(data)
-      io.sockets.in('room1').emit('createSegment', data)
+      io.sockets.in(room).emit('createSegment', data)
     });
     socket.on('segmentCurrent', function (data) {
       events.saveCurrent(data) // Save to DB
       //console.log(data.rowId)
-      io.sockets.in('room1').emit('updateCurrent', data)
+      io.sockets.in(room).emit('updateCurrent', data)
     });
     
 });

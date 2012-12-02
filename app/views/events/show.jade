@@ -45,13 +45,6 @@ block content
         li ---
         li Add Segment actually works for the most part (including Socketing)
         li Current Sockets
-  //p Ignore below
-    //br
-    //form.center.form-inline.confirm(action="/events/"+event.id, method="post")
-      //a.btn(href='/events/'+event._id+'/edit', title="edit") Edit
-      //&nbsp;&nbsp;
-      //input(type="hidden", name="_method", value="DELETE")
-      //button.btn.btn-danger(type="submit") delete
   footer
     a#btn_clockPlayPause(href='#')
       img(src='../img/btn_play.png', width='15', height='17')
@@ -64,3 +57,7 @@ block content
     a(href='#') Clear
       img(src='../img/btn_play.png', width='15', height='17')
     a.btn(href='/events/'+event._id+'/edit', title="edit") Edit
+    
+    script
+      var room = '123'
+    script(type='text/javascript', src='/js/event.js')

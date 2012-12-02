@@ -34,6 +34,7 @@ module.exports = function (app, passport, auth) {
         next()
       })
   })
+  
   // event routes
   var events = require('../app/controllers/events')
   app.get('/events', events.index)
@@ -75,23 +76,15 @@ module.exports = function (app, passport, auth) {
           next()
       })
   })
-  //var socket = require('../node_modules/socket.io/node_modules/socket.io-client/')
-  //app.get('/socket.io/socket.io.js', function() {socket.connect})
 
   // home route
   app.get('/', events.index)
-  
-/*
-app.get('/', function (req, res) {
-    res.sendfile(__dirname + '/index.html');
-});
-*/
   
   // comment routes
   var comments = require('../app/controllers/comments')
   app.post('/events/:id/comments', auth.requiresLogin, comments.create)
 
-// segment routes
+  // segment routes
   var segments = require('../app/controllers/segments')
   app.post('/events/:id/segments', segments.create)
   app.post('/events/:id/segments/:id', segments.saveRow)
