@@ -43,29 +43,22 @@ var io = require('socket.io').listen(app.listen(port))
 console.log('Express app started on port '+port)
 
 io.sockets.on('connection', function (socket) {
+  socket.join('room1')
+  var events = require('./app/controllers/events')
   var segments = require('./app/controllers/segments')
-    //socket.emit('news', { hello: 'world' });
-    //socket.on('my other event', function (data) {
-    //    console.log(data);
-    //});
+
     socket.on('segmentSave', function (data) {
-      // Save to the DB
-      //var mongoose = require('mongoose')
-      //, Segment = mongoose.model('Segment')
-      
       segments.saveRow(data)
-      /*
-Segment.findOne({_id: data.rowId }, function(err, segment) {
-        if (err) {return next(err); }
-        segment.segment_title = data.rowTitle;
-        segment.segment_trt = data.rowTrt;
-        segment.save(function(err) {
-          if (err) {return next(err); }
-        })
-      })
-*/
-      // Push new data back to clients
-      console.log(data.rowId);
-        
+      io.sockets.in('room1').emit('updateSegment', data)
     });
+    socket.on('segmentCreate', function (data) {
+      segments.createRow(data)
+      io.sockets.in('room1').emit('createSegment', data)
+    });
+    socket.on('segmentCurrent', function (data) {
+      events.saveCurrent(data) // Save to DB
+      //console.log(data.rowId)
+      io.sockets.in('room1').emit('updateCurrent', data)
+    });
+    
 });

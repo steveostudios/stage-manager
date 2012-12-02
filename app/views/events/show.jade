@@ -16,6 +16,35 @@ block content
         img(src='../img/btn_addSegment.png', width='16', height='16')
       a#btn_addHeader(href='#')
         img(src='../img/btn_addHeader.png', width='46', height='26')
+      #pup_addHeader
+        a#btn_addHeader_blue(href="#")
+          img(src='../img/ico_headerBlue.png', width='18', height='19')
+        a#btn_addHeader_green(href="#")
+          img(src='../img/ico_headerGreen.png', width='18', height='19')
+        a#btn_addHeader_red(href="#")
+          img(src='../img/ico_headerRed.png', width='18', height='19')
+  #sidebar
+    #preview
+      #currentTimer 29:56
+      #currentTitle The Sermon Title
+      #next NEXT The final song 5:00
+    #alerts
+      h1 Alerts
+    #calls
+      h1 Calls
+    #notes
+      h1 Notes
+      ul(style='padding:5px 15px;margin:5px;font-size: 11px;color:#878686;')
+        li MAJOR STOPPING POINT: Cannot save 'Current' to DB
+        li Add Segment will ONLY add to this event
+        li Segment Reorder doesn't work
+        li Segment Remove doesn't work
+        li Need a little love on Segment Cancel (i.e. if you change it goes back)
+        li Add Header doesn't work
+        li Type Images are not programmed into anything
+        li ---
+        li Add Segment actually works for the most part (including Socketing)
+        li Current Sockets
   //p Ignore below
     //br
     //form.center.form-inline.confirm(action="/events/"+event.id, method="post")
