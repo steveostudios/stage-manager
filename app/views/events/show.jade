@@ -1,8 +1,8 @@
 extends ../layouts/default
 
 block main
-  h1= event.date + ' | ' + event.series + ' | ' + event.title + ' | ' + event.id
-
+  h1= event.date + ' | ' + event.series + ' | ' + event.title
+  
 block content
   #segments
     ul.head
@@ -35,8 +35,8 @@ block content
     #notes
       h1 Notes
       ul(style='padding:5px 15px;margin:5px;font-size: 11px;color:#878686;')
-        li MAJOR STOPPING POINT: Cannot save 'Current' to DB
-        li Add Segment will ONLY add to this event
+        li MAJOR STOPPING POINT: Cannot save 'Current' to DB (works as long as it's a string)
+        li Add Segment will ONLY add to this event (because it's hard-coded)
         li Segment Reorder doesn't work
         li Segment Remove doesn't work
         li Need a little love on Segment Cancel (i.e. if you change it goes back)

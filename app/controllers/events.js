@@ -66,7 +66,6 @@ exports.update = function(req, res){
 // Show an event
 exports.show = function(req, res){
   res.render('events/show', {
-    id: req.event._id,
     title: req.event.title,
     event: req.event,
     segments: req.segments,
