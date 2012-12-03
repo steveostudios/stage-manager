@@ -42,11 +42,12 @@ var io = require('socket.io').listen(app.listen(port))
 console.log('Express app started on port '+port)
 
 io.sockets.on('connection', function (socket) {
-  //console.log(room)
+  // Join Room (Event)
   var room = '';
   socket.on('setRoom', function (data) {
     room = data.room;
-    socket.join(room)
+    socket.join(data.room)
+    console.log('logged into room: ' + data.room)
   });
   
   var events = require('./app/controllers/events')
