@@ -108,12 +108,11 @@ exports.index = function(req, res){
 }
 
 exports.saveCurrent = function (req, res) {
-  
-  Event.findOne({_id: req.eventId }, function(err, event) {
-    if (err) {return next(err); }
+  Event.findOne({ _id: req.eventId }, function(err, event) {
+    if (err) { return next(err); }
     event.current = req.rowId;
     event.save(function(err) {
-      if (err) {return next(err); }
+      if (err) { return next(err); }
     })
   })
 }

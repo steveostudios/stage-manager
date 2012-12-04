@@ -36,5 +36,15 @@ exports.removeRow = function (data, res) {
     if (err) {return next(err); }
     segment.remove();
   })
+  Event.findOne({ _id: data.eventId }, function(err, event) {
+    if (err) { return next(err); }
+    var index = event.segments.indexOf("50bcab0828fc27f3f8000001");
+    console.log(index);
+    event.segments.splice(index, 1);
+    console.log('the deed is done');
+    event.save(function(err) {
+      if (err) { return next(err); }
+    })
+  })
 }
 
