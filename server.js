@@ -65,5 +65,10 @@ io.sockets.on('connection', function (socket) {
       //console.log(data.rowId)
       io.sockets.in(room).emit('updateCurrent', data)
     });
+    socket.on('segmentRemove', function (data) {
+      segments.removeRow(data) // Save to DB
+      console.log(data.rowId)
+      io.sockets.in(room).emit('updateRemove', data)
+    });
     
 });

@@ -107,6 +107,13 @@ exports.index = function(req, res){
     })
 }
 
-exports.saveCurrent = function (data, res) {
-  Event.update({ _id: data.eventId }, { $set: { size: 'large' }},{upsert: true});
+exports.saveCurrent = function (req, res) {
+  
+  Event.findOne({_id: req.eventId }, function(err, event) {
+    if (err) {return next(err); }
+    event.current = req.rowId;
+    event.save(function(err) {
+      if (err) {return next(err); }
+    })
+  })
 }

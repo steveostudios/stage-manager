@@ -3,7 +3,7 @@ var mongoose = require('mongoose')
   , Event = mongoose.model('Event')
 
 exports.saveRow = function (data, res) {
-  Segment.findOne({_id: data.rowId }, function(err, segment) {
+  Segment.findOne({ _id: data.rowId }, function(err, segment) {
     if (err) {return next(err); }
     segment.title = data.rowTitle;
     segment.trt = data.rowTrt;
@@ -28,6 +28,13 @@ exports.createRow = function (data, res) {
         if (err) throw new Error('Error while saving event')
       })
     })
+  })
+}
+
+exports.removeRow = function (data, res) {
+  Segment.findOne({ _id: data.rowId }, function(err, segment){
+    if (err) {return next(err); }
+    segment.remove();
   })
 }
 

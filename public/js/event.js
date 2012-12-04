@@ -77,6 +77,9 @@ $(document).ready(function () {
   })
   
   /* !--- Current Segment --- */
+  if (current != '') {
+    $('li#'+current+' div.segment').addClass('highlight');
+  }
   $(document).on('click', 'div#segments ul.body li.segment div.segment div.title', function(e) {
     e.preventDefault();
     var id = $(this).parent().parent().attr('id');
@@ -102,6 +105,28 @@ $(document).ready(function () {
   socket.on('createSegment', function(data) {
     $('ul.body').append('<li id="'+data.rowId+'" class="segment"><div class="segment"><div class="type"><img src="../img/ico_slate.png" width="35" height="35"/></div><div class="title">'+data.rowTitle+'</div><div class="trt">'+data.rowTrt+'</div><div class="options"><a href="#" class="rowEdit"><img src="../img/ico_editRow.png" width="17" height="17" class="hidable" /></a><a href="#" class="hidable"><img src="../img/ico_removeRow.png" width="17" height="17" class="hidable" /></a><span class="hidable handle"><img src="../img/ico_moveRow.png" width="17" height="17" class="hidable" /></span></div></div><div class="segment_edit"><div class="type"><img src="../img/ico_slate.png" width="35" height="35"/></div><div class="title withInput"><input type="text" value="'+data.rowTitle+'" placeholder="Title" class="input_title" /></div><div class="trt withInput"><input type="text" value="'+data.rowTrt+'" placeholder="Time" class="input_trt" /></div><div class="options"><a href="#" class="rowSave">S</a><a href="#" class="rowCancel">C</a></div></div></li>');
 
+  })
+  
+  /* !--- Remove Segment --- */
+  var removeId = null;
+  $('.rowRemove').on('click', function(e) {
+    e.preventDefault();
+    removeId = $(this).parent().parent().parent().attr('id');
+    $('#pup_alert').show();
+  })
+  $('#pup_alert .submit').on('click', function(e) {
+    e.preventDefault();
+    socket.emit('segmentRemove', {eventId: '50bbd4bc7bd4965cc6000002', rowId: removeId});
+    $('#pup_alert').hide();
+    removeId = null;
+  })
+  $('#pup_alert .cancel').on('click', function(e) {
+    e.preventDefault();
+    $('#pup_alert').hide();
+    removeId = null;
+  })
+  socket.on('updateRemove', function(data) {
+    $('li#'+data.rowId).remove();
   })
 });
 

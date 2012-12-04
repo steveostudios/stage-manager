@@ -35,16 +35,18 @@ block content
     #notes
       h1 Notes
       ul(style='padding:5px 15px;margin:5px;font-size: 11px;color:#878686;')
-        li MAJOR STOPPING POINT: Cannot save 'Current' to DB (works as long as it's a string)
+        li NOTE: ONLY EVENT '333' WORKS
+        li Segment Remove works, but DOES NOT remove the reference
         li Add Segment will ONLY add to this event (because it's hard-coded)
         li Segment Reorder doesn't work
-        li Segment Remove doesn't work
+        
         li Need a little love on Segment Cancel (i.e. if you change it goes back)
         li Add Header doesn't work
         li Type Images are not programmed into anything
         li ---
         li Add Segment actually works for the most part (including Socketing)
         li Current Sockets
+        li Current Saves to DB
   footer
     a#btn_clockPlayPause(href='#')
       img(src='../img/btn_play.png', width='15', height='17')
@@ -57,7 +59,13 @@ block content
     a(href='#') Clear
       img(src='../img/btn_play.png', width='15', height='17')
     a.btn(href='/events/'+event._id+'/edit', title="edit") Edit
+  #pup_alert
+    h1 ALERT WHOA!
+    p Are you sure? This could break everything?
+    a(href='#').submit yes
+    a(href='#').cancel no
     
     script
       var room = '#{event._id}'
+      var current = '#{event.current}'
     script(type='text/javascript', src='/js/event.js')
