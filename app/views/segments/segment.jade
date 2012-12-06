@@ -23,7 +23,7 @@ if (segment)
           types = ["slate", "note", "bible", "mic", "tv", "megaphone"]
           each type, i in types
             if (segment.type == type)
-              img(src='../img/ico_#{type}.png').highlight
+              img(src='../img/ico_#{type}.png', data-type='#{type}').highlight
             else
               img(src='../img/ico_#{type}.png', data-type='#{type}')
       .title.withInput
