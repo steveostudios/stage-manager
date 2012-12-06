@@ -52,22 +52,21 @@ io.sockets.on('connection', function (socket) {
   
   var events = require('./app/controllers/events')
   var segments = require('./app/controllers/segments')
-    socket.on('segmentSave', function (data) {
-      segments.saveRow(data)
-      io.sockets.in(room).emit('updateSegment', data)
-    });
-    socket.on('segmentCreate', function (data) {
-      data.rowId = segments.createRow(data)
-      io.sockets.in(room).emit('createSegment', data)
-    });
-    socket.on('segmentCurrent', function (data) {
-      events.saveCurrent(data)
-      io.sockets.in(room).emit('updateCurrent', data)
-    });
-    socket.on('segmentRemove', function (data) {
-      segments.removeRow(data)
-      console.log(data.rowId)
-      io.sockets.in(room).emit('updateRemove', data)
-    });
+  socket.on('segmentSave', function (data) {
+    segments.saveRow(data)
+    io.sockets.in(room).emit('updateSegment', data)
+  });
+  socket.on('segmentCreate', function (data) {
+    data.rowId = segments.createRow(data)
+    io.sockets.in(room).emit('createSegment', data)
+  });
+  socket.on('segmentCurrent', function (data) {
+    events.saveCurrent(data)
+    io.sockets.in(room).emit('updateCurrent', data)
+  });
+  socket.on('segmentRemove', function (data) {
+    segments.removeRow(data)
+    io.sockets.in(room).emit('updateRemove', data)
+  });
     
 });

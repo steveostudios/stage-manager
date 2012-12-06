@@ -15,12 +15,10 @@ exports.saveRow = function (data, res) {
 }
 
 exports.createRow = function (data, res) {
-  var segment = new Segment();
-  
+  var segment = new Segment(); 
   segment.type = data.rowType;
   segment.title = data.rowTitle;
-  segment.trt = data.rowTrt;
-  
+  segment.trt = data.rowTrt;  
   segment.save(function (err) {
     if (err) throw new Error('Error while saving comment')
     Event.findOne({_id: data.eventId}, function(err, event) {
@@ -35,19 +33,20 @@ exports.createRow = function (data, res) {
 }
 
 exports.removeRow = function (data, res) {
+  Event.findOne({ _id: data.eventId }, function(err, event) {
+    if (err) { return next(err); }
+    var index = event.segments.indexOf(data.rowId);
+    if(index >= 0) {
+      event.segments.splice(index, 1);
+      event.save(function(err) {
+        if (err) { return next(err); }
+      })
+    }
+  })
   Segment.findOne({ _id: data.rowId }, function(err, segment){
     if (err) {return next(err); }
     segment.remove();
   })
-  Event.findOne({ _id: data.eventId }, function(err, event) {
-    if (err) { return next(err); }
-    var index = event.segments.indexOf("50bcab0828fc27f3f8000001");
-    console.log(index);
-    event.segments.splice(index, 1);
-    console.log('the deed is done');
-    event.save(function(err) {
-      if (err) { return next(err); }
-    })
-  })
+  
 }
 
