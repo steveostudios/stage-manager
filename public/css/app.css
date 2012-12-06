@@ -285,8 +285,34 @@ div#sidebar {
   display: block;
 }
 div#sidebar #preview {
+  margin: 0;
+  padding: 0;
   height: 214px;
   background: #1c1c1c;
+  font-family: 'PT Sans', sans-serif;
+  display: block;
+}
+div#sidebar #preview #currentTimer {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+    top: 10px;
+    left: 45px;
+  width: 100%;
+  height: auto;
+  font-size: 124px;
+  font-weight: bold;
+  letter-spacing: -10px;
+  color: #5e5e5e;
+  display: block;
+}
+div#sidebar #preview #currentTitle {
+  position: absolute;
+    top: 136px;
+    left: 45px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #8e8e8e;
   display: block;
 }
 div#sidebar h1 {
@@ -323,48 +349,65 @@ footer {
   background: -webkit-linear-gradient(#3d3d3d 0%, #313131 100%);
   border-top: 1px solid #4d4d4d;
 }
-a#btn_clockPlayPause {
-	margin: 8px 5px 0 15px;
+a#btn_clockPlayPause { 
+  position: absolute;
+    top: 9px;
+    left: 22px;
 	width: 45px;
 	height: 45px;
-//	-webkit-box-shadow: 0px 6px 20px -7px #000000;
+	-webkit-box-shadow: 0px 0px 10px -6px #000000;
 	background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0, #df2b1a), color-stop(1, #871a12) );
 	background-color: #df2b1a;
 	-webkit-border-radius: 45px;
-	display: inline-block;
+	float: left;
+	display: block;
 }
 a#btn_clockPlayPause img {
 	position: relative;
-	top: 14px;
-	right: 14px;
-	bottom: 14px;
+	  top: 14px;
+	  right: 14px;
+	  bottom: 14px;
 	left: 16px;
 	width: 15px;
 	height: 17px;
 
 }
-a#btn_clockPrevious, a#btn_clockNext, a#btn_clockReset {
+a#btn_clockPrevious, a#btn_clockNext, a#btn_clockReset, a#btn_clockClear { 
 	background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0, #8f9192), color-stop(1, #626060) );
+	color: #333;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	display: block;
+	float: left;
 }
 a#btn_clockPrevious, a#btn_clockNext {
+  position: absolute;
+    top: 18px;
 	width: 30px;
 	height: 30px;
 	-webkit-border-radius:30px;
-	display:inline-block;
+}
+a#btn_clockPrevious {
+  left: 76px;
+}
+a#btn_clockNext {
+  left: 111px;
 }
 a#btn_clockPrevious img, a#btn_clockNext img {
 	position: relative;
-	top: 11px;
-	right: 8px;
-	bottom: 10px;
-	left: 9px;
+	  top: 11px;
+	  bottom: 10px;
 	width: 13px;
 	height: 9px;
 }
 a#btn_clockReset {
-	position: relative;
-	top: 13px;
-	left: 3px;
+	position: absolute;
+    top: 21px;
+    left: 154px;
 	width: 36px;
 	height: 24px;
 	-webkit-border-radius:5px;
@@ -372,14 +415,23 @@ a#btn_clockReset {
 }
 a#btn_clockReset img {
 	position: relative;
-	top: 3px;
-	right: 7px;
-	bottom: 3px;
-	left: 7px;
+	  top: 3px;
+		bottom: 3px;
 	width: 22px;
 	height: 18px;
 }
-
+a#btn_clockClear {
+  padding: 3px 0;
+  
+  position: absolute;
+    top: 21px;
+    left: 204px;
+	width: 52px;
+	height: 18px;
+	text-decoration: none;
+  -webkit-border-radius:5px;
+	display: block;
+}
 
 
 /* !--- Alert Popup --- */

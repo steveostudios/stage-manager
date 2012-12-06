@@ -93,6 +93,20 @@ $(document).ready(function () {
   socket.on('updateCurrent', function(data) {
    $('div#segments ul.body li.segment div.segment').removeClass('highlight');
    $('li#'+data.rowId+' div.segment').addClass('highlight');
+   
+   
+   $('#preview #currentTimer').text(data.rowTrt);
+   $('#preview #currentTitle').text(data.rowTitle);
+   /*
+   
+       #preview
+      #currentTimer 29:56
+      #currentTitle The Sermon Title
+      #next NEXT The final song 5:00
+   
+   */
+   
+   
   })
   /* !--- Add New Header --- */
   $('#controls a#btn_addHeader').click(function(e) {

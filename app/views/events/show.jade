@@ -27,7 +27,6 @@ block content
     #preview
       #currentTimer 29:56
       #currentTitle The Sermon Title
-      #next NEXT The final song 5:00
     #alerts
       h1 Alerts
     #calls
@@ -48,12 +47,11 @@ block content
       img(src='../img/btn_next.png', width='13', height='9')
     a#btn_clockReset(href='#')
       img(src='../img/btn_reset.png', width='28', height='18')
-    a(href='#') Clear
-      img(src='../img/btn_play.png', width='15', height='17')
+    a#btn_clockClear(href='#') Clear
     a.btn(href='/events/'+event._id+'/edit', title="edit") Edit
   #pup_alert
-    h1 ALERT WHOA!
-    p Are you sure? This could break everything?
+    h1 Delete Segment
+    p This action cannot be undone?
     .buttons
       a(href='#').submit yes
       a(href='#').cancel no
