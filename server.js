@@ -42,10 +42,10 @@ var io = require('socket.io').listen(app.listen(port))
 console.log('Express app started on port '+port)
 
 io.sockets.on('connection', function (socket) {
-  // Join Room (Event)
+  // Join Room (EventName)
   var room = '';
   socket.on('setRoom', function (data) {
-    room = data.room;
+    room = data.room
     socket.join(data.room)
     console.log('logged into room: ' + data.room)
   });
@@ -57,16 +57,15 @@ io.sockets.on('connection', function (socket) {
       io.sockets.in(room).emit('updateSegment', data)
     });
     socket.on('segmentCreate', function (data) {
-      segments.createRow(data)
+      data.rowId = segments.createRow(data)
       io.sockets.in(room).emit('createSegment', data)
     });
     socket.on('segmentCurrent', function (data) {
-      events.saveCurrent(data) // Save to DB
-      //console.log(data.rowId)
+      events.saveCurrent(data)
       io.sockets.in(room).emit('updateCurrent', data)
     });
     socket.on('segmentRemove', function (data) {
-      segments.removeRow(data) // Save to DB
+      segments.removeRow(data)
       console.log(data.rowId)
       io.sockets.in(room).emit('updateRemove', data)
     });

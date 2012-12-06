@@ -4,18 +4,20 @@ var mongoose = require('mongoose')
 
 exports.saveRow = function (data, res) {
   Segment.findOne({ _id: data.rowId }, function(err, segment) {
-    if (err) {return next(err); }
+    //if (err) {return next(err); }
+    segment.type = data.rowType;
     segment.title = data.rowTitle;
     segment.trt = data.rowTrt;
     segment.save(function(err) {
-      if (err) {return next(err); }
+      //if (err) {return next(err); }
     })
   })
 }
 
 exports.createRow = function (data, res) {
   var segment = new Segment();
-    
+  
+  segment.type = data.rowType;
   segment.title = data.rowTitle;
   segment.trt = data.rowTrt;
   
@@ -29,6 +31,7 @@ exports.createRow = function (data, res) {
       })
     })
   })
+  return segment._id;
 }
 
 exports.removeRow = function (data, res) {

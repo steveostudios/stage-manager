@@ -17,7 +17,15 @@ if (segment)
           img(src='../img/ico_moveRow.png', width='17', height='17').hidable
     .segment_edit
       .type
+        input(type='hidden', val=segment.type).input_type
         img(src='../img/ico_'+ segment.type +'.png', width='35', height='35')
+        .pup_typeSelector
+          types = ["slate", "note", "bible", "mic", "tv", "megaphone"]
+          each type, i in types
+            if (segment.type == type)
+              img(src='../img/ico_#{type}.png').highlight
+            else
+              img(src='../img/ico_#{type}.png', data-type='#{type}')
       .title.withInput
         input(type='text', value=segment.title, placeholder='Title').input_title
       .trt.withInput

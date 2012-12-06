@@ -24,13 +24,13 @@ $(document).ready(function () {
     handle: '.handle'
   })
   $('.hidable').hide();
-  $('div.segment').mouseover(function(e) {
+  $(document).on('mouseover', 'div.segment', function(e) {
     $(this).find('.hidable').show();
   })
-  $('div.segment').mouseout(function(e) {
+  $(document).on('mouseout', 'div.segment', function(e) {
     $('.hidable').hide();
   })
-  $('.rowEdit').click(function(e) {
+  $(document).on('click', '.rowEdit', function(e) {
     e.preventDefault();
     $(this).parent().parent().toggle();
     $(this).parent().parent().next().toggle();
@@ -42,12 +42,18 @@ $(document).ready(function () {
     $(this).parent().parent().toggle();
     $(this).parent().parent().prev().toggle();
   })
-  
+  $(document).on('click', 'div#segments ul li.segment div.segment_edit .type .pup_typeSelector img', function(e) {
+    $('div#segments ul li.segment div.segment_edit .type .pup_typeSelector img').removeClass('highlight');
+    $(this).addClass('highlight');
+    var dataType = $(this).attr('data-type');
+    $(this).parent().parent().find('.input_type').val(dataType);
+    $(this).parent().prev().attr('src', '../img/ico_' + dataType + '.png');
+  })
   /* !--- Save Segment --- */
   $(document).on('click', '.rowSave', function(e) {
-    
     e.preventDefault();
     var id = $(this).parent().parent().parent().attr('id');
+    var type = $(this).parent().parent().find('.type .input_type').val();
     var title = $(this).parent().parent().find('.title .input_title').val();
     var trt = $(this).parent().parent().find('.trt .input_trt').val();
     
@@ -55,13 +61,11 @@ $(document).ready(function () {
     
     $('li#' + id + ' .segment .title').text(title);
     if(id == null) {
-      //alert('create new row');
-      socket.emit('segmentCreate', {eventId: '50bbd4bc7bd4965cc6000002', rowTitle: title, rowTrt: trt}, function (data) {
-        
-      })
+      socket.emit('segmentCreate', {eventId: room, rowType: type, rowTitle: title, rowTrt: trt})
       $(this).parent().parent().parent().remove();
     } else {
-      socket.emit('segmentSave', { rowId: id , rowTitle: title, rowTrt: trt}, function(data) {
+      socket.emit('segmentSave', { rowId: id , rowType: type, rowTitle: title, rowTrt: trt}, function(data) {
+        $('li#' + id + ' .segment .type img').attr('src', '../img/ico_' + data.rowType + '.png');
         $('li#' + id + ' .segment .title').text(data.rowTitle);
         $('li#' + id + ' .segment .trt').text(data.rowTrt);
       })
@@ -72,8 +76,9 @@ $(document).ready(function () {
     $(this).parent().parent().prev().toggle();
   })
   socket.on('updateSegment', function(data) {
-    $('li#'+data.rowId+' .segment .title').text(data.rowTitle);
-    $('li#'+data.rowId+' .segment .trt').text(data.rowTrt);
+    $('li#' + data.rowId + ' .segment .type img').attr('src', '../img/ico_' + data.rowType + '.png');
+    $('li#' + data.rowId + ' .segment .title').text(data.rowTitle);
+    $('li#' + data.rowId + ' .segment .trt').text(data.rowTrt);
   })
   
   /* !--- Current Segment --- */
@@ -83,7 +88,7 @@ $(document).ready(function () {
   $(document).on('click', 'div#segments ul.body li.segment div.segment div.title', function(e) {
     e.preventDefault();
     var id = $(this).parent().parent().attr('id');
-    socket.emit('segmentCurrent', {eventId: '50bbd4bc7bd4965cc6000002', rowId: id});
+    socket.emit('segmentCurrent', {eventId: room, rowId: id});
   });
   socket.on('updateCurrent', function(data) {
    $('div#segments ul.body li.segment div.segment').removeClass('highlight');
@@ -109,7 +114,7 @@ $(document).ready(function () {
   
   /* !--- Remove Segment --- */
   var removeId = null;
-  $('.rowRemove').on('click', function(e) {
+  $(document).on('click', '.rowRemove', function(e) {
     e.preventDefault();
     removeId = $(this).parent().parent().parent().attr('id');
     $('#pup_alert').show();
@@ -128,5 +133,12 @@ $(document).ready(function () {
   socket.on('updateRemove', function(data) {
     $('li#'+data.rowId).remove();
   })
+  
+  /* !--- Reorder Segments --- */
+  $('div#segments ul').on( "sortstop", function( event, ui ) {
+    var sortedIDs = $( ".selector" ).sortable( "toArray" );
+    alert('sorting stopped');
+    
+  } );
 });
 

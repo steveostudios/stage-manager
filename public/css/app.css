@@ -145,6 +145,25 @@ div#segments ul.body li.segment .highlight {
 div#segments ul li.segment div.segment_edit {
   display: none;
 }
+div#segments ul li.segment div.segment_edit .type .pup_typeSelector {
+  position: absolute;
+    left: 5px;
+  height: 25px;
+  z-index: 100;
+  display: inline-block;
+    padding: 5px;
+    margin-top: -50px;
+  background: #ececec;
+  box-shadow: 0px 0px 10px black;
+  border-radius: 5px;
+}
+div#segments ul li.segment div.segment_edit .type .pup_typeSelector img {
+  width: 25px;
+  height: 25px;
+}
+div#segments ul li.segment div.segment_edit .type .pup_typeSelector img.selected {
+  background: #7ebfd9;
+}
 div#segments div.title {
   position: absolute;
     right: 210px;
@@ -366,15 +385,55 @@ a#btn_clockReset img {
 /* !--- Alert Popup --- */
 div#pup_alert {
   margin: auto;
-  padding: 10px;
+  padding: 0;
   position: relative;
   width: 250px;
   height: 150px;
-  background: #d6d6d6;
+  background: #ededed;
   box-shadow: 0px 0px 10px black;
   border-radius: 5px;
+  color: #3d3d3d;
   display: none;
   z-index: 101;
+  text-align: center;
+}
+div#pup_alert h1 {
+  position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+  padding: 8px 10px 6px 10px;
+  height: 23px; 
+  font-size: 18px;
+  background: #d1d1d1;
+  border-radius: 5px 5px 0px 0px;
+  text-align: left;
+  display: block;
+}
+div#pup_alert p {
+  margin: 5px 10px;
+  text-align: left;
+}
+div#pup_alert div.buttons {
+  position: absolute;
+    bottom: 15px;
+    left: -15px;
+    right: 0;
+  display: block;
+}
+div#pup_alert div.buttons a {
+  margin: 0 0 0 15px;
+  padding: 7px 0 0 0;
+  width: 72px;
+	height: 24px;
+  background-image:-webkit-gradient( linear, left top, left bottom, color-stop(0, #ededed), color-stop(1, #f1f1f1) );
+  border: 1px solid #d1d1d1;
+  -webkit-border-radius:5px;
+  text-align: center;
+  text-decoration: none;
+  color: #3d3d3d;
+  text-transform: capitalize;
+  display: inline-block;
 }
 
 
