@@ -8,12 +8,12 @@ block content
     ul.head
       li.segment Segment
       li.options Options
-    ul.body
+    ul#body
       each segment in event.segments
         include ../segments/segment
     #controls
       a#btn_addSegment(href='#')
-        img(src='../img/btn_addSegment.png', width='16', height='16')
+        img(src='../img/btn_addSegment2.png')
       a#btn_addHeader(href='#')
         img(src='../img/btn_addHeader.png', width='46', height='26')
       #pup_addHeader
@@ -35,20 +35,20 @@ block content
       h1 Notes
       ul(style='padding:5px 15px;margin:5px;font-size: 11px;color:#878686;')
         li What if you remove the current item?
-        li Segment Reorder doesn't work
         li Need a little love on Segment Cancel (i.e. if you change it goes back)
         li Add Header doesn't work
+        li 
+          a.btn(href='/events/'+event._id+'/edit', title="edit") Edit
   footer
     a#btn_clockPlayPause(href='#')
-      img(src='../img/btn_play.png', width='15', height='17')
+      img(src='../img/btn_play2.png')
     a#btn_clockPrevious(href='#')
-      img(src='../img/btn_prev.png', width='13', height='9')
+      img(src='../img/btn_prev2.png')
     a#btn_clockNext(href='#')
-      img(src='../img/btn_next.png', width='13', height='9')
+      img(src='../img/btn_next2.png')
     a#btn_clockReset(href='#')
-      img(src='../img/btn_reset.png', width='28', height='18')
+      img(src='../img/btn_reset2.png')
     a#btn_clockClear(href='#') Clear
-    a.btn(href='/events/'+event._id+'/edit', title="edit") Edit
   #pup_alert
     h1 Delete Segment
     p This action cannot be undone?
@@ -60,3 +60,5 @@ block content
       var room = '#{event._id}'
       var current = '#{event.current}'
     script(type='text/javascript', src='/js/event.js')
+    
+    

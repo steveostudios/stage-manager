@@ -1,7 +1,8 @@
 var socket = io.connect('http://localhost');
 
 $(document).ready(function () {
-
+  
+  
   socket.emit('setRoom', { room: room });
   console.log(room);
   $('.confirm').submit(function (e) {
@@ -85,13 +86,13 @@ $(document).ready(function () {
   if (current != '') {
     $('li#'+current+' div.segment').addClass('highlight');
   }
-  $(document).on('click', 'div#segments ul.body li.segment div.segment div.title', function(e) {
+  $(document).on('click', 'div#segments ul#body li.segment div.segment div.title', function(e) {
     e.preventDefault();
     var id = $(this).parent().parent().attr('id');
     socket.emit('segmentCurrent', {eventId: room, rowId: id});
   });
   socket.on('updateCurrent', function(data) {
-   $('div#segments ul.body li.segment div.segment').removeClass('highlight');
+   $('div#segments ul#body li.segment div.segment').removeClass('highlight');
    $('li#'+data.rowId+' div.segment').addClass('highlight');
    
    
@@ -119,11 +120,11 @@ $(document).ready(function () {
     
     // If there are any other edits happening then cancel or complete them
     
-    $('ul.body').append('<li class="segment"><div class="segment_edit" style="display:block;"><div class="type"><input type="hidden" value="mic" class="input_type"/><img src="../img/ico_mic.png" width="35" height="35"/><div class="pup_typeSelector"><img src="../img/ico_slate.png" data-type="slate"/><img src="../img/ico_note.png" data-type="note"/><img src="../img/ico_bible.png" data-type="bible"/><img src="../img/ico_mic.png" data-type="mic" class="highlight" /><img src="../img/ico_tv.png" data-type="tv"/><img src="../img/ico_megaphone.png" data-type="megaphone"/></div></div><div class="title withInput"><input type="text" placeholder="Title" class="input_title" /></div><div class="trt withInput"><input type="text" placeholder="Time" class="input_trt" /></div><div class="options"><a href="#" class="rowSave">S</a><a href="#" class="rowCancel">C</a></div></div></li>');
+    $('ul#body').append('<li class="segment"><div class="segment_edit" style="display:block;"><div class="type"><input type="hidden" value="mic" class="input_type"/><img src="../img/ico_mic.png" width="35" height="35"/><div class="pup_typeSelector"><img src="../img/ico_slate.png" data-type="slate"/><img src="../img/ico_note.png" data-type="note"/><img src="../img/ico_bible.png" data-type="bible"/><img src="../img/ico_mic.png" data-type="mic" class="highlight" /><img src="../img/ico_tv.png" data-type="tv"/><img src="../img/ico_megaphone.png" data-type="megaphone"/></div></div><div class="title withInput"><input type="text" placeholder="Title" class="input_title" /></div><div class="trt withInput"><input type="text" placeholder="Time" class="input_trt" /></div><div class="options"><a href="#" class="rowSave">S</a><a href="#" class="rowCancel">C</a></div></div></li>');
   });
   socket.on('createSegment', function(data) {
-    $('ul.body').append('<li id="'+data.rowId+'" class="segment"> <div class="segment"><div class="type"><img src="../img/ico_'+data.rowType+'.png" width="35" height="35"/></div><div class="title">'+data.rowTitle+'</div><div class="trt">'+data.rowTrt+'</div><div class="options"><a href="#" class="rowEdit"><img src="../img/ico_editRow.png" width="17" height="17" class="hidable" /></a><a href="#" class="rowRemove"><img src="../img/ico_removeRow.png" width="17" height="17" class="hidable" /></a><span class="hidable handle"><img src="../img/ico_moveRow.png" width="17" height="17" class="hidable" /></span></div></div><div class="segment_edit"><div class="type"><input type="hidden" value="mic" class="input_type"/><img src="../img/ico_'+data.rowType+'.png" width="35" height="35"/><div class="pup_typeSelector"><img src="../img/ico_slate.png" data-type="slate"/><img src="../img/ico_note.png" data-type="note"/><img src="../img/ico_bible.png" data-type="bible"/><img src="../img/ico_mic.png" data-type="mic" /><img src="../img/ico_tv.png" data-type="tv"/><img src="../img/ico_megaphone.png" data-type="megaphone"/></div></div><div class="title withInput"><input type="text" value="'+data.rowTitle+'" placeholder="Title" class="input_title" /></div><div class="trt withInput"><input type="text" value="'+data.rowTrt+'" placeholder="Time" class="input_trt" /></div><div class="options"><a href="#" class="rowSave">S</a><a href="#" class="rowCancel">C</a></div></div></li>');
-    $('ul.body li#' + data.rowId + ' .segment_edit .type .pup_typeSelector').find('[data-type="' + data.rowType + '"]').addClass('highlight');
+    $('ul#body').append('<li id="'+data.rowId+'" class="segment"> <div class="segment"><div class="type"><img src="../img/ico_'+data.rowType+'.png" width="35" height="35"/></div><div class="title">'+data.rowTitle+'</div><div class="trt">'+data.rowTrt+'</div><div class="options"><a href="#" class="rowEdit"><img src="../img/ico_editRow.png" width="17" height="17" class="hidable" /></a><a href="#" class="rowRemove"><img src="../img/ico_removeRow.png" width="17" height="17" class="hidable" /></a><span class="hidable handle"><img src="../img/ico_moveRow.png" width="17" height="17" class="hidable" /></span></div></div><div class="segment_edit"><div class="type"><input type="hidden" value="mic" class="input_type"/><img src="../img/ico_'+data.rowType+'.png" width="35" height="35"/><div class="pup_typeSelector"><img src="../img/ico_slate.png" data-type="slate"/><img src="../img/ico_note.png" data-type="note"/><img src="../img/ico_bible.png" data-type="bible"/><img src="../img/ico_mic.png" data-type="mic" /><img src="../img/ico_tv.png" data-type="tv"/><img src="../img/ico_megaphone.png" data-type="megaphone"/></div></div><div class="title withInput"><input type="text" value="'+data.rowTitle+'" placeholder="Title" class="input_title" /></div><div class="trt withInput"><input type="text" value="'+data.rowTrt+'" placeholder="Time" class="input_trt" /></div><div class="options"><a href="#" class="rowSave">S</a><a href="#" class="rowCancel">C</a></div></div></li>');
+    $('ul#body li#' + data.rowId + ' .segment_edit .type .pup_typeSelector').find('[data-type="' + data.rowType + '"]').addClass('highlight');
   })
   
   /* !--- Remove Segment --- */
@@ -150,9 +151,21 @@ $(document).ready(function () {
   
   /* !--- Reorder Segments --- */
   $('div#segments ul').on( "sortstop", function( event, ui ) {
-    var sortedIDs = $( ".selector" ).sortable( "toArray" );
-    alert('sorting stopped');
-    
-  } );
+    var sortedIds = $(this).sortable( "toArray" );
+    socket.emit('segmentReorder', {eventId: '50bbd4bc7bd4965cc6000002', sortedIds: sortedIds});
+  })
+  socket.on('updateReorder', function(data) {
+    var i = 0;
+    data.sortedIds.forEach(function(id) {
+      $('li#'+id).attr('rel',i);
+      i++;
+    })
+    var mylist = $('ul#body');
+    var listitems = mylist.children('li').get();
+    listitems.sort(function(a, b) {
+       return $(a).attr('rel').localeCompare($(b).attr('rel'));
+    })
+    $.each(listitems, function(idx, itm) { mylist.append(itm); });
+  })
 });
 

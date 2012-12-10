@@ -110,7 +110,7 @@ div#segments ul.head li.options {
   height: 19px;
   width: 90px;
 }
-div#segments ul.body {
+div#segments ul#body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -120,26 +120,26 @@ div#segments ul.body {
   font-size: 24px;
   color: #3d3d3d;
 }
-div#segments ul.body li.segment {
+div#segments ul#body li.segment {
   height: 52px;
   overflow: hidden;
   display: block;
 }
-div#segments ul.body li.segment:nth-child(odd) {
+div#segments ul#body li.segment:nth-child(odd) {
   background: #ededed;
 	border-bottom: 1px solid #d2d2d2;
 }
-div#segments ul.body li.segment:nth-child(even) {
+div#segments ul#body li.segment:nth-child(even) {
   background: #f1f1f1;
 	border-bottom: 1px solid #d1d1d1;
 }
-div#segments ul.body li.segment:last-child {
+div#segments ul#body li.segment:last-child {
   box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.5);
 }
-div#segments ul.body li.segment div.segment, div#segments ul.body li.segment div.segment_edit {
+div#segments ul#body li.segment div.segment, div#segments ul#body li.segment div.segment_edit {
   height: 52px;
 }
-div#segments ul.body li.segment .highlight {
+div#segments ul#body li.segment .highlight {
   background: #7ebfd9;
 }
 div#segments ul li.segment div.segment_edit {
@@ -245,6 +245,7 @@ a#btn_addSegment {
 	width: 36px;
 	height: 24px;
 	background-image:-webkit-gradient( linear, left top, left bottom, color-stop(0, #ababab), color-stop(1, #6e6e6e) );
+	box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
 	-webkit-border-radius: 3px;
 	float: right;
 	display: block;
@@ -252,10 +253,11 @@ a#btn_addSegment {
 a#btn_addSegment img {
 	margin: 4px 10px;
 	width: 16px;
-	height: 16px;
+	height: 17px;
 }
 a#btn_addHeader {
   margin: 13px 18px 13px 0;
+  box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
 	width: 46px;
 	height: 26px;
 	float: right;
@@ -349,6 +351,9 @@ footer {
   background: -webkit-linear-gradient(#3d3d3d 0%, #313131 100%);
   border-top: 1px solid #4d4d4d;
 }
+a:hover {
+  opacity: 0.9;
+}
 a#btn_clockPlayPause { 
   position: absolute;
     top: 9px;
@@ -357,23 +362,24 @@ a#btn_clockPlayPause {
 	height: 45px;
 	-webkit-box-shadow: 0px 0px 10px -6px #000000;
 	background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0, #df2b1a), color-stop(1, #871a12) );
-	background-color: #df2b1a;
+	box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+	border: 1px solid #2b2b2b;
 	-webkit-border-radius: 45px;
 	float: left;
 	display: block;
 }
 a#btn_clockPlayPause img {
 	position: relative;
-	  top: 14px;
-	  right: 14px;
-	  bottom: 14px;
-	left: 16px;
+	  top: 15px;
+	  left: 18px;
 	width: 15px;
 	height: 17px;
 
 }
 a#btn_clockPrevious, a#btn_clockNext, a#btn_clockReset, a#btn_clockClear { 
 	background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0, #8f9192), color-stop(1, #626060) );
+	box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+	border: 1px solid #2b2b2b;
 	color: #333;
 	font-family: 'PT Sans', sans-serif;
 	font-size: 14px;
@@ -381,6 +387,7 @@ a#btn_clockPrevious, a#btn_clockNext, a#btn_clockReset, a#btn_clockClear {
 	text-decoration: none;
 	text-transform: uppercase;
 	text-align: center;
+	text-shadow: 0px 1px 0px rgba(255,255,255,0.15);
 	display: block;
 	float: left;
 }
@@ -399,10 +406,9 @@ a#btn_clockNext {
 }
 a#btn_clockPrevious img, a#btn_clockNext img {
 	position: relative;
-	  top: 11px;
-	  bottom: 10px;
+	  top: 7px;
 	width: 13px;
-	height: 9px;
+	height: 10px;
 }
 a#btn_clockReset {
 	position: absolute;
@@ -415,14 +421,12 @@ a#btn_clockReset {
 }
 a#btn_clockReset img {
 	position: relative;
-	  top: 3px;
-		bottom: 3px;
+	  top: 4px;
 	width: 22px;
-	height: 18px;
+	height: 19px;
 }
 a#btn_clockClear {
   padding: 3px 0;
-  
   position: absolute;
     top: 21px;
     left: 204px;

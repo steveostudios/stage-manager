@@ -68,5 +68,9 @@ io.sockets.on('connection', function (socket) {
     segments.removeRow(data)
     io.sockets.in(room).emit('updateRemove', data)
   });
-    
+  socket.on('segmentReorder', function (data) {
+    /* console.log(data.sortedIds) */
+    segments.reorderRows(data)
+    io.sockets.in(room).emit('updateReorder', data)
+  });
 });

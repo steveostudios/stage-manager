@@ -1,6 +1,7 @@
 
 var mongoose = require('mongoose')
   , Event = mongoose.model('Event')
+  , Segment = mongoose.model('Segment')
   , _ = require('underscore')
 
 // New event
@@ -107,12 +108,13 @@ exports.index = function(req, res){
     })
 }
 
-exports.saveCurrent = function (req, res) {
-  Event.findOne({ _id: req.eventId }, function(err, event) {
+exports.saveCurrent = function (data, res) {
+  Event.findOne({ _id: data.eventId }, function(err, event) {
     if (err) { return next(err); }
-    event.current = req.rowId;
+    event.current = data.rowId;
     event.save(function(err) {
       if (err) { return next(err); }
     })
   })
+  
 }

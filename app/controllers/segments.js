@@ -43,10 +43,15 @@ exports.removeRow = function (data, res) {
       })
     }
   })
-  Segment.findOne({ _id: data.rowId }, function(err, segment){
+  Segment.findOne({ _id: data.rowId }, function(err, segment) {
     if (err) {return next(err); }
     segment.remove();
   })
-  
 }
-
+exports.reorderRows = function (data, res) {
+  var i = 0;
+  data.sortedIds.forEach(function(id) {
+    Segment.update({_id: id},{order: i},null,null);
+    i++;
+  })
+}
