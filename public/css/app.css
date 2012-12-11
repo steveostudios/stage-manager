@@ -43,20 +43,93 @@ ul.nav li {
   margin: 0 25px 0 0;
   display: inline-block;
 }
-table th {
-  background: black;
-  color: white;
-}
-table#events tr th {
-	background: #d0d0d0;
-  font-size: 14px;
-}
-table#events tr.event td {
-  font-size: 14px;
-}
 
-
-
+/* !--- Events --- */
+div#events {
+  width: 746px;
+}
+div#events ul.head {
+  padding: 0;
+  margin: 0;
+  height: 19px;
+  background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(1, #606060),
+		color-stop(0, #4d4d4d)
+	);
+	border-top: 1px solid #737373;
+	border-bottom: 1px solid #171717;
+	color: #929292;
+	display: block;
+	list-style: none;
+}
+div#events ul.head li {
+  line-height: 18px;
+  padding: 0;
+  margin: 0;
+  height: 19px;
+  font-family: sans-serif;
+  font-size: 12px;
+  display: block;
+  border-left: 1px solid #737373;
+  border-right: 1px solid #171717;
+  float: left;
+}
+div#events ul.head li.date {
+  padding: 0 10px;
+  width: 70px;
+  height: 19px;
+}
+div#events ul.head li.series {
+  padding: 0 10px;
+  width: 200px;
+  height: 19px;
+}
+div#events ul.head li.title {
+  padding: 0 10px;
+  width: 400px;
+  height: 19px;
+}
+div#events ul#body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  list-style: none;
+  font-family: 'PT Sans', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #3d3d3d;
+}
+div#events ul#body li.event {
+  height: 52px;
+  overflow: hidden;
+  display: block;
+}
+div#events ul#body li.event:nth-child(odd) {
+  background: #ededed;
+	border-bottom: 1px solid #d2d2d2;
+}
+div#events ul#body li.event:nth-child(even) {
+  background: #f1f1f1;
+	border-bottom: 1px solid #d1d1d1;
+}
+div#events ul#body li.event div.date, div#events ul#body li.event div.series, div#events ul#body li.event div.title {
+  padding: 16px 11px;
+  height: 100%;
+  display: block;
+  float: left;
+}
+div#events ul#body li.event div.date {
+  width: 70px;
+}
+div#events ul#body li.event div.series {
+  width: 200px; 
+}
+div#events ul#body li.event div.title {
+  width: 400px; 
+}
 /* !--- Segments --- */
 div#segments {
   position: absolute;
@@ -68,7 +141,6 @@ div#segments {
   box-shadow: 10px 0px 20px -10px rgba(0,0,0,0.8);
 }
 div#segments ul.head {
-  
   padding: 0;
   margin: 0;
   height: 19px;
@@ -497,23 +569,8 @@ div#pup_alert div.buttons a {
   display: none;
 }
 
-
-div.date {
-  font-size: 11px;
-  color: #aaa;
-}
-
-a.title span.title_date {
-	color: red;
-}
 .author {
   color: #aaa;
-}
-
-div.title {
-  padding: 5px 0 15px 0;
-  display: block;
-  font-size: 24px;
 }
 
 .article, .comment {
