@@ -1,0 +1,14 @@
+extends ../layouts/blank
+
+
+  
+block content
+    #preview
+      #currentTimer 29:56
+      #currentTitle The Sermon Title 
+    script
+      var room = '#{event._id}'
+      var current = '#{event.current}'
+    script(type='text/javascript', src='/js/event.js')
+    
+    
