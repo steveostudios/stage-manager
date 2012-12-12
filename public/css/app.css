@@ -426,28 +426,6 @@ footer {
 a:hover {
   opacity: 0.9;
 }
-a#btn_clockPlayPause { 
-  position: absolute;
-    top: 9px;
-    left: 22px;
-	width: 45px;
-	height: 45px;
-	-webkit-box-shadow: 0px 0px 10px -6px #000000;
-	background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0, #df2b1a), color-stop(1, #871a12) );
-	box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
-	border: 1px solid #2b2b2b;
-	-webkit-border-radius: 45px;
-	float: left;
-	display: block;
-}
-a#btn_clockPlayPause img {
-	position: relative;
-	  top: 15px;
-	  left: 18px;
-	width: 15px;
-	height: 17px;
-
-}
 a#btn_clockPrevious, a#btn_clockNext, a#btn_clockReset, a#btn_clockClear { 
 	background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0, #8f9192), color-stop(1, #626060) );
 	box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);

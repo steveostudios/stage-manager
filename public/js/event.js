@@ -167,5 +167,24 @@ $(document).ready(function () {
     })
     $.each(listitems, function(idx, itm) { mylist.append(itm); });
   })
+  /* !--- Next Segment --- */
+  $(document).on('click', 'footer a#btn_clockNext', function(e) {
+    alert('Next')
+  })
+  /* !--- Previous Segment --- */
+  $(document).on('click', 'footer a#btn_clockPrevious', function(e) {
+    alert('Previous')
+  })
+  /* !--- Reset Segment --- */
+  $(document).on('click', 'footer a#btn_clockReset', function(e) {
+    alert('Reset')
+  })
+  /* !--- Clear Segment --- */
+  $(document).on('click', 'footer a#btn_clockClear', function(e) {
+    alert('Clear')
+  })
+  socket.on('updateCurrentTime', function(data) {
+    $('#preview #currentTimer').text(data.time)
+  })
 });
 

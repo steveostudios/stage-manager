@@ -73,6 +73,14 @@ exports.show = function(req, res){
     comments: req.comments
   })
 }
+exports.stage = function(req, res){
+  res.render('events/stage', {
+    title: req.event.title,
+    event: req.event,
+    segments: req.segments,
+    comments: req.comments
+  })
+}
 
 
 // Delete an event

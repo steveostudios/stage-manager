@@ -73,4 +73,15 @@ io.sockets.on('connection', function (socket) {
     segments.reorderRows(data)
     io.sockets.in(room).emit('updateReorder', data)
   });
+  function updateCurrentTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    io.sockets.in(room).emit('updateCurrentTime', {time: h+':'+m+':'+s, period: 'am', timezone: 'est'})
+    setTimeout(updateCurrentTime, 1000)
+    
+  }
+  updateCurrentTime()
+  
 });
