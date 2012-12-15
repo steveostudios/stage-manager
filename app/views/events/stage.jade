@@ -1,14 +1,21 @@
 extends ../layouts/blank
-
-
   
 block content
-    #preview
-      #currentTimer 29:56
-      #currentTitle The Sermon Title 
-    script
-      var room = '#{event._id}'
-      var current = '#{event.current}'
-    script(type='text/javascript', src='/js/event.js')
+  #stage
+    #time 8:05AM
+    #currentTimer null
+    #currentTitle null 
+    #next NEXT 
+      span#nextTrt 10:00 
+      span#nextTitle Section Title 
+    #overlay
+  script
+    alert('segmentList')
+    var room = '#{event._id}'
     
+    var segmentList = '#{event.segments}'
+    
+    var current = '#{event.current}'
+  script(type='text/javascript', src='/js/stage.js')
+  
     

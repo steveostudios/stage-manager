@@ -85,29 +85,24 @@ $(document).ready(function () {
   /* !--- Current Segment --- */
   if (current != '') {
     $('li#'+current+' div.segment').addClass('highlight');
+    var title = $('li#'+current+' div.segment div.title').text();
+    $('#sidebar #preview #currentTitle').text(title);
   }
   $(document).on('click', 'div#segments ul#body li.segment div.segment div.title', function(e) {
     e.preventDefault();
     var id = $(this).parent().parent().attr('id');
-    socket.emit('segmentCurrent', {eventId: room, rowId: id});
+    var trt = $(this).parent().find('div.trt').text();
+    socket.emit('segmentCurrent', {eventId: room, rowId: id, rowTrt: trt});
   });
   socket.on('updateCurrent', function(data) {
-   $('div#segments ul#body li.segment div.segment').removeClass('highlight');
-   $('li#'+data.rowId+' div.segment').addClass('highlight');
-   
-   
-   $('#preview #currentTimer').text(data.rowTrt);
-   $('#preview #currentTitle').text(data.rowTitle);
-   /*
-   
-       #preview
-      #currentTimer 29:56
-      #currentTitle The Sermon Title
-      #next NEXT The final song 5:00
-   
-   */
-   
-   
+    $('div#segments ul#body li.segment div.segment').removeClass('highlight');
+    if (data.rowId != '') {
+      var title = $('li#'+data.rowId+' div.segment div.title').text();
+      $('li#'+data.rowId+' div.segment').addClass('highlight');
+      $('#sidebar #preview #currentTitle').text(title);  
+    } else {
+      $('#sidebar #preview #currentTitle').text('');
+    }
   })
   /* !--- Add New Header --- */
   $('#controls a#btn_addHeader').click(function(e) {
@@ -169,11 +164,13 @@ $(document).ready(function () {
   })
   /* !--- Next Segment --- */
   $(document).on('click', 'footer a#btn_clockNext', function(e) {
-    alert('Next')
+    //alert('Next')
+    socket.emit('clockNext', {eventId: '50bbd4bc7bd4965cc6000002'});
   })
   /* !--- Previous Segment --- */
   $(document).on('click', 'footer a#btn_clockPrevious', function(e) {
-    alert('Previous')
+    //alert('Previous')
+    socket.emit('clockNext', {eventId: '50bbd4bc7bd4965cc6000002'});
   })
   /* !--- Reset Segment --- */
   $(document).on('click', 'footer a#btn_clockReset', function(e) {
@@ -181,10 +178,13 @@ $(document).ready(function () {
   })
   /* !--- Clear Segment --- */
   $(document).on('click', 'footer a#btn_clockClear', function(e) {
-    alert('Clear')
+    $('div#segments ul#body li.segment div.segment').removeClass('highlight');
+    socket.emit('clockClear', {eventId: '50bbd4bc7bd4965cc6000002'});
+    //alert('Clear')
   })
   socket.on('updateCurrentTime', function(data) {
-    $('#preview #currentTimer').text(data.time)
+    $('#preview #time').text(data.time)
+    $('#preview #currentTimer').text(data.timer)
   })
 });
 

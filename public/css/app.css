@@ -8,7 +8,16 @@
 	font-weight: normal;
 	font-style: normal;
 }
-
+@font-face {
+	font-family: 'LeagueGothicRegular';
+	src: url('../fonts/league_gothic-webfont.eot');
+	src: url('../fonts/league_gothic-webfont.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/league_gothic-webfont.woff') format('woff'),
+		url('../fonts/league_gothic-webfont.ttf') format('truetype'),
+		url('../fonts/league_gothic-webfont.svg#LeagueGothicRegular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 body {
   margin: 0;
   padding: 0;
@@ -376,7 +385,7 @@ div#sidebar #preview #currentTimer {
   height: auto;
   font-size: 124px;
   font-weight: bold;
-  letter-spacing: -10px;
+  letter-spacing: -7px;
   color: #5e5e5e;
   display: block;
 }
@@ -541,8 +550,62 @@ div#pup_alert div.buttons a {
   text-transform: capitalize;
   display: inline-block;
 }
-
-
+div#stage div#time {
+  position: absolute;
+    top: 65px;
+    right: 105px;
+  font-family: 'BebasNeueRegular';
+  font-size: 110px;
+  text-align: right;
+  color: #71cafd;
+  display: block;
+  
+}
+div#stage div#currentTimer {
+  position: absolute;
+    top: 60px;
+    left: 110px;
+  font-family: 'BebasNeueRegular';
+  font-size: 450px;
+  display: block;
+}
+div#stage div#currentTitle {
+  position: absolute;
+    top: 470px;
+    left: 110px;
+  font-family: 'LeagueGothicRegular';
+  font-size: 84px;
+  color: #fcb800;
+  display: block;
+}
+div#stage div#next {
+  padding: 25px 25px 25px 85px;
+  position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  height: 70px;
+  font-family: 'LeagueGothicRegular';
+  font-size: 60px;
+  color: #616161;
+  background: #191919;
+  display: block;
+}
+div#stage div#overlay {
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: url('../img/overlay.png') no-repeat;
+  background-position: center center;
+  background-size: cover;
+  display: block;
+  z-index: 100;
+   
+}
 .hidable {
   display: none;
 }
