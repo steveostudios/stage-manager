@@ -1,5 +1,5 @@
 var socket = io.connect('http://localhost');
-
+var editing = false;
 $(document).ready(function () {
   socket.emit('setRoom', { room: room });
 
@@ -31,13 +31,17 @@ $(document).ready(function () {
   })
   $(document).on('click', '.rowEdit', function(e) {
     e.preventDefault();
-    $(this).parent().parent().toggle();
-    $(this).parent().parent().next().toggle();
+    if(editing == false){
+      editing = true;
+      $(this).parent().parent().toggle();
+      $(this).parent().parent().next().toggle();
+    }
   })
   $(document).on('click', '.rowCancel', function(e) {
     e.preventDefault();
     
     // Close Edit
+    editing = false;
     $(this).parent().parent().toggle();
     $(this).parent().parent().prev().toggle();
   })
@@ -51,12 +55,15 @@ $(document).ready(function () {
   /* !--- Save Segment --- */
   $(document).on('click', '.rowSave', function(e) {
     e.preventDefault();
+    editing = false;
     var id = $(this).parent().parent().parent().attr('id');
     var type = $(this).parent().parent().find('.type .input_type').val();
     var title = $(this).parent().parent().find('.title .input_title').val();
     var trt = $(this).parent().parent().find('.trt .input_trt').val();
     var order = $(this).parent().parent().parent().attr('rel');
     // Convert TRT to seconds
+    
+    
     
     $('li#' + id + ' .segment .title').text(title);
     if(id == null) {
@@ -99,6 +106,7 @@ $(document).ready(function () {
   socket.on('updateCurrent', function(data) {
     $('div#segments ul#body li.segment div.segment').removeClass('highlight');
     if (data.rowId != '') {
+      current = data.rowId;
       var title = $('li#'+data.rowId+' div.segment div.title').text();
       var trt = $('li#'+data.rowId+' div.segment div.trt').text();
       $('li#'+data.rowId+' div.segment').addClass('highlight');
@@ -136,10 +144,10 @@ $(document).ready(function () {
   })
   $('#pup_alert .submit').on('click', function(e) {
     e.preventDefault();
-    socket.emit('segmentRemove', {eventId: '50bbd4bc7bd4965cc6000002', rowId: removeId});
+    socket.emit('segmentRemove', {eventId: room, rowId: removeId});
     if(removeId == current) {
       $('div#segments ul#body li.segment div.segment').removeClass('highlight');
-      socket.emit('clockClear', {eventId: '50bbd4bc7bd4965cc6000002'});
+      socket.emit('clockClear', {eventId: room});
     }
     $('#pup_alert').hide();
     removeId = null;
@@ -156,7 +164,7 @@ $(document).ready(function () {
   /* !--- Reorder Segments --- */
   $('div#segments ul').on( "sortstop", function( event, ui ) {
     var sortedIds = $(this).sortable( "toArray" );
-    socket.emit('segmentReorder', {eventId: '50bbd4bc7bd4965cc6000002', sortedIds: sortedIds});
+    socket.emit('segmentReorder', {eventId: room, sortedIds: sortedIds});
   })
   socket.on('updateReorder', function(data) {
     var i = 0;
@@ -174,14 +182,31 @@ $(document).ready(function () {
   
   /* !--- Next Segment --- */
   $(document).on('click', 'footer a#btn_clockNext', function(e) {
-    //alert('Next')
-    socket.emit('clockNext', {eventId: '50bbd4bc7bd4965cc6000002'});
+    e.preventDefault();
+    if (current != '') {
+      var currentOrder = $('li#'+current).attr('rel');
+      var total = $('ul#body li').length;
+      if(currentOrder < (total-1) ) {
+        var nextOrder = parseInt(currentOrder) + 1;
+        var nextId = $('li[rel="'+nextOrder+'"]').attr('id');
+        var nextTrt = $('li[rel="'+nextOrder+'"] div.segment div.trt').text();
+        socket.emit('segmentCurrent', {eventId: room, rowId: nextId, rowTrt: nextTrt, rowOrder: nextOrder});
+      }
+    }
   })
   
   /* !--- Previous Segment --- */
   $(document).on('click', 'footer a#btn_clockPrevious', function(e) {
-    //alert('Previous')
-    socket.emit('clockNext', {eventId: '50bbd4bc7bd4965cc6000002'});
+    e.preventDefault();
+    if (current != '') {
+      var currentOrder = $('li#'+current).attr('rel');
+      if(currentOrder > 0) {
+        var prevOrder = parseInt(currentOrder) - 1;
+        var prevId = $('li[rel="'+prevOrder+'"]').attr('id');
+        var prevTrt = $('li[rel="'+prevOrder+'"] div.segment div.trt').text();
+        socket.emit('segmentCurrent', {eventId: room, rowId: prevId, rowTrt: prevTrt, rowOrder: prevOrder});
+      }
+    }
   })
   
   /* !--- Reset Segment --- */
@@ -192,7 +217,7 @@ $(document).ready(function () {
   /* !--- Clear Segment --- */
   $(document).on('click', 'footer a#btn_clockClear', function(e) {
     $('div#segments ul#body li.segment div.segment').removeClass('highlight');
-    socket.emit('clockClear', {eventId: '50bbd4bc7bd4965cc6000002'});
+    socket.emit('clockClear', {eventId: room});
     //alert('Clear')
   })
   socket.on('updateCurrentTime', function(data) {
