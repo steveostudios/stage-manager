@@ -82,13 +82,16 @@ io.sockets.on('connection', function (socket) {
   });
   socket.on('clockClear', function (data) {
     data.rowId = ''
+/*
     currentId = ''
     future = null
+*/
     events.saveCurrent(data)
     io.sockets.in(room).emit('updateCurrent', data)
   });
-  
-  function updateCurrentTime() {
+
+/*
+function updateCurrentTime() {
     setTimeout(updateCurrentTime, 1000)
     var today = new Date()
     var period = 'AM'
@@ -110,5 +113,7 @@ io.sockets.on('connection', function (socket) {
   }
   
   updateCurrentTime()
+*/
+
   
 });

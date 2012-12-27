@@ -9,6 +9,7 @@ block content
       li.date Date
       li.series Series
       li.title Title
+      li.options Options
     ul#body
       each event in events
         li(id=event._id).event
@@ -17,7 +18,10 @@ block content
           .series
             =event.series 
           .title
-            =event.title  
+            =event.title
+          .options
+            a(href='#').eventManage M
+            a(href='#').eventStage S  
         if (pages > 1)
           .pagination
             ul

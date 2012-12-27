@@ -55,7 +55,7 @@ ul.nav li {
 
 /* !--- Events --- */
 div#events {
-  width: 746px;
+  width: 958px;
 }
 div#events ul.head {
   padding: 0;
@@ -101,6 +101,11 @@ div#events ul.head li.title {
   width: 400px;
   height: 19px;
 }
+div#events ul.head li.options {
+  padding: 0 10px;
+  width: 200px;
+  height: 19px;
+}
 div#events ul#body {
   margin: 0;
   padding: 0;
@@ -124,7 +129,7 @@ div#events ul#body li.event:nth-child(even) {
   background: #f1f1f1;
 	border-bottom: 1px solid #d1d1d1;
 }
-div#events ul#body li.event div.date, div#events ul#body li.event div.series, div#events ul#body li.event div.title {
+div#events ul#body li.event div.date, div#events ul#body li.event div.series, div#events ul#body li.event div.title, div#events ul#body li.event div.options {
   padding: 16px 11px;
   height: 100%;
   display: block;
@@ -139,6 +144,15 @@ div#events ul#body li.event div.series {
 div#events ul#body li.event div.title {
   width: 400px; 
 }
+div#events ul#body li.event div.options {
+  width: 200px; 
+}
+div#events ul#body li.event div.options a {
+  margin: 0 15px 0 0; 
+  display: inline-block;
+  opacity: 0.5;
+}
+
 /* !--- Segments --- */
 div#segments {
   position: absolute;
@@ -192,6 +206,9 @@ div#segments ul.head li.options {
   width: 90px;
 }
 div#segments ul#body {
+  position: absolute;
+    top: 22px;
+    bottom: 50px;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -200,11 +217,11 @@ div#segments ul#body {
   font-weight: bold;
   font-size: 24px;
   color: #3d3d3d;
+  overflow-y: scroll;
 }
 div#segments ul#body li.segment {
   height: 52px;
   overflow: hidden;
-  display: block;
 }
 div#segments ul#body li.segment:nth-child(odd) {
   background: #ededed;
@@ -229,11 +246,11 @@ div#segments ul li.segment div.segment_edit {
 div#segments ul li.segment div.segment_edit .type .pup_typeSelector {
   position: absolute;
     left: 5px;
-  height: 25px;
+  height: 25px;  
+  display: block;
   z-index: 100;
-  display: inline-block;
     padding: 5px;
-    margin-top: -50px;
+    margin-top: -80px;
   background: #ececec;
   box-shadow: 0px 0px 10px black;
   border-radius: 5px;
@@ -247,59 +264,68 @@ div#segments ul li.segment div.segment_edit .type .pup_typeSelector img.selected
 }
 div#segments div.title {
   position: absolute;
-    right: 210px;
+    right: 199px;
     left: 45px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    min-width: 200px;
+  padding: 12px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 200px;
 	overflow: hidden;
 }
 div#segments div.trt {
   position: absolute;
     right: 110px;
-  line-height: 32px;
-  width: 100px;
-  height: 100px;
+  padding: 15px;
+  width: 90px;
   text-align: right;
   font-size: 18px;
   border-right: 1px solid #c7c7c7;
+  display: block;
 }
 div#segments div.type {
+  padding: 10px 5px;
   width: 35px; 
 }
 
 div#segments div.title input {
-  padding: 5px 12px;
+  
+  padding: 12px 8px;
   width: 100%;
-  height: 42px;
+  height: 52px;
   font-family: 'PT Sans', sans-serif;
   font-weight: bold;
   font-size: 24px;
   border: none;
+  border-left: 1px solid #c7c7c7;
+  border-right: 1px solid #c7c7c7;
 }
 div#segments div.trt input {
-  padding: 5px 12px;
+  position: absolute;
+    right: -1px;
+  padding: 5px 14px;
   width: 100%;
-  height: 42px;
+  height: 52px;
   font-family: 'PT Sans', sans-serif;
   text-align: right;
   font-weight: bold;
   font-size: 18px;
   border: none;
+  border-left: 1px solid #c7c7c7;
+  border-right: 1px solid #c7c7c7;
 }
 div#segments div.options a, div#segments div.options span {
-  padding: 10px 0 0 0;
+  padding: 17px 0 0 0;
   margin: 0 15px 0 0; 
   display: inline-block;
 }
 div#segments div.title, div#segments div.trt, div#segments div.type, div#segments div.options {
-  padding: 12px;
-  height: 52px;
+  
   float: left;
   display: inline-block;
 }
 div#segments div.withInput {
   padding: 0 24px 0 0;
+  display: block;
   margin: 0;
 }
 div#segments div.options {
@@ -375,27 +401,39 @@ div#sidebar #preview {
   font-family: 'PT Sans', sans-serif;
   display: block;
 }
+div#sidebar #preview #time {
+  position: absolute;
+    top: 0;
+    right: 20px;
+  font-family: 'BebasNeueRegular';
+  font-size: 36px;
+  color: #71cafd;
+  display: block;
+}
 div#sidebar #preview #currentTimer {
   margin: 0;
   padding: 0;
   position: absolute;
-    top: 10px;
+    top: 15px;
     left: 45px;
-  width: 100%;
+    right: 0;
   height: auto;
+  font-family: 'BebasNeueRegular';
   font-size: 124px;
-  font-weight: bold;
-  letter-spacing: -7px;
-  color: #5e5e5e;
+  /* font-weight: bold; */
+  letter-spacing: -3px;
+  /* color: #5e5e5e; */
   display: block;
 }
 div#sidebar #preview #currentTitle {
   position: absolute;
     top: 136px;
     left: 45px;
+  font-family: 'LeagueGothicRegular';
   font-size: 36px;
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #8e8e8e;
+  color: #fcb800;
   display: block;
 }
 div#sidebar h1 {
@@ -458,21 +496,21 @@ a#btn_clockPrevious, a#btn_clockNext {
 	-webkit-border-radius:30px;
 }
 a#btn_clockPrevious {
-  left: 76px;
+  left: 16px;
 }
 a#btn_clockNext {
-  left: 111px;
+  left: 51px;
 }
 a#btn_clockPrevious img, a#btn_clockNext img {
 	position: relative;
-	  top: 7px;
+	  top: 11px;
 	width: 13px;
 	height: 10px;
 }
 a#btn_clockReset {
 	position: absolute;
     top: 21px;
-    left: 154px;
+    left: 94px;
 	width: 36px;
 	height: 24px;
 	-webkit-border-radius:5px;
@@ -488,7 +526,7 @@ a#btn_clockClear {
   padding: 3px 0;
   position: absolute;
     top: 21px;
-    left: 204px;
+    left: 144px;
 	width: 52px;
 	height: 18px;
 	text-decoration: none;
@@ -552,7 +590,7 @@ div#pup_alert div.buttons a {
 }
 div#stage div#time {
   position: absolute;
-    top: 65px;
+    top: 55px;
     right: 105px;
   font-family: 'BebasNeueRegular';
   font-size: 110px;
@@ -563,7 +601,7 @@ div#stage div#time {
 }
 div#stage div#currentTimer {
   position: absolute;
-    top: 60px;
+    top: 80px;
     left: 110px;
   font-family: 'BebasNeueRegular';
   font-size: 450px;
@@ -571,8 +609,8 @@ div#stage div#currentTimer {
 }
 div#stage div#currentTitle {
   position: absolute;
-    top: 470px;
-    left: 110px;
+    top: 490px;
+    left: 125px;
   font-family: 'LeagueGothicRegular';
   font-size: 84px;
   color: #fcb800;
@@ -590,6 +628,9 @@ div#stage div#next {
   color: #616161;
   background: #191919;
   display: block;
+}
+div#stage div#next span#nextTrt, div#stage div#next span#nextTitle {
+  margin: 0 0 0 15px;
 }
 div#stage div#overlay {
   min-height: 100%;

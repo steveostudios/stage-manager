@@ -2,19 +2,22 @@ extends ../layouts/blank
   
 block content
   #stage
-    #time 8:05AM
-    #currentTimer null
-    #currentTitle null 
-    #next NEXT 
-      span#nextTrt 10:00 
-      span#nextTitle Section Title 
+    #time null
+    #currentTimer 
+    #currentTitle 
+      //= event.segments
+    #next NEXT
+      span#nextTrt  
+      span#nextTitle  
     #overlay
+    != "<script type='text/javascript'>"
+      != "var segmentList = {};"
+        each segment in event.segments
+          != "segmentList['"+segment._id+"'] = {'title': '"+segment.title+"', 'trt': '"+segment.trt+"', 'type': '"+segment.type+"', 'order': '"+segment.order+"'};";
+        != "console.log(segmentList);"
+    != "</script>"
   script
-    alert('segmentList')
     var room = '#{event._id}'
-    
-    var segmentList = '#{event.segments}'
-    
     var current = '#{event.current}'
   script(type='text/javascript', src='/js/stage.js')
   

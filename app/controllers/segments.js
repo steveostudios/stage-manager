@@ -8,6 +8,7 @@ exports.saveRow = function (data, res) {
     segment.type = data.rowType;
     segment.title = data.rowTitle;
     segment.trt = data.rowTrt;
+    segment.order = data.rowOrder;
     segment.save(function(err) {
       //if (err) {return next(err); }
     })
@@ -18,7 +19,8 @@ exports.createRow = function (data, res) {
   var segment = new Segment(); 
   segment.type = data.rowType;
   segment.title = data.rowTitle;
-  segment.trt = data.rowTrt;  
+  segment.trt = data.rowTrt;
+  segment.order = data.rowOrder;  
   segment.save(function (err) {
     if (err) throw new Error('Error while saving comment')
     Event.findOne({_id: data.eventId}, function(err, event) {
