@@ -109,4 +109,18 @@ $(document).ready(function () {
     }
     
   })
+  /* !--- Update Time --- */
+  var currentTime = null
+  function getCurrentTime() {
+    var date = new Date()
+    var hour = date.getHours()
+    var period = 'AM'
+    if(hour>11){period = 'PM'}
+    if(hour>12){hour = hour-12}
+    var minute = date.getMinutes()
+    currentTime = hour + ':' + minute + '<span id="period">' + period + '</span>'
+    $('#stage #time').html(currentTime)
+    setTimeout(getCurrentTime,1000)
+  }
+  getCurrentTime()
 })

@@ -224,5 +224,20 @@ $(document).ready(function () {
     $('#preview #time').text(data.time)
     $('#preview #currentTimer').text(data.timer)
   })
+  
+  /* !--- Update Time --- */
+  var currentTime = null
+  function getCurrentTime() {
+    var date = new Date()
+    var hour = date.getHours()
+    var period = 'AM'
+    if(hour>11){period = 'PM'}
+    if(hour>12){hour = hour-12}
+    var minute = date.getMinutes()
+    currentTime = hour + ':' + minute + '<span id="period">' + period + '</span>'
+    $('#preview #time').html(currentTime)
+    setTimeout(getCurrentTime,1000)
+  }
+  getCurrentTime()
 });
 
