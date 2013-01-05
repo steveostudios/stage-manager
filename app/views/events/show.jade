@@ -9,7 +9,7 @@ block main
     #eventTitle 
       =event.title
     a(href='#')#eventEdit
-      img(src='../img/ico_editRow.png', width='17', height='17')
+      img(src='../img/ico_editRow.png', width='17', height='17').hidable
   #event_edit
     input(type='text', placeholder='date', value=event.date)#input_eventDate
     input(type='text', placeholder='series', value=event.series)#input_eventSeries
