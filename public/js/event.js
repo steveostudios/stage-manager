@@ -19,6 +19,13 @@ $(document).ready(function () {
     'height':'60px',
     'width':'280px'
   });
+  $(document).on('mouseover', '#event', function(e) {
+    $(this).find('.hidable').show();
+  })
+  $(document).on('mouseout', '#event', function(e) {
+    $('.hidable').hide();
+  })
+
   $(document).on('click', '#eventEdit', function(e) {
     e.preventDefault();
     $('#event').hide();
@@ -258,7 +265,9 @@ $(document).ready(function () {
     var hour = date.getHours()
     var period = 'AM'
     if(hour>11){period = 'PM'}
+    if(hour == 0){hour = 12}
     if(hour>12){hour = hour-12}
+    
     var minute = date.getMinutes()
     if(minute<10){minute = '0'+minute}
     currentTime = hour + ':' + minute + '<span id="period">' + period + '</span>'
