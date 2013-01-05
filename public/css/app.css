@@ -414,6 +414,26 @@ div#pup_addHeader {
   display: none;
   z-index: 100;
 }
+div#pup_addHeader:after, div#pup_addHeader:before {
+  position: absolute;
+  border: solid transparent;
+	content: ' ';
+	height: 0;
+	left: 100%;
+	border: 10px solid transparent;
+	width: 0;
+}
+div#pup_addHeader:after {	
+	 bottom: -20px;
+	 left: 28px;
+	border-top-color: #d6d6d6;
+}
+div#pup_addHeader:before {
+	 bottom: -22px;
+	 left:  27px;
+  border: 11px solid transparent;
+	border-top-color: rgba(0,0,0,0.1);
+}
 div#pup_addHeader a {
   margin-right: 10px;
 }
