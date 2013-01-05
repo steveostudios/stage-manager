@@ -118,6 +118,7 @@ $(document).ready(function () {
     if(hour>11){period = 'PM'}
     if(hour>12){hour = hour-12}
     var minute = date.getMinutes()
+    if(minute<10){minute = '0'+minute}
     currentTime = hour + ':' + minute + '<span id="period">' + period + '</span>'
     $('#stage #time').html(currentTime)
     setTimeout(getCurrentTime,1000)
