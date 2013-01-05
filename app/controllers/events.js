@@ -32,7 +32,17 @@ exports.create = function (req, res) {
     }
   })
 }
-
+exports.saveEvent = function (data, res) {
+  Event.findOne({ _id: data.eventId }, function(err, event) {
+    if (err) { return next(err); }
+    event.date = data.eventDate;
+    event.series = data.eventSeries;
+    event.title = data.eventTitle;
+    event.save(function(err) {
+      if (err) { return next(err); }
+    })
+  })
+}
 
 // Edit an event
 exports.edit = function (req, res) {
@@ -123,6 +133,5 @@ exports.saveCurrent = function (data, res) {
     event.save(function(err) {
       if (err) { return next(err); }
     })
-  })
-  
+  }) 
 }

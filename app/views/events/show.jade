@@ -1,7 +1,22 @@
 extends ../layouts/default
 
 block main
-  h1= event.date + ' | ' + event.series + ' | ' + event.title
+  #event 
+    #eventDate 
+      =event.date
+    #eventSeries 
+      =event.series
+    #eventTitle 
+      =event.title
+    a(href='#')#eventEdit
+      img(src='../img/ico_editRow.png', width='17', height='17')
+  #event_edit
+    input(type='text', placeholder='date', value=event.date)#input_eventDate
+    input(type='text', placeholder='series', value=event.series)#input_eventSeries
+    input(type='text', placeholder='title', value=event.title)#input_eventTitle
+    a(href='#')#eventSave S
+    a(href='#')#eventCancel C
+    
   
 block content
   #segments

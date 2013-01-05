@@ -152,6 +152,19 @@ div#events ul#body li.event div.options a {
   display: inline-block;
   opacity: 0.5;
 }
+/* !--- EventList --- */
+div#event, div#event_edit {
+  width: 100%;
+  height: 40px;
+  display: block;
+}
+div#event_edit {
+  display: none;
+}
+div#event div#eventDate, div#event div#eventSeries, div#event div#eventTitle {
+  margin-right: 15px;
+  display: inline-block;
+} 
 
 /* !--- Segments --- */
 div#segments {

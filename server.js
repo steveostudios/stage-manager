@@ -53,6 +53,10 @@ io.sockets.on('connection', function (socket) {
   
   var events = require('./app/controllers/events')
   var segments = require('./app/controllers/segments')
+  socket.on('eventSave', function (data) {
+    events.saveEvent(data)
+    io.sockets.in(room).emit('updateEvent', data)
+  });
   socket.on('segmentSave', function (data) {
     segments.saveRow(data)
     io.sockets.in(room).emit('updateSegment', data)
@@ -63,6 +67,7 @@ io.sockets.on('connection', function (socket) {
   });
   socket.on('segmentCurrent', function (data) {
     events.saveCurrent(data)
+    segments.saveCurrent(data)
     currentId = data.rowId
     var temp = data.rowTrt
     var split = temp.split(':')

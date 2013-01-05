@@ -19,6 +19,36 @@ $(document).ready(function () {
     'height':'60px',
     'width':'280px'
   });
+  $(document).on('click', '#eventEdit', function(e) {
+    e.preventDefault();
+    $('#event').hide();
+    $('#event_edit').show();
+  })
+  $(document).on('click', '#eventSave', function(e) {
+    e.preventDefault();
+    $('#event_edit').hide();
+    var date = $('#input_eventDate').val()
+    var series = $('#input_eventSeries').val()
+    var title = $('#input_eventTitle').val()
+    $('#event').show();
+    socket.emit('eventSave', {eventId: room, eventDate: date, eventSeries: series, eventTitle: title})
+  })
+  $(document).on('click', '#eventCancel', function(e) {
+    e.preventDefault();
+    $('#event_edit').hide();
+    $('#input_eventDate').val($('#eventDate').text())
+    $('#input_eventSeries').val($('#eventSeries').text())
+    $('#input_eventTitle').val($('#eventTitle').text())
+    $('#event').show();
+  })
+  socket.on('updateEvent', function(data) {
+    $('#eventDate').text(data.eventDate)
+    $('#eventSeries').text(data.eventSeries)
+    $('#eventTitle').text(data.eventTitle)
+    $('#input_eventDate').val(data.eventDate)
+    $('#input_eventSeries').val(data.eventSeries)
+    $('#input_eventTitle').val(data.eventTitle)
+  })
   $('div#segments ul').sortable({
     handle: '.handle'
   })
@@ -220,10 +250,6 @@ $(document).ready(function () {
     socket.emit('clockClear', {eventId: room});
     //alert('Clear')
   })
-  socket.on('updateCurrentTime', function(data) {
-    $('#preview #time').text(data.time)
-    $('#preview #currentTimer').text(data.timer)
-  })
   
   /* !--- Update Time --- */
   var currentTime = null
@@ -239,5 +265,23 @@ $(document).ready(function () {
     setTimeout(getCurrentTime,1000)
   }
   getCurrentTime()
+  
+  /* !--- Update Timer --- */
+  var currentTimer = null
+  function getCurrentTimer() {
+    /*
+if(current != null) {
+      if(currentTimer == null) {
+        
+      } else {
+        currentTimer = currentTimer - 1000
+      }
+    } else {
+      currentTimer == null
+    }
+    setTimeout(getCurrentTimer, 1000)
+*/
+  }
+  getCurrentTimer()
 });
 

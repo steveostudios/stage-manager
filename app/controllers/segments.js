@@ -57,3 +57,13 @@ exports.reorderRows = function (data, res) {
     i++;
   })
 }
+exports.saveCurrent = function (data, res) {
+  Segment.findOne({ _id: data.rowId }, function(err, segment) {
+    //if (err) {return next(err); }
+    var start = new Date()
+    segment.start = start;
+    segment.save(function(err) {
+      //if (err) {return next(err); }
+    })
+  })
+}

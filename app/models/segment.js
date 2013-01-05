@@ -8,6 +8,7 @@ var SegmentSchema = new Schema({
   , trt: {type : String, default : ''}
   , type: {type : String, default : ''}
   , order: {type : Number, default : 0}
+  , start: {type : Date, default : null}
 })
 
 mongoose.model('Segment', SegmentSchema)
