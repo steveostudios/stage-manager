@@ -482,6 +482,9 @@ div#sidebar #preview #currentTimer {
   /* color: #5e5e5e; */
   display: block;
 }
+div#sidebar #preview #currentTimer.inTheRed {
+  color: #d12727;
+}
 div#sidebar #preview #currentTitle {
   position: absolute;
     top: 136px;
@@ -666,6 +669,9 @@ div#stage div#currentTimer {
   font-family: 'BebasNeueRegular';
   font-size: 450px;
   display: block;
+}
+div#stage div#currentTimer.inTheRed {
+  color: #d12727;
 }
 div#stage div#currentTitle {
   position: absolute;

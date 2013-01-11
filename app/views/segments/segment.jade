@@ -16,7 +16,7 @@ if (segment)
           img(src='../img/ico_moveRow.png', width='17', height='17').hidable
     .segment_edit
       .type
-        input(type='hidden', val=segment.type).input_type
+        input(type='hidden', value=segment.type).input_type
         img(src='../img/ico_'+ segment.type +'.png', width='35', height='35')
         .pup_typeSelector
           types = ["slate", "note", "bible", "mic", "tv", "megaphone"]

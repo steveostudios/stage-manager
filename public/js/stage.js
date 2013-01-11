@@ -73,10 +73,14 @@ $(document).ready(function () {
       })
     }
   }
+  var currentStart = null
+  var currentTrt = null
   socket.on('updateCurrent', function(data) {
     var id = data.rowId
     current = id
     if(id != '') {
+      currentStart = data.start
+      currentTrt = data.rowTrt
       // Find Next
       var order = data.rowOrder
       nextId = null;
@@ -87,7 +91,7 @@ $(document).ready(function () {
           $('#stage #nextTrt').text(segmentList[nextId].trt)
         }
       }
-      $('#stage #currentTimer').text(segmentList[id].trt)
+      //$('#stage #currentTimer').text(segmentList[id].trt)
       $('#stage #currentTitle').text(segmentList[id].title)
       if(nextId != null) {
         $('#stage #nextTitle').text(segmentList[nextId].title)
@@ -99,7 +103,10 @@ $(document).ready(function () {
           $('#stage #nextTrt').text('')
         })
       }
+      tick();
     } else {
+      currentStart = null
+      currentTrt = null
       $('#stage #currentTimer').text('')
       $('#stage #currentTitle').text('')
       $('#stage #next').slideUp('fast', function() {
@@ -109,6 +116,41 @@ $(document).ready(function () {
     }
     
   })
+  function tick() {
+    if(current != null){
+      var now = new Date()
+      var start = new Date(currentStart)
+      // Difference
+      var minDiff = now.getMinutes() - start.getMinutes()
+      var secDiff = now.getSeconds() - start.getSeconds()
+      var totalDiff = (minDiff*60)+(secDiff)
+      // from Total
+      var tempTrt = currentTrt.split(':')
+      var totalTrt = parseInt(tempTrt[0]*60)+parseInt(tempTrt[1])
+      var min = null
+      var sec = null
+      var total = totalTrt - totalDiff
+      if(total == 0) {
+        min = 0
+        sec = 0
+        $('#stage #currentTimer').removeClass('inTheRed')
+      } else if(total > 0) {
+        min = Math.abs(Math.floor(total/60))
+        sec = Math.abs(Math.floor(total%60))
+        $('#stage #currentTimer').removeClass('inTheRed')
+      } else if(total < 0) {
+        min = Math.abs(Math.floor((total/60)+1))
+        sec = Math.abs(Math.floor(total%60))
+        $('#stage #currentTimer').addClass('inTheRed')
+      }
+      if(sec<10){sec='0'+sec}
+      $('#stage #currentTimer').text(min + ':' + sec)
+    } else {
+      $('#stage #currentTimer').text('')
+    }
+    setTimeout(tick, 1000)
+  }
+
   /* !--- Update Time --- */
   var currentTime = null
   function getCurrentTime() {

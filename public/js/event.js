@@ -140,20 +140,62 @@ $(document).ready(function () {
     var order = $(this).parent().parent().attr('rel');
     socket.emit('segmentCurrent', {eventId: room, rowId: id, rowTrt: trt, rowOrder: order});
   });
+  var currentStart = null
+  var currentTrt = null
+  
   socket.on('updateCurrent', function(data) {
     $('div#segments ul#body li.segment div.segment').removeClass('highlight');
     if (data.rowId != '') {
-      current = data.rowId;
+      current = data.rowId
+      currentStart = data.start
+      currentTrt = data.rowTrt
       var title = $('li#'+data.rowId+' div.segment div.title').text();
-      var trt = $('li#'+data.rowId+' div.segment div.trt').text();
+      var trt = data.rowTrt;
       $('li#'+data.rowId+' div.segment').addClass('highlight');
       $('#sidebar #preview #currentTitle').text(title);
-      $('#sidebar #preview #currentTimer').text(trt);   
+      tick();
     } else {
+      current = null
+      currentStart = null
+      currentTrt = null
       $('#sidebar #preview #currentTitle').text('');
       $('#sidebar #preview #currentTimer').text('');
     }
   })
+  function tick() {
+    if(current != null){
+      var now = new Date()
+      var start = new Date(currentStart)
+      // Difference
+      var minDiff = now.getMinutes() - start.getMinutes()
+      var secDiff = now.getSeconds() - start.getSeconds()
+      var totalDiff = (minDiff*60)+(secDiff)
+      // from Total
+      var tempTrt = currentTrt.split(':')
+      var totalTrt = parseInt(tempTrt[0]*60)+parseInt(tempTrt[1])
+      var min = null
+      var sec = null
+      var total = totalTrt - totalDiff
+      if(total == 0) {
+        min = 0
+        sec = 0
+        $('#sidebar #preview #currentTimer').removeClass('inTheRed')
+      } else if(total > 0) {
+        min = Math.abs(Math.floor(total/60))
+        sec = Math.abs(Math.floor(total%60))
+        $('#sidebar #preview #currentTimer').removeClass('inTheRed')
+      } else if(total < 0) {
+        min = Math.abs(Math.floor((total/60)+1))
+        sec = Math.abs(Math.floor(total%60))
+        $('#sidebar #preview #currentTimer').addClass('inTheRed')
+      }
+      if(sec<10){sec='0'+sec}
+      $('#sidebar #preview #currentTimer').text(min + ':' + sec)
+    } else {
+      $('#sidebar #preview #currentTimer').text('')
+    }
+    setTimeout(tick, 1000)
+  }
   /* !--- Add New Header --- */
   $('#controls a#btn_addHeader').click(function(e) {
     e.preventDefault();

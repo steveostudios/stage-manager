@@ -41,7 +41,7 @@ var io = require('socket.io').listen(app.listen(port))
 
 console.log('Express app started on port '+port)
 var currentId = ''
-  var future = null
+var future = null
 io.sockets.on('connection', function (socket) {
   // Join Room (EventName)
   var room = '';
@@ -66,6 +66,8 @@ io.sockets.on('connection', function (socket) {
     io.sockets.in(room).emit('createSegment', data)
   });
   socket.on('segmentCurrent', function (data) {
+    var start = new Date()
+    data.start = start
     events.saveCurrent(data)
     segments.saveCurrent(data)
     currentId = data.rowId
