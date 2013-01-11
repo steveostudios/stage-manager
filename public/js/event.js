@@ -2,7 +2,7 @@ var socket = io.connect('http://localhost');
 var editing = false;
 $(document).ready(function () {
   socket.emit('setRoom', { room: room });
-
+  
   $('.confirm').submit(function (e) {
     e.preventDefault();
     var self = this;
@@ -162,6 +162,7 @@ $(document).ready(function () {
       $('#sidebar #preview #currentTimer').text('');
     }
   })
+  
   function tick() {
     if(current != null){
       var now = new Date()
@@ -203,10 +204,7 @@ $(document).ready(function () {
   });
   /* !--- Add New Segment Row --- */
   $('#controls a#btn_addSegment').click(function(e) {
-    e.preventDefault();    
-    
-    // If there are any other edits happening then cancel or complete them
-    
+    e.preventDefault();
     $('ul#body').append('<li class="segment"><div class="segment_edit" style="display:block;"><div class="type"><input type="hidden" value="mic" class="input_type"/><img src="../img/ico_mic.png" width="35" height="35"/><div class="pup_typeSelector"><img src="../img/ico_slate.png" data-type="slate"/><img src="../img/ico_note.png" data-type="note"/><img src="../img/ico_bible.png" data-type="bible"/><img src="../img/ico_mic.png" data-type="mic" class="highlight" /><img src="../img/ico_tv.png" data-type="tv"/><img src="../img/ico_megaphone.png" data-type="megaphone"/></div></div><div class="title withInput"><input type="text" placeholder="Title" class="input_title" /></div><div class="trt withInput"><input type="text" placeholder="Time" class="input_trt" /></div><div class="options"><a href="#" class="rowSave">S</a><a href="#" class="rowCancel">C</a></div></div></li>');
   });
   socket.on('createSegment', function(data) {
@@ -317,23 +315,5 @@ $(document).ready(function () {
     setTimeout(getCurrentTime,1000)
   }
   getCurrentTime()
-  
-  /* !--- Update Timer --- */
-  var currentTimer = null
-  function getCurrentTimer() {
-    /*
-if(current != null) {
-      if(currentTimer == null) {
-        
-      } else {
-        currentTimer = currentTimer - 1000
-      }
-    } else {
-      currentTimer == null
-    }
-    setTimeout(getCurrentTimer, 1000)
-*/
-  }
-  getCurrentTimer()
 });
 

@@ -40,7 +40,7 @@ module.exports = function (app, passport, auth) {
   app.get('/events', events.index)
   app.get('/events/new', auth.requiresLogin, events.new)
   app.post('/events', auth.requiresLogin, events.create)
-  app.get('/events/:id', events.show)
+  app.get('/events/:id', auth.requiresLogin, events.show)
   app.get('/stage/:id', events.stage)
   app.get('/events/:id/edit', auth.requiresLogin, auth.event.hasAuthorization, events.edit)
   app.put('/events/:id', auth.requiresLogin, auth.event.hasAuthorization, events.update)
