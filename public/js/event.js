@@ -1,5 +1,5 @@
-var socket = io.connect('http://localhost');
-var editing = false;
+var socket = io.connect('http://localhost')
+var editing = null
 var currentTrt = null
   
 $(document).ready(function () {
@@ -63,21 +63,14 @@ $(document).ready(function () {
   $(document).on('mouseout', 'div.segment', function(e) {
     $('.hidable').hide();
   })
+  
   $(document).on('click', '.rowEdit', function(e) {
-    e.preventDefault();
-    if(editing == false){
-      editing = true;
-      $(this).parent().parent().toggle();
-      $(this).parent().parent().next().toggle();
+    e.preventDefault()
+    if(editing == null){
+      editing = $(this).parent().parent().parent().attr('id')
+      $(this).parent().parent().toggle()
+      $(this).parent().parent().next().toggle()
     }
-  })
-  $(document).on('click', '.rowCancel', function(e) {
-    e.preventDefault();
-    
-    // Close Edit
-    editing = false;
-    $(this).parent().parent().toggle();
-    $(this).parent().parent().prev().toggle();
   })
   $(document).on('click', 'div#segments ul li.segment div.segment_edit .type .pup_typeSelector img', function(e) {
     $('div#segments ul li.segment div.segment_edit .type .pup_typeSelector img').removeClass('highlight');
@@ -86,22 +79,53 @@ $(document).ready(function () {
     $(this).parent().parent().find('.input_type').val(dataType);
     $(this).parent().prev().attr('src', '../img/ico_' + dataType + '.png');
   })
+  
+  /* !--- Cancel Segment --- */
+  $(document).keyup(function(e) {
+    if (e.keyCode == 27) {
+      e.preventDefault()
+      cancelSegment()
+    }
+  })
+  $(document).on('click', '.rowCancel', function(e) {
+    e.preventDefault()
+    cancelSegment()
+  })
+  function cancelSegment() {
+    var id = editing
+    editing = null
+    var type = $('li#' + id + ' .segment .type img').attr('src')
+    type = type.replace('../img/ico_','')
+    type = type.replace('.png','')
+    $('li#' + id + ' .segment_edit .type .input_type').val(type)
+    $('li#' + id + ' .segment_edit .type .img_edit').attr('src', '../img/ico_' + type + '.png')
+    $('li#' + id + ' .segment_edit .type .pup_typeSelector img').removeClass('highlight')
+    $('li#' + id + ' .segment_edit .type .pup_typeSelector').find('[data-type="' + type + '"]').addClass('highlight')
+    $('li#' + id + ' .segment_edit .title .input_title').val($('li#' + id + ' .segment .title').text())
+    $('li#' + id + ' .segment_edit .trt .input_trt').val($('li#' + id + ' .segment .trt').text())
+    $('li#' + id + ' .segment_edit').toggle()
+    $('li#' + id + ' .segment').toggle()
+  }
+  
   /* !--- Save Segment --- */
-  $(document).keypress(function(e) {
-    if (e.which == 13) {
-      e.preventDefault();
-      alert('yay');
+  $(document).keyup(function(e) {
+    if (e.keyCode == 13) {
+      e.preventDefault()
+      saveSegment()
     }
   })
   $(document).on('click', '.rowSave', function(e) {
-    e.preventDefault();
-    editing = false;
-    var id = $(this).parent().parent().parent().attr('id');
-    var type = $(this).parent().parent().find('.type .input_type').val();
-    var title = $(this).parent().parent().find('.title .input_title').val();
-    var trt = $(this).parent().parent().find('.trt .input_trt').val();
-    var order = $(this).parent().parent().parent().attr('rel');
-    // Convert TRT to seconds
+    e.preventDefault()
+    saveSegment()
+  })
+  function saveSegment() {
+    var id = editing
+    editing = null
+    var type =  $('li#' + id + ' .segment_edit .type .input_type').val()
+    var title = $('li#' + id + ' .segment_edit .title .input_title').val()
+    var trt =   $('li#' + id + ' .segment_edit .trt .input_trt').val()
+    var order = $('li#' + id).attr('rel')
+    /* !--- --- Format TRT --- --- */
     if(trt.indexOf(":") == -1){
       if(parseInt(trt) < 60) {
         trt = '0:' + trt
@@ -111,24 +135,22 @@ $(document).ready(function () {
         trt = '1:' + temp
       }
     }
-    $(this).parent().parent().find('.trt .input_trt').val(trt);
-    $('li#' + id + ' .segment .title').text(title);
+    $('li#' + id + ' .segment_edit .trt .input_trt').val(trt)
+    $('li#' + id + ' .segment .title').text(title)
     if(id == null) {
-      order = $('ul#body li.segment').length - 1;
+      order = $('ul#body li.segment').length - 1
       socket.emit('segmentCreate', {eventId: room, rowType: type, rowTitle: title, rowTrt: trt, rowOrder: order})
-      $(this).parent().parent().parent().remove();
+      $(this).parent().parent().parent().remove()
     } else {
       socket.emit('segmentSave', { rowId: id , rowType: type, rowTitle: title, rowTrt: trt, rowOrder: order}, function(data) {
-        $('li#' + id + ' .segment .type img').attr('src', '../img/ico_' + data.rowType + '.png');
-        $('li#' + id + ' .segment .title').text(data.rowTitle);
-        $('li#' + id + ' .segment .trt').text(data.rowTrt);
+        $('li#' + id + ' .segment .type img').attr('src', '../img/ico_' + data.rowType + '.png')
+        $('li#' + id + ' .segment .title').text(data.rowTitle)
+        $('li#' + id + ' .segment .trt').text(data.rowTrt)
       })
     }
-    
-    // Close Edit
-    $(this).parent().parent().toggle();
-    $(this).parent().parent().prev().toggle();
-  })
+    $('li#' + id + ' .segment_edit').toggle()
+    $('li#' + id + ' .segment').toggle()
+  }
   socket.on('updateSegment', function(data) {
     $('li#' + data.rowId + ' .segment .type img').attr('src', '../img/ico_' + data.rowType + '.png');
     $('li#' + data.rowId + ' .segment .title').text(data.rowTitle);

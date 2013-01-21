@@ -17,7 +17,7 @@ if (segment)
     .segment_edit
       .type
         input(type='hidden', value=segment.type).input_type
-        img(src='../img/ico_'+ segment.type +'.png', width='35', height='35')
+        img(src='../img/ico_'+ segment.type +'.png', width='35', height='35', class='img_edit')
         .pup_typeSelector
           types = ["slate", "note", "bible", "mic", "tv", "megaphone"]
           each type, i in types

@@ -49,7 +49,6 @@ io.sockets.on('connection', function (socket) {
   socket.on('setRoom', function (data) {
     room = data.room
     socket.join(room)
-    console.log("Data: %j", data)
   });
   socket.on('eventSave', function (data) {
     events.saveEvent(data)

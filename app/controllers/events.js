@@ -3,7 +3,7 @@ var mongoose = require('mongoose')
   , Segment = mongoose.model('Segment')
   , _ = require('underscore')
 
-// New event
+// !--- New Event
 exports.new = function(req, res){
   res.render('events/new', {
       title: 'New Event'
@@ -29,7 +29,7 @@ exports.create = function (req, res) {
   })
 }
 
-//
+// !--- Save Event
 exports.saveEvent = function (data, res) {
   Event.findOne({ _id: data.eventId }, function(err, event) {
     if (err) { return next(err); }
@@ -42,7 +42,7 @@ exports.saveEvent = function (data, res) {
   })
 }
 
-// Edit an event
+// !--- Edit Segment
 exports.edit = function (req, res) {
   res.render('events/edit', {
     title: 'Edit '+req.event.title,
