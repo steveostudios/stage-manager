@@ -1,6 +1,9 @@
-extends auth
+extends ../layouts/default
 
-block auth
+block main
+  h1= title
+
+block content
   form.login.form-horizontal(action="/users/session", method="post")
     .control-group
       label.control-label(for='email') Email

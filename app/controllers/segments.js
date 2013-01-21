@@ -66,3 +66,9 @@ exports.saveCurrent = function (data, res) {
     })
   })
 }
+exports.getCurrent = function (data, res) {
+  Segment.findOne({ _id: data.current }, function(err, segment) {
+    return 'tes'
+  })
+  
+}

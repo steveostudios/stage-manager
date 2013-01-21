@@ -1,8 +1,9 @@
 var socket = io.connect('http://localhost');
 var editing = false;
-$(document).ready(function () {
-  socket.emit('setRoom', { room: room });
+var currentTrt = null
   
+$(document).ready(function () {
+  socket.emit('setRoom', { room: room, current: current });
   $('.confirm').submit(function (e) {
     e.preventDefault();
     var self = this;
@@ -14,11 +15,7 @@ $(document).ready(function () {
       }
     });
   });
-
-  $('#tags').tagsInput({
-    'height':'60px',
-    'width':'280px'
-  });
+  
   $(document).on('mouseover', '#event', function(e) {
     $(this).find('.hidable').show();
   })
@@ -90,6 +87,12 @@ $(document).ready(function () {
     $(this).parent().prev().attr('src', '../img/ico_' + dataType + '.png');
   })
   /* !--- Save Segment --- */
+  $(document).keypress(function(e) {
+    if (e.which == 13) {
+      e.preventDefault();
+      alert('yay');
+    }
+  })
   $(document).on('click', '.rowSave', function(e) {
     e.preventDefault();
     editing = false;
@@ -99,9 +102,16 @@ $(document).ready(function () {
     var trt = $(this).parent().parent().find('.trt .input_trt').val();
     var order = $(this).parent().parent().parent().attr('rel');
     // Convert TRT to seconds
-    
-    
-    
+    if(trt.indexOf(":") == -1){
+      if(parseInt(trt) < 60) {
+        trt = '0:' + trt
+      } else if(parseInt(trt) >= 60 && parseInt(trt) < 100) {
+        var temp = parseInt(trt)-60
+        if(temp < 10){temp = '0'+temp}
+        trt = '1:' + temp
+      }
+    }
+    $(this).parent().parent().find('.trt .input_trt').val(trt);
     $('li#' + id + ' .segment .title').text(title);
     if(id == null) {
       order = $('ul#body li.segment').length - 1;
@@ -129,9 +139,11 @@ $(document).ready(function () {
   if (current != '') {
     $('li#'+current+' div.segment').addClass('highlight');
     var title = $('li#'+current+' div.segment div.title').text();
-    var trt = $('li#'+current+' div.segment div.trt').text();
+    currentTrt = $('li#'+current+' div.segment div.trt').text();
     $('#sidebar #preview #currentTitle').text(title);
-    $('#sidebar #preview #currentTimer').text(trt);
+    $('#sidebar #preview #currentTimer').text(currentTrt);
+    tick();
+    
   }
   $(document).on('click', 'div#segments ul#body li.segment div.segment div.title', function(e) {
     e.preventDefault();
@@ -140,9 +152,6 @@ $(document).ready(function () {
     var order = $(this).parent().parent().attr('rel');
     socket.emit('segmentCurrent', {eventId: room, rowId: id, rowTrt: trt, rowOrder: order});
   });
-  var currentStart = null
-  var currentTrt = null
-  
   socket.on('updateCurrent', function(data) {
     $('div#segments ul#body li.segment div.segment').removeClass('highlight');
     if (data.rowId != '') {

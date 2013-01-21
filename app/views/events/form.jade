@@ -35,33 +35,7 @@ block content
       .controls
         input#title.input-xlarge(type='text', name="title", value=event.title, placeholder='Enter the title')
     
-    .control-group
-      label.control-label(for='desc') Tags
-      .controls
-        input#tags(type='text', name="tags", value=event.tags, placeholder='Enter the tags')
-    
     .form-actions
       button.btn.btn-primary(type='submit') Save changes
       &nbsp;
       a.btn(href='/events', title="cancel") Cancel
-  hr
-  .control-group
-    label.control-label(for='segments') Segments
-    .controls
-      table
-        tr
-          th Go
-          th Time
-          th Title
-          th Edit
-        //each segement in segments
-        tr
-          form(method="post", action="/events/#{event._id}/segments")
-            td
-              input(type='text', name="segment_title", value='segement.segment_title', placeholder='Title')
-            td 
-              input(type='text', name="segment_trt", value='', placeholder='TRT')
-            td 
-              input(type='text', name="segment_type", value='', placeholder='Type')
-            td
-              button(type='submit') Add Segment

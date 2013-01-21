@@ -1,4 +1,3 @@
-
 var mongoose = require('mongoose')
   , Event = mongoose.model('Event')
   , Segment = mongoose.model('Segment')
@@ -12,13 +11,10 @@ exports.new = function(req, res){
   })
 }
 
-
 // Create an event
 exports.create = function (req, res) {
-  
   var event = new Event(req.body)
   event.user = req.user
-
   event.save(function(err){
     if (err) {
       res.render('events/new', {
@@ -32,6 +28,8 @@ exports.create = function (req, res) {
     }
   })
 }
+
+//
 exports.saveEvent = function (data, res) {
   Event.findOne({ _id: data.eventId }, function(err, event) {
     if (err) { return next(err); }
@@ -52,13 +50,10 @@ exports.edit = function (req, res) {
   })
 }
 
-
 // Update an event
 exports.update = function(req, res){
   var event = req.event
-
   event = _.extend(event, req.body)
-
   event.save(function(err, doc) {
     if (err) {
       res.render('events/edit', {
@@ -73,7 +68,6 @@ exports.update = function(req, res){
   })
 }
 
-
 // Show an event
 exports.show = function(req, res){
   res.render('events/show', {
@@ -83,6 +77,8 @@ exports.show = function(req, res){
     comments: req.comments
   })
 }
+
+//
 exports.stage = function(req, res){
   res.render('events/stage', {
     title: req.event.title,
@@ -92,7 +88,6 @@ exports.stage = function(req, res){
   })
 }
 
-
 // Delete an event
 exports.destroy = function(req, res){
   var event = req.event
@@ -101,12 +96,10 @@ exports.destroy = function(req, res){
   })
 }
 
-
 // Listing of Events
 exports.index = function(req, res){
   var perPage = 5
     , page = req.param('page') > 0 ? req.param('page') : 0
-
   Event
     .find({})
     .populate('user', 'name')
@@ -126,10 +119,12 @@ exports.index = function(req, res){
     })
 }
 
+//
 exports.saveCurrent = function (data, res) {
   Event.findOne({ _id: data.eventId }, function(err, event) {
     if (err) { return next(err); }
     event.current = data.rowId;
+    event.currentStart = data.start;
     event.save(function(err) {
       if (err) { return next(err); }
     })

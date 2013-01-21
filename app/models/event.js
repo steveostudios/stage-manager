@@ -10,6 +10,7 @@ var EventSchema = new Schema({
   , comments: [{type : Schema.ObjectId, ref : 'Comment'}]
   , createdAt: {type : Date, default : Date.now}
   , current: {type : String, default : '', trim : true}
+  , currentStart: {type : Date, default : null}
   , date:     {type : String, default : '', trim: true}
 	, program:  {type : String, default : '', trim : true}
   , segments: [{type : Schema.ObjectId, ref : 'Segment'}]
