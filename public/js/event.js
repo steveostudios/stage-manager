@@ -174,8 +174,7 @@ $(document).ready(function () {
     currentTrt = $('li#'+current+' div.segment div.trt').text()
     $('#sidebar #preview #currentTitle').text(title)
     $('#sidebar #preview #currentTimer').text(currentTrt)
-    tick()
-    
+    tick() 
   }
   $(document).on('click', 'div#segments ul#body li.segment div.segment div.title', function(e) {
     e.preventDefault()
@@ -228,7 +227,7 @@ $(document).ready(function () {
         $('#sidebar #preview #currentTimer').removeClass('inTheRed')
       } else if(total < 0) {
         min = Math.abs(Math.floor((total/60)+1))
-        sec = Math.abs(Math.floor(total%60))
+        sec = Math.abs(Math.floor((total+1)%60))
         $('#sidebar #preview #currentTimer').addClass('inTheRed')
       }
       if(sec<10){sec='0'+sec}

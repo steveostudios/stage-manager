@@ -1,14 +1,16 @@
-var socket = io.connect('http://localhost');
-var nextId = null;
+var socket = io.connect('http://localhost')
+var nextId = null
+var currentTrt = null
+
 $(document).ready(function () {
-  socket.emit('setRoom', { room: room });
+  socket.emit('setRoom', { room: room })
   
   /* !--- Add New Segment Row --- */
   socket.on('createSegment', function(data) {
-    segmentList[data.rowId] = {title: data.rowTitle, trt: data.rowTrt, type: data.rowType, order: data.rowOrder};
+    segmentList[data.rowId] = {title: data.rowTitle, trt: data.rowTrt, type: data.rowType, order: data.rowOrder}
     if (current != '') {
       // Find Next
-      var order = segmentList[current].order;
+      var order = segmentList[current].order
       for(var propt in segmentList) {
         if(segmentList[propt].order == (parseInt(order) + 1)){
           nextId = propt
@@ -25,21 +27,21 @@ $(document).ready(function () {
   
   /* !--- Remove Segment --- */
   socket.on('updateRemove', function(data) {
-    delete segmentList[data.rowId];
+    delete segmentList[data.rowId]
   })
   
   /* !--- Reorder Segments --- */
   socket.on('updateReorder', function(data) {
-    var i = 0;
+    var i = 0
     data.sortedIds.forEach(function(id) {
-      segmentList[id].order = i;
-      i++;
+      segmentList[id].order = i
+      i++
     })
   })
   
   /* !--- Update Segment --- */
   socket.on('updateSegment', function(data) {
-    segmentList[data.rowId] = {title: data.rowTitle, trt: data.rowTrt, type: data.rowType, order: data.rowOrder};
+    segmentList[data.rowId] = {title: data.rowTitle, trt: data.rowTrt, type: data.rowType, order: data.rowOrder}
     if(data.rowId == current) {
       $('#stage #currentTimer').text(segmentList[current].trt)
       $('#stage #currentTitle').text(segmentList[current].title)
@@ -51,10 +53,10 @@ $(document).ready(function () {
   })
   
   /* !--- Current Segment --- */
-  
   if (current != '') {
+    currentTrt = segmentList[current].trt
     // Find Next
-    var order = segmentList[current].order;
+    var order = segmentList[current].order
     for(var propt in segmentList) {
       if(segmentList[propt].order == (parseInt(order) + 1)){
         nextId = propt
@@ -72,9 +74,9 @@ $(document).ready(function () {
         $('#stage #nextTrt').text('')
       })
     }
+    tick()
   }
-  var currentStart = null
-  var currentTrt = null
+  
   socket.on('updateCurrent', function(data) {
     var id = data.rowId
     current = id
@@ -83,7 +85,7 @@ $(document).ready(function () {
       currentTrt = data.rowTrt
       // Find Next
       var order = data.rowOrder
-      nextId = null;
+      nextId = null
       for(var propt in segmentList) {
         if(segmentList[propt].order == (parseInt(order) + 1)){
           nextId = propt
@@ -91,7 +93,6 @@ $(document).ready(function () {
           $('#stage #nextTrt').text(segmentList[nextId].trt)
         }
       }
-      //$('#stage #currentTimer').text(segmentList[id].trt)
       $('#stage #currentTitle').text(segmentList[id].title)
       if(nextId != null) {
         $('#stage #nextTitle').text(segmentList[nextId].title)
@@ -103,9 +104,8 @@ $(document).ready(function () {
           $('#stage #nextTrt').text('')
         })
       }
-      tick();
+      tick()
     } else {
-      currentStart = null
       currentTrt = null
       $('#stage #currentTimer').text('')
       $('#stage #currentTitle').text('')
@@ -113,9 +113,9 @@ $(document).ready(function () {
         $('#stage #nextTitle').text('')
         $('#stage #nextTrt').text('')
       })
-    }
-    
+    }   
   })
+  
   function tick() {
     if(current != null){
       var now = new Date()
@@ -140,7 +140,7 @@ $(document).ready(function () {
         $('#stage #currentTimer').removeClass('inTheRed')
       } else if(total < 0) {
         min = Math.abs(Math.floor((total/60)+1))
-        sec = Math.abs(Math.floor(total%60))
+        sec = Math.abs(Math.floor((total+1)%60))
         $('#stage #currentTimer').addClass('inTheRed')
       }
       if(sec<10){sec='0'+sec}
