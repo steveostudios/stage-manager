@@ -1,6 +1,7 @@
 var socket = io.connect('http://localhost')
 var nextId = null
 var currentTrt = null
+var display = 'timer'
 
 $(document).ready(function () {
   socket.emit('setRoom', { room: room })
@@ -72,6 +73,7 @@ $(document).ready(function () {
       $('#stage #next').slideUp('fast', function() {
         $('#stage #nextTitle').text('')
         $('#stage #nextTrt').text('')
+        $('#stage #next').slideDown('fast')
       })
     }
     tick()
@@ -105,6 +107,17 @@ $(document).ready(function () {
         })
       }
       tick()
+      switch(display) {
+        case 'timer':
+          displayTimer()
+          break
+        case 'time':
+          displayTime()
+          break
+        case 'split':
+          displaySplit()
+          break        
+      }
     } else {
       currentTrt = null
       $('#stage #currentTimer').text('')
@@ -113,6 +126,7 @@ $(document).ready(function () {
         $('#stage #nextTitle').text('')
         $('#stage #nextTrt').text('')
       })
+      displayTime()
     }   
   })
   
@@ -162,9 +176,90 @@ $(document).ready(function () {
     if(hour>12){hour = hour-12}
     var minute = date.getMinutes()
     if(minute<10){minute = '0'+minute}
-    currentTime = hour + ':' + minute + '<span id="period">' + period + '</span>'
-    $('#stage #time').html(currentTime)
+    currentTime = hour + ':' + minute
+    $('div#stage div#time span#actualtime').text(currentTime)
+    $('div#stage div#time span#period').text(period)
     setTimeout(getCurrentTime,1000)
   }
   getCurrentTime()
+  
+  /* !--- Settings Display Switcher --- */
+  $(document).on('click', 'a#settings', function(e) {
+    e.preventDefault()
+    $('ul#settings').animate({
+      'bottom': '0'
+    })
+  })
+  $(document).on('click', 'ul#settings a#btn_timer', function(e) {
+    e.preventDefault()
+    displayTimer()
+    $('ul#settings').animate({
+      'bottom': '-250px'
+    })
+    display = 'timer'
+  })
+  $(document).on('click', 'ul#settings a#btn_time', function(e) {
+    e.preventDefault()
+    displayTime()
+    $('ul#settings').animate({
+      'bottom': '-250px'
+    })
+    display = 'time'
+  })
+  $(document).on('click', 'ul#settings a#btn_split', function(e) {
+    e.preventDefault()
+    displaySplit()
+    $('ul#settings').animate({
+      'bottom': '-250px'
+    })
+    display = 'split'
+  })
+  function displayTimer() {
+    $('div#stage div#time').css({
+        'top': '55px'
+      , 'font-size': '110px'
+      , 'text-align': 'right'
+    })
+    $('div#stage div#time span#period').css({
+        'margin-left': '10px'
+      , 'font-size': '84px'
+    })
+    $('div#stage div#currentTimer').css({
+        'top': '80px'
+      , 'font-size': '450px'
+      , 'text-align': 'left'
+    })
+  }
+  function displayTime() {
+    $('div#stage div#time').css({
+        'top': '80px'
+      , 'font-size': '450px'
+      , 'text-align': 'left'
+    })
+    $('div#stage div#time span#period').css({
+        'margin-left': '20px'
+      , 'font-size': '200px'
+    })
+    $('div#stage div#currentTimer').css({
+        'top': '55px'
+      , 'font-size': '110px'
+      , 'text-align': 'right'
+    })
+  }
+  function displaySplit() {
+    $('div#stage div#time').css({
+        'top': '190px'
+      , 'font-size': '280px'
+      , 'text-align': 'right'
+    })
+    $('div#stage div#time span#period').css({
+        'margin-left': '10px'
+      , 'font-size': '100px'
+    })
+    $('div#stage div#currentTimer').css({
+        'top': '190px'
+      , 'font-size': '280px'
+      , 'text-align': 'left'
+    })
+  }
 })

@@ -3,6 +3,8 @@ extends ../layouts/blank
 block content
   #stage
     #time
+      span#actualtime
+      span#period
     #currentTimer 
     #currentTitle 
       //= event.segments
@@ -10,6 +12,14 @@ block content
       span#nextTrt  
       span#nextTitle  
     #overlay
+    ul#settings
+      a(href='#')#settings SETTINGS
+      li 
+        a(href='#')#btn_timer Timer
+      li
+        a(href='#')#btn_time Time
+      li
+        a(href='#')#btn_split Split
     != "<script type='text/javascript'>"
       != "var segmentList = {};"
         each segment in event.segments

@@ -652,6 +652,8 @@ div#stage div#time {
   position: absolute;
     top: 55px;
     right: 105px;
+    left: 110px;
+  letter-spacing: -0.05em;
   font-family: 'BebasNeueRegular';
   font-size: 110px;
   text-align: right;
@@ -661,11 +663,14 @@ div#stage div#time {
 div#stage div#time span#period {
   margin-left: 10px;
   font-size: 84px;
+  letter-spacing: normal;
 }
 div#stage div#currentTimer {
   position: absolute;
     top: 80px;
+    right: 105px;
     left: 110px;
+  letter-spacing: -0.05em;
   font-family: 'BebasNeueRegular';
   font-size: 450px;
   display: block;
@@ -711,8 +716,47 @@ div#stage div#overlay {
   background-size: cover;
   display: block;
   z-index: 100;
-   
 }
+
+ul#settings {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+    right: 100px;
+    bottom: -250px;
+  width: 142px;
+  height: 270px;
+  background: #151515;
+  box-shadow: 0px 0px 20px black;
+  display: block;
+  border-radius: 10px 10px 0px 0px;
+  z-index: 110;
+}
+ul#settings a#settings {
+  margin: 3px 10px;
+  width: auto;
+  text-decoration: none;
+  color: #4a4a4a;
+  font-family: 'LeagueGothicRegular';
+  text-align: center;
+  opacity: 0.5;
+  display: block;
+}
+ul#settings a#settings:hover {
+  opacity: 1;
+}
+ul#settings li {
+  margin: 10px;
+  list-style: none;
+  background: #4f4f4f;
+  
+}
+ul#settings li a {
+  width: 122px;
+  height: 68px;
+  display: block;
+}
+
 .hidable {
   display: none;
 }
