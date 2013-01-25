@@ -4,6 +4,16 @@ block main
   h1= title
 
 block content
+  form.login.form-horizontal(action="/users/access", method="post")
+    .control-group
+      label.control-label(for='accesskey') Access Key
+      .controls
+        input#accesskey(type='text', name="accesskey", placeholder='Access Key')
+
+    .form-actions
+      button.btn.btn-primary(type='submit') Access
+  
+  hr
   form.login.form-horizontal(action="/users/session", method="post")
     .control-group
       label.control-label(for='email') Email
@@ -17,6 +27,3 @@ block content
 
     .form-actions
       button.btn.btn-primary(type='submit') Login
-      &nbsp;
-      | or&nbsp;
-      a.show-signup(href="/signup") sign up

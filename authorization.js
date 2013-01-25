@@ -1,8 +1,6 @@
-
 /*
  *  Generic require login routing middleware
  */
-
 exports.requiresLogin = function (req, res, next) {
   if (!req.isAuthenticated()) {
     return res.redirect('/login')
@@ -10,11 +8,9 @@ exports.requiresLogin = function (req, res, next) {
   next()
 };
 
-
 /*
  *  User authorizations routing middleware
  */
-
 exports.user = {
     hasAuthorization : function (req, res, next) {
       if (req.profile.id != req.user.id) {
@@ -24,11 +20,9 @@ exports.user = {
     }
 }
 
-
 /*
  *  Event authorizations routing middleware
  */
-
 exports.event = {
     hasAuthorization : function (req, res, next) {
       if (req.event.user.id != req.user.id) {

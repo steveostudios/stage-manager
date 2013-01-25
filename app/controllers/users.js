@@ -30,7 +30,14 @@ exports.logout = function (req, res) {
 
 // session
 exports.session = function (req, res) {
-  res.redirect('/')
+  req.session.isAdmin = true
+  res.redirect('/events')
+}
+
+// access
+exports.access = function (req, res) {
+  req.session.isAdmin = false
+  res.redirect('/events')
 }
 
 // signup
@@ -52,5 +59,18 @@ exports.show = function (req, res) {
   res.render('users/show', {
       title: user.name
     , user: user
+  })
+}
+
+// edit
+exports.edit = function (req, res) {
+  var user = new User(req.body)
+  user.provider = 'local'
+  user.save(function (err) {
+    if (err) return res.render('users/signup', { errors: err.errors })
+    req.logIn(user, function(err) {
+      if (err) return next(err)
+      return res.redirect('/')
+    })
   })
 }

@@ -4,29 +4,56 @@ block main
   h1= title
 
 block content
-  form.signup.form-horizontal(action="/users", method="post")
+  form.signup.form-horizontal(action='/users', method='post')
+  
     .control-group
-      label.control-label(for='name') Full name
+      label.control-label(for='img') Profile Photo
       .controls
-        input#name(type='text', name="name", placeholder='Full name')
+        input#img(type='file', name='img')
+    
+    .control-group
+      label.control-label(for='org') Organization name
+      .controls
+        input#org(type='text', name='org', placeholder='Organization name')
+        
+    .control-group
+      label.control-label(for='accesskey') Access Key
+      .controls
+        input#accesskey(type='text', name='accesskey', placeholder='Access Key')
+            
+    .control-group
+      label.control-label(for='fname') First name
+      .controls
+        input#fname(type='text', name='fname', placeholder='First name')
+        
+    control-group
+      label.control-label(for='lname') Last name
+      .controls
+        input#lname(type='text', name='lname', placeholder='Last name')
 
     .control-group
       label.control-label(for='email') Email
       .controls
-        input#email(type='text', name="email", placeholder='Email')
+        input#email(type='text', name='email', placeholder='Email')
 
     .control-group
       label.control-label(for='username') Username
       .controls
-        input#username(type='text', name="username", placeholder='Username')
+        input#username(type='text', name='username', placeholder='Username')
 
     .control-group
       label.control-label(for='password') Password
       .controls
-        input#password(type='password', name="password", placeholder='Password')
+        input#password(type='password', name='password', placeholder='Password')
+
+        
+    .control-group
+      label.control-label(for='pco') Planning Center Online *NOT WORKING*
+      .controls
+        input#pco(type='text', name='pco', placeholder='Planning Center Online')
 
     .form-actions
       button.btn.btn-primary(type='submit') Sign up
       &nbsp;
       | or&nbsp;
-      a.show-login(href="/login") login
+      a.show-login(href='/login') login

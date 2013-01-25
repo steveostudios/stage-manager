@@ -730,7 +730,18 @@ div#stage div#overlay {
   padding: 20px;
 }
 
-
+.pagination ul {
+  margin: 0;
+  padding: 0;
+}
+.pagination ul li {
+  margin: 0 15px 0 0;
+  float: left;
+}
+.pagination ul li a {
+  color: #ededed;
+  text-decoration: none;
+}
 
 .center {
   text-align: center;

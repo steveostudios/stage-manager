@@ -1,11 +1,14 @@
 header#header
   ul.nav
     li 
-      a(href='/') StageManager
+      a(href='/events') StageManager
   ul.nav.pull-right
     if (req.isAuthenticated())
       li
-        a(href="/users/"+req.user.id, title="Profile") Profile
+        if (req.session.isAdmin)
+          a(href="/users/"+req.user.id, title="Profile")= req.user.org
+        else
+          = req.user.org
       li
         a(href="/logout", title="logout") Logout
     else

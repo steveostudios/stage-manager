@@ -101,14 +101,14 @@ exports.index = function(req, res){
   var perPage = 5
     , page = req.param('page') > 0 ? req.param('page') : 0
   Event
-    .find({})
+    .find({ user: req.user.id })
     .populate('user', 'name')
     .sort({'createdAt': -1}) // sort by date
     .limit(perPage)
     .skip(perPage * page)
     .exec(function(err, events) {
       if (err) return res.render('500')
-      Event.count().exec(function (err, count) {
+      Event.find({user: req.user.id}).count().exec(function (err, count) {
         res.render('events/index', {
             title: 'List of Events'
           , events: events

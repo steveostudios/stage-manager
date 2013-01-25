@@ -47,10 +47,10 @@ function bootApplication(app, config, passport) {
         params.page = 0
         var clas = page == 0 ? "active" : "no"
         str += '<li class="'+clas+'"><a href="?'+qs.stringify(params)+'">First</a></li>'
-        for (var p = 1; p < pages; p++) {
+        for (var p = 0; p < pages; p++) {
           params.page = p
           clas = page == p ? "active" : "no"
-          str += '<li class="'+clas+'"><a href="?'+qs.stringify(params)+'">'+ p +'</a></li>'
+          str += '<li class="'+clas+'"><a href="?'+qs.stringify(params)+'">'+ (p+1) +'</a></li>'
         }
         params.page = --p
         clas = page == params.page ? "active" : "no"
@@ -79,34 +79,22 @@ function bootApplication(app, config, passport) {
 
     app.use(passport.initialize())
     app.use(passport.session())
-
     app.use(express.favicon())
-
     // routes should be at the last
     app.use(app.router)
-
-    // assume "not found" in the error msgs
-    // is a 404. this is somewhat silly, but
-    // valid, you can do whatever you like, set
-    // properties, use instanceof etc.
+    // assume "not found" in the error msgs is a 404. this is somewhat silly, but valid, you can do whatever you like, set properties, use instanceof etc.
     app.use(function(err, req, res, next){
       // treat as 404
       if (~err.message.indexOf('not found')) return next()
-
       // log it
       console.error(err.stack)
-
       // error page
       res.status(500).render('500')
     })
-
     // assume 404 since no middleware responded
     app.use(function(req, res, next){
       res.status(404).render('404', { url: req.originalUrl })
     })
-
   })
-
   app.set('showStackError', false)
-
 }
