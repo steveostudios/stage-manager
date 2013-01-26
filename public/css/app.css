@@ -167,7 +167,7 @@ div#event div#eventDate, div#event div#eventSeries, div#event div#eventTitle {
 } 
 
 /* !--- Segments --- */
-div#segments {
+div#segment_pane {
   position: absolute;
     top: 150px;
     bottom: 70px;
@@ -176,7 +176,7 @@ div#segments {
   background: #d4d4d4;
   box-shadow: 10px 0px 20px -10px rgba(0,0,0,0.8);
 }
-div#segments ul.head {
+div#segment_pane ul.head {
   padding: 0;
   margin: 0;
   height: 19px;
@@ -193,7 +193,7 @@ div#segments ul.head {
 	display: block;
 	list-style: none;
 }
-div#segments ul.head li {
+div#segment_pane ul.head li {
 line-height: 18px;
   padding: 0;
   margin: 0;
@@ -204,21 +204,21 @@ line-height: 18px;
   border-left: 1px solid #737373;
   border-right: 1px solid #171717;
 }
-div#segments ul.head li.segment {
+div#segment_pane ul.head li.segment {
   position: absolute;
     left: 0;
     right: 112px;
   padding: 0 10px;
   height: 19px;
 }
-div#segments ul.head li.options {
+div#segment_pane ul.head li.options {
   position: absolute;
     right: 0;
   padding: 0 10px;
   height: 19px;
   width: 90px;
 }
-div#segments ul#body {
+div#segment_pane ul#body {
   position: absolute;
     top: 22px;
     bottom: 50px;
@@ -232,31 +232,31 @@ div#segments ul#body {
   color: #3d3d3d;
   overflow-y: scroll;
 }
-div#segments ul#body li.segment {
+div#segment_pane ul#body li.segment {
   height: 52px;
   overflow: hidden;
 }
-div#segments ul#body li.segment:nth-child(odd) {
+div#segment_pane ul#body li.segment:nth-child(odd) {
   background: #ededed;
 	border-bottom: 1px solid #d2d2d2;
 }
-div#segments ul#body li.segment:nth-child(even) {
+div#segment_pane ul#body li.segment:nth-child(even) {
   background: #f1f1f1;
 	border-bottom: 1px solid #d1d1d1;
 }
-div#segments ul#body li.segment:last-child {
+div#segment_pane ul#body li.segment:last-child {
   box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.5);
 }
-div#segments ul#body li.segment div.segment, div#segments ul#body li.segment div.segment_edit {
+div#segment_pane ul#body li.segment div.segment, div#segment_pane ul#body li.segment div.segment_edit {
   height: 52px;
 }
-div#segments ul#body li.segment .highlight {
+div#segment_pane ul#body li.segment .highlight {
   background: #7ebfd9;
 }
-div#segments ul li.segment div.segment_edit {
+div#segment_pane ul li.segment div.segment_edit {
   display: none;
 }
-div#segments ul li.segment div.segment_edit .type .pup_typeSelector {
+div#segment_pane ul li.segment div.segment_edit .type .pup_typeSelector {
   position: absolute;
     left: 5px;
   height: 25px;
@@ -268,7 +268,7 @@ div#segments ul li.segment div.segment_edit .type .pup_typeSelector {
   box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
   border-radius: 5px;
 }
-div#segments ul li.segment div.segment_edit .type .pup_typeSelector:after, div#segments ul li.segment div.segment_edit .type .pup_typeSelector:before {
+div#segment_pane ul li.segment div.segment_edit .type .pup_typeSelector:after, div#segment_pane ul li.segment div.segment_edit .type .pup_typeSelector:before {
   position: absolute;
   border: solid transparent;
 	content: ' ';
@@ -277,25 +277,25 @@ div#segments ul li.segment div.segment_edit .type .pup_typeSelector:after, div#s
 	border: 10px solid transparent;
 	width: 0;
 }
-div#segments ul li.segment div.segment_edit .type .pup_typeSelector:after {	
+div#segment_pane ul li.segment div.segment_edit .type .pup_typeSelector:after {	
 	 top: -20px;
 	 left: 10px;
 	border-bottom-color: #ececec;
 }
-div#segments ul li.segment div.segment_edit .type .pup_typeSelector:before {
+div#segment_pane ul li.segment div.segment_edit .type .pup_typeSelector:before {
 	 top: -22px;
 	 left:  9px;
   border: 11px solid transparent;
 	border-bottom-color: rgba(0,0,0,0.1);
 }
-div#segments ul li.segment div.segment_edit .type .pup_typeSelector img {
+div#segment_pane ul li.segment div.segment_edit .type .pup_typeSelector img {
   width: 25px;
   height: 25px;
 }
-div#segments ul li.segment div.segment_edit .type .pup_typeSelector img.selected {
+div#segment_pane ul li.segment div.segment_edit .type .pup_typeSelector img.selected {
   background: #7ebfd9;
 }
-div#segments div.title {
+div#segment_pane div.title {
   position: absolute;
     right: 199px;
     left: 45px;
@@ -305,7 +305,7 @@ div#segments div.title {
   min-width: 200px;
 	overflow: hidden;
 }
-div#segments div.trt {
+div#segment_pane div.trt {
   position: absolute;
     right: 110px;
   padding: 15px;
@@ -315,12 +315,12 @@ div#segments div.trt {
   border-right: 1px solid #c7c7c7;
   display: block;
 }
-div#segments div.type {
+div#segment_pane div.type {
   padding: 10px 5px;
   width: 35px; 
 }
 
-div#segments div.title input {
+div#segment_pane div.title input {
   
   padding: 12px 8px;
   width: 100%;
@@ -332,7 +332,7 @@ div#segments div.title input {
   border-left: 1px solid #c7c7c7;
   border-right: 1px solid #c7c7c7;
 }
-div#segments div.trt input {
+div#segment_pane div.trt input {
   position: absolute;
     right: -1px;
   padding: 5px 14px;
@@ -346,22 +346,22 @@ div#segments div.trt input {
   border-left: 1px solid #c7c7c7;
   border-right: 1px solid #c7c7c7;
 }
-div#segments div.options a, div#segments div.options span {
+div#segment_pane div.options a, div#segment_pane div.options span {
   padding: 17px 0 0 0;
   margin: 0 15px 0 0; 
   display: inline-block;
 }
-div#segments div.title, div#segments div.trt, div#segments div.type, div#segments div.options {
+div#segment_pane div.title, div#segment_pane div.trt, div#segment_pane div.type, div#segment_pane div.options {
   
   float: left;
   display: inline-block;
 }
-div#segments div.withInput {
+div#segment_pane div.withInput {
   padding: 0 24px 0 0;
   display: block;
   margin: 0;
 }
-div#segments div.options {
+div#segment_pane div.options {
   position: absolute;
     right: 0;
   margin: 0;
@@ -371,7 +371,7 @@ div#segments div.options {
   border-right: none;
   opacity: 0.5;
 }
-div#segments div#controls {
+div#segment_pane div#controls {
   position: absolute;
     bottom: 0;
   width: 100%;
@@ -438,6 +438,30 @@ div#pup_addHeader a {
   margin-right: 10px;
 }
 
+/* !--- Alert Pane --- */
+div#alert_pane {
+  position: absolute;
+    top: 150px;
+    bottom: 70px;
+    right: 380px;
+    left: 0;
+  background: #d4d4d4;
+  box-shadow: 10px 0px 20px -10px rgba(0,0,0,0.8);
+  display: none;
+}
+
+/* !--- Call Pane --- */
+div#call_pane {
+  position: absolute;
+    top: 150px;
+    bottom: 70px;
+    right: 380px;
+    left: 0;
+  background: #d4d4d4;
+  box-shadow: 10px 0px 20px -10px rgba(0,0,0,0.8);
+  display: none;
+}
+
 /* !--- Sidebar --- */
 div#sidebar {
   position: absolute;
@@ -498,7 +522,7 @@ div#sidebar #preview #currentTitle {
 }
 div#sidebar h1 {
   margin: 0;
-  padding: 9px 15px 0 0;
+  padding: 6px 15px 4px 0;
   background: -webkit-linear-gradient(#2c2c2c 0%, #222222 100%);
   height: 16px;
   text-align: right;
@@ -507,7 +531,32 @@ div#sidebar h1 {
   color: #878686;
 }
 div#sidebar #alerts {
+  margin: 0;
   min-height: 100px;
+}
+div#sidebar #alerts .alert {
+  position: relative;
+  padding: 10px 25px 10px 10px;
+  margin-bottom: 25px;
+  min-height: 18px;
+  background: #d12727;
+  box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.8);
+  display: block;
+}
+div#sidebar #alerts .alert a.close {
+  position: absolute;
+    top: 7px;
+    right: 8px;
+  width: 24px;
+  height: 24px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  opacity: 0.5;
+  display: block;
+}
+div#sidebar #alerts .alert a.close:hover {
+  opacity: 1;
 }
 div#sidebar #calls {
   min-height: 100px;
@@ -533,8 +582,9 @@ footer {
 a:hover {
   opacity: 0.9;
 }
-a#btn_clockPrevious, a#btn_clockNext, a#btn_clockReset, a#btn_clockClear { 
-	background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0, #8f9192), color-stop(1, #626060) );
+a#btn_clockPrevious, a#btn_clockNext, a#btn_clockReset, a#btn_clockClear, a#btn_mode_list, a#btn_mode_alert, a#btn_mode_call { 
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0, #8f9192), color-stop(1, #626060) );
+	
 	box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
 	border: 1px solid #2b2b2b;
 	color: #333;
@@ -593,7 +643,30 @@ a#btn_clockClear {
   -webkit-border-radius:5px;
 	display: block;
 }
-
+a#btn_mode_list, a#btn_mode_alert, a#btn_mode_call {
+  padding: 3px 0;
+  position: absolute;
+    top: 21px;
+	width: 52px;
+	height: 18px;
+	text-decoration: none;
+	display: block;
+}
+a#btn_mode_list {
+    left: 224px;
+  border-radius:5px 0px 0px 5px;
+}
+a#btn_mode_alert {
+    left: 277px;
+}
+a#btn_mode_call {
+    left: 330px;
+  border-radius:0px 5px 5px 0px;
+}
+a.mode_selected {
+  background: #5d9be6 !important;
+	box-shadow: inset 0 0 5px 0#36506d !important;
+}
 
 /* !--- Alert Popup --- */
 div#pup_alert {

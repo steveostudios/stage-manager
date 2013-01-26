@@ -53,7 +53,7 @@ $(document).ready(function () {
     $('#input_eventSeries').val(data.eventSeries)
     $('#input_eventTitle').val(data.eventTitle)
   })
-  $('div#segments ul').sortable({
+  $('div#segment_pane ul').sortable({
     handle: '.handle'
   })
   $('.hidable').hide()
@@ -72,8 +72,8 @@ $(document).ready(function () {
       $(this).parent().parent().next().toggle()
     }
   })
-  $(document).on('click', 'div#segments ul li.segment div.segment_edit .type .pup_typeSelector img', function(e) {
-    $('div#segments ul li.segment div.segment_edit .type .pup_typeSelector img').removeClass('highlight')
+  $(document).on('click', 'div#segment_pane ul li.segment div.segment_edit .type .pup_typeSelector img', function(e) {
+    $('div#segment_pane ul li.segment div.segment_edit .type .pup_typeSelector img').removeClass('highlight')
     $(this).addClass('highlight')
     var dataType = $(this).attr('data-type')
     $(this).parent().parent().find('.input_type').val(dataType)
@@ -176,7 +176,7 @@ $(document).ready(function () {
     $('#sidebar #preview #currentTimer').text(currentTrt)
     tick() 
   }
-  $(document).on('click', 'div#segments ul#body li.segment div.segment div.title', function(e) {
+  $(document).on('click', 'divsegment_pane ul#body li.segment div.segment div.title', function(e) {
     e.preventDefault()
     var id = $(this).parent().parent().attr('id')
     var trt = $(this).parent().find('div.trt').text()
@@ -184,7 +184,7 @@ $(document).ready(function () {
     socket.emit('segmentCurrent', {eventId: room, rowId: id, rowTrt: trt, rowOrder: order})
   })
   socket.on('updateCurrent', function(data) {
-    $('div#segments ul#body li.segment div.segment').removeClass('highlight')
+    $('div#segment_pane ul#body li.segment div.segment').removeClass('highlight')
     if (data.rowId != '') {
       current = data.rowId
       currentStart = data.start
@@ -264,7 +264,7 @@ $(document).ready(function () {
     e.preventDefault()
     socket.emit('segmentRemove', {eventId: room, rowId: removeId})
     if(removeId == current) {
-      $('div#segments ul#body li.segment div.segment').removeClass('highlight')
+      $('div#segment_pane ul#body li.segment div.segment').removeClass('highlight')
       socket.emit('clockClear', {eventId: room})
     }
     $('#pup_alert').hide()
@@ -280,7 +280,7 @@ $(document).ready(function () {
   })
   
   /* !--- Reorder Segments --- */
-  $('div#segments ul').on( "sortstop", function( event, ui ) {
+  $('div#segment_pane ul').on( "sortstop", function( event, ui ) {
     var sortedIds = $(this).sortable( "toArray" )
     socket.emit('segmentReorder', {eventId: room, sortedIds: sortedIds})
   })
@@ -342,7 +342,7 @@ $(document).ready(function () {
   /* !--- Clear Segment --- */
   $(document).on('click', 'footer a#btn_clockClear', function(e) {
     e.preventDefault()
-    $('div#segments ul#body li.segment div.segment').removeClass('highlight')
+    $('div#segment_pane ul#body li.segment div.segment').removeClass('highlight')
     socket.emit('clockClear', {eventId: room})
   })
   
@@ -363,5 +363,33 @@ $(document).ready(function () {
     setTimeout(getCurrentTime,1000)
   }
   getCurrentTime()
+  /* !--- Switch Modes --- */
+  $(document).on('click', 'footer a#btn_mode_list', function(e) {
+    e.preventDefault()
+    $('#segment_pane').show()
+    $('a#btn_mode_list').addClass('mode_selected')
+    $('#alert_pane').hide()
+    $('a#btn_mode_alert').removeClass('mode_selected')
+    $('#call_pane').hide()
+    $('a#btn_mode_call').removeClass('mode_selected')
+  })
+  $(document).on('click', 'footer a#btn_mode_alert', function(e) {
+    e.preventDefault()
+    $('#segment_pane').hide()
+    $('a#btn_mode_list').removeClass('mode_selected')
+    $('#alert_pane').show()
+    $('a#btn_mode_alert').addClass('mode_selected')
+    $('#call_pane').hide()
+    $('a#btn_mode_call').removeClass('mode_selected')
+  })
+  $(document).on('click', 'footer a#btn_mode_call', function(e) {
+    e.preventDefault()
+    $('#segment_pane').hide()
+    $('a#btn_mode_list').removeClass('mode_selected')
+    $('#alert_pane').hide()
+    $('a#btn_mode_alert').removeClass('mode_selected')
+    $('#call_pane').show()
+    $('a#btn_mode_call').addClass('mode_selected')
+  })
 })
 
