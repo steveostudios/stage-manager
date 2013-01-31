@@ -15,19 +15,33 @@ $(document).ready(function () {
       }
     })
   })
-  
+  /* !--- Hidable icons --- */
+  // hide on init
+  $('.hidable').hide()
+  // on event mouseover
   $(document).on('mouseover', '#event', function(e) {
     $(this).find('.hidable').show()
   })
+  // on event mouseout
   $(document).on('mouseout', '#event', function(e) {
     $('.hidable').hide()
   })
-
+  // on segment mouseover
+  $(document).on('mouseover', 'div.segment', function(e) {
+    $(this).find('.hidable').show()
+  })
+  // on segment mouseout
+  $(document).on('mouseout', 'div.segment', function(e) {
+    $('.hidable').hide()
+  })
+  /* !--- Event Update --- */
+  // on edit click
   $(document).on('click', '#eventEdit', function(e) {
     e.preventDefault()
     $('#event').hide()
     $('#event_edit').show()
   })
+  // on save
   $(document).on('click', '#eventSave', function(e) {
     e.preventDefault()
     $('#event_edit').hide()
@@ -37,6 +51,7 @@ $(document).ready(function () {
     $('#event').show()
     socket.emit('eventSave', {eventId: room, eventDate: date, eventSeries: series, eventTitle: title})
   })
+  // on cancel
   $(document).on('click', '#eventCancel', function(e) {
     e.preventDefault()
     $('#event_edit').hide()
@@ -45,6 +60,7 @@ $(document).ready(function () {
     $('#input_eventTitle').val($('#eventTitle').text())
     $('#event').show()
   })
+  // on socket update
   socket.on('updateEvent', function(data) {
     $('#eventDate').text(data.eventDate)
     $('#eventSeries').text(data.eventSeries)
@@ -53,16 +69,9 @@ $(document).ready(function () {
     $('#input_eventSeries').val(data.eventSeries)
     $('#input_eventTitle').val(data.eventTitle)
   })
-  $('div#segment_pane ul').sortable({
-    handle: '.handle'
-  })
-  $('.hidable').hide()
-  $(document).on('mouseover', 'div.segment', function(e) {
-    $(this).find('.hidable').show()
-  })
-  $(document).on('mouseout', 'div.segment', function(e) {
-    $('.hidable').hide()
-  })
+  
+  
+  
   
   $(document).on('click', '.rowEdit', function(e) {
     e.preventDefault()
@@ -73,20 +82,15 @@ $(document).ready(function () {
     }
   })
   $(document).on('click', 'div#segment_pane ul li.segment div.segment_edit .type .pup_typeSelector img', function(e) {
-    $('div#segment_pane ul li.segment div.segment_edit .type .pup_typeSelector img').removeClass('highlight')
-    $(this).addClass('highlight')
+    $('div#segment_pane ul li.segment div.segment_edit .type .pup_typeSelector img').removeClass('selected')
+    $(this).addClass('selected')
     var dataType = $(this).attr('data-type')
     $(this).parent().parent().find('.input_type').val(dataType)
     $(this).parent().prev().attr('src', '../img/ico_' + dataType + '.png')
   })
   
   /* !--- Cancel Segment --- */
-  $(document).keyup(function(e) {
-    if (e.keyCode == 27) {
-      e.preventDefault()
-      cancelSegment()
-    }
-  })
+  
   $(document).on('click', '.rowCancel', function(e) {
     e.preventDefault()
     cancelSegment()
@@ -100,8 +104,8 @@ $(document).ready(function () {
       type = type.replace('.png','')
       $('li#' + id + ' .segment_edit .type .input_type').val(type)
       $('li#' + id + ' .segment_edit .type .img_edit').attr('src', '../img/ico_' + type + '.png')
-      $('li#' + id + ' .segment_edit .type .pup_typeSelector img').removeClass('highlight')
-      $('li#' + id + ' .segment_edit .type .pup_typeSelector').find('[data-type="' + type + '"]').addClass('highlight')
+      $('li#' + id + ' .segment_edit .type .pup_typeSelector img').removeClass('selected')
+      $('li#' + id + ' .segment_edit .type .pup_typeSelector').find('[data-type="' + type + '"]').addClass('selected')
       $('li#' + id + ' .segment_edit .title .input_title').val($('li#' + id + ' .segment .title').text())
       $('li#' + id + ' .segment_edit .trt .input_trt').val($('li#' + id + ' .segment .trt').text())
       $('li#' + id + ' .segment_edit').toggle()
@@ -110,12 +114,26 @@ $(document).ready(function () {
       $('li#new').remove()
     }
   }
-  
-  /* !--- Save Segment --- */
+    
+  /* !--- Save Segment or Header --- */
   $(document).keyup(function(e) {
     if (e.keyCode == 13) {
       e.preventDefault()
-      saveSegment()
+      if ($('li#' + editing).hasClass('header')) {
+        saveHeader()
+      } else {
+        saveSegment()
+      }
+    }
+  })
+  $(document).keyup(function(e) {
+    if (e.keyCode == 27) {
+      e.preventDefault()
+      if ($('li#' + editing).hasClass('header')) {
+        cancelHeader()
+      } else {
+        cancelSegment()
+      }
     }
   })
   $(document).on('click', '.rowSave', function(e) {
@@ -176,7 +194,7 @@ $(document).ready(function () {
     $('#sidebar #preview #currentTimer').text(currentTrt)
     tick() 
   }
-  $(document).on('click', 'divsegment_pane ul#body li.segment div.segment div.title', function(e) {
+  $(document).on('click', 'div#segment_pane ul#body li.segment div.segment div.title', function(e) {
     e.preventDefault()
     var id = $(this).parent().parent().attr('id')
     var trt = $(this).parent().find('div.trt').text()
@@ -202,64 +220,147 @@ $(document).ready(function () {
       $('#sidebar #preview #currentTimer').text('')
     }
   })
-  
-  function tick() {
-    if(current != null){
-      var now = new Date()
-      var start = new Date(currentStart)
-      // Difference
-      var minDiff = now.getMinutes() - start.getMinutes()
-      var secDiff = now.getSeconds() - start.getSeconds()
-      var totalDiff = (minDiff*60)+(secDiff)
-      // from Total
-      var tempTrt = currentTrt.split(':')
-      var totalTrt = parseInt(tempTrt[0]*60)+parseInt(tempTrt[1])
-      var min = null
-      var sec = null
-      var total = totalTrt - totalDiff
-      if(total == 0) {
-        min = 0
-        sec = 0
-        $('#sidebar #preview #currentTimer').removeClass('inTheRed')
-      } else if(total > 0) {
-        min = Math.abs(Math.floor(total/60))
-        sec = Math.abs(Math.floor(total%60))
-        $('#sidebar #preview #currentTimer').removeClass('inTheRed')
-      } else if(total < 0) {
-        min = Math.abs(Math.floor((total/60)+1))
-        sec = Math.abs(Math.floor((total+1)%60))
-        $('#sidebar #preview #currentTimer').addClass('inTheRed')
-      }
-      if(sec<10){sec='0'+sec}
-      $('#sidebar #preview #currentTimer').text(min + ':' + sec)
-    } else {
-      $('#sidebar #preview #currentTimer').text('')
-    }
-    setTimeout(tick, 1000)
-  }
-  /* !--- Add New Header --- */
-  $('#controls a#btn_addHeader').click(function(e) {
-    e.preventDefault()
-    $('div#pup_addHeader').fadeToggle()
-  })
-  /* !--- Add New Segment Row --- */
+  // on add segment click
   $('#controls a#btn_addSegment').click(function(e) {
     e.preventDefault()
-    editing = 'new'
-    $('ul#body').append('<li id="new" class="segment"><div class="segment_edit" style="display:block"><div class="type"><input type="hidden" value="mic" class="input_type"/><img src="../img/ico_mic.png" width="35" height="35"/><div class="pup_typeSelector"><img src="../img/ico_slate.png" data-type="slate"/><img src="../img/ico_note.png" data-type="note"/><img src="../img/ico_bible.png" data-type="bible"/><img src="../img/ico_mic.png" data-type="mic" class="highlight" /><img src="../img/ico_tv.png" data-type="tv"/><img src="../img/ico_megaphone.png" data-type="megaphone"/></div></div><div class="title withInput"><input type="text" placeholder="Title" class="input_title" /></div><div class="trt withInput"><input type="text" placeholder="Time" class="input_trt" /></div><div class="options"><a href="#" class="rowSave">S</a><a href="#" class="rowCancel">C</a></div></div></li>')
+    if(editing == null){
+      editing = 'new'
+      $('ul#body').append('<li id="new" class="segment"><div class="segment_edit" style="display:block"><div class="type"><input type="hidden" value="mic" class="input_type"/><img src="../img/ico_mic.png" width="35" height="35"/><div class="pup_typeSelector"><img src="../img/ico_slate.png" data-type="slate"/><img src="../img/ico_note.png" data-type="note"/><img src="../img/ico_bible.png" data-type="bible"/><img src="../img/ico_mic.png" data-type="mic" class="selected" /><img src="../img/ico_tv.png" data-type="tv"/><img src="../img/ico_megaphone.png" data-type="megaphone"/></div></div><div class="title withInput"><input type="text" placeholder="Title" class="input_title" /></div><div class="trt withInput"><input type="text" placeholder="Time" class="input_trt" /></div><div class="options"><a href="#" class="rowSave">S</a><a href="#" class="rowCancel">C</a></div></div></li>')
+    }
   })
   socket.on('createSegment', function(data) {
-    $('ul#body').append('<li id="'+data.rowId+'" class="segment" rel="'+data.rowOrder+'"> <div class="segment"><div class="type"><img src="../img/ico_'+data.rowType+'.png" width="35" height="35"/></div><div class="title">'+data.rowTitle+'</div><div class="trt">'+data.rowTrt+'</div><div class="options"><a href="#" class="rowEdit"><img src="../img/ico_editRow.png" width="17" height="17" class="hidable" /></a><a href="#" class="rowRemove"><img src="../img/ico_removeRow.png" width="17" height="17" class="hidable" /></a><span class="hidable handle"><img src="../img/ico_moveRow.png" width="17" height="17" class="hidable" /></span></div></div><div class="segment_edit"><div class="type"><input type="hidden" value="mic" class="input_type"/><img src="../img/ico_'+data.rowType+'.png" width="35" height="35"/><div class="pup_typeSelector"><img src="../img/ico_slate.png" data-type="slate"/><img src="../img/ico_note.png" data-type="note"/><img src="../img/ico_bible.png" data-type="bible"/><img src="../img/ico_mic.png" data-type="mic" /><img src="../img/ico_tv.png" data-type="tv"/><img src="../img/ico_megaphone.png" data-type="megaphone"/></div></div><div class="title withInput"><input type="text" value="'+data.rowTitle+'" placeholder="Title" class="input_title" /></div><div class="trt withInput"><input type="text" value="'+data.rowTrt+'" placeholder="Time" class="input_trt" /></div><div class="options"><a href="#" class="rowSave">S</a><a href="#" class="rowCancel">C</a></div></div></li>')
-    $('ul#body li#' + data.rowId + ' .segment_edit .type .pup_typeSelector').find('[data-type="' + data.rowType + '"]').addClass('highlight')
+    $('ul#body').append('<li id="'+data.rowId+'" class="segment" rel="'+data.rowOrder+'"><div class="segment"><div class="type"><img src="../img/ico_'+data.rowType+'.png" width="35" height="35"/></div><div class="title">'+data.rowTitle+'</div><div class="trt">'+data.rowTrt+'</div><div class="options"><a href="#" class="rowEdit"><img src="../img/ico_editRow.png" width="17" height="17" class="hidable" /></a><a href="#" class="rowRemove"><img src="../img/ico_removeRow.png" width="17" height="17" class="hidable" /></a><span class="hidable handle"><img src="../img/ico_moveRow.png" width="17" height="17" class="hidable" /></span></div></div><div class="segment_edit"><div class="type"><input type="hidden" value="mic" class="input_type"/><img src="../img/ico_'+data.rowType+'.png" width="35" height="35"/><div class="pup_typeSelector"><img src="../img/ico_slate.png" data-type="slate"/><img src="../img/ico_note.png" data-type="note"/><img src="../img/ico_bible.png" data-type="bible"/><img src="../img/ico_mic.png" data-type="mic" /><img src="../img/ico_tv.png" data-type="tv"/><img src="../img/ico_megaphone.png" data-type="megaphone"/></div></div><div class="title withInput"><input type="text" value="'+data.rowTitle+'" placeholder="Title" class="input_title" /></div><div class="trt withInput"><input type="text" value="'+data.rowTrt+'" placeholder="Time" class="input_trt" /></div><div class="options"><a href="#" class="rowSave">S</a><a href="#" class="rowCancel">C</a></div></div></li>')
+    $('ul#body li#' + data.rowId + ' .segment_edit .type .pup_typeSelector').find('[data-type="' + data.rowType + '"]').addClass('selected')
   })
   
-  /* !--- Remove Segment --- */
+  /* !--- Headers --- */
+  // on header mouseover
+  $(document).on('mouseover', 'div.header', function(e) {
+    $(this).find('.hidable').show()
+  })
+  // on header mouseout
+  $(document).on('mouseout', 'div.header', function(e) {
+    $('.hidable').hide()
+  })
+  // add header button
+  $('#controls a#btn_addHeader').click(function(e) {
+    e.preventDefault()
+    if(editing == null){
+      $('div#pup_addHeader').fadeToggle()
+    }
+  })
+  // on choosing a color
+  $(document).on('click', 'a#btn_addHeader_red', function(){newHeader('red')})
+  $(document).on('click', 'a#btn_addHeader_blue', function(){newHeader('blue')})
+  $(document).on('click', 'a#btn_addHeader_green', function(){newHeader('green')})
+  // add header
+  function newHeader(clr) {
+    editing = 'new'
+    $('div#pup_addHeader').fadeToggle()
+    $('ul#body').append('<li id="new" class="header ' + clr + '"><div class="header_edit" style="display:block"><div class="type"><input type="hidden" class="input_type" value="' + clr + '" /><div class="pup_typeSelector"><img src="../img/ico_headerRed.png", data-type="red" /><img src="../img/ico_headerGreen.png", data-type="green" /><img src="../img/ico_headerBlue.png", data-type="blue" /></div></div><div class="title withInput"><input type="text" placeholder="Title" class="input_title" /></div><div class="options"><a href="#" class="headerSave">S</a><a href="#" class="headerCancel">C</a></div></div></li>')
+    $('ul#body li#new .header_edit .type .pup_typeSelector').find('[data-type="' + clr + '"]').addClass('selected')
+  }
+  // edit header click
+  $(document).on('click', '.headerEdit', function(e) {
+    e.preventDefault()
+    if(editing == null){
+      editing = $(this).parent().parent().parent().attr('id')
+      $(this).parent().parent().toggle()
+      $(this).parent().parent().next().toggle()
+    }
+  })
+  // on choosing a new color
+  $(document).on('click', 'div#segment_pane ul li.header div.header_edit .type .pup_typeSelector img', function(e) {
+    $('div#segment_pane ul li.header div.header_edit .type .pup_typeSelector img').removeClass('selected')
+    $(this).addClass('selected')
+    var dataType = $(this).attr('data-type')
+    //$(this).parent().parent().find('.input_type').val(dataType)
+    $(this).parent().parent().parent().parent().removeClass('red')
+    $(this).parent().parent().parent().parent().removeClass('green')
+    $(this).parent().parent().parent().parent().removeClass('blue')
+    $(this).parent().parent().parent().parent().addClass(dataType)
+  })
+  // on socket update - new header
+  socket.on('createHeader', function(data) {
+    alert('added')
+    $('ul#body').append('<li id="'+data.rowId+'" class="header ' + data.rowType + '" rel="'+data.rowOrder+'"><div class="header"><div class="title">'+data.rowTitle+'</div><div class="options"><a href="#" class="headerEdit"><img src="../img/ico_editRow.png" width="17" height="17" class="hidable" /></a><a href="#" class="rowRemove"><img src="../img/ico_removeRow.png" width="17" height="17" class="hidable" /></a><span class="hidable handle"><img src="../img/ico_moveRow.png" width="17" height="17" class="hidable" /></span></div></div><div class="header_edit"><div class="type"><input type="hidden" class="input_type" value="' + data.rowType + '" /><div class="pup_typeSelector"><img src="../img/ico_headerRed.png", data-type="red" /><img src="../img/ico_headerGreen.png", data-type="green" /><img src="../img/ico_headerBlue.png", data-type="blue" /></div></div><div class="title withInput"><input type="text" value="'+data.rowTitle+'" placeholder="Title" class="input_title" /></div><div class="options"><a href="#" class="headerSave">S</a><a href="#" class="headerCancel">C</a></div></div></li>')
+    $('ul#body li#' + data.rowId + ' .header_edit .type .pup_typeSelector').find('[data-type="' + data.rowType + '"]').addClass('selected')
+  })
+  // on save
+  $(document).on('click', '.headerSave', function(e) {
+    e.preventDefault()
+    saveHeader()
+  })
+  // save header (including new header)
+  function saveHeader() {
+    var id = editing
+    editing = null
+    var type = null
+    if ($('li#' +id + ' .header_edit .type .pup_typeSelector img').attr('data-type') == 'red') {
+      type = 'red'
+    } else if ($('li#' +id + ' .header_edit .type .pup_typeSelector img').attr('data-type') == 'green') {
+      type = 'green'
+    } else if ($('li#' +id + ' .header_edit .type .pup_typeSelector img').attr('data-type') == 'blue') {
+      type = 'blue'
+    }
+    $('li#' + id + ' .header_edit .type .input_type').val(type)
+    var title = $('li#' + id + ' .header_edit .title .input_title').val()
+    var order = $('li#' + id).attr('rel')
+    $('li#' + id + ' .header .title').text(title)
+    if(id == 'new') {
+      order = $('ul#body li').length - 1
+      socket.emit('headerCreate', {eventId: room, rowType: type, rowTitle: title, rowOrder: order})
+      $('li#new').remove()
+    } else {
+      socket.emit('headerSave', { rowId: id , rowType: type, rowTitle: title, rowOrder: order}, function(data) {
+        $('li#' + id).addClass(rowType)
+        $('li#' + id + ' .header .title').text(data.rowTitle)
+      })
+    }
+    $('li#' + id + ' .header_edit').toggle()
+    $('li#' + id + ' .header').toggle()
+  }
+  // on socket update - update header
+  socket.on('updateHeader', function(data) {
+    $('li#' + data.rowId + ' .header .type img').attr('src', '../img/ico_' + data.rowType + '.png')
+    $('li#' + data.rowId + ' .header .title').text(data.rowTitle)
+    $('li#' + data.rowId + ' .header .trt').text(data.rowTrt)
+  })
+  
+  // on cancel
+  $(document).on('click', '.headerCancel', function(e) {
+    e.preventDefault()
+    cancelHeader()
+  })
+  // cancel header
+  function cancelHeader() {
+    var id = editing
+    editing = null
+    if (id != 'new') {
+      var type = $('li#' + id + ' .header_edit .input_type').val()
+      $('li#' + id).removeClass('red')
+      $('li#' + id).removeClass('green')
+      $('li#' + id).removeClass('blue')
+      $('li#' + id).addClass(type)
+      $('li#' + id + ' .header_edit .type .pup_typeSelector img').removeClass('selected')
+      $('li#' + id + ' .header_edit .type .pup_typeSelector').find('[data-type="' + type + '"]').addClass('selected')
+      $('li#' + id + ' .header_edit .title .input_title').val($('li#' + id + ' .header .title').text())
+      $('li#' + id + ' .header_edit').toggle()
+      $('li#' + id + ' .header').toggle()
+    } else {
+      $('li#new').remove()
+    }
+  }
+
+  /* !--- Remove Segment or Header --- */
   var removeId = null
+  // on click
   $(document).on('click', '.rowRemove', function(e) {
     e.preventDefault()
     removeId = $(this).parent().parent().parent().attr('id')
     $('#pup_alert').show()
   })
+  // on submit
   $('#pup_alert .submit').on('click', function(e) {
     e.preventDefault()
     socket.emit('segmentRemove', {eventId: room, rowId: removeId})
@@ -270,20 +371,28 @@ $(document).ready(function () {
     $('#pup_alert').hide()
     removeId = null
   })
+  // on cancel
   $('#pup_alert .cancel').on('click', function(e) {
     e.preventDefault()
     $('#pup_alert').hide()
     removeId = null
   })
+  // on socket updatex`
   socket.on('updateRemove', function(data) {
     $('li#'+data.rowId).remove()
   })
   
-  /* !--- Reorder Segments --- */
+  /* !--- Reorder Segments and Headers --- */
+  // jquery sortable
+  $('div#segment_pane ul').sortable({
+    handle: '.handle'
+  })
+  // on sort-stop
   $('div#segment_pane ul').on( "sortstop", function( event, ui ) {
     var sortedIds = $(this).sortable( "toArray" )
     socket.emit('segmentReorder', {eventId: room, sortedIds: sortedIds})
   })
+  // on socket update
   socket.on('updateReorder', function(data) {
     var i = 0
     data.sortedIds.forEach(function(id) {
@@ -302,10 +411,17 @@ $(document).ready(function () {
   $(document).on('click', 'footer a#btn_clockNext', function(e) {
     e.preventDefault()
     if (current != '') {
-      var currentOrder = $('li#'+current).attr('rel')
+      var currentOrder = parseInt($('li#'+current).attr('rel'))
       var total = $('ul#body li').length
-      if(currentOrder < (total-1) ) {
-        var nextOrder = parseInt(currentOrder) + 1
+      var nextOrder = currentOrder + 1
+      function findNext(){
+        if ($('li[rel="'+nextOrder+'"]').hasClass('header')){
+          nextOrder ++
+          findNext()
+        }
+      }
+      findNext()
+      if(currentOrder < (total-1) ) {        
         var nextId = $('li[rel="'+nextOrder+'"]').attr('id')
         var nextTrt = $('li[rel="'+nextOrder+'"] div.segment div.trt').text()
         socket.emit('segmentCurrent', {eventId: room, rowId: nextId, rowTrt: nextTrt, rowOrder: nextOrder})
@@ -317,9 +433,16 @@ $(document).ready(function () {
   $(document).on('click', 'footer a#btn_clockPrevious', function(e) {
     e.preventDefault()
     if (current != '') {
-      var currentOrder = $('li#'+current).attr('rel')
+      var currentOrder = parseInt($('li#'+current).attr('rel'))
+      var prevOrder = currentOrder - 1
+      function findPrev(){
+        if ($('li[rel="'+prevOrder+'"]').hasClass('header')){
+          prevOrder --
+          findPrev()
+        }
+      }
+      findPrev()
       if(currentOrder > 0) {
-        var prevOrder = parseInt(currentOrder) - 1
         var prevId = $('li[rel="'+prevOrder+'"]').attr('id')
         var prevTrt = $('li[rel="'+prevOrder+'"] div.segment div.trt').text()
         socket.emit('segmentCurrent', {eventId: room, rowId: prevId, rowTrt: prevTrt, rowOrder: prevOrder})
@@ -363,6 +486,42 @@ $(document).ready(function () {
     setTimeout(getCurrentTime,1000)
   }
   getCurrentTime()
+  /* !--- The Tick --- */
+  function tick() {
+    if(current != null){
+      var now = new Date()
+      var start = new Date(currentStart)
+      // Difference
+      var minDiff = now.getMinutes() - start.getMinutes()
+      var secDiff = now.getSeconds() - start.getSeconds()
+      var totalDiff = (minDiff*60)+(secDiff)
+      // from Total
+      var tempTrt = currentTrt.split(':')
+      var totalTrt = parseInt(tempTrt[0]*60)+parseInt(tempTrt[1])
+      var min = null
+      var sec = null
+      var total = totalTrt - totalDiff
+      if(total == 0) {
+        min = 0
+        sec = 0
+        $('#sidebar #preview #currentTimer').removeClass('inTheRed')
+      } else if(total > 0) {
+        min = Math.abs(Math.floor(total/60))
+        sec = Math.abs(Math.floor(total%60))
+        $('#sidebar #preview #currentTimer').removeClass('inTheRed')
+      } else if(total < 0) {
+        min = Math.abs(Math.floor((total/60)+1))
+        sec = Math.abs(Math.floor((total+1)%60))
+        $('#sidebar #preview #currentTimer').addClass('inTheRed')
+      }
+      if(sec<10){sec='0'+sec}
+      $('#sidebar #preview #currentTimer').text(min + ':' + sec)
+    } else {
+      $('#sidebar #preview #currentTimer').text('')
+    }
+    setTimeout(tick, 1000)
+  }
+  
   /* !--- Switch Modes --- */
   $(document).on('click', 'footer a#btn_mode_list', function(e) {
     e.preventDefault()

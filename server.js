@@ -62,6 +62,14 @@ io.sockets.on('connection', function (socket) {
     data.rowId = segments.createRow(data)
     io.sockets.in(room).emit('createSegment', data)
   });
+  socket.on('headerSave', function (data) {
+    segments.saveRow(data)
+    io.sockets.in(room).emit('updateHeader', data)
+  });
+  socket.on('headerCreate', function (data) {
+    data.rowId = segments.createHeader(data)
+    io.sockets.in(room).emit('createHeader', data)
+  });
   socket.on('segmentCurrent', function (data) {
     var start = new Date()
     data.start = start

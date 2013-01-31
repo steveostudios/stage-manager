@@ -36,6 +36,26 @@ exports.createRow = function (data, res) {
   return segment._id;
 }
 
+// !--- Create Header
+exports.createHeader = function (data, res) {
+  var segment = new Segment(); 
+  segment.type = data.rowType;
+  segment.title = data.rowTitle;
+  segment.trt = '0:00';
+  segment.order = data.rowOrder;  
+  segment.save(function (err) {
+    if (err) throw new Error('Error while saving comment')
+    Event.findOne({_id: data.eventId}, function(err, event) {
+      if (err) {return next(err); }
+      event.segments.push(segment._id)
+      event.save(function (err) {
+        if (err) throw new Error('Error while saving event')
+      })
+    })
+  })
+  return segment._id;
+}
+
 // !--- Remove Segment
 exports.removeRow = function (data, res) {
   Event.findOne({ _id: data.eventId }, function(err, event) {
