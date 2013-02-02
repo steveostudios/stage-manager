@@ -282,7 +282,6 @@ $(document).ready(function () {
   })
   // on socket update - new header
   socket.on('createHeader', function(data) {
-    alert('added')
     $('ul#body').append('<li id="'+data.rowId+'" class="header ' + data.rowType + '" rel="'+data.rowOrder+'"><div class="header"><div class="title">'+data.rowTitle+'</div><div class="options"><a href="#" class="headerEdit"><img src="../img/ico_editRow.png" width="17" height="17" class="hidable" /></a><a href="#" class="rowRemove"><img src="../img/ico_removeRow.png" width="17" height="17" class="hidable" /></a><span class="hidable handle"><img src="../img/ico_moveRow.png" width="17" height="17" class="hidable" /></span></div></div><div class="header_edit"><div class="type"><input type="hidden" class="input_type" value="' + data.rowType + '" /><div class="pup_typeSelector"><img src="../img/ico_headerRed.png", data-type="red" /><img src="../img/ico_headerGreen.png", data-type="green" /><img src="../img/ico_headerBlue.png", data-type="blue" /></div></div><div class="title withInput"><input type="text" value="'+data.rowTitle+'" placeholder="Title" class="input_title" /></div><div class="options"><a href="#" class="headerSave">S</a><a href="#" class="headerCancel">C</a></div></div></li>')
     $('ul#body li#' + data.rowId + ' .header_edit .type .pup_typeSelector').find('[data-type="' + data.rowType + '"]').addClass('selected')
   })
@@ -296,13 +295,14 @@ $(document).ready(function () {
     var id = editing
     editing = null
     var type = null
-    if ($('li#' +id + ' .header_edit .type .pup_typeSelector img').attr('data-type') == 'red') {
+    if ($('li#' +id + ' .header_edit .type .pup_typeSelector img[data-type="red"]').hasClass('selected')) {
       type = 'red'
-    } else if ($('li#' +id + ' .header_edit .type .pup_typeSelector img').attr('data-type') == 'green') {
+    } else if ($('li#' +id + ' .header_edit .type .pup_typeSelector img[data-type="green"]').hasClass('selected')) {
       type = 'green'
-    } else if ($('li#' +id + ' .header_edit .type .pup_typeSelector img').attr('data-type') == 'blue') {
+    } else if ($('li#' +id + ' .header_edit .type .pup_typeSelector img[data-type="blue"]').hasClass('selected')) {
       type = 'blue'
     }
+    console.log(type)
     $('li#' + id + ' .header_edit .type .input_type').val(type)
     var title = $('li#' + id + ' .header_edit .title .input_title').val()
     var order = $('li#' + id).attr('rel')

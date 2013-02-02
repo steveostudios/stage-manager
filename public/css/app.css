@@ -18,6 +18,16 @@
 		url('../fonts/league_gothic-webfont.ttf') format('truetype'),
 		url('../fonts/league_gothic-webfont.svg#LeagueGothicRegular') format('svg');
 }
+@font-face {
+	font-family: 'StageManager';
+	src:url('../fonts/StageManager.eot');
+	src:url('../fonts/StageManager.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/StageManager.svg#StageManager') format('svg'),
+		url('../fonts/StageManager.woff') format('woff'),
+		url('../fonts/StageManager.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
 body {
   margin: 0;
   padding: 0;
@@ -588,6 +598,45 @@ div#alert_pane {
   background: #d4d4d4;
   box-shadow: 10px 0px 20px -10px rgba(0,0,0,0.8);
 }
+div#alert_pane ul#alertFavs {
+  display: block;
+  position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+  width: 50%;
+  overflow-y: scroll;
+  margin: 0;
+  padding: 0;
+  color: #3d3d3d;
+  list-style: none;
+  font-weight: bold;
+  font-size: 24px;
+  font-family: 'PT Sans', sans-serif;
+}
+div#alert_pane ul#alertFavs li {
+  overflow: hidden;
+  height: 52px;
+}
+div#alert_pane ul#alertFavs li:nth-child(odd) {
+	border-bottom: 1px solid #d2d2d2;
+  background: #ededed;
+}
+div#alert_pane ul#alertFavs li:nth-child(even) {
+	border-bottom: 1px solid #d1d1d1;
+  background: #f1f1f1;
+}
+div#alert_pane ul#alertFavs li:last-child {
+  box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.5);
+}
+div#alert_pane div#alertInput {
+  display: block;
+  position: absolute;
+    top:0;
+    bottom: 0;
+    right: 0;
+  width: 50%;
+}
 
 /* !--- Call Pane --- */
 div#call_pane {
@@ -672,31 +721,41 @@ div#sidebar h1 {
 div#sidebar #alerts {
   margin: 0;
   min-height: 100px;
+  color: white;
 }
-div#sidebar #alerts .alert {
+div#sidebar #alerts ul#alertList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  
+}
+div#sidebar #alerts ul#alertList li.alert {
   position: relative;
-  display: none;
-  margin-bottom: 25px;
-  padding: 10px 25px 10px 10px;
+  margin-bottom: 10px;
+  padding: 10px 15px 10px 10px;
   min-height: 18px;
   background: #d12727;
   box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.8);
+  display: block;
 }
-div#sidebar #alerts .alert a.close {
+div#sidebar #alerts ul#alertList li.alert a.close {
   position: absolute;
-    top: 7px;
-    right: 8px;
+    top: 10px;
+    right: 5px;
+  margin: 0;
   display: block;
   width: 24px;
   height: 24px;
+  font-family: 'StageManager';
   color: #fff;
   text-align: center;
   text-decoration: none;
   opacity: 0.5;
 }
-div#sidebar #alerts .alert a.close:hover {
+div#sidebar #alerts ul#alertList li.alert a.close:hover {
   opacity: 1;
 }
+
 div#sidebar #calls {
   min-height: 100px;
   text-align: left;
