@@ -19,7 +19,7 @@ block content
     .control-group
       label.control-label(for='date') Date
       .controls
-        input#date.input-xlarge(type='text', name="date", value=event.date, placeholder='Enter Date')
+        input#date.input-xlarge.datepicker(type='text', name="date", value=event.date, placeholder='Enter Date')
         
     .control-group
       .controls
@@ -39,3 +39,5 @@ block content
       button.btn.btn-primary(type='submit') Save changes
       &nbsp;
       a.btn(href='/events', title="cancel") Cancel
+  script 
+    $(".datepicker").datepicker()

@@ -974,6 +974,20 @@ div#stage div#next {
 div#stage div#next span#nextTrt, div#stage div#next span#nextTitle {
   margin: 0 0 0 15px;
 }
+div#stage div#alert {
+  position: absolute;
+    top: -360px;
+    left: 0;
+    right: 0;
+  display: block;
+  height: 360px;
+  background: #d12727;
+  color: #fff;
+  font-family: 'LeagueGothicRegular';
+  font-size: 60px;
+  z-index: 90;
+  
+}
 div#stage div#overlay {
   position: fixed;
   top: 0;

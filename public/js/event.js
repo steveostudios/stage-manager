@@ -15,6 +15,7 @@ $(document).ready(function () {
       }
     })
   })
+  $(".datepicker").datepicker()
   /* !--- Hidable icons --- */
   // hide on init
   $('.hidable').hide()
@@ -211,7 +212,7 @@ $(document).ready(function () {
       var trt = data.rowTrt
       $('li#'+data.rowId+' div.segment').addClass('highlight')
       $('#sidebar #preview #currentTitle').text(title)
-      tick()
+      //tick()
     } else {
       current = null
       currentStart = null
@@ -491,6 +492,42 @@ $(document).ready(function () {
     if(current != null){
       var now = new Date()
       var start = new Date(currentStart)
+      // difference
+      var diff = now.getTime() - start.getTime()
+      // from total
+      var tempTrt = currentTrt.split(':')
+      var totalTrt = parseInt(tempTrt[0]*60)+parseInt(tempTrt[1])
+      var total = totalTrt - (diff/1000)
+      // format it
+      var hour = null
+      var min = null
+      var sec = null
+      if(total == 0) {
+        min = 0
+        sec = 0
+        $('#sidebar #preview #currentTimer').removeClass('inTheRed')
+      } else if(total > 0) {
+        min = Math.abs(Math.floor(total/60))
+        sec = Math.abs(Math.floor(total%60))
+        $('#sidebar #preview #currentTimer').removeClass('inTheRed')
+      } else if(total < 0) {
+        min = Math.abs(Math.floor((total/60)+1))
+        if (min >= 60) {
+          hour = Math.abs(Math.floor(total/3600)+1)
+          min = min - (60*hour)
+          hour = hour + ':'
+        }
+        
+        sec = Math.abs(Math.floor((total+1)%60))
+        if (sec == 60) {sec = 0}
+        $('#sidebar #preview #currentTimer').addClass('inTheRed')
+      }
+      if (hour == null) {hour = ''}
+      if(sec<10){sec='0'+sec}
+      $('#sidebar #preview #currentTimer').text(hour + '' + min + ':' + sec)
+     /*
+ var now = new Date()
+      var start = new Date(currentStart)
       // Difference
       var minDiff = now.getMinutes() - start.getMinutes()
       var secDiff = now.getSeconds() - start.getSeconds()
@@ -516,10 +553,11 @@ $(document).ready(function () {
       }
       if(sec<10){sec='0'+sec}
       $('#sidebar #preview #currentTimer').text(min + ':' + sec)
+*/
     } else {
       $('#sidebar #preview #currentTimer').text('')
     }
-    setTimeout(tick, 1000)
+    setTimeout(tick, 500)
   }
   
   /* !--- Switch Modes --- */

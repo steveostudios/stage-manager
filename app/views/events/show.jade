@@ -11,7 +11,7 @@ block main
     a(href='#')#eventEdit
       img(src='../img/ico_editRow.png', width='17', height='17').hidable
   #event_edit
-    input(type='text', placeholder='date', value=event.date)#input_eventDate
+    input(type='text', placeholder='date', value=event.date)#input_eventDate.datepicker
     input(type='text', placeholder='series', value=event.series)#input_eventSeries
     input(type='text', placeholder='title', value=event.title)#input_eventTitle
     a(href='#')#eventSave S
@@ -44,8 +44,10 @@ block content
       li.alertFav It's time to wrap it up! 
     #alertInput
       input#inp_alert(type='text')
-      a#btn_alert(href='#') Show
-      a#btn_alertFav(href='#') Fav
+      p
+        a#btn_alert(href='#') Show
+      p
+        a#btn_alertFav(href='#') Fav
   #call_pane
     p CALL
     
@@ -57,7 +59,11 @@ block content
     #alerts
       h1 Alerts
       ul#alertList
-    #calls
+        if event.currentAlert != ''
+          li.alert
+            =event.currentAlert
+            a(href='#').close n
+      #calls
       h1 Calls
   footer
     a#btn_clockPrevious(href='#')

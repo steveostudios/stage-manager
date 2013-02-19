@@ -90,4 +90,8 @@ io.sockets.on('connection', function (socket) {
     events.saveCurrent(data)
     io.sockets.in(room).emit('updateCurrent', data)
   });
+  socket.on('alert', function (data) {
+    events.alert(data)
+    io.sockets.in(room).emit('alertUpdate', data)
+  });
 });

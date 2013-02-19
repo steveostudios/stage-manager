@@ -10,7 +10,8 @@ block content
       //= event.segments
     #next NEXT
       span#nextTrt  
-      span#nextTitle  
+      span#nextTitle
+    #alert  
     #overlay
     ul#settings
       a(href='#')#settings DISPLAY VIEWS
@@ -30,6 +31,7 @@ block content
     var room = '#{event._id}'
     var current = '#{event.current}'
     var currentStart = '#{event.currentStart}'
+    var alert = '#{event.currentAlert}'
   script(type='text/javascript', src='/js/stage.js')
   
     

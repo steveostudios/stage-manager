@@ -130,3 +130,14 @@ exports.saveCurrent = function (data, res) {
     })
   }) 
 }
+
+// Alert
+exports.alert = function (data, res) {
+  Event.findOne({ _id: data.eventId }, function(err, event) {
+    if (err) { return next(err); }
+    event.currentAlert = data.alertText;
+    event.save(function(err) {
+      if (err) { return next(err); }
+    })
+  }) 
+}

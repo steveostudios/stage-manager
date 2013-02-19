@@ -11,7 +11,8 @@ var EventSchema = new Schema({
   , createdAt: {type : Date, default : Date.now}
   , current: {type : String, default : '', trim : true}
   , currentStart: {type : Date, default : null}
-  , date:     {type : String, default : '', trim: true}
+  , currentAlert: {type : String, default: '', trim : true}
+  , date:     {type : String, default : '', trim : true}
 	, program:  {type : String, default : '', trim : true}
   , segments: [{type : Schema.ObjectId, ref : 'Segment'}]
   , series:   {type : String, default : '', trim : true}

@@ -183,6 +183,25 @@ $(document).ready(function () {
   }
   getCurrentTime()
   
+  /* !--- Alerts --- */
+  if (alert != '') {
+    $('div#stage div#alert').text(alert)
+    $('div#stage div#alert').css('top','0')
+  }
+  socket.on('alertUpdate', function(data) {
+    if(data.alertText == '') {
+      $('div#stage div#alert').animate({
+        top: '-360px'
+      }, 1000, function() {
+        $('div#stage div#alert').text(data.alertText)
+      })
+    } else {
+      $('div#stage div#alert').text(data.alertText)
+      $('div#stage div#alert').animate({
+        top: '0'
+      })
+    }    
+  })
   /* !--- Settings Display Switcher --- */
   $(document).on('click', 'a#settings', function(e) {
     e.preventDefault()
