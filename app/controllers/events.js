@@ -74,7 +74,9 @@ exports.show = function(req, res){
     title: req.event.title,
     event: req.event,
     segments: req.segments,
-    comments: req.comments
+    comments: req.comments,
+    alertFavs: req.user.alertFavs,
+    username: req.user.username
   })
 }
 
