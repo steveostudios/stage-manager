@@ -97,13 +97,12 @@ io.sockets.on('connection', function (socket) {
     io.sockets.in(room).emit('alertUpdate', data)
   });
   socket.on('alertFavAdd', function (data) {
-    console.log('Add AlertFav: ' + data.alertText )
     users.alertFavAdd(data)
     io.sockets.in(room).emit('alertFavAdded', data)
   });
   socket.on('alertFavRemove', function (data) {
-    //events.alert(data)
-    //io.sockets.in(room).emit('alertUpdate', data)
+    users.alertFavUpdate(data)
+    io.sockets.in(room).emit('alertFavUpdate', data)
   });
   socket.on('alertFavReorder', function (data) {
     //events.alert(data)

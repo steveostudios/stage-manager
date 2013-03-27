@@ -31,11 +31,11 @@ block content
       a#btn_addHeader(href='#')
         img(src='../img/btn_addHeader.png', width='46', height='26')
       #pup_addHeader
-        a#btn_addHeader_blue(href="#")
+        a#btn_addHeader_blue(href='#')
           img(src='../img/ico_headerBlue.png', width='18', height='19')
-        a#btn_addHeader_green(href="#")
+        a#btn_addHeader_green(href='#')
           img(src='../img/ico_headerGreen.png', width='18', height='19')
-        a#btn_addHeader_red(href="#")
+        a#btn_addHeader_red(href='#')
           img(src='../img/ico_headerRed.png', width='18', height='19')
   #alert_pane
     ul#alertFavs
@@ -43,6 +43,9 @@ block content
       each alertFav in alertFavs
         li.alertFav 
           =alertFav
+          .options
+            a.alertFavRemove(href='#')
+              img(src='../img/ico_removeRow.png', width='17', height='17')
     #alertInput
       input#inp_alert(type='text')
       p

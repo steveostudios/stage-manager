@@ -38,20 +38,14 @@ var validatePresenceOf = function (value) {
 // the below 4 validations only apply if you are signing up traditionally
 
 UserSchema.path('org').validate(function (org) {
-  // if you are authenticating by any of the oauth strategies, don't validate
-  /* if (authTypes.indexOf(this.provider) !== -1) return true */
   return org.length
 }, 'Name cannot be blank')
 
 UserSchema.path('email').validate(function (email) {
-  // if you are authenticating by any of the oauth strategies, don't validate
-  /* if (authTypes.indexOf(this.provider) !== -1) return true */
   return email.length
 }, 'Email cannot be blank')
 
 UserSchema.path('username').validate(function (username) {
-  // if you are authenticating by any of the oauth strategies, don't validate
-  /* if (authTypes.indexOf(this.provider) !== -1) return true */
   return username.length
 }, 'Username cannot be blank')
 

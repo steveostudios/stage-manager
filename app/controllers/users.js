@@ -81,3 +81,13 @@ exports.alertFavAdd = function (req, res) {
     user.save(function (err) {})
   })
 }
+// update alertFav
+exports.alertFavUpdate = function (req, res) {
+  User.findOne({ _id: req.userId }, function(err, user) {
+    user.alertFavs = []
+    for (var i = 0; i < req.alertFavs.length; i++) {
+      user.alertFavs.push(req.alertFavs[i]);
+    }
+    user.save(function (err) {})
+  })
+}
