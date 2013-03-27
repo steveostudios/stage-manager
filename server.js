@@ -100,9 +100,9 @@ io.sockets.on('connection', function (socket) {
     users.alertFavAdd(data)
     io.sockets.in(room).emit('alertFavAdded', data)
   });
-  socket.on('alertFavRemove', function (data) {
+  socket.on('alertFavUpdate', function (data) {
     users.alertFavUpdate(data)
-    io.sockets.in(room).emit('alertFavUpdate', data)
+    io.sockets.in(room).emit('alertFavUpdated', data)
   });
   socket.on('alertFavReorder', function (data) {
     //events.alert(data)

@@ -36,10 +36,10 @@ $(document).ready(function () {
     $('#alert_pane ul#alertFavs li').each(function(i) {
       alertFavsList.push($(this).text())
     })
-    socket.emit('alertFavRemove', {eventId: room, alertFavs: alertFavsList, userId: userId})
+    socket.emit('alertFavUpdate', {eventId: room, alertFavs: alertFavsList, userId: userId})
   })
   
-  socket.on('alertFavUpdate', function(data) {
+  socket.on('alertFavUpdated', function(data) {
     $('#alert_pane ul#alertFavs').html('')
     for (var i = 0; i < data.alertFavs.length; i++) {
       $('ul#alertFavs').append('<li class="alertFav"><div class="alertFavText">' + data.alertFavs[i] + '</div><div class="options">' + alertFavOptions + '</div></li>')
@@ -56,7 +56,7 @@ $(document).ready(function () {
     $('#alert_pane ul#alertFavs li').each(function(i) {
       alertFavsList.push($(this).find('.alertFavText').text())
     })
-    socket.emit('alertFavRemove', {eventId: room, alertFavs: alertFavsList, userId: userId})
+    socket.emit('alertFavUpdate', {eventId: room, alertFavs: alertFavsList, userId: userId})
   })
     
   $(document).on('click', '#alerts ul#alertList li.alert a.close ', function(e) {
@@ -98,7 +98,7 @@ $(document).ready(function () {
     $('#alert_pane ul#alertFavs li').each(function(i) {
       alertFavsList.push($(this).find('.alertFavText').text())
     })
-    socket.emit('alertFavRemove', {eventId: room, alertFavs: alertFavsList, userId: userId})
+    socket.emit('alertFavUpdate', {eventId: room, alertFavs: alertFavsList, userId: userId})
   })
   
   $(document).on('click', '#alert_pane ul#alertFavs li .options a.alertFavCancel', function(e) {
