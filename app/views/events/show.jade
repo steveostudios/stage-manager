@@ -41,19 +41,21 @@ block content
     ul#alertFavs
       - var alertFavs =req.user.alertFavs
       each alertFav in alertFavs
-        li.alertFav 
-          =alertFav
+        li.alertFav
+          .alertFavText
+            =alertFav
           .options
             a.alertFavRemove(href='#')
               img(src='../img/ico_removeRow.png', width='17', height='17')
             span.handle
               img(src='../img/ico_moveRow.png', width='17', height='17')
     #alertInput
-      input#inp_alert(type='text')
+      h2 Alert Message
+      textarea#inp_alert(type='text')
       p
-        a#btn_alert(href='#') Show
+        a#btn_alert.btn_grey(href='#') Show
       p
-        a#btn_alertFav(href='#') Fav
+        a#btn_alertFav.btn_grey(href='#') Fav
   #call_pane
     p CALL
 
@@ -72,16 +74,16 @@ block content
       #calls
       h1 Calls
   footer
-    a#btn_clockPrevious(href='#')
+    a#btn_clockPrevious.btn_grey(href='#')
       img(src='../img/btn_prev2.png')
-    a#btn_clockNext(href='#')
+    a#btn_clockNext.btn_grey(href='#')
       img(src='../img/btn_next2.png')
-    a#btn_clockReset(href='#')
+    a#btn_clockReset.btn_grey(href='#')
       img(src='../img/btn_reset2.png')
-    a#btn_clockClear(href='#') Clear
-    a#btn_mode_list.mode_selected(href='#') List
-    a#btn_mode_alert(href='#') Alert
-    a#btn_mode_call(href='#') Call
+    a#btn_clockClear.btn_grey(href='#') Clear
+    a#btn_mode_list.btn_grey.mode_selected(href='#') List
+    a#btn_mode_alert.btn_grey(href='#') Alert
+    a#btn_mode_call.btn_grey(href='#') Call
   #pup_alert
     h1 Delete Segment
     p This action cannot be undone?

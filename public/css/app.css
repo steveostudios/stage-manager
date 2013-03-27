@@ -35,7 +35,9 @@ body {
   color: white;
   font-family: sans-serif;
 }
-
+a:hover {
+  opacity: 0.9;
+}
 
 
 /* !--- Header --- */
@@ -61,6 +63,28 @@ ul.nav.pull-right {
 ul.nav li {
   display: inline-block;
   margin: 0 25px 0 0;
+}
+
+/* !--- Buttons --- */
+.btn_grey {
+  display: block;
+	float: left;
+	border: 1px solid #2b2b2b; 
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0, #8f9192), color-stop(1, #626060) );
+	box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
+	color: #333;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-shadow: 0px 1px 0px rgba(255,255,255,0.15);
+	font-weight: bold;
+	font-size: 14px;
+	font-family: 'PT Sans', sans-serif;
+  padding: 3px 0;
+	width: 52px;
+	height: 18px;
+	text-decoration: none;
+  border-radius:5px;
 }
 
 /* !--- Events --- */
@@ -603,8 +627,8 @@ div#alert_pane ul#alertFavs {
   position: absolute;
     top:0;
     bottom: 0;
-    left: 0;
-  width: 50%;
+    right: 0;
+    left: 300px;
   overflow-y: scroll;
   margin: 0;
   padding: 0;
@@ -612,11 +636,11 @@ div#alert_pane ul#alertFavs {
   list-style: none;
   font-weight: bold;
   font-size: 24px;
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'PT Sans', sans-serif; 
 }
 div#alert_pane ul#alertFavs li {
   overflow: hidden;
-  height: 52px;
+  height: 42px;
 }
 div#alert_pane ul#alertFavs li:nth-child(odd) {
 	border-bottom: 1px solid #d2d2d2;
@@ -629,13 +653,74 @@ div#alert_pane ul#alertFavs li:nth-child(even) {
 div#alert_pane ul#alertFavs li:last-child {
   box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.5);
 }
+div#alert_pane ul#alertFavs li .alertFavText {
+  position: absolute;
+    left: 0;
+    right: 115px;
+    height: 34px;
+  padding: 8px 15px 0 15px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+div#alert_pane ul#alertFavs li .options {
+  display: inline-block;
+  float: left;
+  position: absolute;
+    right: 0;
+  height: 29px;
+  margin: 0;
+  padding: 13px 15px 0 0;
+  width: 100px;
+  border-left: 1px solid #c7c7c7;
+  text-align: right;
+  opacity: 0.5;
+}
+div#alert_pane ul#alertFavs li .options a {
+  display: inline-block;
+  margin: 0 15px 0 0;
+  padding: 0 0 0 0;
+}
 div#alert_pane div#alertInput {
   display: block;
   position: absolute;
     top:0;
     bottom: 0;
-    right: 0;
-  width: 50%;
+    left: 0;
+  width: 300px;
+  background: #282828;
+  box-shadow: 10px 0px 20px -10px rgba(0,0,0,0.8);
+}
+div#alert_pane div#alertInput h2 {
+  position: absolute;
+    top: 35px;
+    left: 20px;
+    right: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #a1a1a1;
+}
+div#alert_pane div#alertInput textarea#inp_alert {
+  position: absolute;
+    top: 80px;
+    left: 15px;
+    right: 15px;
+  margin: 0px 5px 0 5px;
+  padding: 20px 25px;
+  height: 170px;
+  background: #373737;
+  border: none;
+  box-shadow: inset 0px 0px 10px 2px rgba(0,0,0,0.3);
+  font-size: 16px;
+  color: #d0d0d0;
+  display: block;
+  resize: none; 
+}
+div#alert_pane div#alertInput .btn_grey {
+  position: relative;
+    top: 250px;
+    left: 20px;
+    margin: 0 8px 0 0;
 }
 
 /* !--- Call Pane --- */
@@ -777,30 +862,11 @@ footer {
   border-top: 1px solid #4d4d4d;
   background: -webkit-linear-gradient(#3d3d3d 0%, #313131 100%);
 }
-a:hover {
-  opacity: 0.9;
-}
-a#btn_clockPrevious, a#btn_clockNext, a#btn_clockReset, a#btn_clockClear, a#btn_mode_list, a#btn_mode_alert, a#btn_mode_call {
-	display: block;
-	float: left;
-	border: 1px solid #2b2b2b; 
-	background: -webkit-gradient( linear, left top, left bottom, color-stop(0, #8f9192), color-stop(1, #626060) );
-	
-	box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.15);
-	color: #333;
-	text-align: center;
-	text-decoration: none;
-	text-transform: uppercase;
-	text-shadow: 0px 1px 0px rgba(255,255,255,0.15);
-	font-weight: bold;
-	font-size: 14px;
-	font-family: 'PT Sans', sans-serif;
-}
 a#btn_clockPrevious, a#btn_clockNext {
   position: absolute;
     top: 18px;
-	width: 30px;
-	height: 30px;
+  width: 30px;
+	height: 24px;
 	-webkit-border-radius:30px;
 }
 a#btn_clockPrevious {
@@ -811,7 +877,7 @@ a#btn_clockNext {
 }
 a#btn_clockPrevious img, a#btn_clockNext img {
 	position: relative;
-	  top: 11px;
+	  top: 8px;
 	width: 13px;
 	height: 10px;
 }
@@ -819,14 +885,12 @@ a#btn_clockReset {
 	position: absolute;
     top: 21px;
     left: 94px;
-	display:inline-block;
 	width: 36px;
-	height: 24px;
 	-webkit-border-radius:5px;
 }
 a#btn_clockReset img {
 	position: relative;
-	  top: 4px;
+	  top: 1px;
 	width: 22px;
 	height: 19px;
 }
@@ -834,21 +898,11 @@ a#btn_clockClear {
   position: absolute;
     top: 21px;
     left: 144px;
-	display: block;
-  padding: 3px 0;
-	width: 52px;
-	height: 18px;
-  -webkit-border-radius:5px;
-	text-decoration: none;
 }
 a#btn_mode_list, a#btn_mode_alert, a#btn_mode_call {
   position: absolute;
     top: 21px;
-	display: block;
-  padding: 3px 0;
 	width: 52px;
-	height: 18px;
-	text-decoration: none;
 }
 a#btn_mode_list {
     left: 254px;
@@ -856,6 +910,7 @@ a#btn_mode_list {
 }
 a#btn_mode_alert {
     left: 307px;
+  border-radius:0;
 }
 a#btn_mode_call {
     left: 360px;

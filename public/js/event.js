@@ -386,7 +386,8 @@ $(document).ready(function () {
   /* !--- Reorder Segments and Headers --- */
   // jquery sortable
   $('div#segment_pane ul').sortable({
-    handle: '.handle'
+    handle: '.handle',
+    axis: "y"
   })
   // on sort-stop
   $('div#segment_pane ul').on( "sortstop", function( event, ui ) {
