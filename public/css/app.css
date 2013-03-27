@@ -656,12 +656,25 @@ div#alert_pane ul#alertFavs li:last-child {
 div#alert_pane ul#alertFavs li .alertFavText {
   position: absolute;
     left: 0;
-    right: 115px;
-    height: 34px;
+    right: 100px;
+  height: 34px;
   padding: 8px 15px 0 15px;
   overflow-x: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+div#alert_pane ul#alertFavs li .alertFavText input {
+  position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  padding: 0 15px 0 15px;
+  height: 42px;
+  border: none;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'PT Sans', sans-serif;
+  background: rgba(255, 255, 255, 0.75);
 }
 div#alert_pane ul#alertFavs li .options {
   display: inline-block;
@@ -670,8 +683,8 @@ div#alert_pane ul#alertFavs li .options {
     right: 0;
   height: 29px;
   margin: 0;
-  padding: 13px 15px 0 0;
-  width: 100px;
+  padding: 13px 10px 0 0;
+  width: 90px;
   border-left: 1px solid #c7c7c7;
   text-align: right;
   opacity: 0.5;
@@ -680,6 +693,7 @@ div#alert_pane ul#alertFavs li .options a {
   display: inline-block;
   margin: 0 15px 0 0;
   padding: 0 0 0 0;
+  text-decoration: none;
 }
 div#alert_pane div#alertInput {
   display: block;
@@ -1034,12 +1048,13 @@ div#stage div#alert {
     top: -360px;
     left: 0;
     right: 0;
+  padding: 60px 40px 60px 40px;
   display: block;
-  height: 360px;
+  min-height: 200px;
   background: #d12727;
   color: #fff;
   font-family: 'LeagueGothicRegular';
-  font-size: 60px;
+  font-size: 80px;
   z-index: 90;
   
 }
