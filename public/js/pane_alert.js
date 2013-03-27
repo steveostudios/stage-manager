@@ -15,8 +15,12 @@ $(document).ready(function () {
     var alertText = $('#alert_pane input#inp_alert').val()
     if (alertText != '') {
       $('#alert_pane input#inp_alert').val('')    
-      $('#alerts ul#alertList').append('<li class="alert">' + alertText + '<a href="#" class="close">n</a></li>')
+      //$('#alerts ul#alertList').append('<li class="alert">' + alertText + '<a href="#" class="close">n</a></li>')
+      socket.emit('alertFavAdd', {eventId: room, alertText: alertText, userId: userId})
     }
+  })
+  socket.on('alertFavAdded', function(data) {
+    $('ul#alertFavs').append('<li class="alertFav">' + data.alertText + '</li>')
   })
   $(document).on('click', '#alerts ul#alertList li.alert a.close ', function(e) {
     e.preventDefault()

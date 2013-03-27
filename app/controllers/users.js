@@ -74,3 +74,10 @@ exports.edit = function (req, res) {
     })
   })
 }
+// add alertFav
+exports.alertFavAdd = function (req, res) {
+  User.findOne({ _id: req.userId }, function(err, user) {
+    user.alertFavs.push(req.alertText)
+    user.save(function (err) {})
+  })
+}

@@ -45,6 +45,7 @@ io.sockets.on('connection', function (socket) {
   var room = ''
   var events = require('./app/controllers/events')
   var segments = require('./app/controllers/segments')
+  var users = require('./app/controllers/users')
   
   socket.on('setRoom', function (data) {
     room = data.room
@@ -75,6 +76,7 @@ io.sockets.on('connection', function (socket) {
     data.start = start
     events.saveCurrent(data)
     segments.saveCurrent(data)
+    console.log("data: " + data.rowId)
     io.sockets.in(room).emit('updateCurrent', data)
   });
   socket.on('segmentRemove', function (data) {
@@ -93,5 +95,18 @@ io.sockets.on('connection', function (socket) {
   socket.on('alert', function (data) {
     events.alert(data)
     io.sockets.in(room).emit('alertUpdate', data)
+  });
+  socket.on('alertFavAdd', function (data) {
+    console.log('Add AlertFav: ' + data.alertText )
+    users.alertFavAdd(data)
+    io.sockets.in(room).emit('alertFavAdded', data)
+  });
+  socket.on('alertFavRemove', function (data) {
+    //events.alert(data)
+    //io.sockets.in(room).emit('alertUpdate', data)
+  });
+  socket.on('alertFavReorder', function (data) {
+    //events.alert(data)
+    //io.sockets.in(room).emit('alertUpdate', data)
   });
 });
