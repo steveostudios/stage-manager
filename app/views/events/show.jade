@@ -45,11 +45,11 @@ block content
           .alertFavText
             =alertFav
           .options
-            a.alertFavEdit(href='#')
+            a.alertFavEdit.hidable(href='#')
               img(src='../img/ico_editRow.png', width='17', height='17')
-            a.alertFavRemove(href='#')
+            a.alertFavRemove.hidable(href='#')
               img(src='../img/ico_removeRow.png', width='17', height='17')
-            span.handle
+            span.handle.hidable
               img(src='../img/ico_moveRow.png', width='17', height='17')
     #alertInput
       h2 Alert Message

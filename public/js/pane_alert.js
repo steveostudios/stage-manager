@@ -1,7 +1,16 @@
 $(document).ready(function () {
   
-  var alertFavOptions = '<a href="#" class="alertFavEdit"><img src="../img/ico_editRow.png" width="17" height="17" /></a><a href="#" class="alertFavRemove"><img src="../img/ico_removeRow.png" width="17" height="17" /></a><span class="handle"><img src="../img/ico_moveRow.png" width="17" height="17" /></span>'
+  var alertFavOptions = '<a href="#" class="alertFavEdit hidable"><img src="../img/ico_editRow.png" width="17" height="17" /></a><a href="#" class="alertFavRemove hidable"><img src="../img/ico_removeRow.png" width="17" height="17" /></a><span class="handle hidable"><img src="../img/ico_moveRow.png" width="17" height="17" /></span>'
   var alertFavEditOptions = '<a href="#" class="alertFavSave">S</a><a href="#" class="alertFavCancel">C</a>'
+
+  // on segment mouseover
+  $(document).on('mouseover', 'li.alertFav', function(e) {
+    $(this).find('.hidable').show()
+  })
+  // on segment mouseout
+  $(document).on('mouseout', 'li.alertFav', function(e) {
+    $('.hidable').hide()
+  })
 
 
   $(document).on('click', '#alert_pane a#btn_alert', function(e) {

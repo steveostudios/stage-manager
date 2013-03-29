@@ -104,8 +104,4 @@ io.sockets.on('connection', function (socket) {
     users.alertFavUpdate(data)
     io.sockets.in(room).emit('alertFavUpdated', data)
   });
-  socket.on('alertFavReorder', function (data) {
-    //events.alert(data)
-    //io.sockets.in(room).emit('alertUpdate', data)
-  });
 });
