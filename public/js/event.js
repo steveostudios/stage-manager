@@ -1,5 +1,6 @@
 var socket = io.connect('http://localhost')
 var editing = null
+var editingType = null
 var currentTrt = null
   
 $(document).ready(function () {
@@ -39,29 +40,44 @@ $(document).ready(function () {
   // on edit click
   $(document).on('click', '#eventEdit', function(e) {
     e.preventDefault()
-    $('#event').hide()
-    $('#event_edit').show()
+    if(editing == null){
+      editing = 'event'
+      editingType = 'event'
+      $('#event').hide()
+      $('#event_edit').show()
+    }
   })
-  // on save
-  $(document).on('click', '#eventSave', function(e) {
-    e.preventDefault()
+  function saveEvent() {
     $('#event_edit').hide()
     var date = $('#input_eventDate').val()
     var series = $('#input_eventSeries').val()
     var title = $('#input_eventTitle').val()
     $('#event').show()
+    editing = null
+    editingType = null
     socket.emit('eventSave', {eventId: room, eventDate: date, eventSeries: series, eventTitle: title})
-  })
-  // on cancel
-  $(document).on('click', '#eventCancel', function(e) {
-    e.preventDefault()
+  }
+  function cancelEvent() {
     $('#event_edit').hide()
     $('#input_eventDate').val($('#eventDate').text())
     $('#input_eventSeries').val($('#eventSeries').text())
     $('#input_eventTitle').val($('#eventTitle').text())
     $('#event').show()
+    editing = null
+    editingType = null
+  }
+
+  // on save
+  $(document).on('click', '#eventSave', function(e) {
+    e.preventDefault()
+    saveEvent()
   })
-  // on socket update
+  // on cancel
+  $(document).on('click', '#eventCancel', function(e) {
+    e.preventDefault()
+    cancelEvent()
+  })
+    // on socket update
   socket.on('updateEvent', function(data) {
     $('#eventDate').text(data.eventDate)
     $('#eventSeries').text(data.eventSeries)
@@ -77,6 +93,7 @@ $(document).ready(function () {
   $(document).on('click', '.rowEdit', function(e) {
     e.preventDefault()
     if(editing == null){
+      editingType = 'segment'
       editing = $(this).parent().parent().parent().attr('id')
       $(this).parent().parent().toggle()
       $(this).parent().parent().next().toggle()
@@ -98,6 +115,7 @@ $(document).ready(function () {
   })
   function cancelSegment() {
     var id = editing
+    editingType = null
     editing = null
     if (id != 'new') {
       var type = $('li#' + id + ' .segment .type img').attr('src')
@@ -120,9 +138,11 @@ $(document).ready(function () {
   $(document).keyup(function(e) {
     if (e.keyCode == 13) {
       e.preventDefault()
-      if ($('li#' + editing).hasClass('header')) {
+      if (editingType == 'event') {
+        saveEvent()
+      } else if (editingType == 'header') {
         saveHeader()
-      } else {
+      } else if (editingType == 'segment') {
         saveSegment()
       }
     }
@@ -130,9 +150,11 @@ $(document).ready(function () {
   $(document).keyup(function(e) {
     if (e.keyCode == 27) {
       e.preventDefault()
-      if ($('li#' + editing).hasClass('header')) {
+      if (editingType == 'event') {
+        cancelEvent()
+      } else if (editingType == 'header') {
         cancelHeader()
-      } else {
+      } else if (editingType == 'segment') {
         cancelSegment()
       }
     }
@@ -143,6 +165,7 @@ $(document).ready(function () {
   })
   function saveSegment() {
     var id = editing
+    editingType = null
     editing = null
     var type =  $('li#' + id + ' .segment_edit .type .input_type').val()
     var title = $('li#' + id + ' .segment_edit .title .input_title').val()
@@ -225,6 +248,7 @@ $(document).ready(function () {
   $('#controls a#btn_addSegment').click(function(e) {
     e.preventDefault()
     if(editing == null){
+      editingType = 'segment'
       editing = 'new'
       $('ul#body').append('<li id="new" class="segment"><div class="segment_edit" style="display:block"><div class="type"><input type="hidden" value="mic" class="input_type"/><img src="../img/ico_mic.png" width="35" height="35"/><div class="pup_typeSelector"><img src="../img/ico_slate.png" data-type="slate"/><img src="../img/ico_note.png" data-type="note"/><img src="../img/ico_bible.png" data-type="bible"/><img src="../img/ico_mic.png" data-type="mic" class="selected" /><img src="../img/ico_tv.png" data-type="tv"/><img src="../img/ico_megaphone.png" data-type="megaphone"/></div></div><div class="title withInput"><input type="text" placeholder="Title" class="input_title" /></div><div class="trt withInput"><input type="text" placeholder="Time" class="input_trt" /></div><div class="options"><a href="#" class="rowSave">S</a><a href="#" class="rowCancel">C</a></div></div></li>')
     }
@@ -256,6 +280,7 @@ $(document).ready(function () {
   $(document).on('click', 'a#btn_addHeader_green', function(){newHeader('green')})
   // add header
   function newHeader(clr) {
+    editingType = 'header'
     editing = 'new'
     $('div#pup_addHeader').fadeToggle()
     $('ul#body').append('<li id="new" class="header ' + clr + '"><div class="header_edit" style="display:block"><div class="type"><input type="hidden" class="input_type" value="' + clr + '" /><div class="pup_typeSelector"><img src="../img/ico_headerRed.png", data-type="red" /><img src="../img/ico_headerGreen.png", data-type="green" /><img src="../img/ico_headerBlue.png", data-type="blue" /></div></div><div class="title withInput"><input type="text" placeholder="Title" class="input_title" /></div><div class="options"><a href="#" class="headerSave">S</a><a href="#" class="headerCancel">C</a></div></div></li>')
@@ -265,6 +290,7 @@ $(document).ready(function () {
   $(document).on('click', '.headerEdit', function(e) {
     e.preventDefault()
     if(editing == null){
+      editingType = 'header'
       editing = $(this).parent().parent().parent().attr('id')
       $(this).parent().parent().toggle()
       $(this).parent().parent().next().toggle()
@@ -294,6 +320,7 @@ $(document).ready(function () {
   // save header (including new header)
   function saveHeader() {
     var id = editing
+    editingType = null
     editing = null
     var type = null
     if ($('li#' +id + ' .header_edit .type .pup_typeSelector img[data-type="red"]').hasClass('selected')) {
@@ -336,6 +363,7 @@ $(document).ready(function () {
   // cancel header
   function cancelHeader() {
     var id = editing
+    editingType = null
     editing = null
     if (id != 'new') {
       var type = $('li#' + id + ' .header_edit .input_type').val()
