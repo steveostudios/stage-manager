@@ -210,7 +210,7 @@ $(document).ready(function () {
   })
   
   /* !--- Current Segment --- */
-  if (current != '') {
+  if (current != null) {
     $('li#'+current+' div.segment').addClass('highlight')
     var title = $('li#'+current+' div.segment div.title').text()
     currentTrt = $('li#'+current+' div.segment div.trt').text()
@@ -441,7 +441,7 @@ $(document).ready(function () {
   /* !--- Next Segment --- */
   $(document).on('click', 'footer a#btn_clockNext', function(e) {
     e.preventDefault()
-    if (current != '') {
+    if (current != null) {
       var currentOrder = parseInt($('li#'+current).attr('rel'))
       var total = $('ul#body li').length
       var nextOrder = currentOrder + 1
@@ -463,7 +463,7 @@ $(document).ready(function () {
   /* !--- Previous Segment --- */
   $(document).on('click', 'footer a#btn_clockPrevious', function(e) {
     e.preventDefault()
-    if (current != '') {
+    if (current != null) {
       var currentOrder = parseInt($('li#'+current).attr('rel'))
       var prevOrder = currentOrder - 1
       function findPrev(){
@@ -484,7 +484,7 @@ $(document).ready(function () {
   /* !--- Reset Segment --- */
   $(document).on('click', 'footer a#btn_clockReset', function(e) {
     e.preventDefault()
-    if (current != '') {
+    if (current != null) {
       var currentOrder = $('li#'+current).attr('rel')
       var resetOrder = parseInt(currentOrder)
       var resetId = $('li[rel="'+resetOrder+'"]').attr('id')
