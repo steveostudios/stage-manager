@@ -235,7 +235,8 @@ $(document).ready(function () {
       var trt = data.rowTrt
       $('li#'+data.rowId+' div.segment').addClass('highlight')
       $('#sidebar #preview #currentTitle').text(title)
-      //tick()
+      $('#sidebar #preview #currentTimer').text('test')
+      tick()
     } else {
       current = null
       currentStart = null
