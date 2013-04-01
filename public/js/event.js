@@ -210,13 +210,20 @@ $(document).ready(function () {
   })
   
   /* !--- Current Segment --- */
-  if (current != null) {
+  if (current != '') {
     $('li#'+current+' div.segment').addClass('highlight')
     var title = $('li#'+current+' div.segment div.title').text()
     currentTrt = $('li#'+current+' div.segment div.trt').text()
     $('#sidebar #preview #currentTitle').text(title)
     $('#sidebar #preview #currentTimer').text(currentTrt)
     tick() 
+  } else {
+    current = null
+    currentStart = null
+    currentTrt = null
+    $('#sidebar #preview #currentTitle').text('')
+    $('#sidebar #preview #currentTimer').text('')
+    tick()
   }
   $(document).on('click', 'div#segment_pane ul#body li.segment div.segment div.title', function(e) {
     e.preventDefault()
@@ -235,8 +242,7 @@ $(document).ready(function () {
       var trt = data.rowTrt
       $('li#'+data.rowId+' div.segment').addClass('highlight')
       $('#sidebar #preview #currentTitle').text(title)
-      $('#sidebar #preview #currentTimer').text('test')
-      tick()
+      $('#sidebar #preview #currentTimer').text(trt)
     } else {
       current = null
       currentStart = null
@@ -555,35 +561,7 @@ $(document).ready(function () {
       if (hour == null) {hour = ''}
       if(sec<10){sec='0'+sec}
       $('#sidebar #preview #currentTimer').text(hour + '' + min + ':' + sec)
-     /*
- var now = new Date()
-      var start = new Date(currentStart)
-      // Difference
-      var minDiff = now.getMinutes() - start.getMinutes()
-      var secDiff = now.getSeconds() - start.getSeconds()
-      var totalDiff = (minDiff*60)+(secDiff)
-      // from Total
-      var tempTrt = currentTrt.split(':')
-      var totalTrt = parseInt(tempTrt[0]*60)+parseInt(tempTrt[1])
-      var min = null
-      var sec = null
-      var total = totalTrt - totalDiff
-      if(total == 0) {
-        min = 0
-        sec = 0
-        $('#sidebar #preview #currentTimer').removeClass('inTheRed')
-      } else if(total > 0) {
-        min = Math.abs(Math.floor(total/60))
-        sec = Math.abs(Math.floor(total%60))
-        $('#sidebar #preview #currentTimer').removeClass('inTheRed')
-      } else if(total < 0) {
-        min = Math.abs(Math.floor((total/60)+1))
-        sec = Math.abs(Math.floor((total+1)%60))
-        $('#sidebar #preview #currentTimer').addClass('inTheRed')
-      }
-      if(sec<10){sec='0'+sec}
-      $('#sidebar #preview #currentTimer').text(min + ':' + sec)
-*/
+
     } else {
       $('#sidebar #preview #currentTimer').text('')
     }

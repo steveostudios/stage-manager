@@ -89,6 +89,7 @@ io.sockets.on('connection', function (socket) {
   });
   socket.on('clockClear', function (data) {
     data.rowId = ''
+    data.start = ''
     events.saveCurrent(data)
     io.sockets.in(room).emit('updateCurrent', data)
   });
