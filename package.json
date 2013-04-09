@@ -22,6 +22,7 @@
     , "mongoose": "latest"
     , "connect-mongodb": "latest"
     , "passport": "latest"
+    , "passport-accesskey": "latest"
     , "passport-local": "latest"
     , "underscore": "latest"
     , "gzippo": "latest"
