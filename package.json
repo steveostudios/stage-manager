@@ -9,7 +9,7 @@
     , { "name": "Dave Harris", "email": "dave@digitalstache.com"}
   ]
   , "engines": {
-        "node": "0.6.18"
+        "node": "0.6.19"
       , "npm": "1.1.9"
     }
   , "scripts": {
