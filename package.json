@@ -9,8 +9,8 @@
     , { "name": "Dave Harris", "email": "dave@digitalstache.com"}
   ]
   , "engines": {
-        "node": "0.6.19"
-      , "npm": "1.1.9"
+        "node": "latest"
+      , "npm": "latest"
     }
   , "scripts": {
       "start": "./node_modules/.bin/nodemon server.js"
@@ -19,7 +19,7 @@
       "express": "latest"
     , "express-namespace": "latest"
     , "jade": "latest"
-    , "mongoose": "3.6.4"
+    , "mongoose": "latest"
     , "connect-mongodb": "latest"
     , "passport": "latest"
     , "passport-local": "latest"
