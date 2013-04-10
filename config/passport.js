@@ -35,19 +35,4 @@ exports.boot = function (passport, config) {
       })
     }
   ))
-  
-  // use accesskey strategy
-  passport.use(new AccessKeyStrategy({
-      usernameField: 'accesskey'
-    },
-    function(accesskey, done) {
-      User.findOne({ accesskey: accesskey }, function (err, user) {
-        if (err) { return done(err) }
-        if (!user) {
-          return done(null, false, { message: 'Unknown Access Key' })
-        }
-        return done(null, user)
-      })
-    }
-  ))
 }
