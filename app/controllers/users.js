@@ -34,12 +34,6 @@ exports.session = function (req, res) {
   res.redirect('/events')
 }
 
-// access
-exports.access = function (req, res) {
-  req.session.isAdmin = false
-  res.redirect('/events')
-}
-
 // signup
 exports.create = function (req, res) {
   var user = new User(req.body)

@@ -12,9 +12,8 @@ module.exports = function (app, passport, auth) {
   app.get('/login', users.login)
   app.get('/signup', users.signup)
   app.get('/logout', users.logout)
-  app.post('/users', users.create)
+  //app.post('/users', users.create)
   app.post('/users/session', passport.authenticate('local', {failureRedirect: '/login'}), users.session)
-  //app.post('/users/access', passport.authenticate('accesskey', {failureRedirect: '/login'}), users.access)
   app.get('/users/:userId', users.show)
 
   app.param('userId', function (req, res, next, id) {
