@@ -10,7 +10,7 @@ var express = require('express')
 require('express-namespace')
 
 // Load configurations
-var env = process.env.NODE_ENV || 'production'
+var env = process.env.NODE_ENV || 'development'
   , config = require('./config/config')[env]
   , auth = require('./authorization')
 
