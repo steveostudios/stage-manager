@@ -11,7 +11,6 @@ var UserSchema = new Schema({
   , lname: String
   , email: String
   , username: String
-  //, accesskey: String
   , image: String
   , provider: String
   , hashed_password: String
