@@ -19,6 +19,7 @@
       "express": "latest"
     , "express-namespace": "latest"
     , "jade": "latest"
+    , "mongodb" : "latest"
     , "mongoose": "latest"
     , "connect-mongodb": "latest"
     , "passport": "latest"
