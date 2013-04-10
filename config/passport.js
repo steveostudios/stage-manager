@@ -1,7 +1,6 @@
 
 var mongoose = require('mongoose')
   , LocalStrategy = require('passport-local').Strategy
-  , AccessKeyStrategy = require('passport-accesskey').Strategy
   , User = mongoose.model('User')
 
 exports.boot = function (passport, config) {
