@@ -4,7 +4,7 @@
  */
 
 var express = require('express')
-  , mongoStore = require('connect-mongodb')
+  , mongoStore = require('connect-mongo')
 
 exports.boot = function(app, config, passport){
   bootApplication(app, config, passport)
