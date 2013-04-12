@@ -20,6 +20,7 @@
     , "express-namespace": "latest"
     , "jade": "latest"
     , "mongodb" : "latest"
+    , "connect-mongodb": "latest"
     , "mongoose": "latest"
     , "passport": "latest"
     , "passport-local": "latest"
