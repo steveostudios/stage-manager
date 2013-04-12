@@ -15,6 +15,20 @@ var env = process.env.NODE_ENV || 'production'
   , config = require('./config/config')[env]
   , auth = require('./authorization')
 
+var mongo = require('mongodb');
+
+var mongoUri = process.env.MONGOLAB_URI || 
+  process.env.MONGOHQ_URL || 
+  'mongodb://heroku_app14650257:9n1sp5gvflhsm9e39nu8648tkb@ds053877.mongolab.com:53877/heroku_app14650257'; 
+
+mongo.Db.connect(mongoUri, function (err, db) {
+  db.collection('mydocs', function(er, collection) {
+    collection.insert({'mykey': 'myvalue'}, {safe: true}, function(er,rs) {
+    });
+  });
+});
+
+
 // Bootstrap db connection
 var mongoose = require('mongoose')
   , Schema = mongoose.Schema
@@ -37,7 +51,7 @@ require('./settings').boot(app, config, passport)         // Bootstrap applicati
 require('./config/routes')(app, passport, auth)
 
 // Start the app by listening on <port>
-var port = process.env.PORT || 3000
+var port = process.env.PORT || 5000
 var io = require('socket.io').listen(app.listen(port))
 
 console.log('Express app started on port '+port)

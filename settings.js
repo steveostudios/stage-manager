@@ -71,10 +71,10 @@ function bootApplication(app, config, passport) {
 
     app.use(express.session({
       secret: 'stagemanager',
-      store: new mongoStore({
-        url: config.db,
-        collection : 'sessions'
-      })
+      //store: new mongoStore({
+        //url: config.db,
+        //collection : 'sessions'
+      //})
     }))
 
     app.use(passport.initialize())
