@@ -20,6 +20,7 @@ module.exports = {
   },
 
   storage: {
+/*
     Rackspace: {
       auth: {
         username: "USERNAME",
@@ -34,6 +35,7 @@ module.exports = {
       bucket: 'BUCKET_NAME',
       region: 'REGION'
     }
+*/
   },
 
   debug: true
