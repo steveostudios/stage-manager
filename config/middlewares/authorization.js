@@ -37,3 +37,15 @@ exports.article = {
       next()
     }
 }
+
+/*
+ *  Event authorizations routing middleware
+ */
+exports.event = {
+    hasAuthorization : function (req, res, next) {
+      if (req.event.user.id != req.user.id) {
+        return res.redirect('/events/'+req.event.id)
+      }
+      next()
+    }
+}

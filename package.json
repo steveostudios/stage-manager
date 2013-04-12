@@ -29,5 +29,6 @@
     , "async": "latest"
     , "nodemon": "latest"
     , "view-helpers": "latest"
+    , "socket.io": "latest"
   }
 }

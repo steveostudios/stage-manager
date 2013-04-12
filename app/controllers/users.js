@@ -1,71 +1,46 @@
-
-/**
- * Module dependencies.
- */
-
 var mongoose = require('mongoose')
   , User = mongoose.model('User')
 
 exports.signin = function (req, res) {}
 
-/**
- * Auth callback
- */
-
+// auth callback
 exports.authCallback = function (req, res, next) {
   res.redirect('/')
 }
 
-/**
- * Show login form
- */
-
+// login
 exports.login = function (req, res) {
   res.render('users/login', {
     title: 'Login',
-    message: req.flash('error')
+    message: 'You\'re not logged in'
   })
 }
 
-/**
- * Show sign up form
- */
-
+// sign up
 exports.signup = function (req, res) {
   res.render('users/signup', {
-    title: 'Sign up',
-    user: new User()
+    title: 'Sign up'
   })
 }
 
-/**
- * Logout
- */
-
+// logout
 exports.logout = function (req, res) {
   req.logout()
   res.redirect('/login')
 }
 
-/**
- * Session
- */
-
+// session
 exports.session = function (req, res) {
-  res.redirect('/')
+  req.session.isAdmin = true
+  res.redirect('/events')
 }
 
-/**
- * Create user
- */
-
+// signup
 exports.create = function (req, res) {
   var user = new User(req.body)
   user.provider = 'local'
   user.save(function (err) {
-    if (err) {
-      return res.render('users/signup', { errors: err.errors, user: user })
-    }
+    if (err) return res.render('users/signup', { errors: err.errors })
     req.logIn(user, function(err) {
       if (err) return next(err)
       return res.redirect('/')
@@ -73,29 +48,41 @@ exports.create = function (req, res) {
   })
 }
 
-/**
- *  Show profile
- */
-
+// show profile
 exports.show = function (req, res) {
   var user = req.profile
   res.render('users/show', {
-    title: user.name,
-    user: user
+      title: user.name
+    , user: user
   })
 }
 
-/**
- * Find user by id
- */
-
-exports.user = function (req, res, next, id) {
-  User
-    .findOne({ _id : id })
-    .exec(function (err, user) {
+// edit
+exports.edit = function (req, res) {
+  var user = new User(req.body)
+  user.provider = 'local'
+  user.save(function (err) {
+    if (err) return res.render('users/signup', { errors: err.errors })
+    req.logIn(user, function(err) {
       if (err) return next(err)
-      if (!user) return next(new Error('Failed to load User ' + id))
-      req.profile = user
-      next()
+      return res.redirect('/')
     })
+  })
+}
+// add alertFav
+exports.alertFavAdd = function (req, res) {
+  User.findOne({ _id: req.userId }, function(err, user) {
+    user.alertFavs.push(req.alertText)
+    user.save(function (err) {})
+  })
+}
+// update alertFav
+exports.alertFavUpdate = function (req, res) {
+  User.findOne({ _id: req.userId }, function(err, user) {
+    user.alertFavs = []
+    for (var i = 0; i < req.alertFavs.length; i++) {
+      user.alertFavs.push(req.alertFavs[i]);
+    }
+    user.save(function (err) {})
+  })
 }

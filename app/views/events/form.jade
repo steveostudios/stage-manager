@@ -1,0 +1,43 @@
+extends ../layouts/default
+
+block content
+  - var action = '/events'
+  if (!event.isNew)
+    - action += '/'+event.id
+
+  if (typeof errors !== 'undefined')
+    .fade.in.alert.alert-block.alert-error
+      a.close(data-dismiss="alert", href="javascript:void(0)") x
+      ul
+        each error in errors
+          li= error.type
+
+  form.form-horizontal(method="post", action=action)
+    if (!event.isNew)
+      input(type="hidden", name="_method", value="PUT")
+    
+    .control-group
+      label.control-label(for='date') Date
+      .controls
+        input#date.input-xlarge.datepicker(type='text', name="date", value=event.date, placeholder='Enter Date')
+        
+    .control-group
+      .controls
+        input#title.input-xlarge(type='hidden', name="program", value='Lift')
+
+    .control-group
+      label.control-label(for='series') Series
+      .controls
+        input#title.input-xlarge(type='text', name="series", value=event.series, placeholder='Enter the Series Title')
+
+    .control-group
+      label.control-label(for='title') Title
+      .controls
+        input#title.input-xlarge(type='text', name="title", value=event.title, placeholder='Enter the title')
+    
+    .form-actions
+      button.btn.btn-primary(type='submit') Save changes
+      &nbsp;
+      a.btn(href='/events', title="cancel") Cancel
+  script 
+    $(".datepicker").datepicker()

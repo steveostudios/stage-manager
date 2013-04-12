@@ -21,9 +21,10 @@ head(prefix='og: http://ogp.me/ns# nodejsexpressdemo: http://ogp.me/ns/apps/node
   meta(property='fb:admins', content='1037213945')
 
   //
-     Application styles
-  link(rel='stylesheet', href='/css/bootstrap.min.css')
-  link(rel="stylesheet", href="/css/jquery.tagsinput.css")
+       Application styles
+  link(href='http://fonts.googleapis.com/css?family=PT+Sans:400,700', rel='stylesheet', type='text/css')
+  link(rel='stylesheet', href='/css/app.css')
+  link(rel='stylesheet', href='http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css')
   //
     link(rel='stylesheet', href='/css/bootstrap-responsive.min.css')
   link(rel='stylesheet', href='/css/app.css')
@@ -33,3 +34,7 @@ head(prefix='og: http://ogp.me/ns# nodejsexpressdemo: http://ogp.me/ns/apps/node
      Le HTML5 shim, for IE6-8 support of HTML5 elements
   //if lt IE 9
     script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+    
+  script(type='text/javascript', src='/js/jquery.min.js')
+  script(type='text/javascript', src='/js/jquery-ui-1.9.1.custom.min.js')
+  script(type='text/javascript', src='/socket.io/socket.io.js')

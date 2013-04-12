@@ -1,25 +1,16 @@
-
 header#header
-  .navbar.navbar-fixed-top(role='navigation')
-    .navbar-inner
-      .container
-        a.brand(href='/') StageManager
-        .nav-collapse.collapse
-          ul.nav
-            li
-              a(href='/events', title="event listing") Events
-            li
-              a(href='/articles', title="article listing") Articles
-            li
-              a(href="/articles/new", title="new article") New
-            li
-              a(href="https://github.com/madhums/nodejs-express-mongoose-demo", title="fork me on github") FORK ME ON GITHUB
-          ul.nav.pull-right
-            if (req.isAuthenticated())
-              li
-                a(href="/users/"+req.user.id, title="Profile") Profile
-              li
-                a(href="/logout", title="logout") Logout
-            else
-              li
-                a(href="/login", title="Login") Login
+  ul.nav
+    li 
+      a(href='/events') StageManager
+  ul.nav.pull-right
+    if (req.isAuthenticated())
+      li
+        if (req.session.isAdmin)
+          a(href="/users/"+req.user.id, title="Profile")= req.user.username
+        else
+          = req.user.username
+      li
+        a(href="/logout", title="logout") Logout
+    else
+      li
+        a(href="/login", title="Login") Login

@@ -1,5 +1,8 @@
 
-var async = require('async')
+var mongoose = require('mongoose')
+  , Event = mongoose.model('Event')
+  , User = mongoose.model('User')
+  , async = require('async')
 
 module.exports = function (app, passport, auth) {
 
@@ -20,7 +23,16 @@ module.exports = function (app, passport, auth) {
   app.get('/auth/google', passport.authenticate('google', { failureRedirect: '/login', scope: 'https://www.google.com/m8/feeds' }), users.signin)
   app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login', scope: 'https://www.google.com/m8/feeds' }), users.authCallback)
 
-  app.param('userId', users.user)
+  app.param('userId', function (req, res, next, id) {
+    User
+      .findOne({ _id : id })
+      .exec(function (err, user) {
+        if (err) return next(err)
+        if (!user) return next(new Error('Failed to load User ' + id))
+        req.profile = user
+        next()
+      })
+  })
 
   // article routes
   var articles = require('../app/controllers/articles')
@@ -31,11 +43,52 @@ module.exports = function (app, passport, auth) {
   app.get('/articles/:id/edit', auth.requiresLogin, auth.article.hasAuthorization, articles.edit)
   app.put('/articles/:id', auth.requiresLogin, auth.article.hasAuthorization, articles.update)
   app.del('/articles/:id', auth.requiresLogin, auth.article.hasAuthorization, articles.destroy)
+  
+  // event routes
+  var events = require('../app/controllers/events')
+  app.get('/events', auth.requiresLogin, events.index)
+  app.get('/events/new', auth.requiresLogin, events.new)
+  app.post('/events', auth.requiresLogin, events.create)
+  app.get('/events/:id', auth.requiresLogin, events.show)
+  app.get('/stage/:id', events.stage)
+  app.get('/events/:id/edit', auth.requiresLogin, auth.event.hasAuthorization, events.edit)
+  app.put('/events/:id', auth.requiresLogin, auth.event.hasAuthorization, events.update)
+  app.del('/events/:id', auth.requiresLogin, auth.event.hasAuthorization, events.destroy)
 
-  app.param('id', articles.article)
+  app.param('id', function(req, res, next, id){
+    Event
+      .findOne({ _id : id })
+      .populate('user', 'name')
+      .populate('segments', null, null, { sort: 'order' }) //! need to sort by 'order'
+      .populate('comments')
+      
+      .exec(function (err, event) {
+        if (err) return next(err)
+        if (!event) return next(new Error('Failed to load event ' + id))
+        req.event = event
+        
+        var populateComments = function (comment, cb) {
+          User
+            .findOne({ _id: comment._user })
+            .select('name')
+            .exec(function (err, user) {
+              if (err) return next(err)
+              comment.user = user
+              cb(null, comment)
+            })
+        }
+        if (event.comments.length) {
+          async.map(req.event.comments, populateComments, function (err, results) {
+            next(err)
+          })
+        }
+        else
+          next()
+      })
+  })
 
   // home route
-  app.get('/', articles.index)
+  app.get('/', users.login)
 
   // comment routes
   var comments = require('../app/controllers/comments')

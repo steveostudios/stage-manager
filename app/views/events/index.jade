@@ -1,0 +1,32 @@
+extends ../layouts/default
+
+block main
+  h1 Events
+  
+block content
+  #events
+    a(href="/events/new", title="new event") New
+    ul.head
+      li.date Date
+      li.series Series
+      li.title Title
+      li.options Options
+    ul#body
+      each event in events
+        li(id=event._id).event
+          .date
+            =event.date 
+          .series
+            =event.series 
+          .title
+            =event.title
+          .options
+            if (req.session.isAdmin)
+              a(href='#').eventManage Manage
+            a(href='#').eventStage Stage
+      if (pages > 1)
+        .pagination
+          ul
+            != page + ' / '+pages
+            != createPagination(pages, page)
+    script(type='text/javascript', src='/js/eventlist.js')
