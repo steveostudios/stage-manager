@@ -39,7 +39,18 @@ block content
           img(src='../img/ico_headerRed.png', width='18', height='19')
   #alert_pane
     ul#alertFavs
-
+      - var alertFavs =req.user.alertFavs
+      each alertFav in alertFavs
+        li.alertFav
+          .alertFavText
+            =alertFav
+          .options
+            a.alertFavEdit.alertHidable(href='#')
+              img(src='../img/ico_editRow.png', width='17', height='17')
+            a.alertFavRemove.alertHidable(href='#')
+              img(src='../img/ico_removeRow.png', width='17', height='17')
+            span.handle.alertHidable
+              img(src='../img/ico_moveRow.png', width='17', height='17')
     #alertInput
       h2 Alert Message
       textarea#inp_alert(type='text')
