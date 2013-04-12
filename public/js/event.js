@@ -1,4 +1,4 @@
-var socket = io.connect('http://localhost')
+var socket = io.connect('http://intense-earth-7636.herokuapp.com')
 var editing = null
 var editingType = null
 var currentTrt = null
