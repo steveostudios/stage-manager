@@ -2,22 +2,22 @@
 
 **Blog post 2:** Coming soon!
 
-This is a boilerplate node.js application illustrating various features used in everyday
-web development, with a fine touch of best practices. The demo app is a blog application
-where users (signing up using facebook, twitter, github and simple registrations) can create
-an article, delete an article and add comment on the article.
+This is a demo node.js application illustrating various features used in everyday web development, with a fine touch of best practices. The demo app is a blog application where users (signing up using facebook, twitter, github and simple registrations) can create an article, delete an article and add comments on the article.
 
-**Note:** You need to have node.js and mongodb installed and running
+If you want to create more apps using the same approach, use [node-genem](https://github.com/madhums/node-genem) to generate the MVC skeleton.
+
+**Note:** You need to have node.js, mongodb and [imagemagick](http://www.imagemagick.org/script/index.php) installed and running.
 
 ## Install
 ```sh
   $ git clone git://github.com/madhums/nodejs-express-mongoose-demo.git
   $ npm install
   $ cp config/config.example.js config/config.js
+  $ cp config/imager.example.js config/imager.js
   $ npm start
 ```
 
-**NOTE:** Do not forget to update your facebook twitter and github APP_ID and APP_SECRET in `config/config.js`
+**NOTE:** Do not forget to update your facebook twitter and github APP_ID and APP_SECRET in `config/config.js`. Also if you want to use image uploads, don't forget to replace the S3 and Rackspace keys in `config/imager.js`.
 
 Then visit [http://localhost:3000/](http://localhost:3000/)
 
@@ -31,12 +31,12 @@ Then visit [http://localhost:3000/](http://localhost:3000/)
   |__routes.js
   |__config.js
   |__passport.js (auth config)
+  |__express.js (express.js configs)
+  |__middlewares/ (custom middlewares)
 ```
 
 If you are looking for a specific feature, please use the issue tracker. I will try to come
 up with a demo as earliest as I can. Please feel free to fork and send updates :)
-
----
 
 ## License
 (The MIT License)

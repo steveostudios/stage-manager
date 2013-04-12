@@ -1,18 +1,27 @@
+
+/**
+ * Module dependencies.
+ */
+
 var mongoose = require('mongoose')
-  , Comment = mongoose.model('Comment')
+
+/**
+ * Create comment
+ */
 
 exports.create = function (req, res) {
-  var comment = new Comment(req.body)
-    , event = req.event
+  var article = req.article
+  var user = req.user
 
-  comment._user = req.user
+  if (!req.body.body) return res.redirect('/articles/'+ article.id)
 
-  comment.save(function (err) {
-    if (err) throw new Error('Error while saving comment')
-    event.comments.push(comment._id)
-    event.save(function (err) {
-      if (err) throw new Error('Error while saving event')
-      res.redirect('/events/'+event.id+'#comments')
-    })
+  article.comments.push({
+    body: req.body.body,
+    user: user._id
+  })
+
+  article.save(function (err) {
+    if (err) return res.render('500')
+    res.redirect('/articles/'+ article.id)
   })
 }
