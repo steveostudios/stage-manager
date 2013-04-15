@@ -6,6 +6,16 @@ var display = 'timer'
 $(document).ready(function () {
   socket.emit('setRoom', { room: room })
   
+  /* iOS re-orientation fix */
+if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+    /* iOS hides Safari address bar */
+    window.addEventListener("load",function() {
+        setTimeout(function() {
+            window.scrollTo(0, 1);
+        }, 1000);
+    });
+}
+  
   /* !--- Add New Segment Row --- */
   socket.on('createSegment', function(data) {
     segmentList[data.rowId] = {title: data.rowTitle, trt: data.rowTrt, type: data.rowType, order: data.rowOrder}
