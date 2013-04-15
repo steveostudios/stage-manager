@@ -988,6 +988,8 @@ div#pup_alert div.buttons a {
   text-decoration: none;
   text-transform: capitalize;
 }
+/* !--- Stage --- */
+
 div#stage div#time {
   position: absolute;
     top: 55px;
@@ -1072,6 +1074,37 @@ div#stage div#overlay {
   background-position: center center;
   background-size: cover;
 }
+@media only screen and (min-width : 321px) {
+  div#stage div#time {
+    position: absolute;
+      top: 55px;
+      right: 105px;
+      left: 110px;
+    font-size: 110px;
+  }
+  div#stage div#time span#period {
+    margin-left: 10px;
+  }
+  div#stage div#currentTimer {
+    position: absolute;
+      top: 80px;
+      right: 105px;
+      left: 110px;
+    letter-spacing: -0.05em;
+    font-size: 450px;
+  }
+  div#stage div#next {
+    position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    padding: 25px 25px 25px 85px;
+    height: 10%;
+    font-size: 60px;
+  }
+
+}
+
 
 ul#settings {
   position: absolute;
