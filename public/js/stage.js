@@ -31,11 +31,13 @@ socket.on('createSegment', function(data) {
   /* !--- Remove Segment --- */
   socket.on('updateRemove', function(data) {
     if (data.rowId == current) {
-      
-      // TODO
-       
-    }
-    if (data.rowId == nextId) {
+      $('#stage #currentTitle').text('')
+      $('#stage #currentTimer').text('')
+      $('#stage #next').slideUp('fast', function() {
+        $('#stage #nextTitle').text('')
+        $('#stage #nextTrt').text('')
+      })
+    } else if (data.rowId == nextId) {
       
       // TODO
        
@@ -44,15 +46,15 @@ socket.on('createSegment', function(data) {
   })
   
   /* !--- Reorder Segments --- */
-  /*
-socket.on('updateReorder', function(data) {
+
+  socket.on('updateReorder', function(data) {
     var i = 0
-    data.sortedIds.forEach(function(id) {
+    /*data.sortedIds.forEach(function(id) {
       segmentList[id].order = i
       i++
-    })
+    */})
+    alert('sorted: '+data.sortedIds)
   })
-*/
   
   
     // CHECK ABOVE HERE!!!
@@ -101,6 +103,9 @@ socket.on('updateReorder', function(data) {
     if(id != '') {
       currentStart = data.start
       currentTrt = data.rowTrt
+      $('#list ul li').removeClass('hightlight')
+      $('#list ul li#'+current).addClass('highlight')
+      
       // Find Next
       var order = data.rowOrder
       nextId = null

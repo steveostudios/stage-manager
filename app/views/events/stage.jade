@@ -37,15 +37,15 @@ block content
             .trt 
               = segment.trt
         - else if (segment.type == 'red')
-          li.red(id=segment._id)
+          li.red.header(id=segment._id)
             .title
               = segment.title
         - else if (segment.type == 'green')
-          li.green(id=segment._id)
+          li.green.header(id=segment._id)
             .title
               = segment.title
         - else if (segment.type == 'blue')
-          li.blue(id=segment._id)
+          li.blue.header(id=segment._id)
             .title
               = segment.title
   script
