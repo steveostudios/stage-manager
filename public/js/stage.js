@@ -6,18 +6,9 @@ var display = 'timer'
 $(document).ready(function () {
   socket.emit('setRoom', { room: room })
   
-  /* iOS re-orientation fix */
-if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
-    /* iOS hides Safari address bar */
-    window.addEventListener("load",function() {
-        setTimeout(function() {
-            window.scrollTo(0, 1);
-        }, 1000);
-    });
-}
-  
   /* !--- Add New Segment Row --- */
-  socket.on('createSegment', function(data) {
+  /*
+socket.on('createSegment', function(data) {
     segmentList[data.rowId] = {title: data.rowTitle, trt: data.rowTrt, type: data.rowType, order: data.rowOrder}
     if (current != '') {
       // Find Next
@@ -35,58 +26,73 @@ if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) 
       }
     }
   })
+*/
   
   /* !--- Remove Segment --- */
   socket.on('updateRemove', function(data) {
-    delete segmentList[data.rowId]
+    if (data.rowId == current) {
+      
+      // TODO
+       
+    }
+    if (data.rowId == nextId) {
+      
+      // TODO
+       
+    }
+    $('#list ul li#'+data.rowId).remove()
   })
   
   /* !--- Reorder Segments --- */
-  socket.on('updateReorder', function(data) {
+  /*
+socket.on('updateReorder', function(data) {
     var i = 0
     data.sortedIds.forEach(function(id) {
       segmentList[id].order = i
       i++
     })
   })
+*/
+  
+  
+    // CHECK ABOVE HERE!!!
+  
   
   /* !--- Update Segment --- */
   socket.on('updateSegment', function(data) {
-    segmentList[data.rowId] = {title: data.rowTitle, trt: data.rowTrt, type: data.rowType, order: data.rowOrder}
+    $('#list ul li#'+data.rowId+' .icon img').attr('src','../img/ico_'+data.rowType+'.png')
+    $('#list ul li#'+data.rowId+' .title').text(data.rowTitle)
+    $('#list ul li#'+data.rowId+' .trt').text(data.rowTrt)
     if(data.rowId == current) {
-      $('#stage #currentTimer').text(segmentList[current].trt)
-      $('#stage #currentTitle').text(segmentList[current].title)
+      $('#stage #currentTitle').text($('#list ul li#'+current+' .title').text())
+      $('#stage #currentTimer').text($('#list ul li#'+current+' .trt').text())
     }
     if(data.rowId == nextId) {
-      $('#stage #nextTitle').text(segmentList[nextId].title)
-      $('#stage #nextTrt').text(segmentList[nextId].trt)
+      $('#stage #nextTitle').text($('#list ul li#'+nextId+' .title').text())
+      $('#stage #nextTrt').text($('#list ul li#'+nextId+' .trt').text())
     }
   })
   
   /* !--- Current Segment --- */
   if (current != '') {
-    currentTrt = segmentList[current].trt
+    currentTrt = $('#list ul li#'+current+' .trt').text()
+    $('#list ul li#'+current).addClass('highlight')
     // Find Next
-    var order = segmentList[current].order
-    for(var propt in segmentList) {
-      if(segmentList[propt].order == (parseInt(order) + 1)){
-        nextId = propt
-      }
-    }
-    $('#stage #currentTimer').text(segmentList[current].trt)
-    $('#stage #currentTitle').text(segmentList[current].title)
+    nextId = $('#list ul li#'+current).next().attr('id')
+    if(nextId == '') {nextId = null}
+    
+    $('#stage #currentTitle').text($('#list ul li#'+current+' .title').text())
+    $('#stage #currentTimer').text($('#list ul li#'+current+' .trt').text())
     if(nextId != null) {
-      $('#stage #nextTitle').text(segmentList[nextId].title)
-      $('#stage #nextTrt').text(segmentList[nextId].trt)
+      $('#stage #nextTitle').text($('#list ul li#'+nextId+' .title').text())
+      $('#stage #nextTrt').text($('#list ul li#'+nextId+' .trt').text())
       $('#stage #next').slideDown('fast')
     } else {
       $('#stage #next').slideUp('fast', function() {
         $('#stage #nextTitle').text('')
         $('#stage #nextTrt').text('')
-        $('#stage #next').slideDown('fast')
       })
     }
-    tick()
   }
   
   socket.on('updateCurrent', function(data) {
@@ -98,17 +104,12 @@ if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) 
       // Find Next
       var order = data.rowOrder
       nextId = null
-      for(var propt in segmentList) {
-        if(segmentList[propt].order == (parseInt(order) + 1)){
-          nextId = propt
-          $('#stage #nextTitle').text(segmentList[nextId].title)
-          $('#stage #nextTrt').text(segmentList[nextId].trt)
-        }
-      }
-      $('#stage #currentTitle').text(segmentList[id].title)
+      nextId = $('#list ul li#'+current).next().attr('id')
+      
+      $('#stage #currentTitle').text($('#list ul li#'+current+' .title').text())
       if(nextId != null) {
-        $('#stage #nextTitle').text(segmentList[nextId].title)
-        $('#stage #nextTrt').text(segmentList[nextId].trt)
+        $('#stage #nextTitle').text($('#list ul li#'+nextId+' .title').text())
+        $('#stage #nextTrt').text($('#list ul li#'+nextId+' .trt').text())
         $('#stage #next').slideDown('fast')
       } else {
         $('#stage #next').slideUp('fast', function() {
@@ -116,22 +117,10 @@ if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) 
           $('#stage #nextTrt').text('')
         })
       }
-      tick()
-      switch(display) {
-        case 'timer':
-          displayTimer()
-          break
-        case 'time':
-          displayTime()
-          break
-        case 'split':
-          displaySplit()
-          break        
-      }
     } else {
       currentTrt = null
-      $('#stage #currentTimer').text('')
       $('#stage #currentTitle').text('')
+      $('#stage #currentTimer').text('')
       $('#stage #next').slideUp('fast', function() {
         $('#stage #nextTitle').text('')
         $('#stage #nextTrt').text('')
@@ -142,7 +131,8 @@ if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) 
   
   function tick() {
     if(current != null){
-      var now = new Date()
+      /*
+var now = new Date()
       var start = new Date(currentStart)
       // Difference
       var minDiff = now.getMinutes() - start.getMinutes()
@@ -169,13 +159,15 @@ if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) 
       }
       if(sec<10){sec='0'+sec}
       $('#stage #currentTimer').text(min + ':' + sec)
+
     } else {
-      $('#stage #currentTimer').text('')
+    */  
     }
     setTimeout(tick, 1000)
+
   }
 
-  /* !--- Update Time --- */
+  /* !--- Current Time --- */
   var currentTime = null
   function getCurrentTime() {
     var date = new Date()
@@ -187,8 +179,8 @@ if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) 
     var minute = date.getMinutes()
     if(minute<10){minute = '0'+minute}
     currentTime = hour + ':' + minute
-    $('div#stage div#time span#actualtime').text(currentTime)
-    $('div#stage div#time span#period').text(period)
+    $('.time span.actualtime').text(currentTime)
+    $('.time span.period').text(period)
     setTimeout(getCurrentTime,1000)
   }
   getCurrentTime()
@@ -212,83 +204,4 @@ if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) 
       })
     }    
   })
-  /* !--- Settings Display Switcher --- */
-  $(document).on('click', 'a#settings', function(e) {
-    e.preventDefault()
-    $('ul#settings').animate({
-      'bottom': '0'
-    })
-  })
-  $(document).on('click', 'ul#settings a#btn_timer', function(e) {
-    e.preventDefault()
-    displayTimer()
-    $('ul#settings').animate({
-      'bottom': '-250px'
-    })
-    display = 'timer'
-  })
-  $(document).on('click', 'ul#settings a#btn_time', function(e) {
-    e.preventDefault()
-    displayTime()
-    $('ul#settings').animate({
-      'bottom': '-250px'
-    })
-    display = 'time'
-  })
-  $(document).on('click', 'ul#settings a#btn_split', function(e) {
-    e.preventDefault()
-    displaySplit()
-    $('ul#settings').animate({
-      'bottom': '-250px'
-    })
-    display = 'split'
-  })
-  function displayTimer() {
-    $('div#stage div#time').css({
-        'top': '55px'
-      , 'font-size': '110px'
-      , 'text-align': 'right'
-    })
-    $('div#stage div#time span#period').css({
-        'margin-left': '10px'
-      , 'font-size': '84px'
-    })
-    $('div#stage div#currentTimer').css({
-        'top': '80px'
-      , 'font-size': '450px'
-      , 'text-align': 'left'
-    })
-  }
-  function displayTime() {
-    $('div#stage div#time').css({
-        'top': '80px'
-      , 'font-size': '450px'
-      , 'text-align': 'left'
-    })
-    $('div#stage div#time span#period').css({
-        'margin-left': '20px'
-      , 'font-size': '200px'
-    })
-    $('div#stage div#currentTimer').css({
-        'top': '55px'
-      , 'font-size': '110px'
-      , 'text-align': 'right'
-    })
-  }
-  function displaySplit() {
-    $('div#stage div#time').css({
-        'top': '190px'
-      , 'font-size': '280px'
-      , 'text-align': 'right'
-    })
-    $('div#stage div#time span#period').css({
-        'margin-left': '10px'
-      , 'font-size': '100px'
-    })
-    $('div#stage div#currentTimer').css({
-        'top': '190px'
-      , 'font-size': '280px'
-      , 'text-align': 'left'
-    })
-  }
 })

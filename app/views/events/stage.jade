@@ -2,9 +2,9 @@ extends ../layouts/blank
   
 block content
   #stage
-    #time
-      span#actualtime
-      span#period
+    .time
+      span.actualtime
+      span.period
     #currentTimer 
     #currentTitle 
       //= event.segments
@@ -13,7 +13,7 @@ block content
       span#nextTitle
     #alert  
     #overlay
-    ul#settings
+    // ul#settings
       a(href='#')#settings DISPLAY VIEWS
       li 
         a(href='#')#btn_timer Timer
@@ -21,12 +21,33 @@ block content
         a(href='#')#btn_time Time
       li
         a(href='#')#btn_split Split
-    != "<script type='text/javascript'>"
-      != "var segmentList = {};"
-        each segment in event.segments
-          != "segmentList['"+segment._id+"'] = {'title': '"+segment.title+"', 'trt': '"+segment.trt+"', 'type': '"+segment.type+"', 'order': '"+segment.order+"'};";
-        != "console.log(segmentList);"
-    != "</script>"
+  #list
+    #head menu 
+      .time
+        span.actualtime
+        span.period
+    ul
+      each segment in event.segments 
+        - if (segment.type != 'red' && segment.type != 'green' && segment.type != 'blue')
+          li(id=segment._id)
+            .icon
+              img(src='../img/ico_'+segment.type+'.png')
+            .title 
+              = segment.title
+            .trt 
+              = segment.trt
+        - else if (segment.type == 'red')
+          li.red(id=segment._id)
+            .title
+              = segment.title
+        - else if (segment.type == 'green')
+          li.green(id=segment._id)
+            .title
+              = segment.title
+        - else if (segment.type == 'blue')
+          li.blue(id=segment._id)
+            .title
+              = segment.title
   script
     var room = '#{event._id}'
     var current = '#{event.current}'
