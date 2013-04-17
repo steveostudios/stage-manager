@@ -49,10 +49,11 @@ socket.on('createSegment', function(data) {
 
   socket.on('updateReorder', function(data) {
     var i = 0
-    /*data.sortedIds.forEach(function(id) {
-      segmentList[id].order = i
+    data.sortedIds.forEach(function(id) {
+      //$('#list ul').append()
+      //segmentList[id].order = i
       i++
-    */})
+    })
     alert('sorted: '+data.sortedIds)
   })
   
