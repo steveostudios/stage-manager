@@ -7,26 +7,19 @@ $(document).ready(function () {
   socket.emit('setRoom', { room: room })
   
   /* !--- Add New Segment Row --- */
-  /*
-socket.on('createSegment', function(data) {
-    segmentList[data.rowId] = {title: data.rowTitle, trt: data.rowTrt, type: data.rowType, order: data.rowOrder}
-    if (current != '') {
-      // Find Next
-      var order = segmentList[current].order
-      for(var propt in segmentList) {
-        if(segmentList[propt].order == (parseInt(order) + 1)){
-          nextId = propt
-        }
-      }
-      if(nextId != null) {
-        alert('current: '+segmentList[current].order+', next: '+segmentList[nextId].order)
-        $('#stage #nextTitle').text(segmentList[nextId].title)
-        $('#stage #nextTrt').text(segmentList[nextId].trt)
-        $('#stage #next').slideDown('fast')
-      }
+
+  socket.on('createSegment', function(data) {
+    //segmentList[data.rowId] = {title: data.rowTitle, trt: data.rowTrt, type: data.rowType, order: data.rowOrder}
+    if (data.rowType == 'red') {
+      $('#list ul').append('<li id="'+data.rowId+'" class="header red"><div class="title">'+data.rowTitle+'</div></li>')
+    } else if ( data.rowType == 'green') {
+      $('#list ul').append('<li id="'+data.rowId+'" class="header green"><div class="title">'+data.rowTitle+'</div></li>')
+    } else if ( data.rowType == 'blue') {
+      $('#list ul').append('<li id="'+data.rowId+'" class="header blue"><div class="title">'+data.rowTitle+'</div></li>')
+    } else {
+      $('#list ul').append('<li id="'+data.rowId+'"><div class="icon"><img src="../img/ico_'+data.rowType+'.png" /></div><div class="title">'+data.rowTitle+'</div><div class="trt">'+data.rowTrt+'</div></li>')
     }
   })
-*/
   
   /* !--- Remove Segment --- */
   socket.on('updateRemove', function(data) {
@@ -48,13 +41,14 @@ socket.on('createSegment', function(data) {
   /* !--- Reorder Segments --- */
 
   socket.on('updateReorder', function(data) {
-    var i = 0
-    data.sortedIds.forEach(function(id) {
+    alert('sorted')
+    //var i = 0
+    //data.sortedIds.forEach(function(id) {
       //$('#list ul').append()
       //segmentList[id].order = i
-      i++
-    })
-    alert('sorted: '+data.sortedIds)
+      //i++
+    //})
+    //alert('sorted: '+data.sortedIds)
   })
   
   
@@ -79,6 +73,7 @@ socket.on('createSegment', function(data) {
   /* !--- Current Segment --- */
   if (current != '') {
     currentTrt = $('#list ul li#'+current+' .trt').text()
+    $('#list ul li').removeClass('highlight')
     $('#list ul li#'+current).addClass('highlight')
     // Find Next
     nextId = $('#list ul li#'+current).next().attr('id')
