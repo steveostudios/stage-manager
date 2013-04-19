@@ -42,7 +42,6 @@ $(document).ready(function () {
   /* !--- Reorder Segments --- */
 
   socket.on('updateReorder', function(data) {
-    alert('sorted')
     //var i = 0
     //data.sortedIds.forEach(function(id) {
       //$('#list ul').append()
@@ -58,12 +57,17 @@ $(document).ready(function () {
   
   /* !--- Update Segment --- */
   socket.on('updateSegment', function(data) {
-    $('#list ul li#'+data.rowId+' .icon img').attr('src','../img/ico_'+data.rowType+'.png')
-    $('#list ul li#'+data.rowId+' .title').text(data.rowTitle)
-    $('#list ul li#'+data.rowId+' .trt').text(data.rowTrt)
+    if (data.rowType != 'red' && data.rowType != 'green' && data.rowType != 'blue')
+      $('#list ul li#'+data.rowId+' .icon img').attr('src','../img/ico_'+data.rowType+'.png')
+      $('#list ul li#'+data.rowId+' .title').text(data.rowTitle)
+      $('#list ul li#'+data.rowId+' .trt').text(data.rowTrt)
+    } else {
+      $('#list ul li#'+data.rowId).removeClass('red green blue')
+      $('#list ul li#'+data.rowId).addClass(data.rowType)
+      $('#list ul li#'+data.rowId+' .title').text(data.rowTitle)
+    }
     if(data.rowId == current) {
       $('#stage #currentTitle').text($('#list ul li#'+current+' .title').text())
-      //$('#stage #currentTimer').text($('#list ul li#'+current+' .trt').text())
     }
     if(data.rowId == nextId) {
       $('#stage #nextTitle').text($('#list ul li#'+nextId+' .title').text())
@@ -81,7 +85,6 @@ $(document).ready(function () {
     if(nextId == '') {nextId = null}
     
     $('#stage #currentTitle').text($('#list ul li#'+current+' .title').text())
-    //$('#stage #currentTimer').text($('#list ul li#'+current+' .trt').text())
     if(nextId != null) {
       $('#stage #nextTitle').text($('#list ul li#'+nextId+' .title').text())
       $('#stage #nextTrt').text($('#list ul li#'+nextId+' .trt').text())
