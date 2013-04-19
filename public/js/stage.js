@@ -151,7 +151,7 @@ $(document).ready(function () {
       var totalTrt = parseInt(tempTrt[0]*60)+parseInt(tempTrt[1])*/
       var min = null
       var sec = null
-      var total = totalTrt - totalDiff
+      //var total = totalTrt - totalDiff
       if(total == 0) {
         min = 0
         sec = 0
