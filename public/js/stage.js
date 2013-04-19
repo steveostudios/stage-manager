@@ -57,7 +57,7 @@ $(document).ready(function () {
   
   /* !--- Update Segment --- */
   socket.on('updateSegment', function(data) {
-    if (data.rowType != 'red' && data.rowType != 'green' && data.rowType != 'blue')
+    if (data.rowType != 'red' && data.rowType != 'green' && data.rowType != 'blue') {
       $('#list ul li#'+data.rowId+' .icon img').attr('src','../img/ico_'+data.rowType+'.png')
       $('#list ul li#'+data.rowId+' .title').text(data.rowTitle)
       $('#list ul li#'+data.rowId+' .trt').text(data.rowTrt)
