@@ -46,12 +46,13 @@ $(document).ready(function () {
     //$('#list ul#flow').after('<ul id="new"><li>this works</li></ul>')
     $('ul#flow > li').clone().appendTo('ul#temp')
     $('ul#flow').empty()
-    //var i = 0
-    //data.sortedIds.forEach(function(id) {
-      //$('#list ul').append()
+    var i = 0
+    data.sortedIds.forEach(function(id) {
+      $('ul#flow').append($('ul#temp li'+sortedId[i])
       //segmentList[id].order = i
-      //i++
-    //})
+      i++
+    })
+    $('ul#temp').empty()
   })
   
   
