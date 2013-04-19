@@ -97,7 +97,7 @@ $(document).ready(function () {
     var id = data.rowId
     current = id
     if(id != '') {
-      $('#stage #currentTitle').text(id)
+      
       currentStart = data.start
       currentTrt = data.rowTrt
       $('#list ul li').removeClass('highlight')
@@ -107,7 +107,7 @@ $(document).ready(function () {
       var order = data.rowOrder
       nextId = null
       nextId = $('#list ul li#'+current).next().attr('id')
-      
+      $('#stage #currentTimer').text(id)
       $('#stage #currentTitle').text($('#list ul li#'+current+' .title').text())
       if(nextId != null) {
         $('#stage #nextTitle').text($('#list ul li#'+nextId+' .title').text())
@@ -133,9 +133,10 @@ $(document).ready(function () {
   
   function tick() {
     if(current != null){
-      /*
-var now = new Date()
+      var now = new Date()
       var start = new Date(currentStart)
+      var diff = now-start
+      /*
       // Difference
       var minDiff = now.getMinutes() - start.getMinutes()
       var secDiff = now.getSeconds() - start.getSeconds()
