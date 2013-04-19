@@ -10,13 +10,13 @@ $(document).ready(function () {
   socket.on('createSegment', function(data) {
     //segmentList[data.rowId] = {title: data.rowTitle, trt: data.rowTrt, type: data.rowType, order: data.rowOrder}
     if (data.rowType == 'red') {
-      $('#list ul').append('<li id="'+data.rowId+'" class="header red"><div class="title">'+data.rowTitle+'</div></li>')
+      $('#list ul#flow').append('<li id="'+data.rowId+'" class="header red"><div class="title">'+data.rowTitle+'</div></li>')
     } else if ( data.rowType == 'green') {
-      $('#list ul').append('<li id="'+data.rowId+'" class="header green"><div class="title">'+data.rowTitle+'</div></li>')
+      $('#list ul#flow').append('<li id="'+data.rowId+'" class="header green"><div class="title">'+data.rowTitle+'</div></li>')
     } else if ( data.rowType == 'blue') {
-      $('#list ul').append('<li id="'+data.rowId+'" class="header blue"><div class="title">'+data.rowTitle+'</div></li>')
+      $('#list ul#flow').append('<li id="'+data.rowId+'" class="header blue"><div class="title">'+data.rowTitle+'</div></li>')
     } else {
-      $('#list ul').append('<li id="'+data.rowId+'"><div class="icon"><img src="../img/ico_'+data.rowType+'.png" /></div><div class="title">'+data.rowTitle+'</div><div class="trt">'+data.rowTrt+'</div></li>')
+      $('#list ul#flow').append('<li id="'+data.rowId+'"><div class="icon"><img src="../img/ico_'+data.rowType+'.png" /></div><div class="title">'+data.rowTitle+'</div><div class="trt">'+data.rowTrt+'</div></li>')
     }
   })
   
@@ -36,19 +36,21 @@ $(document).ready(function () {
       // TODO
        
     }
-    $('#list ul li#'+data.rowId).remove()
+    $('#list ul#flow li#'+data.rowId).remove()
   })
   
   /* !--- Reorder Segments --- */
 
   socket.on('updateReorder', function(data) {
+    $('#list ul#flow').after('<ul id="new"></ul>')
+    $('#list ul#flow> li').clone().appendTo('ul#new');
+    //$('#list ul#flow').empty()
     //var i = 0
-    //data.sortedIds.forEach(function(id) {
+    data.sortedIds.forEach(function(id) {
       //$('#list ul').append()
       //segmentList[id].order = i
       //i++
-    //})
-    //alert('sorted: '+data.sortedIds)
+    })
   })
   
   
@@ -56,37 +58,37 @@ $(document).ready(function () {
   
   /* !--- Update Header --- */
   socket.on('updateHeader', function(data) {
-    $('#list ul li#'+data.rowId).removeClass('red green blue')
-    $('#list ul li#'+data.rowId).addClass(data.rowType)
-    $('#list ul li#'+data.rowId+' .title').text(data.rowTitle)
+    $('#list ul#flow li#'+data.rowId).removeClass('red green blue')
+    $('#list ul#flow li#'+data.rowId).addClass(data.rowType)
+    $('#list ul#flow li#'+data.rowId+' .title').text(data.rowTitle)
   })
   /* !--- Update Segment --- */
   socket.on('updateSegment', function(data) {
-    $('#list ul li#'+data.rowId+' .icon img').attr('src','../img/ico_'+data.rowType+'.png')
-    $('#list ul li#'+data.rowId+' .title').text(data.rowTitle)
-    $('#list ul li#'+data.rowId+' .trt').text(data.rowTrt)
+    $('#list ul#flow li#'+data.rowId+' .icon img').attr('src','../img/ico_'+data.rowType+'.png')
+    $('#list ul#flow li#'+data.rowId+' .title').text(data.rowTitle)
+    $('#list ul#flow li#'+data.rowId+' .trt').text(data.rowTrt)
     if(data.rowId == current) {
-      $('#stage #currentTitle').text($('#list ul li#'+current+' .title').text())
+      $('#stage #currentTitle').text($('#list ul#flow li#'+current+' .title').text())
     }
     if(data.rowId == nextId) {
-      $('#stage #nextTitle').text($('#list ul li#'+nextId+' .title').text())
-      $('#stage #nextTrt').text($('#list ul li#'+nextId+' .trt').text())
+      $('#stage #nextTitle').text($('#list ul#flow li#'+nextId+' .title').text())
+      $('#stage #nextTrt').text($('#list ul#flow li#'+nextId+' .trt').text())
     }
   })
   
   /* !--- Current Segment --- */
   if (current != '') {
-    currentTrt = $('#list ul li#'+current+' .trt').text()
-    $('#list ul li').removeClass('highlight')
-    $('#list ul li#'+current).addClass('highlight')
+    currentTrt = $('#list ul#flow li#'+current+' .trt').text()
+    $('#list ul#flow li').removeClass('highlight')
+    $('#list ul#flow li#'+current).addClass('highlight')
     // Find Next
-    nextId = $('#list ul li#'+current).next().attr('id')
+    nextId = $('#list ul#flow li#'+current).next().attr('id')
     if(nextId == '') {nextId = null}
     
-    $('#stage #currentTitle').text($('#list ul li#'+current+' .title').text())
+    $('#stage #currentTitle').text($('#list ul#flow li#'+current+' .title').text())
     if(nextId != null) {
-      $('#stage #nextTitle').text($('#list ul li#'+nextId+' .title').text())
-      $('#stage #nextTrt').text($('#list ul li#'+nextId+' .trt').text())
+      $('#stage #nextTitle').text($('#list ul#flow li#'+nextId+' .title').text())
+      $('#stage #nextTrt').text($('#list ul#flow li#'+nextId+' .trt').text())
       $('#stage #next').slideDown('fast')
     } else {
       $('#stage #next').slideUp('fast', function() {
@@ -105,18 +107,18 @@ $(document).ready(function () {
       
       currentStart = data.start
       currentTrt = data.rowTrt
-      $('#list ul li').removeClass('highlight')
-      $('#list ul li#'+current).addClass('highlight')
+      $('#list ul#flow li').removeClass('highlight')
+      $('#list ul#flow li#'+current).addClass('highlight')
       
       // Find Next
       var order = data.rowOrder
       nextId = null
-      nextId = $('#list ul li#'+current).next().attr('id')
+      nextId = $('#list ul#flow li#'+current).next().attr('id')
       
-      $('#stage #currentTitle').text($('#list ul li#'+current+' .title').text())
+      $('#stage #currentTitle').text($('#list ul#flow li#'+current+' .title').text())
       if(nextId != null) {
-        $('#stage #nextTitle').text($('#list ul li#'+nextId+' .title').text())
-        $('#stage #nextTrt').text($('#list ul li#'+nextId+' .trt').text())
+        $('#stage #nextTitle').text($('#list ul#flow li#'+nextId+' .title').text())
+        $('#stage #nextTrt').text($('#list ul#flow li#'+nextId+' .trt').text())
         $('#stage #next').slideDown('fast')
       } else {
         $('#stage #next').slideUp('fast', function() {
@@ -149,16 +151,16 @@ $(document).ready(function () {
         min = Math.abs(Math.floor(total/60))
         sec = Math.abs(Math.floor(total%60))
         $('#stage #currentTimer').removeClass('inTheRed')
-        $('#list ul li#'+current+' .trt').removeClass('inTheRed')
+        $('#list ul#flow li#'+current+' .trt').removeClass('inTheRed')
       } else if(total < 0) {
         min = Math.abs(Math.floor((total/60)+1))
         sec = Math.abs(Math.floor(((total)%60)+1))
         $('#stage #currentTimer').addClass('inTheRed')
-        $('#list ul li#'+current+' .trt').addClass('inTheRed')
+        $('#list ul#flow li#'+current+' .trt').addClass('inTheRed')
       }
       if(sec<10){sec='0'+sec}
       $('#stage #currentTimer').text(min + ':' + sec)
-      $('#list ul li#'+current+' .trt').text(min + ':' + sec)
+      $('#list ul#flow li#'+current+' .trt').text(min + ':' + sec)
     } else {
     
       // Do nothing?

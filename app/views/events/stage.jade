@@ -26,7 +26,7 @@ block content
       .time
         span.actualtime
         span.period
-    ul
+    ul#flow
       each segment in event.segments 
         - if (segment.type != 'red' && segment.type != 'green' && segment.type != 'blue')
           li(id=segment._id)
