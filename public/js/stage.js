@@ -64,7 +64,7 @@ $(document).ready(function () {
     $('#list ul li#'+data.rowId+' .trt').text(data.rowTrt)
     if(data.rowId == current) {
       $('#stage #currentTitle').text($('#list ul li#'+current+' .title').text())
-      $('#stage #currentTimer').text($('#list ul li#'+current+' .trt').text())
+      //$('#stage #currentTimer').text($('#list ul li#'+current+' .trt').text())
     }
     if(data.rowId == nextId) {
       $('#stage #nextTitle').text($('#list ul li#'+nextId+' .title').text())
@@ -82,7 +82,7 @@ $(document).ready(function () {
     if(nextId == '') {nextId = null}
     
     $('#stage #currentTitle').text($('#list ul li#'+current+' .title').text())
-    $('#stage #currentTimer').text($('#list ul li#'+current+' .trt').text())
+    //$('#stage #currentTimer').text($('#list ul li#'+current+' .trt').text())
     if(nextId != null) {
       $('#stage #nextTitle').text($('#list ul li#'+nextId+' .title').text())
       $('#stage #nextTrt').text($('#list ul li#'+nextId+' .trt').text())
@@ -129,8 +129,9 @@ $(document).ready(function () {
         $('#stage #nextTitle').text('')
         $('#stage #nextTrt').text('')
       })
-      displayTime()
-    }   
+    }
+    
+    //$('#list ul').append('<li id="'+data.rowId+'" class="header red"><div class="title">'+data.rowTitle+'</div></li>')
   })
   
   function tick() {
@@ -166,7 +167,7 @@ $(document).ready(function () {
         $('#stage #currentTimer').addClass('inTheRed')
       }
       if(sec<10){sec='0'+sec}
-      $('#stage #currentTimer').text(min + ':' + sec)
+      $('#stage #currentTimer').text(total)
 
     } else {
  
