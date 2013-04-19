@@ -97,6 +97,7 @@ $(document).ready(function () {
     var id = data.rowId
     current = id
     if(id != '') {
+      $('#stage #currentTitle').text(id)
       currentStart = data.start
       currentTrt = data.rowTrt
       $('#list ul li').removeClass('highlight')
