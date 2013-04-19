@@ -90,11 +90,10 @@ $(document).ready(function () {
       $('#stage #next').slideUp('fast', function() {
         $('#stage #nextTitle').text('')
         $('#stage #nextTrt').text('')
-      })
-    } else {
-      currentTrt = ''
+      })    
     }
-    
+  } else {
+    currentTrt = ''
   }
   
   socket.on('updateCurrent', function(data) {
