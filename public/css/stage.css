@@ -157,6 +157,9 @@
   text-align: right;
   float: left;
 }
+#list ul li div.inTheRed {
+    color: #d12727;
+}
 #list ul li.red {
 	border-bottom: 1px solid #882d08;
   background: -webkit-linear-gradient(#ae3505 0%, #9f3207 100%);
