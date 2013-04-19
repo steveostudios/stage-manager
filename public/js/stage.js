@@ -166,7 +166,7 @@ $(document).ready(function () {
         $('#stage #currentTimer').addClass('inTheRed')
       }
       if(sec<10){sec='0'+sec}
-      $('#stage #currentTimer').text(current)
+      $('#stage #currentTimer').text(min + ':' + sec)
 
     } else {
     
