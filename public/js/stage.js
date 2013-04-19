@@ -43,7 +43,7 @@ $(document).ready(function () {
 
   socket.on('updateReorder', function(data) {
     $('#list ul#flow').after('<ul id="new"></ul>')
-    $('#list ul#flow> li').clone().appendTo('ul#new');
+    $('#list ul#flow > li').clone().appendTo('ul#new');
     //$('#list ul#flow').empty()
     //var i = 0
     data.sortedIds.forEach(function(id) {
