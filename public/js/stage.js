@@ -42,10 +42,10 @@ $(document).ready(function () {
   /* !--- Reorder Segments --- */
 
   socket.on('updateReorder', function(data) {
-    $('#list ul#flow').append('<li>Another</li>')
-    $('#list ul#flow').after('<ul id="new"><li>this works</li></ul>')
-    //$('#list ul#flow > li').clone().appendTo('ul#new');
-    //$('#list ul#flow').empty()
+    $('ul#flow').append('<li>Another</li>')
+    //$('#list ul#flow').after('<ul id="new"><li>this works</li></ul>')
+    $('ul#flow > li').clone().appendTo('ul#temp')
+    $('ul#flow').empty()
     //var i = 0
     //data.sortedIds.forEach(function(id) {
       //$('#list ul').append()
