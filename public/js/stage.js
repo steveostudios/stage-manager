@@ -99,7 +99,7 @@ $(document).ready(function () {
     if(id != '') {
       currentStart = data.start
       currentTrt = data.rowTrt
-      $('#list ul li').removeClass('hightlight')
+      $('#list ul li').removeClass('highlight')
       $('#list ul li#'+current).addClass('highlight')
       
       // Find Next
