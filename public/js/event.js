@@ -337,7 +337,6 @@ $(document).ready(function () {
     } else if ($('li#' +id + ' .header_edit .type .pup_typeSelector img[data-type="blue"]').hasClass('selected')) {
       type = 'blue'
     }
-    console.log(type)
     $('li#' + id + ' .header_edit .type .input_type').val(type)
     var title = $('li#' + id + ' .header_edit .title .input_title').val()
     var order = $('li#' + id).attr('rel')

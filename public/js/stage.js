@@ -54,18 +54,17 @@ $(document).ready(function () {
   
     // CHECK ABOVE HERE!!!
   
-  
+  /* !--- Update Header --- */
+  socket.on('updateHeader', function(data) {
+    $('#list ul li#'+data.rowId).removeClass('red green blue')
+    $('#list ul li#'+data.rowId).addClass(data.rowType)
+    $('#list ul li#'+data.rowId+' .title').text(data.rowTitle)
+  })
   /* !--- Update Segment --- */
   socket.on('updateSegment', function(data) {
-    if (data.rowType != 'red' && data.rowType != 'green' && data.rowType != 'blue') {
-      $('#list ul li#'+data.rowId+' .icon img').attr('src','../img/ico_'+data.rowType+'.png')
-      $('#list ul li#'+data.rowId+' .title').text(data.rowTitle)
-      $('#list ul li#'+data.rowId+' .trt').text(data.rowTrt)
-    } else {
-      $('#list ul li#'+data.rowId).removeClass('red green blue')
-      $('#list ul li#'+data.rowId).addClass(data.rowType)
-      $('#list ul li#'+data.rowId+' .title').text(data.rowTitle)
-    }
+    $('#list ul li#'+data.rowId+' .icon img').attr('src','../img/ico_'+data.rowType+'.png')
+    $('#list ul li#'+data.rowId+' .title').text(data.rowTitle)
+    $('#list ul li#'+data.rowId+' .trt').text(data.rowTrt)
     if(data.rowId == current) {
       $('#stage #currentTitle').text($('#list ul li#'+current+' .title').text())
     }
