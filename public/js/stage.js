@@ -174,7 +174,7 @@ $(document).ready(function () {
     setTimeout(tick, 1000)
 
   }
-
+  tick()
   /* !--- Current Time --- */
   var currentTime = null
   function getCurrentTime() {
