@@ -413,7 +413,7 @@ $(document).ready(function () {
     $('#pup_alert').hide()
     removeId = null
   })
-  // on socket updatex`
+  // on socket update`
   socket.on('updateRemove', function(data) {
     $('li#'+data.rowId).remove()
   })

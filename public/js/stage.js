@@ -1,6 +1,5 @@
 var socket = io.connect('http://stagemanager.herokuapp.com')
 var nextId = null
-var currentTrt = null
 var display = 'timer'
 
 $(document).ready(function () {
@@ -92,7 +91,10 @@ $(document).ready(function () {
         $('#stage #nextTitle').text('')
         $('#stage #nextTrt').text('')
       })
+    } else {
+      currentTrt = ''
     }
+    
   }
   
   socket.on('updateCurrent', function(data) {
@@ -130,8 +132,6 @@ $(document).ready(function () {
         $('#stage #nextTrt').text('')
       })
     }
-    
-    //$('#list ul').append('<li id="'+data.rowId+'" class="header red"><div class="title">'+data.rowTitle+'</div></li>')
   })
   
   function tick() {
@@ -167,10 +167,12 @@ $(document).ready(function () {
         $('#stage #currentTimer').addClass('inTheRed')
       }
       if(sec<10){sec='0'+sec}
-      $('#stage #currentTimer').text(total)
+      $('#stage #currentTimer').text(current)
 
     } else {
- 
+    
+      // Do nothing?
+      
     }
     setTimeout(tick, 1000)
 
