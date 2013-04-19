@@ -141,33 +141,22 @@ $(document).ready(function () {
       var trtArray = currentTrt.split(':')
       var trt = parseInt(trtArray[0]*60)+parseInt(trtArray[1])
       var total = trt - diff
-      /*
-      // Difference
-      var minDiff = now.getMinutes() - start.getMinutes()
-      var secDiff = now.getSeconds() - start.getSeconds()
-      var totalDiff = (minDiff*60)+(secDiff)
-      // from Total
-      var tempTrt = currentTrt.split(':')
-      var totalTrt = parseInt(tempTrt[0]*60)+parseInt(tempTrt[1])*/
       var min = null
       var sec = null
-      //var total = totalTrt - totalDiff
-      if(total == 0) {
-        min = 0
-        sec = 0
-        $('#stage #currentTimer').removeClass('inTheRed')
-      } else if(total > 0) {
+      if(total >= 0) {
         min = Math.abs(Math.floor(total/60))
         sec = Math.abs(Math.floor(total%60))
         $('#stage #currentTimer').removeClass('inTheRed')
+        $('#list ul li#'+current+' .trt').removeClass('inTheRed')
       } else if(total < 0) {
         min = Math.abs(Math.floor((total/60)+1))
         sec = Math.abs(Math.floor((total+1)%60))
         $('#stage #currentTimer').addClass('inTheRed')
+        $('#list ul li#'+current+' .trt').addClass('inTheRed')
       }
       if(sec<10){sec='0'+sec}
       $('#stage #currentTimer').text(min + ':' + sec)
-
+      $('#list ul li#'+current+' .trt').text(min + ':' + sec)
     } else {
     
       // Do nothing?
