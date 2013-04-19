@@ -137,7 +137,7 @@ $(document).ready(function () {
     if(current != ''){
       var now = new Date()
       var start = new Date(currentStart)
-      var diff = now - start
+      var diff = (now - start) / 1000
       var trtArray = currentTrt.split(':')
       var trt = parseInt(trtArray[0]*60)+parseInt(trtArray[1])
       var total = trt - diff
