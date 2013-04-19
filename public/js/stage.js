@@ -152,7 +152,7 @@ $(document).ready(function () {
         $('#list ul li#'+current+' .trt').removeClass('inTheRed')
       } else if(total < 0) {
         min = Math.abs(Math.floor((total/60)+1))
-        sec = Math.abs(Math.floor((total+1)%60))
+        sec = Math.abs(Math.floor(((total)%60)+1))
         $('#stage #currentTimer').addClass('inTheRed')
         $('#list ul li#'+current+' .trt').addClass('inTheRed')
       }
