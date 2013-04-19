@@ -207,6 +207,10 @@ $(document).ready(function () {
     $('li#' + data.rowId + ' .segment .type img').attr('src', '../img/ico_' + data.rowType + '.png')
     $('li#' + data.rowId + ' .segment .title').text(data.rowTitle)
     $('li#' + data.rowId + ' .segment .trt').text(data.rowTrt)
+    if (data.rowId == current) {
+       $('#sidebar #preview #currentTitle').text(data.rowTitle)
+       $('#sidebar #preview #currentTimer').text(data.rowTrt)
+    }
   })
   
   /* !--- Current Segment --- */
@@ -346,7 +350,7 @@ $(document).ready(function () {
       socket.emit('headerCreate', {eventId: room, rowType: type, rowTitle: title, rowOrder: order})
       $('li#new').remove()
     } else {
-      socket.emit('headerSave', { rowId: id , rowType: type, rowTitle: title, rowOrder: order}, function(data) {
+        socket.emit('headerSave', { rowId: id , rowType: type, rowTitle: title, rowOrder: order}, function(data) {
         $('li#' + id).addClass(rowType)
         $('li#' + id + ' .header .title').text(data.rowTitle)
       })
