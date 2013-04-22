@@ -48,7 +48,7 @@ $(document).ready(function () {
     $('ul#flow').empty()
     var i = 0
     data.sortedIds.forEach(function(id) {
-      $('ul#flow').append($('ul#temp li#'+sortedId[i]))
+      $('ul#flow').append($('ul#temp li#'+sortedIds[i]))  /// STILL WORKING RIGHT HERE!
       //segmentList[id].order = i
       i++
     })
