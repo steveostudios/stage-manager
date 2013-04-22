@@ -228,7 +228,7 @@ and (max-device-width : 480px) {
   #list {display: none;}
 }
 
-#list ul#new {
+#list ul#temp {
   position: absolute;
     bottom: 0;
   color: white;
