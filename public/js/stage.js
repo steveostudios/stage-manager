@@ -53,7 +53,9 @@ $(document).ready(function () {
       //segmentList[id].order = i
       i++
     })
-    //$('ul#temp').empty()
+    $('#list ul#flow').empty()
+    $('#list ul#temp > li').clone().appendTo('#list ul#flow')
+    $('#list ul#temp').empty()
   })
   
   
