@@ -52,7 +52,7 @@ $(document).ready(function () {
       //segmentList[id].order = i
       i++
     })
-    $('ul#temp').empty()
+    //$('ul#temp').empty()
   })
   
   
