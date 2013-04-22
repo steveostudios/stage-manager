@@ -90,6 +90,7 @@
   position: absolute;
   height: 50px;
   width: 100%;
+  background: -webkit-linear-gradient(#2c2c2c 0%, #222222 100%);
   box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.5);
   z-index: 100;
 }
@@ -183,13 +184,17 @@
     top: -360px;
     left: 0;
     right: 0;
-  padding: 60px 40px 60px 40px;
+  padding: 60px 40px;
   display: block;
   min-height: 200px;
   background: #d12727;
   color: #fff;
   font-family: 'LeagueGothicRegular';
   font-size: 80px;
+  word-break: break-all;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
   z-index: 90;
 }
 
@@ -213,11 +218,11 @@ and (max-device-width : 480px) {
     font-size: 180px;
   }
   #stage div#currentTitle {
-  position: absolute;
-    top: 210px;
-    left: 50px;
-  font-size: 45px;
-}
+    position: absolute;
+      top: 210px;
+      left: 50px;
+    font-size: 45px;
+  }
   #stage div#next {
     position: absolute;
       right: 0;
@@ -228,7 +233,10 @@ and (max-device-width : 480px) {
     height: 40px;
     font-size: 30px;
   }
-
+  #list div#alert {
+    padding: 60px 20px 30px 20px;
+    font-size: 40px;
+  }
 }
 
 /* !--- Mobile Orientation --- */
