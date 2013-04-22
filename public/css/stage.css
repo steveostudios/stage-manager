@@ -178,7 +178,20 @@
   color: #f1f1f1;
   opacity: 0.95;
 }
-
+#list div#alert {
+  position: absolute;
+    top: -360px;
+    left: 0;
+    right: 0;
+  padding: 60px 40px 60px 40px;
+  display: block;
+  min-height: 200px;
+  background: #d12727;
+  color: #fff;
+  font-family: 'LeagueGothicRegular';
+  font-size: 80px;
+  z-index: 90;
+}
 
 @media only screen and (min-width : 321px)
 and (max-device-width : 480px) {

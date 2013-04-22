@@ -6,9 +6,7 @@ $(document).ready(function () {
   socket.emit('setRoom', { room: room })
   
   /* !--- Add New Segment Row --- */
-
   socket.on('createSegment', function(data) {
-    //segmentList[data.rowId] = {title: data.rowTitle, trt: data.rowTrt, type: data.rowType, order: data.rowOrder}
     if (data.rowType == 'red') {
       $('#list ul#flow').append('<li id="'+data.rowId+'" class="header red"><div class="title">'+data.rowTitle+'</div></li>')
     } else if ( data.rowType == 'green') {
@@ -38,28 +36,20 @@ $(document).ready(function () {
     }
     $('#list ul#flow li#'+data.rowId).remove()
   })
+    
   
+  // CHECK ABOVE HERE!!!
+    
+    
   /* !--- Reorder Segments --- */
-
   socket.on('updateReorder', function(data) {
-    //$('#list ul#flow').after('<ul id="new"><li>this works</li></ul>')
-    //$('ul#flow > li').clone().appendTo('ul#temp')
-    //$('ul#flow').empty()
-
     data.sortedIds.forEach(function(id) {
       $('#list ul#flow li#'+id).clone().appendTo($('#list ul#temp'))
-      //$('#list ul#temp').append(id)
-      //$('ul#temp li#'+id).clone().appendTo($('ul#flow'))  /// STILL WORKING RIGHT HERE!
-      //segmentList[id].order = i
-
     })
     $('#list ul#flow').empty()
     $('#list ul#temp > li').clone().appendTo('#list ul#flow')
     $('#list ul#temp').empty()
   })
-  
-  
-    // CHECK ABOVE HERE!!!
   
   /* !--- Update Header --- */
   socket.on('updateHeader', function(data) {
@@ -89,7 +79,6 @@ $(document).ready(function () {
     // Find Next
     nextId = $('#list ul#flow li#'+current).next().attr('id')
     if(nextId == '') {nextId = null}
-    
     $('#stage #currentTitle').text($('#list ul#flow li#'+current+' .title').text())
     if(nextId != null) {
       $('#stage #nextTitle').text($('#list ul#flow li#'+nextId+' .title').text())
@@ -109,17 +98,14 @@ $(document).ready(function () {
     var id = data.rowId
     current = id
     if(id != '') {
-      
       currentStart = data.start
       currentTrt = data.rowTrt
       $('#list ul#flow li').removeClass('highlight')
       $('#list ul#flow li#'+current).addClass('highlight')
-      
       // Find Next
       var order = data.rowOrder
       nextId = null
       nextId = $('#list ul#flow li#'+current).next().attr('id')
-      
       $('#stage #currentTitle').text($('#list ul#flow li#'+current+' .title').text())
       if(nextId != null) {
         $('#stage #nextTitle').text($('#list ul#flow li#'+nextId+' .title').text())
@@ -133,6 +119,7 @@ $(document).ready(function () {
       }
     } else {
       currentTrt = null
+      $('#list ul#flow li').removeClass('highlight')
       $('#stage #currentTitle').text('')
       $('#stage #currentTimer').text('')
       $('#stage #next').slideUp('fast', function() {
@@ -195,19 +182,30 @@ $(document).ready(function () {
   
   /* !--- Alerts --- */
   if (alert != '') {
-    $('div#stage div#alert').text(alert)
-    $('div#stage div#alert').css('top','0')
+    $('#stage #alert').text(alert)
+    $('#stage #alert').css('top','0')
+    $('#list #alert').text(alert)
+    $('#list #alert').css('top','0')
   }
   socket.on('alertUpdate', function(data) {
     if(data.alertText == '') {
-      $('div#stage div#alert').animate({
+      $('#stage #alert').animate({
         top: '-360px'
       }, 1000, function() {
-        $('div#stage div#alert').text(data.alertText)
+        $('#stage #alert').text(data.alertText)
+      })
+      $('#list #alert').animate({
+        top: '-360px'
+      }, 1000, function() {
+        $('#list #alert').text(data.alertText)
       })
     } else {
-      $('div#stage div#alert').text(data.alertText)
-      $('div#stage div#alert').animate({
+      $('#stage #alert').text(data.alertText)
+      $('#stage #alert').animate({
+        top: '0'
+      })
+      $('#list #alert').text(data.alertText)
+      $('#list #alert').animate({
         top: '0'
       })
     }    
