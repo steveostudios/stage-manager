@@ -43,11 +43,12 @@ $(document).ready(function () {
 
   socket.on('updateReorder', function(data) {
     //$('#list ul#flow').after('<ul id="new"><li>this works</li></ul>')
-    $('ul#flow > li').clone().appendTo('ul#temp')
-    $('ul#flow').empty()
+    //$('ul#flow > li').clone().appendTo('ul#temp')
+    //$('ul#flow').empty()
     var i = 0
     data.sortedIds.forEach(function(id) {
-      $('ul#temp li#'+id).clone().appendTo($('ul#flow')  /// STILL WORKING RIGHT HERE!
+      $('#list ul#temp').append(id)
+      //$('ul#temp li#'+id).clone().appendTo($('ul#flow'))  /// STILL WORKING RIGHT HERE!
       //segmentList[id].order = i
       i++
     })
