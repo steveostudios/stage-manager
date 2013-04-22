@@ -45,13 +45,13 @@ $(document).ready(function () {
     //$('#list ul#flow').after('<ul id="new"><li>this works</li></ul>')
     //$('ul#flow > li').clone().appendTo('ul#temp')
     //$('ul#flow').empty()
-    var i = 0
+
     data.sortedIds.forEach(function(id) {
       $('#list ul#flow li#'+id).clone().appendTo($('#list ul#temp'))
       //$('#list ul#temp').append(id)
       //$('ul#temp li#'+id).clone().appendTo($('ul#flow'))  /// STILL WORKING RIGHT HERE!
       //segmentList[id].order = i
-      i++
+
     })
     $('#list ul#flow').empty()
     $('#list ul#temp > li').clone().appendTo('#list ul#flow')
