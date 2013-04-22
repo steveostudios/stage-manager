@@ -47,7 +47,8 @@ $(document).ready(function () {
     //$('ul#flow').empty()
     var i = 0
     data.sortedIds.forEach(function(id) {
-      $('#list ul#temp').append(id)
+      $('#list ul#flow li#'+id).clone().appendTo($('#list ul#temp'))
+      //$('#list ul#temp').append(id)
       //$('ul#temp li#'+id).clone().appendTo($('ul#flow'))  /// STILL WORKING RIGHT HERE!
       //segmentList[id].order = i
       i++
