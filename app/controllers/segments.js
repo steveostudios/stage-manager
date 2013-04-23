@@ -85,6 +85,15 @@ exports.reorderRows = function (data, res) {
 
 // !--- Save Current Segment
 exports.saveCurrent = function (data, res) {
+  if (data.oldId != '') {
+      Segment.findOne({ _id: data.oldId }, function(err, oldSegment) {
+      if (err) {return next(err); }
+      oldSegment.end = data.start;
+      oldSegment.save(function(err) {
+        if (err) {return next(err); }
+      })
+    })
+  }
   Segment.findOne({ _id: data.rowId }, function(err, segment) {
     if (err) {return next(err); }
     segment.start = data.start;

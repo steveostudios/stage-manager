@@ -234,7 +234,7 @@ $(document).ready(function () {
     var id = $(this).parent().parent().attr('id')
     var trt = $(this).parent().find('div.trt').text()
     var order = $(this).parent().parent().attr('rel')
-    socket.emit('segmentCurrent', {eventId: room, rowId: id, rowTrt: trt, rowOrder: order})
+    socket.emit('segmentCurrent', {eventId: room, rowId: id, rowTrt: trt, rowOrder: order, oldId: current })
   })
   socket.on('updateCurrent', function(data) {
     $('div#segment_pane ul#body li.segment div.segment').removeClass('highlight')

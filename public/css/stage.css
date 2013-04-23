@@ -191,9 +191,6 @@
   color: #fff;
   font-family: 'LeagueGothicRegular';
   font-size: 80px;
-  word-break: break-all;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
   hyphens: auto;
   z-index: 90;
 }
