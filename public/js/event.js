@@ -500,6 +500,7 @@ $(document).ready(function () {
       var resetTrt = $('li[rel="'+resetOrder+'"] div.segment div.trt').text()
       socket.emit('segmentCurrent', {eventId: room, rowId: resetId, rowTrt: resetTrt, rowOrder: resetOrder})
     }
+    
   })
   
   /* !--- Clear Segment --- */
