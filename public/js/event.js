@@ -464,7 +464,7 @@ $(document).ready(function () {
       if(currentOrder < (total-1) ) {        
         var nextId = $('li[rel="'+nextOrder+'"]').attr('id')
         var nextTrt = $('li[rel="'+nextOrder+'"] div.segment div.trt').text()
-        socket.emit('segmentCurrent', {eventId: room, rowId: nextId, rowTrt: nextTrt, rowOrder: nextOrder, oldId: current})
+        socket.emit('segmentCurrent', {eventId: room, rowId: nextId, rowTrt: nextTrt, rowOrder: nextOrder})
       }
     }
   })
@@ -485,7 +485,7 @@ $(document).ready(function () {
       if(currentOrder > 0) {
         var prevId = $('li[rel="'+prevOrder+'"]').attr('id')
         var prevTrt = $('li[rel="'+prevOrder+'"] div.segment div.trt').text()
-        socket.emit('segmentCurrent', {eventId: room, rowId: prevId, rowTrt: prevTrt, rowOrder: prevOrder, oldId: current})
+        socket.emit('segmentCurrent', {eventId: room, rowId: prevId, rowTrt: prevTrt, rowOrder: prevOrder})
       }
     }
   })
