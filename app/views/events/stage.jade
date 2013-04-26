@@ -22,10 +22,14 @@ block content
       li
         a(href='#')#btn_split Split
   #list
-    #head menu 
-      .time
-        span.actualtime
-        span.period
+    ul#head 
+      li.menu
+        a(href='#') M 
+      li.eta
+        ETA 12:00pm
+      li.time
+          span.actualtime
+          span.period
     ul#flow
       each segment in event.segments 
         - if (segment.type != 'red' && segment.type != 'green' && segment.type != 'blue')

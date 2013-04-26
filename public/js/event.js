@@ -1,4 +1,5 @@
-var socket = io.connect('http://stagemanager.herokuapp.com')
+//var socket = io.connect('http://stagemanager.herokuapp.com')
+var socket = io.connect('http://localhost:3000')
 var editing = null
 var editingType = null
 var currentTrt = null
@@ -229,6 +230,11 @@ $(document).ready(function () {
     $('#sidebar #preview #currentTimer').text('')
     tick()
   }
+  checkNext()
+  checkPrev()
+  checkReset()
+  checkClear()
+  determineETA()
   $(document).on('click', 'div#segment_pane ul#body li.segment div.segment div.title', function(e) {
     e.preventDefault()
     var id = $(this).parent().parent().attr('id')
@@ -254,6 +260,11 @@ $(document).ready(function () {
       $('#sidebar #preview #currentTitle').text('')
       $('#sidebar #preview #currentTimer').text('')
     }
+    checkNext()
+    checkPrev()
+    checkReset()
+    checkClear()
+    determineETA()
   })
   // on add segment click
   $('#controls a#btn_addSegment').click(function(e) {
@@ -447,13 +458,13 @@ $(document).ready(function () {
     $.each(listitems, function(idx, itm) { mylist.append(itm) })
   })
   
+  /* !- Next, Previous, Reset, Clear - */
+  
   /* !--- Next Segment --- */
   $(document).on('click', 'footer a#btn_clockNext', function(e) {
     e.preventDefault()
-    if (current != null) {
-      var currentOrder = parseInt($('li#'+current).attr('rel'))
-      var total = $('ul#body li').length
-      var nextOrder = currentOrder + 1
+    if($('footer a#btn_clockNext').hasClass('disabled') != true) {
+      var nextOrder = parseInt($('li#'+current).attr('rel')) + 1
       function findNext(){
         if ($('li[rel="'+nextOrder+'"]').hasClass('header')){
           nextOrder ++
@@ -461,20 +472,40 @@ $(document).ready(function () {
         }
       }
       findNext()
-      if(currentOrder < (total-1) ) {        
-        var nextId = $('li[rel="'+nextOrder+'"]').attr('id')
-        var nextTrt = $('li[rel="'+nextOrder+'"] div.segment div.trt').text()
-        socket.emit('segmentCurrent', {eventId: room, rowId: nextId, rowTrt: nextTrt, rowOrder: nextOrder})
-      }
+      var nextId = $('li[rel="'+nextOrder+'"]').attr('id')
+      var nextTrt = $('li[rel="'+nextOrder+'"] div.segment div.trt').text()
+      socket.emit('segmentCurrent', {eventId: room, rowId: nextId, rowTrt: nextTrt, rowOrder: nextOrder, oldId: current })
     }
   })
+  
+  function checkNext() {
+    var currentOrder = parseInt($('li#'+current).attr('rel'))
+    var total = $('ul#body li').length
+    var nextOrder = currentOrder+1
+    function findNext(){
+      if ($('li[rel="'+nextOrder+'"]').hasClass('header')){
+        nextOrder ++
+        findNext()
+      }
+    }
+    if(currentOrder >= total) {
+      $('footer a#btn_clockNext').addClass('disabled')
+    } else {
+      findNext()
+      //console.log(currentOrder+'/'+total+'. '+nextOrder+' is next.')
+      if (nextOrder < total) {
+        $('footer a#btn_clockNext').removeClass('disabled')
+      } else {
+        $('footer a#btn_clockNext').addClass('disabled')
+      }
+    }
+  }
   
   /* !--- Previous Segment --- */
   $(document).on('click', 'footer a#btn_clockPrevious', function(e) {
     e.preventDefault()
-    if (current != null) {
-      var currentOrder = parseInt($('li#'+current).attr('rel'))
-      var prevOrder = currentOrder - 1
+    var prevOrder = parseInt($('li#'+current).attr('rel')) - 1
+    if($('footer a#btn_clockPrevious').hasClass('disabled') != true) {
       function findPrev(){
         if ($('li[rel="'+prevOrder+'"]').hasClass('header')){
           prevOrder --
@@ -482,33 +513,70 @@ $(document).ready(function () {
         }
       }
       findPrev()
-      if(currentOrder > 0) {
-        var prevId = $('li[rel="'+prevOrder+'"]').attr('id')
-        var prevTrt = $('li[rel="'+prevOrder+'"] div.segment div.trt').text()
-        socket.emit('segmentCurrent', {eventId: room, rowId: prevId, rowTrt: prevTrt, rowOrder: prevOrder, oldId: ''})
-      }
+      var prevId = $('li[rel="'+prevOrder+'"]').attr('id')
+      var prevTrt = $('li[rel="'+prevOrder+'"] div.segment div.trt').text()
+      socket.emit('segmentCurrent', {eventId: room, rowId: prevId, rowTrt: prevTrt, rowOrder: prevOrder, oldId: current})
     }
   })
+  
+  function checkPrev() {
+    var currentOrder = parseInt($('li#'+current).attr('rel'))
+    var total = $('ul#body li').length
+    var prevOrder = currentOrder - 1
+    function findPrev(){
+      if ($('li[rel="'+prevOrder+'"]').hasClass('header')){
+        prevOrder --
+        findPrev()
+      }
+    }
+    if(currentOrder < 0) {
+      $('footer a#btn_clockPrevious').addClass('disabled')
+    } else {
+      findPrev()
+      console.log(currentOrder+'/'+total+'. '+prevOrder+' is before.')
+      if (prevOrder >= 0) {
+        $('footer a#btn_clockPrevious').removeClass('disabled')
+      } else {
+        $('footer a#btn_clockPrevious').addClass('disabled')
+      }
+    }
+  }
   
   /* !--- Reset Segment --- */
   $(document).on('click', 'footer a#btn_clockReset', function(e) {
     e.preventDefault()
-    if (current != null) {
+    if($('footer a#btn_clockReset').hasClass('disabled') != true) {
       var currentOrder = $('li#'+current).attr('rel')
       var resetOrder = parseInt(currentOrder)
       var resetId = $('li[rel="'+resetOrder+'"]').attr('id')
       var resetTrt = $('li[rel="'+resetOrder+'"] div.segment div.trt').text()
-      socket.emit('segmentCurrent', {eventId: room, rowId: resetId, rowTrt: resetTrt, rowOrder: resetOrder, oldId: ''})
+      socket.emit('segmentCurrent', {eventId: room, rowId: resetId, rowTrt: resetTrt, rowOrder: resetOrder})
     }
-    
   })
+  
+  function checkReset() {
+    if (current == null || $('li#'+current).hasClass('header')) {
+      $('footer a#btn_clockReset').addClass('disabled')
+    } else {
+      $('footer a#btn_clockReset').removeClass('disabled')
+    }
+  }
   
   /* !--- Clear Segment --- */
   $(document).on('click', 'footer a#btn_clockClear', function(e) {
     e.preventDefault()
-    $('div#segment_pane ul#body li.segment div.segment').removeClass('highlight')
-    socket.emit('clockClear', {eventId: room})
+    if($('footer a#btn_clockClear').hasClass('disabled') != true) {
+      socket.emit('clockClear', {eventId: room})
+    }
   })
+  
+  function checkClear() {
+    if (current == null || $('li#'+current).hasClass('header')) {
+      $('footer a#btn_clockClear').addClass('disabled')
+    } else {
+      $('footer a#btn_clockClear').removeClass('disabled')
+    } 
+  }
   
   /* !--- Update Time --- */
   var currentTime = null
@@ -570,6 +638,19 @@ $(document).ready(function () {
       $('#sidebar #preview #currentTimer').text('')
     }
     setTimeout(tick, 500)
+  }
+  
+  /* !--- ETA --- */
+  function determineETA() {
+    var eta = null
+    $( "ul#body li.segment .segment div.trt" ).each(function( index ) {
+      //console.log( index + ": " + $(this).text() )
+      thisTrt = $(this).text()
+      var tempTrt = thisTrt.split(':')
+      var trt = parseInt(tempTrt[0]*60)+parseInt(tempTrt[1])
+      eta = eta + trt
+    })
+    console.log(eta)
   }
   
   /* !--- Switch Modes --- */

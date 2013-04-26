@@ -86,23 +86,55 @@
 }
 /* !--- List View ---*/
 
-#list #head {
+#list ul#head {
   position: absolute;
+    top: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
   height: 50px;
   width: 100%;
   background: -webkit-linear-gradient(#2c2c2c 0%, #222222 100%);
   box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.5);
+  display: block;
   z-index: 100;
+  list-style: none;
+  -webkit-padding-start: 0;
 }
-#list .time {
-  position: relative;
-    top: -10px;
-    right: 10px;
+#list ul#head li {
+  height: 100%;
+  display: block;
+  float: left; 
+}
+#list ul#head li.menu {
+  width: 50px;
+}
+#list ul#head li.menu a {
+  margin: 10px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  border-radius: 5px;
+  color: #fff;
+  display: block;
+}
+#list ul#head li.eta {
+  position: absolute;
+    left: 50px;
+    right: 100px;
+  padding: 10px 15px 0 15px;
+  height: 40px;
+}
+
+#list ul#head li.time {
+  padding: 10px 15px 0 0;
+  width: 100px;
   color: #71cafd;
   text-align: right;
   letter-spacing: -0.05em;
   font-size: 30px;
   font-family: 'BebasNeueRegular';
+  float: right;
 }
 #list .time span.period {
   font-size: 80%;

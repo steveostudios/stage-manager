@@ -1,4 +1,5 @@
-var socket = io.connect('http://stagemanager.herokuapp.com')
+//var socket = io.connect('http://stagemanager.herokuapp.com')
+var socket = io.connect('http://localhost:3000')
 var nextId = null
 var display = 'timer'
 
