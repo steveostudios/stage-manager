@@ -13,7 +13,6 @@ $(document).ready(function () {
     $('.alertHidable').hide()
   })
 
-
   $(document).on('click', '#alert_pane a#btn_alert', function(e) {
     e.preventDefault()
     var alertText = $('#alert_pane textarea#inp_alert').val()

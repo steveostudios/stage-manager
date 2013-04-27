@@ -1,5 +1,5 @@
-//var socket = io.connect('http://stagemanager.herokuapp.com')
-var socket = io.connect('http://localhost:3000')
+var socket = io.connect('http://stagemanager.herokuapp.com')
+//var socket = io.connect('http://localhost:3000')
 var editing = null
 var editingType = null
 var currentTrt = null
@@ -281,6 +281,11 @@ $(document).ready(function () {
   })
   
   /* !--- Headers --- */
+  
+  var headerOptions = '<a href="#" class="headerEdit"><i class="icon-pencil" /></a><a href="#" class="rowRemove"><i class="icon-remove" /></a><span class="handle alertHidable"><i class="icon-reorder" /></span>'
+  var headerEditOptions = '<a href="#" class="headerSave"><i class="icon-ok-circle" /></a><a href="#" class="headerCancel"><i class="icon-remove-circle" /></a>'
+  var pup_typeSelector = '<div class="pup_typeSelector"><img src="../img/ico_headerRed.png", data-type="red" /><img src="../img/ico_headerGreen.png", data-type="green" /><img src="../img/ico_headerBlue.png", data-type="blue" /></div>'
+  
   // on header mouseover
   $(document).on('mouseover', 'div.header', function(e) {
     $(this).find('.hidable').show()
@@ -305,8 +310,9 @@ $(document).ready(function () {
     editingType = 'header'
     editing = 'new'
     $('div#pup_addHeader').fadeToggle()
-    $('ul#body').append('<li id="new" class="header ' + clr + '"><div class="header_edit" style="display:block"><div class="type"><input type="hidden" class="input_type" value="' + clr + '" /><div class="pup_typeSelector"><img src="../img/ico_headerRed.png", data-type="red" /><img src="../img/ico_headerGreen.png", data-type="green" /><img src="../img/ico_headerBlue.png", data-type="blue" /></div></div><div class="title withInput"><input type="text" placeholder="Title" class="input_title" /></div><div class="options"><a href="#" class="headerSave">S</a><a href="#" class="headerCancel">C</a></div></div></li>')
-    $('ul#body li#new .header_edit .type .pup_typeSelector').find('[data-type="' + clr + '"]').addClass('selected')
+    $('ul#body').append('<li id="new" class="header ' + clr + '"><div class="header"><div class="type"><input type="hidden" class="input_type" value="' + clr + '" />' + pup_typeSelector + '</div><div class="title"><input type="text" class="headerText_input" placeholder="Header"/></div><div class="options">' + headerEditOptions + '</div></div></li>')
+    $('ul#body li#new .header .type .pup_typeSelector').find('[data-type="' + clr + '"]').addClass('selected')
+    $('ul#body li#new .header .title input.headerText_input').focus()
   }
   // edit header click
   $(document).on('click', '.headerEdit', function(e) {
@@ -314,16 +320,18 @@ $(document).ready(function () {
     if(editing == null){
       editingType = 'header'
       editing = $(this).parent().parent().parent().attr('id')
-      $(this).parent().parent().toggle()
-      $(this).parent().parent().next().toggle()
+      var title = $(this).parent().parent().find('.title').text()
+      $(this).parent().parent().find('.type .pup_typeSelector').show()
+      $(this).parent().parent().find('.title').html('<input type="text" class="headerText_input" value="' + title + '"/><input type="hidden" class="oldTitle" value="' + title + '" />')
+      $(this).parent().parent().find('.title input.headerText_input').focus()
+      $(this).parent().html(headerEditOptions)
     }
   })
   // on choosing a new color
-  $(document).on('click', 'div#segment_pane ul li.header div.header_edit .type .pup_typeSelector img', function(e) {
-    $('div#segment_pane ul li.header div.header_edit .type .pup_typeSelector img').removeClass('selected')
+  $(document).on('click', 'div#segment_pane ul li.header div.header .type .pup_typeSelector img', function(e) {
+    $('div#segment_pane ul li.header div.header .type .pup_typeSelector img').removeClass('selected')
     $(this).addClass('selected')
     var dataType = $(this).attr('data-type')
-    //$(this).parent().parent().find('.input_type').val(dataType)
     $(this).parent().parent().parent().parent().removeClass('red')
     $(this).parent().parent().parent().parent().removeClass('green')
     $(this).parent().parent().parent().parent().removeClass('blue')
@@ -331,8 +339,9 @@ $(document).ready(function () {
   })
   // on socket update - new header
   socket.on('createHeader', function(data) {
-    $('ul#body').append('<li id="'+data.rowId+'" class="header ' + data.rowType + '" rel="'+data.rowOrder+'"><div class="header"><div class="title">'+data.rowTitle+'</div><div class="options"><a href="#" class="headerEdit"><img src="../img/ico_editRow.png" width="17" height="17" class="hidable" /></a><a href="#" class="rowRemove"><img src="../img/ico_removeRow.png" width="17" height="17" class="hidable" /></a><span class="hidable handle"><img src="../img/ico_moveRow.png" width="17" height="17" class="hidable" /></span></div></div><div class="header_edit"><div class="type"><input type="hidden" class="input_type" value="' + data.rowType + '" /><div class="pup_typeSelector"><img src="../img/ico_headerRed.png", data-type="red" /><img src="../img/ico_headerGreen.png", data-type="green" /><img src="../img/ico_headerBlue.png", data-type="blue" /></div></div><div class="title withInput"><input type="text" value="'+data.rowTitle+'" placeholder="Title" class="input_title" /></div><div class="options"><a href="#" class="headerSave">S</a><a href="#" class="headerCancel">C</a></div></div></li>')
-    $('ul#body li#' + data.rowId + ' .header_edit .type .pup_typeSelector').find('[data-type="' + data.rowType + '"]').addClass('selected')
+    $('ul#body').append('<li id="'+data.rowId+'" class="header ' + data.rowType + '" rel="'+data.rowOrder+'"><div class="header"><div class="type"><input type="hidden" class="input_type" value="'+data.rowTitle+'" />' + pup_typeSelector + '</div><div class="title">'+data.rowTitle+'</div><div class="options hidable">' + headerOptions + '</div></div></li>')
+    $('ul#body li#' + data.rowId + ' .header .type .pup_typeSelector').find('[data-type="' + data.rowType + '"]').addClass('selected')
+    $('ul#body li#' + data.rowId + ' .header .type .pup_typeSelector').hide()
   })
   // on save
   $(document).on('click', '.headerSave', function(e) {
@@ -345,34 +354,43 @@ $(document).ready(function () {
     editingType = null
     editing = null
     var type = null
-    if ($('li#' +id + ' .header_edit .type .pup_typeSelector img[data-type="red"]').hasClass('selected')) {
+    if ($('li#' +id + ' .header .type .pup_typeSelector img[data-type="red"]').hasClass('selected')) {
       type = 'red'
-    } else if ($('li#' +id + ' .header_edit .type .pup_typeSelector img[data-type="green"]').hasClass('selected')) {
+    } else if ($('li#' +id + ' .header .type .pup_typeSelector img[data-type="green"]').hasClass('selected')) {
       type = 'green'
-    } else if ($('li#' +id + ' .header_edit .type .pup_typeSelector img[data-type="blue"]').hasClass('selected')) {
+    } else if ($('li#' +id + ' .header .type .pup_typeSelector img[data-type="blue"]').hasClass('selected')) {
       type = 'blue'
     }
-    $('li#' + id + ' .header_edit .type .input_type').val(type)
-    var title = $('li#' + id + ' .header_edit .title .input_title').val()
+    $('li#' + id + ' .header .type .input_type').val(type)
+    var title = $('li#' + id + ' .header .title .headerText_input').val()
     var order = $('li#' + id).attr('rel')
-    $('li#' + id + ' .header .title').text(title)
+    $('li#' + id + ' .header .type .pup_typeSelector').hide()
+    $('li#' + id + ' .header .options').html(headerOptions)    
     if(id == 'new') {
       order = $('ul#body li').length - 1
       socket.emit('headerCreate', {eventId: room, rowType: type, rowTitle: title, rowOrder: order})
       $('li#new').remove()
     } else {
-        socket.emit('headerSave', { rowId: id , rowType: type, rowTitle: title, rowOrder: order}, function(data) {
-        $('li#' + id).addClass(rowType)
-        $('li#' + id + ' .header .title').text(data.rowTitle)
-      })
+      socket.emit('headerSave', { rowId: id , rowType: type, rowTitle: title, rowOrder: order})
     }
-    $('li#' + id + ' .header_edit').toggle()
-    $('li#' + id + ' .header').toggle()
   }
   // on socket update - update header
   socket.on('updateHeader', function(data) {
-    $('li#' + data.rowId + ' .header .type img').attr('src', '../img/ico_' + data.rowType + '.png')
-    $('li#' + data.rowId + ' .header .title').text(data.rowTitle)
+    var type = data.rowType
+    $('li#' + data.rowId + ' .header .type .input_type').val(type)
+    $('li#' + data.rowId).removeClass('red')
+    $('li#' + data.rowId).removeClass('green')
+    $('li#' + data.rowId).removeClass('blue')
+    $('li#' + data.rowId).addClass(type)
+    $('div#segment_pane ul li.header div.header .type .pup_typeSelector img').removeClass('selected')
+    if (type == 'red') {
+      $('li#' + data.rowId + ' .header .type .pup_typeSelector img[data-type="red"]').addClass('selected')
+    } else if (type == 'green') {
+      $('li#' + data.rowId + ' .header .type .pup_typeSelector img[data-type="green"]').addClass('selected')
+    } else if (type == 'blue') {
+      $('li#' + data.rowId + ' .header .type .pup_typeSelector img[data-type="blue"]').addClass('selected')
+    }
+    $('li#' + data.rowId + ' .header .title').html(data.rowTitle)
     $('li#' + data.rowId + ' .header .trt').text(data.rowTrt)
   })
   
@@ -387,16 +405,17 @@ $(document).ready(function () {
     editingType = null
     editing = null
     if (id != 'new') {
-      var type = $('li#' + id + ' .header_edit .input_type').val()
+      var type = $('li#' + id + ' .header .type input.input_type').val()
       $('li#' + id).removeClass('red')
       $('li#' + id).removeClass('green')
       $('li#' + id).removeClass('blue')
       $('li#' + id).addClass(type)
-      $('li#' + id + ' .header_edit .type .pup_typeSelector img').removeClass('selected')
-      $('li#' + id + ' .header_edit .type .pup_typeSelector').find('[data-type="' + type + '"]').addClass('selected')
-      $('li#' + id + ' .header_edit .title .input_title').val($('li#' + id + ' .header .title').text())
-      $('li#' + id + ' .header_edit').toggle()
-      $('li#' + id + ' .header').toggle()
+      $('li#' + id + ' .header .type .pup_typeSelector img').removeClass('selected')
+      $('li#' + id + ' .header .type .pup_typeSelector').find('[data-type="' + type + '"]').addClass('selected')
+      $('li#' + id + ' .header .type .pup_typeSelector').hide()
+      var title = $('li#' + id + ' .header .title input.oldTitle').val()
+      $('li#' + id + ' .header .title').html(title)
+      $('li#' + id + ' .header .options').html(headerOptions)
     } else {
       $('li#new').remove()
     }
