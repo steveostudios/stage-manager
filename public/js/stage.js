@@ -1,10 +1,16 @@
-var socket = io.connect('http://stagemanager.herokuapp.com')
-//var socket = io.connect('http://localhost:3000')
+//var socket = io.connect('http://stagemanager.herokuapp.com')
+var socket = io.connect('http://localhost:3000')
 var nextId = null
 var display = 'timer'
+var timeOffset = 0
 
 $(document).ready(function () {
-  socket.emit('setRoom', { room: room })
+  socket.emit('setRoom', { room: room }, function(data) {
+  	var serverNow = new Date(data)
+	  var clientNow = new Date()
+	  timeOffset = serverNow-clientNow
+	  $('.eta').text(timeOffset)
+  })  
   
   /* !--- Add New Segment Row --- */
   socket.on('createSegment', function(data) {
@@ -134,7 +140,7 @@ $(document).ready(function () {
     if(current != ''){
       var now = new Date()
       var start = new Date(currentStart)
-      var diff = (now - start) / 1000
+      var diff = ((now + timeOffset) - start) / 1000
       var trtArray = currentTrt.split(':')
       var trt = parseInt(trtArray[0]*60)+parseInt(trtArray[1])
       var total = trt - diff

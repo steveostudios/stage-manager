@@ -272,61 +272,61 @@ div#segment_pane ul#body li.segment:nth-child(even) {
 	border-bottom: 1px solid #d1d1d1;
   background: #f1f1f1;
 }
-div#segment_pane ul#body li.segment:last-child {
+div#segment_pane ul#body li:last-child {
   box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.5);
 }
-div#segment_pane ul#body li.segment div.segment, div#segment_pane ul#body li.segment div.segment_edit {
+div#segment_pane ul#body li.segment div.segment {
   height: 52px;
 }
 div#segment_pane ul#body li.segment .highlight {
   background: #7ebfd9;
 }
-div#segment_pane ul#body li.segment div.segment div.title {
-  position: absolute;
-    right: 199px;
-    left: 45px;
-	overflow: hidden;
-  padding: 12px 10px;
-  min-width: 200px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-div#segment_pane ul#body li.segment div.segment div.trt {
-  position: absolute;
-    right: 110px;
-  display: block;
-  padding: 15px;
-  width: 90px;
-  border-right: 1px solid #c7c7c7;
-  text-align: right;
-  font-size: 18px;
-}
 div#segment_pane ul#body li.segment div.segment div.type {
   padding: 10px 5px;
   width: 35px; 
 }
-/* !--- Segment Pane - Segment Edit --- */
-div#segment_pane ul#body li.segment div.segment_edit {
-  display: none;
+div#segment_pane .segment .title {
+  position: absolute;
+    right: 199px;
+    left: 45px;
+	overflow: hidden;
+  padding: 12px 5px;
+  min-width: 200px;
+  height: 38px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
 }
-div#segment_pane ul#body li.segment div.segment_edit div.type {
+div#segment_pane .segment .trt {
+  position: absolute;
+    right: 110px;
+  padding: 15px;
+  width: 90px;
+  height: 22px;
+  border-right: 1px solid #c7c7c7;
+  text-align: right;
+  font-size: 18px;
+  display: block;
+}
+
+div#segment_pane .type {
   padding: 10px 5px;
   width: 35px; 
 }
-div#segment_pane ul#body li.segment div.segment_edit .type .pup_typeSelector {
+div#segment_pane .type .pup_typeSelector {
   position: absolute;
     left: 5px;
   z-index: 102;
   display: block;
-  margin-top: 0px;
+  margin-top: 10px;
   padding: 5px;
-  height: 25px;
+  height: 30px;
   border-radius: 5px;
   background: #ececec;
   box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
 }
-div#segment_pane ul#body li.segment div.segment_edit .type .pup_typeSelector:after, 
-div#segment_pane ul#body li.segment div.segment_edit .type .pup_typeSelector:before {
+div#segment_pane .type .pup_typeSelector:after, 
+div#segment_pane .type .pup_typeSelector:before {
   position: absolute;
 	left: 100%;
 	width: 0;
@@ -335,58 +335,51 @@ div#segment_pane ul#body li.segment div.segment_edit .type .pup_typeSelector:bef
 	border: 10px solid transparent;
 	content: ' ';
 }
-div#segment_pane ul#body li.segment div.segment_edit .type .pup_typeSelector:after {	
+div#segment_pane .type .pup_typeSelector:after {	
 	 top: -20px;
 	 left: 10px;
 	border-bottom-color: #ececec;
 }
-div#segment_pane ul#body li.segment div.segment_edit .type .pup_typeSelector:before {
+div#segment_pane .type .pup_typeSelector:before {
 	 top: -22px;
 	 left:  9px;
   border: 11px solid transparent;
 	border-bottom-color: rgba(0,0,0,0.1);
 }
-div#segment_pane ul#body li.segment div.segment_edit .type .pup_typeSelector img {
+div#segment_pane .type .pup_typeSelector i {
+  padding: 3px;
   width: 25px;
   height: 25px;
 }
-div#segment_pane ul#body li.segment div.segment_edit .type .pup_typeSelector img.selected {
+div#segment_pane .type .pup_typeSelector i.selected {
   background: #7ebfd9;
 }
-div#segment_pane ul#body li.segment div.segment_edit li div.withInput {
-  display: block;
-  margin: 0;
-  padding: 0 24px 0 0;
-}
-div#segment_pane ul#body li.segment div.segment_edit div.title input,
-div#segment_pane ul#body li.segment div.segment_edit div.trt input {
+div#segment_pane input.segmentTitle,
+div#segment_pane input.segmentTrt {
+  padding: 5px 14px;
   position: absolute;
+    top: 0;
   height: 52px;
   border: none;
   font-weight: bold;
   font-family: 'PT Sans', sans-serif;
-}
-div#segment_pane ul#body li.segment div.segment_edit div.title input {
-    right: 197px;
-    left: 43px;
-  padding: 14px 8px 9px 8px;
+  display: block;
   border-right: 1px solid #c7c7c7;
   border-left: 1px solid #c7c7c7;
+}
+div#segment_pane input.segmentTitle {
+    right: 28px;
+    left: 0;
   font-size: 24px;
 }
-div#segment_pane ul#body li.segment div.segment_edit div.trt input {
-    right: 110px;
-  padding: 5px 14px;
-  width: 90px;
-  border-right: 1px solid #c7c7c7;
-  border-left: 1px solid #c7c7c7;
+div#segment_pane input.segmentTrt {
+    right: -2px;
+    left: 0;
   text-align: right;
   font-size: 18px;
 }
 div#segment_pane ul#body li.segment div.segment div.options a, 
-div#segment_pane ul#body li.segment div.segment div.options span,
-div#segment_pane ul#body li.segment div.segment_edit div.options a, 
-div#segment_pane ul#body li.segment div.segment_edit div.options span { 
+div#segment_pane ul#body li.segment div.segment div.options span { 
   display: inline-block;
   margin: 0 8px 0 0;
   padding: 18px 0 0 0;
@@ -415,12 +408,8 @@ div#segment_pane ul#body li div.options {
 /* !--- Segment Pane - Headers --- */
 div.segment_pane ul#body li.header {
   overflow: hidden;
-  height: 40px;
 }
-div.segment_pane ul#body li.header .header {
-  
-}
-div#segment_pane ul#body li.header div.header, div#segment_pane ul#body li.header div.header_edit {
+div#segment_pane ul#body li.header div.header {
   height: 40px;
 }
 div#segment_pane ul#body li.red {
@@ -435,53 +424,10 @@ div#segment_pane ul#body li.green {
 	border-bottom: 1px solid #4b970c;
   background: -webkit-linear-gradient(#57be04 0%, #53ab0c 100%);
 }
-div#segment_pane ul#body li.header div.header div.title {
-  position: absolute;
-    right: 110px;
-    left: 45px;
-  padding: 8px;
-  height: 40px;
-  display: block;
-	overflow: hidden;
-  margin: 0;
-  min-width: 200px;
-  border-right: 1px solid #c7c7c7;
-  font-size: 20px;
-  color: #f1f1f1;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  opacity: 0.95;
-}
-
-div#segment_pane ul#body li.header div.header div.options,
-div#segment_pane ul#body li.header div.header_edit div.options {
-  position: absolute;
-    right: 0;
+div#segment_pane ul#body li.header div.header .type {
   margin: 0;
   padding: 0;
-  width: 110px;
-  border-right: none;
-  text-align: right;
-  opacity: 0.5;
-}
-div#segment_pane ul#body li.header div.header div.options a, 
-div#segment_pane ul#body li.header div.header div.options span,
-div#segment_pane ul#body li.header div.header_edit div.options a, 
-div#segment_pane ul#body li.header div.header_edit div.options span { 
-  display: inline-block;
-  margin: 0 8px 0 0;
-  padding: 10px 0 0 0;
-  text-decoration: none;
-  color: #333;
-  font-size: 20px;
-}
-div#segment_pane ul#body li.header div.header_edit {
-  display: none;
-}
-div#segment_pane ul#body li.header div.header_edit div.type {
-  width: 25px;
   height: 40px;
-  display: inline-block;
 }
 div#segment_pane ul#body li.header div.header .type .pup_typeSelector {
   position: absolute;
@@ -524,24 +470,57 @@ div#segment_pane ul#body li.header div.header .type .pup_typeSelector img {
 div#segment_pane ul#body li.header div.header .type .pup_typeSelector img.selected {
   background: #7ebfd9;
 }
-
-div#segment_pane ul#body li.header div.header_edit div.title {
-
-}
-div#segment_pane ul#body li.header div.header_edit div.title input {
+div#segment_pane li.header .title {
   position: absolute;
-    right: 108px;
-    left: 43px;
-  padding: 8px;
+    right: 110px;
+    left: 45px;
+  padding: 8px 5px;
+  height: 24px;
+	overflow: hidden;
+  min-width: 200px;
+  border-right: 1px solid #c7c7c7;
+  font-size: 20px;
+  color: #f1f1f1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0.95;
+  display: block;
+}
+div#segment_pane ul#body li.header .header .title input {
+  position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+  margin: 0;
+  padding: 0 8px;
   height: 40px;
   border: none;
-  border-right: 1px solid #c7c7c7;
   border-left: 1px solid #c7c7c7;
   font-weight: bold;
   font-size: 20px;
   font-family: 'PT Sans', sans-serif;
   background: rgba(255, 255, 255, 0.75);
 }
+div#segment_pane ul#body li.header div.header div.options {
+  position: absolute;
+    right: 0;
+  margin: 0;
+  padding: 0;
+  width: 110px;
+  border-right: none;
+  text-align: right;
+  opacity: 0.5;
+}
+div#segment_pane ul#body li.header div.header div.options a, 
+div#segment_pane ul#body li.header div.header div.options span { 
+  display: inline-block;
+  margin: 0 8px 0 0;
+  padding: 10px 0 0 0;
+  text-decoration: none;
+  color: #333;
+  font-size: 20px;
+}
+
 
 /* !--- Segment Pane - Controls --- */
 div#segment_pane div#controls {

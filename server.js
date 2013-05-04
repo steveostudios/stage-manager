@@ -42,10 +42,11 @@ io.sockets.on('connection', function (socket) {
   var segments = require('./app/controllers/segments')
   var users = require('./app/controllers/users')
   
-  
-  socket.on('setRoom', function (data) {
+  socket.on('setRoom', function (data, fn) {
     room = data.room
     socket.join(room)
+    var now = new Date()
+    fn(Date.parse(now))
   });
   socket.on('eventSave', function (data) {
     events.saveEvent(data)

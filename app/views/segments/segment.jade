@@ -3,8 +3,8 @@ if (segment)
     li.header(id=segment._id, rel=segment.order, class=segment.type)
       .header
         .type
-          input(type='hidden', value=segment.type).input_type
-          .pup_typeSelector(style="display:none;")
+          //input(type='hidden', value=segment.type).input_type
+          //.pup_typeSelector
             if (segment.type == 'red')
               img(src='../img/ico_headerRed.png', data-type='red').selected
             else
@@ -19,10 +19,10 @@ if (segment)
               img(src='../img/ico_headerGreen.png', data-type='green')
         .title
           =segment.title
-        .options.hidable
+        .options.hidable(style='display:none;')
           a(href='#').headerEdit
             i.icon-pencil
-          a(href='#').rowRemove
+          a(href='#').segmentheaderRemove
             i.icon-remove
           span.handle
             i.icon-reorder
@@ -30,33 +30,15 @@ if (segment)
     li.segment(id=segment._id, rel=segment.order)
       .segment
         .type
-            img(src='../img/ico_'+ segment.type +'.png', width='35', height='35')
+          i(class='icon-'+segment.type, data-type='#{segment.type}')
         .title
           =segment.title
         .trt
           =segment.trt
-        .options.hidable
-          a(href='#').rowEdit
+        .options.hidable(style='display:none;')
+          a(href='#').segmentEdit
             i.icon-pencil
-          a(href='#').rowRemove
+          a(href='#').segmentheaderRemove
             i.icon-remove
           span.handle
             i.icon-reorder
-      .segment_edit
-        .type
-          input(type='hidden', value=segment.type).input_type
-          img(src='../img/ico_'+ segment.type +'.png', width='35', height='35', class='img_edit')
-          .pup_typeSelector
-            types = ["slate", "note", "bible", "mic", "tv", "megaphone"]
-            each type, i in types
-              if (segment.type == type)
-                img(src='../img/ico_#{type}.png', data-type='#{type}').selected
-              else
-                img(src='../img/ico_#{type}.png', data-type='#{type}')
-        .title.withInput
-          input(type='text', value=segment.title, placeholder='Title').input_title
-        .trt.withInput
-          input(type='text', value=segment.trt, placeholder='Time').input_trt
-        .options
-          a(href='#').rowSave S
-          a(href='#').rowCancel C
