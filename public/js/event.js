@@ -1,5 +1,5 @@
-//var socket = io.connect('http://stagemanager.herokuapp.com')
-var socket = io.connect('http://localhost:3000')
+var socket = io.connect('http://stagemanager.herokuapp.com')
+//var socket = io.connect('http://localhost:3000')
 var editing = null
 var editingType = null
 var currentTrt = null

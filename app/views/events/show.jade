@@ -44,13 +44,13 @@ block content
         li.alertFav
           .alertFavText
             =alertFav
-          .options
-            a.alertFavEdit.alertHidable(href='#')
-              img(src='../img/ico_editRow.png', width='17', height='17')
-            a.alertFavRemove.alertHidable(href='#')
-              img(src='../img/ico_removeRow.png', width='17', height='17')
-            span.handle.alertHidable
-              img(src='../img/ico_moveRow.png', width='17', height='17')
+          .options.hidable
+            a.alertFavEdit(href='#')
+              i.icon-pencil
+            a.alertFavRemove(href='#')
+              i.icon-remove
+            span.handle
+              i.icon-reorder
     #alertInput
       h2 Alert Message
       textarea#inp_alert(type='text')
@@ -72,7 +72,7 @@ block content
         if event.currentAlert != ''
           li.alert
             =event.currentAlert
-            a(href='#').close n
+            i.close.icon-remove-sign
       #calls
       h1 Calls
   footer

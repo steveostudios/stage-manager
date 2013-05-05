@@ -354,18 +354,18 @@ $(document).ready(function () {
     $('li#'+data.rowId).remove()
   })
 
-  /* !--- Reorder Segments and Headers --- */
-  // jquery sortable
+  // !- sortable
   $('div#segment_pane ul').sortable({
     handle: '.handle',
     axis: "y"
   })
-  // on sort-stop
+  // !- SortStop - reorder
   $('div#segment_pane ul').on( "sortstop", function( event, ui ) {
     var sortedIds = $(this).sortable( "toArray" )
+    // !- Socket(O) - reorder
     socket.emit('segmentReorder', {eventId: room, sortedIds: sortedIds})
   })
-  // on socket update
+  // !- Socket(I) - reorder
   socket.on('updateReorder', function(data) {
     var i = 0
     data.sortedIds.forEach(function(id) {
