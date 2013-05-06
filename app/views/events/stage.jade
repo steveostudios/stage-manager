@@ -35,7 +35,7 @@ block content
         - if (segment.type != 'red' && segment.type != 'green' && segment.type != 'blue')
           li(id=segment._id)
             .icon
-              img(src='../img/ico_'+segment.type+'.png')
+              i(class='icon-'+segment.type, data-type='#{segment.type}')
             .title 
               = segment.title
             .trt 

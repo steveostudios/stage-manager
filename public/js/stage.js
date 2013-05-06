@@ -139,8 +139,9 @@ $(document).ready(function () {
   function tick() {
     if(current != ''){
       var now = new Date()
+      now = now - timeOffset
       var start = new Date(currentStart)
-      var diff = ((now + 0) - start) / 1000
+      var diff = (now - start) / 1000 //@TODO - This is creating null:0null
       var trtArray = currentTrt.split(':')
       var trt = parseInt(trtArray[0]*60)+parseInt(trtArray[1])
       var total = trt - diff
@@ -160,6 +161,7 @@ $(document).ready(function () {
       if(sec<10){sec='0'+sec}
       $('#stage #currentTimer').text(min + ':' + sec)
       $('#list ul#flow li#'+current+' .trt').text(min + ':' + sec)
+      //$('#list ul#flow li#'+current+' .trt').text(min + ':' + sec)
     } else {
     
       // Do nothing?
