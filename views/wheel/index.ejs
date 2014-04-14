@@ -1,0 +1,68 @@
+<div id="page_head"></div>
+<div id="wheel">
+  <canvas id="canvas" width="1920" height="1080"><div></div></canvas>
+</div>
+<!-- settings pane -->
+<div id="pane_settings">
+  <div class="row">
+    <div class="col-md-4">
+      <form class="form-inline" role="form">
+        <div class="form-group">
+          <input type="text" id="inp_add_prize" class="form-control" placeholder="Candy Corn">
+        </div>  
+        <button type="button" id="btn_add_prize" class="btn btn-default"><i class="fa fa-plus"> Add Item</i></button>
+        <ul id="new_color_picker" class="color_picker"></ul>
+        <!-- <ul id="new_size_picker" class="size_picker">
+          <li>1x</li>
+          <li>2x</li>
+          <li>3x</li>
+        </ul> -->
+      </form>
+    </div>
+    <div class="col-md-4">
+      <ul id="prizes"></ul>
+    </div>
+    <div class="col-md-4">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" id="ckbx_remove_last_prize"> Remove last prize
+        </label>
+      </div>
+      <label for="dpdn_themes">Theme</label>
+      <select id="dpdn_themes" class="form-control">
+        <option value="Sunny_Beach">Sunny Beach</option>
+        <option value="TxT-8">TxT-8</option>
+      </select>
+      <label for="dpdn_spin_duration">Spin Duration</label>
+      <select id="dpdn_spin_duration" class="form-control">
+        <option value="20">20 seconds</option>
+        <option value="15">15 seconds</option>
+        <option value="10">10 seconds</option>
+        <option value="5">5 seconds</option>
+      </select>
+    </div>
+  </div>
+</div>
+<nav id="playbar" class="navbar navbar-default navbar-inverse navbar-fixed-bottom" role="navigation">
+  <div class="collapse navbar-collapse" id="playbar">
+    <ul class="nav navbar-nav navbar-left">
+      <li><button type="button" id="btn_spin" class="btn btn-default navbar-btn">Spin That Wheel</button></li>
+      <li><button type="button" id="btn_weakspin" class="btn btn-default navbar-btn">Weak Spin</button></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><button type="button" id="btn_settings" class="btn btn-default navbar-btn"><i class="fa fa-cog"></i></button></li>
+    </ul>
+  </div>
+</nav><!-- /bottom nav -->
+<script>
+
+  data = <%- JSON.stringify(game_data) %>;
+  gameid = <%- game_id %>;
+  prizes = data.prizes;
+  settings = data.settings;
+  room = 'spinthatwheel_5';
+  socket.get('/subscribe/'+ gameid, function gotResponse () {
+      // we don’t really care about the response
+  });
+
+</script>

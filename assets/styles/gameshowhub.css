@@ -1,0 +1,42 @@
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+nav#playbar div ul {
+	margin: 0;
+}
+nav#playbar div ul li {
+  margin-right: 10px;
+}
+nav#playbar div ul:first-child {
+  margin-left: 10px;
+}
+
+#pane_settings {
+  color: #eee;
+  position: fixed;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+  padding: 10px 10px;
+  background: #222;
+  z-index: 100;
+}
+
+.overlay_url {
+  padding: 0 10%;
+  position: absolute;
+    top: 25%;
+    left: 0;
+    right: 0;
+  height: 50%;
+  text-align: center;
+  background: #000;
+  background: rgba(0,0,0,0.5);
+  font-weight: bold;
+  font-size: 100px;
+  color: #fff;
+  display: none;
+  z-index: 101;
+}

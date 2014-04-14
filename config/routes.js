@@ -1,93 +1,208 @@
+/**
+ * Routes
+ *
+ * Sails uses a number of different strategies to route requests.
+ * Here they are top-to-bottom, in order of precedence.
+ *
+ * For more information on routes, check out:
+ * http://sailsjs.org/#documentation
+ */
 
-var mongoose = require('mongoose')
-  , Event = mongoose.model('Event')
-  , User = mongoose.model('User')
-  , async = require('async')
 
-module.exports = function (app, passport, auth) {
 
-  // user routes
-  var users = require('../app/controllers/users')
-  app.get('/login', users.login)
-  app.get('/signup', users.signup)
-  app.get('/logout', users.logout)
-  app.post('/users', users.create)
-  app.post('/users/session', passport.authenticate('local', {failureRedirect: '/login', failureFlash: 'Invalid email or password.'}), users.session)
-  app.get('/users/:userId', users.show)
+/**
+ * (1) Core middleware
+ *
+ * Middleware included with `app.use` is run first, before the router
+ */
 
-  app.param('userId', function (req, res, next, id) {
-    User
-      .findOne({ _id : id })
-      .exec(function (err, user) {
-        if (err) return next(err)
-        if (!user) return next(new Error('Failed to load User ' + id))
-        req.profile = user
-        next()
-      })
-  })
 
-  // article routes
-  var articles = require('../app/controllers/articles')
-  app.get('/articles', articles.index)
-  app.get('/articles/new', auth.requiresLogin, articles.new)
-  app.post('/articles', auth.requiresLogin, articles.create)
-  app.get('/articles/:id', articles.show)
-  app.get('/articles/:id/edit', auth.requiresLogin, auth.article.hasAuthorization, articles.edit)
-  app.put('/articles/:id', auth.requiresLogin, auth.article.hasAuthorization, articles.update)
-  app.del('/articles/:id', auth.requiresLogin, auth.article.hasAuthorization, articles.destroy)
+/**
+ * (2) Static routes
+ *
+ * This object routes static URLs to handler functions--
+ * In most cases, these functions are actions inside of your controllers.
+ * For convenience, you can also connect routes directly to views or external URLs.
+ *
+ */
+
+module.exports.routes = {
+
+  // By default, your root route (aka home page) points to a view
+  // located at `views/home/index.ejs`
+  //
+  // (This would also work if you had a file at: `/views/home.ejs`)
+
+  // '/': {
+  //   view: 'home/index'
+  // },
+
+  '/': 'MainController',
   
-  // event routes
-  var events = require('../app/controllers/events')
-  app.get('/events', auth.requiresLogin, events.index)
-  app.get('/events/new', auth.requiresLogin, events.new)
-  app.post('/events', auth.requiresLogin, events.create)
-  app.get('/events/:id', auth.requiresLogin, events.show)
-  app.get('/stage/:id', events.stage)
-  app.get('/events/:id/edit', auth.requiresLogin, auth.event.hasAuthorization, events.edit)
-  app.put('/events/:id', auth.requiresLogin, auth.event.hasAuthorization, events.update)
-  app.del('/events/:id', auth.requiresLogin, auth.event.hasAuthorization, events.destroy)
+  // !- Login.
+  '/login': 'MainController.login',
+  '/signup': 'MainController.signup',
+  '/doLogin': 'MainController.doLogin',
+  '/logout': 'MainController.logout',
+  '/account': 'MainController.account',
+  
+  // !- All Games.
+  'get /play/:id?' : 'MainController.play',
+  '/code' : 'MainController.code',
+  'get /remote/:id?' : 'MainController.remote',
+  'get /subscribe/:id?' : 'MainController.subscribe',
 
-  app.param('id', function(req, res, next, id){
-    Event
-      .findOne({ _id : id })
-      .populate('user', 'name')
-      .populate('segments', null, null, { sort: 'order' }) //! need to sort by 'order'
-      .populate('comments')
-      
-      .exec(function (err, event) {
-        if (err) return next(err)
-        if (!event) return next(new Error('Failed to load event ' + id))
-        req.event = event
-        
-        var populateComments = function (comment, cb) {
-          User
-            .findOne({ _id: comment._user })
-            .select('name')
-            .exec(function (err, user) {
-              if (err) return next(err)
-              comment.user = user
-              cb(null, comment)
-            })
-        }
-        if (event.comments.length) {
-          async.map(req.event.comments, populateComments, function (err, results) {
-            next(err)
-          })
-        }
-        else
-          next()
-      })
-  })
+  'get /get_settings/:id?' : 'MainController.get_settings',// !- TODO: NOT COMPLETE - Haven't used yet, so haven't needed it yet.
+  'put /set_settings/:id?' : 'MainController.set_settings',
+  'get /get_data/:id?' : 'MainController.get_data',// !- TODO: NOT COMPLETE - Haven't used yet, so haven't needed it yet.
+  'put /set_data/:id?' : 'MainController.set_data',
+  'get /get_results/:id?' : 'MainController.get_results',// !- TODO: NOT COMPLETE - Haven't used yet, so haven't needed it yet.
+  'put /set_results/:id?' : 'MainController.set_results',
 
-  // home route
-  app.get('/', users.login)
 
-  // comment routes
-  var comments = require('../app/controllers/comments')
-  app.post('/articles/:id/comments', auth.requiresLogin, comments.create)
+  // !- Wheel Specific.
+  'get /wheel/spin/:id?' : 'WheelController.spin',
+  'get /wheel/spin_complete/:id?' : 'WheelController.spin_complete',
 
-  // tag routes
-  var tags = require('../app/controllers/tags')
-  app.get('/tags/:tag', tags.index)
+  // !- Poll Specific.
+  'get /poll/change_question/:id?' : 'PollController.change_question',
+  'put /poll/add_question/:id?' : 'PollController.add_question',
+  'put /poll/clear_results/:id?' : 'PollController.clear_results',
+  'put /poll/vote/:id?' : 'PollController.vote',
 
-}
+  // !- Survey Specific.
+  'get /survey/change_question/:id?' : 'SurveyController.change_question',
+  'put /survey/add_question/:id?' : 'SurveyController.add_question',
+  'put /survey/reveal_answer/:id?' : 'SurveyController.reveal_answer',
+  'put /survey/display_xes/:id?' : 'SurveyController.display_xes',
+
+  /*
+  // But what if you want your home page to display
+  // a signup form located at `views/user/signup.ejs`?
+  '/': {
+    view: 'user/signup'
+  }
+
+
+  // Let's say you're building an email client, like Gmail
+  // You might want your home route to serve an interface using custom logic.
+  // In this scenario, you have a custom controller `MessageController`
+  // with an `inbox` action.
+  '/': 'MessageController.inbox'
+
+
+  // Alternatively, you can use the more verbose syntax:
+  '/': {
+    controller: 'MessageController',
+    action: 'inbox'
+  }
+
+
+  // If you decided to call your action `index` instead of `inbox`,
+  // since the `index` action is the default, you can shortcut even further to:
+  '/': 'MessageController'
+
+
+  // Up until now, we haven't specified a specific HTTP method/verb
+  // The routes above will apply to ALL verbs!
+  // If you want to set up a route only for one in particular
+  // (GET, POST, PUT, DELETE, etc.), just specify the verb before the path.
+  // For example, if you have a `UserController` with a `signup` action,
+  // and somewhere else, you're serving a signup form looks like:
+  //
+  //		<form action="/signup">
+  //			<input name="username" type="text"/>
+  //			<input name="password" type="password"/>
+  //			<input type="submit"/>
+  //		</form>
+
+  // You would want to define the following route to handle your form:
+  'post /signup': 'UserController.signup'
+
+
+  // What about the ever-popular "vanity URLs" aka URL slugs?
+  // (you remember doing this with `mod_rewrite` in PHP)
+  //
+  // This is where you want to set up root-relative dynamic routes like:
+  // http://yourwebsite.com/twinkletoezz993
+  //
+  // You still want to allow requests through to the static assets,
+  // So we need to set up this route to allow URLs through that have a trailing ".":
+  // (e.g. your javascript, CSS, and image files)
+  'get /*(^.*)': 'UserController.profile'
+
+  */
+};
+
+
+
+/** (3) Action blueprints * * These routes can be disabled by setting( in config / controllers.js): * `module.exports.controllers.blueprints.actions = false` * * All of your controllers ' actions are automatically bound to a route.  For example:
+ *   + If you have a controller, `FooController`:
+ *     + its action `bar` is accessible at `/foo/bar`
+ *     + its action `index` is accessible at `/foo/index`, and also `/foo`
+ */
+
+
+/**
+ * (4) View blueprints
+ *
+ * These routes can be disabled by setting (in config/controllers.js):
+ *		`module.exports.views.blueprints = false`
+ *
+ * If you have a view file at `/views/foo/bar.ejs`, it will be rendered and served
+ * automatically via the route:  `/foo/bar`
+ *
+ */
+
+/**
+ * (5) Shortcut CRUD blueprints
+ *
+ * These routes can be disabled by setting (in config/controllers.js)
+ *			`module.exports.controllers.blueprints.shortcuts = false`
+ *
+ * If you have a model, `Foo`, and a controller, `FooController`,
+ * you can access CRUD operations for that model at:
+ *		/foo/find/:id?	->	search lampshades using specified criteria or with id=:id
+ *
+ *		/foo/create		->	create a lampshade using specified values
+ *
+ *		/foo/update/:id	->	update the lampshade with id=:id
+ *
+ *		/foo/destroy/:id	->	delete lampshade with id=:id
+ *
+ */
+
+/**
+ * (6) REST blueprints
+ *
+ * These routes can be disabled by setting (in config/controllers.js)
+ *		`module.exports.controllers.blueprints.rest = false`
+ *
+ * If you have a model, `Foo`, and a controller, `FooController`,
+ * you can access CRUD operations for that model at:
+ *
+ *		get /foo/:id?	->	search lampshades using specified criteria or with id=:id
+ *
+ *		post /foo		-> create a lampshade using specified values
+ *
+ *		put /foo/:id	->	update the lampshade with id=:id
+ *
+ *		delete /foo/:id	->	delete lampshade with id=:id
+ *
+ */
+
+/**
+ * (7) Static assets
+ *
+ * Flat files in your `assets` directory- (these are sometimes referred to as 'public')
+ * If you have an image file at `/assets/images/foo.jpg`, it will be made available
+ * automatically via the route:  `/images/foo.jpg`
+ *
+ */
+
+
+
+/**
+ * Finally, if nothing else matched, the default 404 handler is triggered.
+ * See `config/404.js` to adjust your app's 404 logic.
+ */

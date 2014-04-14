@@ -1,0 +1,18 @@
+<div id="form_button" class="Absolute-Center">
+
+  <form id="frm_game" role="form" style="margin:0 auto;width:400px;">
+  	<div class="panel panel-default">
+		  <div id="question" class="panel-body">
+		    Question
+		  </div>
+		</div>
+  	<button id="btn_answer_a" class="btn btn-primary btn-block btn-lg btn_vote" data-answer="a">A</button><button id="btn_answer_b" class="btn btn-primary btn-block btn-lg btn_vote" data-answer="b">B</button><button id="btn_answer_c" class="btn btn-primary btn-block btn-lg btn_vote" data-answer="c">C</button><button id="btn_answer_d" class="btn btn-primary btn-block btn-lg btn_vote" data-answer="d">D</button>
+	</form>
+</div>
+
+<script>
+	game_id = <%- game_id %>;
+	game_data = <%- JSON.stringify(game_data) %>;
+	questions = game_data.questions;
+	game_settings = <%- JSON.stringify(game_settings) %>;
+</script>

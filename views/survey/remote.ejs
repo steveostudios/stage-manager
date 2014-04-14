@@ -1,0 +1,50 @@
+<div id="form_button" class="Absolute-Center">
+
+  <form id="frm_game" role="form">
+  	<div class="panel panel-default">
+		  <div id="question" class="panel-body">
+		    Question
+		  </div>
+		</div>
+  	<button id="btn_answer_a" class="btn btn-primary btn-block btn-md btn_reveal_answer" data-answer="a"></button>
+  	<button id="btn_answer_b" class="btn btn-primary btn-block btn-md btn_reveal_answer" data-answer="b"></button>
+  	<button id="btn_answer_c" class="btn btn-primary btn-block btn-md btn_reveal_answer" data-answer="c"></button>
+  	<button id="btn_answer_d" class="btn btn-primary btn-block btn-md btn_reveal_answer" data-answer="d"></button>
+  	<button id="btn_answer_e" class="btn btn-primary btn-block btn-md btn_reveal_answer" data-answer="e"></button>
+  	<button id="btn_answer_f" class="btn btn-primary btn-block btn-md btn_reveal_answer" data-answer="f"></button>
+  	<button id="btn_answer_g" class="btn btn-primary btn-block btn-md btn_reveal_answer" data-answer="g"></button>
+  	<button id="btn_answer_h" class="btn btn-primary btn-block btn-md btn_reveal_answer" data-answer="h"></button>
+		<hr/>
+		<button id="btn_question_clear" class="btn btn-default btn-block btn-md"><i class="fa fa-repeat"></i></button>
+		<div class="btn-group btn-group-justified">
+			<div class="btn-group btn-group-md">
+				<button id="btn_question_prev" class="btn btn-default"><i class="fa fa-angle-left"></i></button>
+			</div>
+			<div class="btn-group btn-group-md">
+				<button id="lbl_pagination" class="btn btn-default" disabled="disabled"></button>
+			</div>
+			<div class="btn-group btn-group-md">
+				<button id="btn_question_next" class="btn btn-default"><i class="fa fa-angle-right"></i></button>
+			</div>
+		</div>
+		<div class="btn-group btn-group-justified">
+			<div class="btn-group btn-group-md">
+				<button id="btn_x" class="btn btn-default btn_xes" data-count="1"><i class="fa fa-times"></i></button>
+			</div>
+			<div class="btn-group btn-group-md">
+				<button id="btn_xx" class="btn btn-default btn_xes" data-count="2"><i class="fa fa-times"></i><i class="fa fa-times"></i></button>
+			</div>
+			<div class="btn-group btn-group-md">
+				<button id="btn_xxx" class="btn btn-default btn_xes" data-count="3"><i class="fa fa-times"></i><i class="fa fa-times"></i><i class="fa fa-times"></i></button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<script>
+	game_id = <%- game_id %>;
+	game_data = <%- JSON.stringify(game_data) %>;
+	questions = game_data.questions;
+	game_results = <%- JSON.stringify(game_results) %>;
+	game_settings = <%- JSON.stringify(game_settings) %>;
+</script>
