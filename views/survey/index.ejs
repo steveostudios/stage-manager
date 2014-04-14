@@ -1,0 +1,95 @@
+<div id="page_head"></div>
+<div id="question"></div>
+<div id="answer_block">
+  <ul class="answers">
+    <li><div class="cover cover_a" data-id="a"></div><div id="answer_a" class="answer"></div><div id="poll_a" class="poll"></div></li>
+    <li><div class="cover cover_b" data-id="b"></div><div id="answer_b" class="answer"></div><div id="poll_b" class="poll"></div></li>
+    <li><div class="cover cover_c" data-id="c"></div><div id="answer_c" class="answer"></div><div id="poll_c" class="poll"></div></li>
+    <li><div class="cover cover_d" data-id="d"></div><div id="answer_d" class="answer"></div><div id="poll_d" class="poll"></div></li>
+  </ul>
+  <ul class="answers">
+    <li><div class="cover cover_e" data-id="e"></div><div id="answer_e" class="answer"></div><div id="poll_e" class="poll"></div></li>
+    <li><div class="cover cover_f" data-id="f"></div><div id="answer_f" class="answer"></div><div id="poll_f" class="poll"></div></li>
+    <li><div class="cover cover_g" data-id="g"></div><div id="answer_g" class="answer"></div><div id="poll_g" class="poll"></div></li>
+    <li><div class="cover cover_h" data-id="h"></div><div id="answer_h" class="answer"></div><div id="poll_h" class="poll"></div></li>
+  </ul>
+</div>
+<!-- settings pane -->
+<div id="pane_settings">
+  <div class="row">
+    <div class="col-md-4">
+      <input type="text" id="inp_question" class="form-control" placeholder="Question">
+      <div class="row">
+        <div class="col-xs-8 col-md-8"><input type="text" id="inp_answer_a" class="form-control inp_answer" placeholder="Answer A"></div>
+        <div class="col-xs-4 col-md-4"><input type="text" id="inp_poll_a" class="form-control inp_poll" placeholder="Poll A"></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-8 col-md-8"><input type="text" id="inp_answer_b" class="form-control inp_answer" placeholder="Answer B"></div>
+        <div class="col-xs-4 col-md-4"><input type="text" id="inp_poll_b" class="form-control inp_poll" placeholder="Poll B"></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-8 col-md-8"><input type="text" id="inp_answer_c" class="form-control inp_answer" placeholder="Answer C"></div>
+        <div class="col-xs-4 col-md-4"><input type="text" id="inp_poll_c" class="form-control inp_poll" placeholder="Poll C"></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-8 col-md-8"><input type="text" id="inp_answer_d" class="form-control inp_answer" placeholder="Answer D"></div>
+        <div class="col-xs-4 col-md-4"><input type="text" id="inp_poll_d" class="form-control inp_poll" placeholder="Poll D"></div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="row">
+        <div class="col-xs-8 col-md-8"><input type="text" id="inp_answer_e" class="form-control inp_answer" placeholder="Answer E"></div>
+        <div class="col-xs-4 col-md-4"><input type="text" id="inp_poll_e" class="form-control inp_poll" placeholder="Poll E"></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-8 col-md-8"><input type="text" id="inp_answer_f" class="form-control inp_answer" placeholder="Answer F"></div>
+        <div class="col-xs-4 col-md-4"><input type="text" id="inp_poll_f" class="form-control inp_poll" placeholder="Poll F"></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-8 col-md-8"><input type="text" id="inp_answer_g" class="form-control inp_answer" placeholder="Answer G"></div>
+        <div class="col-xs-4 col-md-4"><input type="text" id="inp_poll_g" class="form-control inp_poll" placeholder="Poll G"></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-8 col-md-8"><input type="text" id="inp_answer_h" class="form-control inp_answer" placeholder="Answer H"></div>
+        <div class="col-xs-4 col-md-4"><input type="text" id="inp_poll_h" class="form-control inp_poll" placeholder="Poll H"></div>
+      </div>
+      <div id="editor_buttons"></div>
+    </div>
+    <div class="col-md-4">
+      <ul id="list_questions"></ul>
+    </div>
+  </div>
+</div>
+<nav id="playbar" class="navbar navbar-default navbar-inverse navbar-fixed-bottom" role="navigation">
+  <div class="collapse navbar-collapse" id="playbar">
+    <ul class="nav navbar-nav navbar-left">
+      <li><button type="button" id="btn_question_prev" class="btn btn-default navbar-btn"><i class="fa fa-angle-left"></i></button></li>
+      <li><button type="button" id="btn_question_next" class="btn btn-default navbar-btn"><i class="fa fa-angle-right"></i></button></li>
+      <li id="lbl_pagination"></li>
+      <li>
+        <div class="dropdown">
+          <button data-toggle="dropdown" class="btn btn-default navbar-btn"><i class="fa fa-caret-up"></i></button>
+          <ul id="question_selector" class="dropdown-menu" role="menu" aria-labelledby="dLabel"></ul>
+      </li>
+      <li><button type="button" id="btn_question_clear" class="btn btn-default navbar-btn"><i class="fa fa-repeat"></i></button></li>
+      <li>
+        <button type="button" id="btn_xes" data-count="1" class="btn btn-default navbar-btn btn_xes"><i class="fa fa-times"></i></button>
+        <button type="button" id="btn_xx" data-count="2" class="btn btn-default navbar-btn btn_xes"><i class="fa fa-times"></i><i class="fa fa-times"></i></button>
+        <button type="button" id="btn_xxx" data-count="3" class="btn btn-default navbar-btn btn_xes"><i class="fa fa-times"></i><i class="fa fa-times"></i><i class="fa fa-times"></i></button>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><button type="button" id="btn_settings" class="btn btn-default navbar-btn"><i class="fa fa-cog"></i></button></li>
+    </ul>
+  </div>
+</nav><!-- /bottom nav -->
+<script>
+  game_data = <%- JSON.stringify(game_data) %>;
+  game_id = <%- game_id %>;
+  questions = game_data.questions;
+  game_results = <%- JSON.stringify(game_results) %>;
+  game_settings = <%- JSON.stringify(game_settings) %>;
+  socket.get('/subscribe/'+ game_id, function gotResponse () {
+      // we don’t really care about the response
+  });
+</script>

@@ -1,0 +1,2006 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"re",
+				"reveal_answer"
+			],
+			[
+				"ma",
+				"margin-bottom"
+			],
+			[
+				"dis",
+				"display_xes"
+			],
+			[
+				"set",
+				"set_reveal_answer"
+			],
+			[
+				"send",
+				"send_current_question"
+			],
+			[
+				"pr",
+				"prop"
+			],
+			[
+				"game",
+				"game_settings"
+			],
+			[
+				"for",
+				"for	for (…) {…} (Improved Native For-Loop)"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"btn_answer",
+				"btn_answer_a"
+			],
+			[
+				"e",
+				"e"
+			],
+			[
+				"cu",
+				"current_question"
+			],
+			[
+				"a",
+				"answer"
+			],
+			[
+				"que",
+				"question_next"
+			],
+			[
+				"qu",
+				"question_next"
+			],
+			[
+				"key",
+				"keyCount"
+			],
+			[
+				"k",
+				"keyCount"
+			],
+			[
+				"rgb",
+				"rgba()"
+			],
+			[
+				"lis",
+				"list_buttons"
+			],
+			[
+				"co",
+				"cover"
+			],
+			[
+				"v",
+				"vertical-align"
+			],
+			[
+				"ov",
+				"overflow"
+			],
+			[
+				"max",
+				"maxSize"
+			],
+			[
+				"bac",
+				"background-repeat"
+			],
+			[
+				"b",
+				"background"
+			],
+			[
+				"rg",
+				"rgba()"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"answer",
+				"answer_a"
+			],
+			[
+				"resul",
+				"results"
+			],
+			[
+				"question",
+				"question_id"
+			],
+			[
+				"game_",
+				"game_settings"
+			],
+			[
+				"results",
+				"game_results"
+			],
+			[
+				"flo",
+				"flot_results"
+			],
+			[
+				"flot",
+				"flot_results"
+			],
+			[
+				"dat",
+				"data"
+			],
+			[
+				"new",
+				"new_id"
+			],
+			[
+				"save_",
+				"save_settings"
+			],
+			[
+				"current",
+				"current_question_id"
+			],
+			[
+				"curr",
+				"current_question_id"
+			],
+			[
+				"err",
+				"error"
+			],
+			[
+				"t",
+				"type"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"o",
+				"overlay_url"
+			],
+			[
+				"r",
+				"rgba()"
+			],
+			[
+				"ab",
+				"absolute"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"id",
+				"id"
+			],
+			[
+				"da",
+				"data-answer"
+			],
+			[
+				"ans",
+				"btn_answer_a"
+			],
+			[
+				"so",
+				"socket"
+			],
+			[
+				"ques",
+				"question_id"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"n",
+				"next_id"
+			],
+			[
+				"nex",
+				"next_id"
+			],
+			[
+				"sor",
+				"sorted_questions"
+			],
+			[
+				"li",
+				"list_questions"
+			],
+			[
+				"bui",
+				"build_questions"
+			],
+			[
+				"btn_edit_question",
+				"btn_edit_question_deny"
+			],
+			[
+				"cur",
+				"current_poll_id"
+			],
+			[
+				"se",
+				"settings"
+			],
+			[
+				"questi",
+				"question_lookup"
+			],
+			[
+				"questio",
+				"question"
+			],
+			[
+				"if",
+				"if	if"
+			],
+			[
+				"bt",
+				"btn_add_question"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"rem",
+				"removeAttr"
+			],
+			[
+				"spin",
+				"spin_duration"
+			],
+			[
+				"Spin",
+				"Spinthatwheel"
+			],
+			[
+				"message",
+				"messageName"
+			],
+			[
+				"spinthat",
+				"spinthatwheel_5"
+			],
+			[
+				"size",
+				"size_3_count"
+			],
+			[
+				"si",
+				"size_2_count"
+			],
+			[
+				"my",
+				"myFluxcapacitorGames"
+			],
+			[
+				"flux",
+				"fluxcapacitor"
+			],
+			[
+				"flu",
+				"fluxcapacitor"
+			],
+			[
+				"pri",
+				"prize_lookup"
+			],
+			[
+				"remo",
+				"remove_this_prize"
+			],
+			[
+				"change",
+				"change_theme"
+			],
+			[
+				"data-",
+				"data-id"
+			],
+			[
+				"new_pr",
+				"new_prize_color"
+			],
+			[
+				"colo",
+				"color_picker"
+			],
+			[
+				"bo",
+				"border"
+			],
+			[
+				"col",
+				"color"
+			],
+			[
+				"the",
+				"themes"
+			],
+			[
+				"ba",
+				"background"
+			],
+			[
+				"m",
+				"margin-bottom"
+			],
+			[
+				"fl",
+				"float"
+			],
+			[
+				"z",
+				"z-index"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"Sort",
+				"SortByID"
+			],
+			[
+				"len",
+				"length"
+			],
+			[
+				"ne",
+				"next_prize_id"
+			],
+			[
+				"sl",
+				"splice"
+			],
+			[
+				"at",
+				"attr"
+			],
+			[
+				"remove",
+				"remove_last_prize"
+			],
+			[
+				"save",
+				"saveData"
+			],
+			[
+				"canv",
+				"canvasContext"
+			],
+			[
+				"up",
+				"updated_prizes"
+			],
+			[
+				"SPIN",
+				"Spinthatwheel"
+			],
+			[
+				"s",
+				"script	Tag"
+			],
+			[
+				"j",
+				"javascript"
+			],
+			[
+				"Spinthat",
+				"spinthatwheel"
+			],
+			[
+				"S",
+				"spinthatwheel"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "config/routes.js",
+			"settings":
+			{
+				"buffer_size": 6694,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/main/index.ejs",
+			"settings":
+			{
+				"buffer_size": 278,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/main/account.ejs",
+			"settings":
+			{
+				"buffer_size": 898,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "api/controllers/MainController.js",
+			"settings":
+			{
+				"buffer_size": 6497,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/steves/Library/Application Support/Sublime Text 2/Packages/User/JavaScript/austin.sublime-snippet",
+			"settings":
+			{
+				"buffer_size": 307,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/layouts/login.ejs",
+			"settings":
+			{
+				"buffer_size": 1544,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "api/models/Users.js",
+			"settings":
+			{
+				"buffer_size": 334,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/layout.ejs",
+			"settings":
+			{
+				"buffer_size": 2533,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 367.0,
+		"selected_items":
+		[
+			[
+				"toggl",
+				"View: Toggle Side Bar"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"sni",
+				"Snippet: JQueryButton_on"
+			],
+			[
+				"snip",
+				"Snippet: JQueryButton_on"
+			],
+			[
+				"snippe",
+				"Snippet: JQueryButton_on"
+			],
+			[
+				"Snippet: ",
+				"Snippet: JQueryButton_on"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"new",
+				"ANF: New File"
+			],
+			[
+				"dup",
+				"File: Duplicate"
+			],
+			[
+				" inst",
+				"Package Control: Install Package"
+			],
+			[
+				"spac",
+				"Trailing Spaces: Toggle Trailing Spaces Highlighting"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"train",
+				"Trailing Spaces: Delete Trailing Spaces"
+			],
+			[
+				"trainin",
+				"Trailing Spaces: Delete Trailing Spaces"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			],
+			[
+				"move",
+				"File: Move"
+			],
+			[
+				"conver",
+				"Convert Case: Title Case"
+			],
+			[
+				"convert",
+				"Convert Case: Title Case"
+			],
+			[
+				"side",
+				"View: Toggle Open Files in Side Bar"
+			]
+		],
+		"width": 476.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/steves/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/steves/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/survey/remote.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/games/survey/js/remote.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/layout.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/main/login.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/games/survey/styles/remote.css",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/games/survey/js/game.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/survey/index.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/api/controllers/SurveyController.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/games/survey/styles/game.css",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/games/poll/js/game.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/js/gameshowhub.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/layouts/game.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/api/controllers/PollController.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/wheel/index.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/games/styles/game.css",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/styles/gameshowhub.css",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/layouts/remote.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/games/poll/js/remote.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/poll/remote.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/games/poll/styles/game.css",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/poll/index.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/api/controllers/MainController.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/config/routes.js",
+		"/Users/steves/Downloads/squishy-master/jquery.squishy.js",
+		"/Applications/Adobe After Effects CC/Adobe After Effects CC.app/Contents/Resources/PresetEffects.xml",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/games/wheel/js/game.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/wheel/remote.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/main/code.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/api/controllers/WheelController.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/main/index.ejs",
+		"/Users/steves/Library/Application Support/Sublime Text 2/Packages/User/JavaScript/Comment_todo.sublime-snippet",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/api/models/Games.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/main/play.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/api/controllers/GamesController.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/main/game.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/spinthatwheel/index.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/main/games.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/game/index.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/game/game.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/api/controllers/GameController.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/api/controllers/SpinthatwheelController.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/game/play.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/poll/play.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/games/index.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/config/local.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/config/sockets.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/config/session.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/Gruntfile.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/Procfile",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/config/adapters.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/js/app.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/poll/code.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/poll/button.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/spinthatwheel/play.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/games/spinthatwheel/js/game.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/api/models/Poll.js",
+		"/Users/steves/Library/Application Support/Sublime Text 2/Packages/User/JavaScript/FunctionLabel.sublime-snippet",
+		"/Users/steves/Library/Application Support/Sublime Text 2/Packages/User/JavaScript/JQueryButton_on",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/spinthatwheel/code.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/api/models/Spinthatwheel.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/package.json",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/js/socket.io.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/spinthatwheel/button.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/games/spinthatwheel/js/remote.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/games/spinthatwheel/styles/remote.css",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/js/sails.io.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/config/policies.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/spinthatwheel/spin.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/games/spinthatwheel/styles/game.css",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/fluxcapacitor/play.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/api/controllers/FluxcapacitorController.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/games/fluxcapacitor/js/game.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/api/models/Fluxcapacitor.js",
+		"/Users/steves/Dropbox_Steveostudios/Dropbox/Apps/Byword/DYMPlatform.md",
+		"/Users/steves/Dropbox_Steveostudios/Dropbox/Apps/Byword/script.md",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/js/game/spinthatwheel.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/styles/game/spinthatwheel.css",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/js/game/spinthatwheel_old.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/js/spinthatwheel.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/assets/js/spinthatwheel_old.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/.gitignore",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/main/spinthatwheel.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/api/policies/authenticated.js",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/views/main/chat.ejs",
+		"/Users/steves/Sites/_digitalstache/gameshowhub/Procfile.txt",
+		"/Users/steves/Sites/_demo/ChatApp/Sails.js_ChatApp_v0.9.3/views/main/games.ejs",
+		"/Users/steves/Sites/_demo/ChatApp/config/routes.js",
+		"/Users/steves/Sites/_demo/ChatApp/views/main/index.ejs",
+		"/Users/steves/Sites/gameshow/api/controllers/UserController.js",
+		"/Users/steves/Sites/gameshow/views/home/index.ejs",
+		"/Users/steves/Sites/gameshow/config/views.js",
+		"/Users/steves/Sites/gameshow/package.json",
+		"/Users/steves/Sites/gameshow/views/game/index.ejs",
+		"/Users/steves/Sites/gameshow/api/models/Game.js",
+		"/Users/steves/Sites/gameshow/api/controllers/GameController.js",
+		"/Users/steves/Sites/gameshow/api/models/User.js",
+		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/package.json",
+		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/views/home/index.ejs",
+		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/views/home/partials/header.ejs",
+		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/views/home/partials/footer.ejs",
+		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/views/games/spinthatwheel/index.ejs",
+		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/views/games/spinthatwheel/index.ejs.php",
+		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/views/index.ejs",
+		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/views/home/index_old.ejs",
+		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/app.js",
+		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/config/routes.js",
+		"/Users/steves/Dropbox_Steveostudios/Dropbox/Apps/Byword/_steveostudios.tv/_ideas/Definition of Worship.md",
+		"/Users/steves/Dropbox_Steveostudios/Dropbox/Apps/Byword/_steveostudios.tv/steveostudios_blog.sublime-project",
+		"/Users/steves/Dropbox_Steveostudios/Dropbox/Apps/Byword/_steveostudios.tv/_project/steveostudios_blog.sublime-project",
+		"/Users/steves/Dropbox_Steveostudios/Dropbox/Apps/Byword/_steveostudios.tv/Definition of Worship.md"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"group",
+			"exampleInputEmail1",
+			"exampleInputPassword1",
+			"lg",
+			"md",
+			"lg",
+			"reveal_answer",
+			"send_current_question",
+			"answer_",
+			" btn-primary btn-block btn-lg",
+			"primary btn-block btn-lg",
+			" data-answer=\"h\"",
+			"data",
+			"btn_reveal_answer",
+			"surve",
+			"false",
+			"0",
+			"left",
+			"text",
+			"display_current_poll",
+			"btn_vote",
+			"answer",
+			"lg",
+			"Candy Corn",
+			"display_current_poll",
+			"120",
+			"question",
+			"answer",
+			"#",
+			"result",
+			"results",
+			"0",
+			"3000",
+			"index",
+			"data",
+			"game_results",
+			"results",
+			"get_data",
+			"data",
+			"gameid",
+			"settings",
+			"json",
+			"settings",
+			"setting",
+			"saveData",
+			"init",
+			"gameid",
+			"fluxcapacitor",
+			"Fluxcapacitor",
+			"myPollGames",
+			"/**",
+			"port: ",
+			"port ",
+			"port",
+			"port ",
+			"var",
+			"current_poll_id",
+			"0",
+			"current_poll_id",
+			"question",
+			"gameData",
+			"console",
+			"<",
+			"questions[id]",
+			"prize",
+			";\n",
+			"question",
+			"lbl_pagination",
+			"question_selector",
+			"\n",
+			"valanswer_d",
+			"valanswer_c",
+			"valanswer_b",
+			"valanswer_a",
+			"valquestion",
+			"valanswer_d",
+			"([[]].",
+			"id",
+			"question_lookup",
+			"questions",
+			"text",
+			"prize_lookup",
+			"prizes",
+			"color_picker",
+			"myFluxcapacitorGames",
+			"exampleInputEmail1",
+			"/');",
+			"JSON",
+			"5",
+			"socket",
+			"sails",
+			"sock",
+			"page_head",
+			"game",
+			"color_picker",
+			"mySpinthatwheelGames",
+			"spinthatwheel",
+			"Spinthatwheel",
+			"spinthatwheel",
+			"Spinthatwheel",
+			"resul",
+			"remove_this_prize",
+			"has",
+			"remove_this",
+			"alert",
+			"add_prize_color",
+			"333333",
+			"00aab5",
+			"c9e000",
+			"ed4200",
+			"remove_this",
+			"SortByID",
+			"key",
+			"	  ",
+			"      ",
+			"     ",
+			"    ",
+			"      ",
+			"     ",
+			"    ",
+			"	  ",
+			"lookup",
+			"current_prize",
+			"watch",
+			"initWheel",
+			"return",
+			"msie",
+			"         "
+		],
+		"highlight": true,
+		"in_selection": true,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "config/routes.js",
+					"settings":
+					{
+						"buffer_size": 6694,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1139,
+								1139
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 228.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "views/main/index.ejs",
+					"settings":
+					{
+						"buffer_size": 278,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								278,
+								278
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/EJS/EJS_alternative.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "views/main/account.ejs",
+					"settings":
+					{
+						"buffer_size": 898,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								898,
+								898
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/EJS/EJS_alternative.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "api/controllers/MainController.js",
+					"settings":
+					{
+						"buffer_size": 6497,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3374,
+								3374
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1400.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/steves/Library/Application Support/Sublime Text 2/Packages/User/JavaScript/austin.sublime-snippet",
+					"settings":
+					{
+						"buffer_size": 307,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								49,
+								49
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"default_extension": "sublime-snippet",
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "views/layouts/login.ejs",
+					"settings":
+					{
+						"buffer_size": 1544,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1503,
+								1503
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/EJS/EJS_alternative.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "api/models/Users.js",
+					"settings":
+					{
+						"buffer_size": 334,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								250,
+								250
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "views/layout.ejs",
+					"settings":
+					{
+						"buffer_size": 2533,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2513,
+								2502
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/EJS/EJS_alternative.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"remote",
+				"assets/games/survey/styles/remote.css"
+			],
+			[
+				"game.css",
+				"assets/games/survey/styles/game.css"
+			],
+			[
+				"survey",
+				"assets/games/survey/js/game.js"
+			],
+			[
+				"game.js",
+				"assets/games/poll/js/game.js"
+			],
+			[
+				"game",
+				"views/layouts/game.ejs"
+			],
+			[
+				"poll",
+				"api/controllers/PollController.js"
+			],
+			[
+				"pl",
+				"views/spinthatwheel/play.ejs"
+			],
+			[
+				"game.",
+				"assets/games/spinthatwheel/js/game.js"
+			],
+			[
+				"play",
+				"views/spinthatwheel/play.ejs"
+			],
+			[
+				"pack",
+				"package.json"
+			],
+			[
+				"socket",
+				"assets/js/socket.io.js"
+			],
+			[
+				"code",
+				"views/spinthatwheel/code.ejs"
+			],
+			[
+				"spinthat",
+				"api/models/Spinthatwheel.js"
+			],
+			[
+				"app.",
+				"assets/js/app.js"
+			],
+			[
+				"rout",
+				"config/routes.js"
+			],
+			[
+				"routs",
+				"config/routes.js"
+			],
+			[
+				"inde",
+				"views/main/index.ejs"
+			],
+			[
+				"pol",
+				"config/policies.js"
+			],
+			[
+				"sails",
+				"assets/js/sails.io.js"
+			],
+			[
+				"pa",
+				"package.json"
+			],
+			[
+				"app",
+				"assets/js/app.js"
+			],
+			[
+				"sail",
+				"assets/js/sails.io.js"
+			],
+			[
+				"spint",
+				"api/models/Spinthatwheel.js"
+			],
+			[
+				"gamesh",
+				"assets/styles/gameshowhub.css"
+			],
+			[
+				"game.j",
+				"assets/games/spinthatwheel/js/game.js"
+			],
+			[
+				"grun",
+				"Gruntfile.js"
+			],
+			[
+				"spin",
+				"api/models/Spinthatwheel.js"
+			],
+			[
+				"main",
+				"api/controllers/MainController.js"
+			],
+			[
+				"spinth",
+				"api/controllers/SpinthatwheelController.js"
+			],
+			[
+				"games",
+				"views/main/games.ejs"
+			],
+			[
+				"spintha",
+				"assets/js/spinthatwheel.js"
+			],
+			[
+				"rou",
+				"config/routes.js"
+			],
+			[
+				"adap",
+				"config/adapters.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 326.0,
+	"status_bar_visible": true
+}

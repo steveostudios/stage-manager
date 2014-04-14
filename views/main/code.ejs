@@ -1,0 +1,16 @@
+<div id="form_code">
+  <form id="frm_game" role="form" style="margin:0 auto;width:400px;">
+  	<div class="form-group">
+    	<label for="game_id">Game ID</label>
+    	<input type="text" class="form-control input-lg" id="game_id" placeholder="i.e. 1234">
+  	</div>
+  	<button id="btn_submit" type="submit" class="btn btn-primary btn-block btn-lg">Play</button>
+	</form>
+</div>
+<script>
+	$(document).on("click", '#btn_submit', function(e){
+    e.preventDefault();
+    var id = $('#game_id').val();
+    window.location = '/remote/'+id;
+	});
+</script>

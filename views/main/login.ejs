@@ -1,0 +1,81 @@
+<h1>Gameshow Hub</h1>
+<div id="form_login">
+    <form role="form" style="margin:0 auto;width:400px;">
+        <h3>Login</h3>
+        <div class="form-group">
+            <label for="loginName">Email address</label>
+            <input type="email" class="form-control" id="loginName" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+        </div>
+        <button type="button" id="loginButton" class="btn btn-default">Login</button> or <a href="#" class="loginswitch">Sign Up</a>
+    </form>
+</div>
+<div id="form_signup" style="display:none;">
+    <form role="form" style="margin:0 auto;width:400px;">
+        <h3>Signup</h3>
+        <div class="form-group">
+            <label for="signupName">Email address</label>
+            <input type="email" class="form-control" id="signupName" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="signupPassword">Password</label>
+            <input type="password" class="form-control" id="signupPassword" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="signupConfirmPassword">Confirm Password</label>
+            <input type="password" class="form-control" id="signupConfirmPassword" placeholder="Confirm Password">
+        </div>
+        <button type="button" id="signupButton" class="btn btn-default">Signup</button> or <a href="#" class="loginswitch">Login</a>
+    </form>
+</div>
+
+<script>
+    $(".loginswitch").click(function(){
+        $("#form_signup").toggle();
+        $("#form_login").toggle();
+    });
+    $("#loginButton").click(function(){
+        var username = $("#loginName").val();
+        var password = $("#loginPassword").val();
+        if (username && password) {
+            $.post(
+                '/doLogin',
+                {username: username, password:password},
+                function () {
+                    window.location = "/";
+                }
+            ).fail(function(res){
+                alert("Error: " + res.getResponseHeader("error"));
+            });
+        } else {
+            alert("A username and password is required");
+        }
+    });
+    $("#loginButton").focus();
+
+    $("#signupButton").click(function(){
+        var username = $("#signupName").val();
+        var password = $("#signupPassword").val();
+        var confirmPassword = $("#signupConfirmPassword").val();
+        if (username && password) {
+            if (password === confirmPassword) {
+                $.post(
+                    '/signup',
+                    {username: username, password:password},
+                    function () {
+                        window.location = "/games";
+                    }
+                ).fail(function(res){
+                    alert("Error: " + res.getResponseHeader("error"));
+                });
+            } else {
+                alert("Passwords don't match");
+            }
+        } else {
+            alert("A username and password is required");
+        }
+    });
+</script>

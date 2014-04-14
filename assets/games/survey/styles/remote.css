@@ -1,0 +1,22 @@
+form {
+	 margin:10px auto;
+	 width:300px;
+}
+.btn_left {
+	width: 10%;
+	text-align: center;
+	display: inline-block;
+}
+.btn_center {
+	width: 80%;
+	text-align: left;
+	display: inline-block;
+}
+.btn_right {
+	width: 10%;
+	text-align: center;
+	display: inline-block;
+}
+.btn-group-justified {
+	margin-top: 15px;
+}
