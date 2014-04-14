@@ -1,0 +1,141 @@
+@import url(http://fonts.googleapis.com/css?family=Pathway+Gothic+One);
+
+body {
+  background: #838383;
+  background: url('../img/bg_standard.jpg');
+	background-size: cover;
+}
+
+/* !- Settings Pane */
+#pane_settings {
+	display: none;
+}
+
+.list-prize {
+  margin-bottom: 3px;
+  width: 100%;
+  height: 30px;
+  display: block;
+  color: #fff;
+}
+.list-prize .list_buttons {
+float: right;
+}
+
+/* !- Game Pane */
+#question {
+	margin: 0 auto;
+	width: 80%;
+	height: 200px;
+	overflow: hidden;
+	text-align: center;
+	line-height: 185px;
+		font-family: 'Pathway Gothic One', sans-serif;
+
+	color: #8fcbf7;
+	display: block;
+}
+#answer_block {
+	margin: 0 auto;
+	text-align: center;
+	display: block;
+}
+ul.answers {
+	margin: 0;
+	padding: 0;
+	background: #fff;
+	display: inline-block;
+}
+ul.answers li {
+	margin: 5px;
+	width: 600px;
+	height: 100px;
+	list-style: none;
+	display: block;
+}
+
+ul.answers li .cover {
+	position: absolute;
+	width: inherit;
+	height: inherit;
+	display: block;
+	background: #e0901f;
+	z-index: 99;
+}
+
+ul.answers li .cover_a {
+	background: url('../img/answer_cover1.png');
+	background-size: 100% 100%;
+}
+ul.answers li .cover_b {
+	background: url('../img/answer_cover2.png');
+	background-size: 100% 100%;
+}
+ul.answers li .cover_c {
+	background: url('../img/answer_cover3.png');
+	background-size: 100% 100%;
+}
+ul.answers li .cover_d {
+	background: url('../img/answer_cover4.png');
+	background-size: 100% 100%;
+}
+ul.answers li .cover_e {
+	background: url('../img/answer_cover5.png');
+	background-size: 100% 100%;
+}
+ul.answers li .cover_f {
+	background: url('../img/answer_cover6.png');
+	background-size: 100% 100%;
+}
+ul.answers li .cover_g {
+	background: url('../img/answer_cover7.png');
+	background-size: 100% 100%;
+}
+ul.answers li .cover_h {
+	background: url('../img/answer_cover8.png');
+	background-size: 100% 100%;
+}
+ul.answers li .answer {
+	padding: 0 30px;
+	width: 80%;
+	height: 100px;
+	background: #000;
+	text-align: left;
+	line-height: 100px;
+		font-family: 'Pathway Gothic One', sans-serif;
+
+	display: inline-block;
+	overflow: hidden;
+}
+ul.answers li .poll {
+	width: 20%;
+	height: 100px;
+	background: #8fcbf7; /* Old browsers */
+	background: -webkit-linear-gradient(top,  #8fcbf7 0%,#1970af 100%); /* Chrome10+,Safari5.1+ */
+	box-shadow: inset 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+	text-align: center;
+	font-family: 'Pathway Gothic One', sans-serif;
+	color: #fff;
+	display: inline-block;
+	overflow: hidden;
+}
+.x_overlay {
+	position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99;
+	text-align: center;
+}
+.x_overlay img {
+	margin-top: 20%;
+	margin-bottom: 20%;
+	width: 20%;
+}
+
+/* !- Playbar */
+#lbl_pagination {
+	margin-top: 15px;
+}

@@ -11,6 +11,7 @@ module.exports = {
   attributes: {
 		fname: 'STRING',
 		lname: 'STRING',
+		organization: 'INT',
     username: 'STRING',
     password: 'STRING',
     subscription_start: 'DATETIME',

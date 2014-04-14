@@ -49,10 +49,10 @@ module.exports.sockets = {
   // (if left unset, Sails will try to connect to a redis via port 6379 on localhost)
   //
 
-  host: process.env.REDIS_HOST,
-  port: process.env.REDIS_PORT,
-  db: process.env.REDIS_DB,
-  pass: process.env.REDIS_PASS,
+  host: process.env.REDIS_HOST || 'barreleye.redistogo.com',
+  port: process.env.REDIS_PORT || '11242',
+  db: process.env.REDIS_DB || 'redistogo',
+  pass: process.env.REDIS_PASS || 'ff4c616f6809e8da6ab364c9d618f0eb',
 
 
 

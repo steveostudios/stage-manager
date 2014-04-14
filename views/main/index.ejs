@@ -1,7 +1,7 @@
-<h2>My Games</h2>
+<h2>My Events</h2>
 <ul>
-<% for(var i=0; i<myGames.length; i++) {%>
-   <li data-id="<%= myGames[i].id %>" data-name="<%= myGames[i].name %>"><%= myGames[i].type %>: <a href="/play/<%= myGames[i].id %>"><%= myGames[i].name %></a> - <%= myGames[i].updatedAt %></li>
+<% for(var i=0; i<events.length; i++) {%>
+   <li data-id="<%= events[i].id %>" data-name="<%= events[i].name %>"><%= events[i].type %>: <a href="/event/<%= events[i].id %>"><%= events[i].name %></a> - <%= events[i].updatedAt %></li>
 <% } %>
 </ul>
 

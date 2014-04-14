@@ -1,0 +1,256 @@
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/**
+ * Footer
+ *
+ * @author      :: Steve Stone
+ * @description :: all of the buttons at the bottom
+ * 
+ */
+
+nav#playbar {
+  height: 70px;
+}
+nav#playbar div ul {
+
+}
+nav#playbar div ul li {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+nav#playbar div ul:first-child {
+  margin-left: 10px;
+}
+
+/**
+ * Flow Pane
+ *
+ * @author      :: Steve Stone
+ * @description :: Flow ul, li, and internals.
+ * 
+ */
+
+#flow_pane {
+  position: absolute;
+    top: 150px;
+    right: 380px;
+    bottom: 70px;
+    left: 0;
+  background: #d4d4d4;
+}
+ul#list_segments {
+  position: absolute;
+    top: 22px;
+    bottom: 50px;
+  overflow-y: scroll;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  color: #3d3d3d;
+  list-style: none;
+  font-weight: bold;
+  font-size: 24px;
+  font-family: 'PT Sans', sans-serif;
+}
+ul#list_segments li {
+  overflow: hidden;
+  height: 52px;
+}
+ul#list_segments li:nth-child(odd) {
+	border-bottom: 1px solid #d2d2d2;
+  background: #ededed;
+}
+ul#list_segments li:nth-child(even) {
+	border-bottom: 1px solid #d1d1d1;
+  background: #f1f1f1;
+}
+ul#list_segments li.highlight {
+  background: #7ebfd9;
+}
+ul#list_segments li .segment_type {
+  padding: 10px 5px;
+  width: 35px;
+  display: inline-block;
+}
+ul#list_segments li .segment_name {
+  position: absolute;
+    right: 199px;
+    left: 45px;
+	overflow: hidden;
+  min-width: 200px;
+  height: 52px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  line-height: 52px;
+}
+ul#list_segments li .segment_time {
+  position: absolute;
+    right: 110px;
+  width: 90px;
+  height: 52px;
+  border-right: 1px solid #c7c7c7;
+  text-align: right;
+  font-size: 18px;
+  display: inline-block;
+  line-height: 52px;
+}
+ul#list_segments li .li_options {
+  position: absolute;
+    right: 0px;
+  margin-right: 5px;
+  width: 100px;
+  height: 52px;
+  text-align: right;
+  display: inline-block;
+  line-height: 52px;
+}
+ul#list_segments li .li_options i {
+  margin-right: 10px;
+  opacity: 0.5;
+}
+ul#list_segments li .li_options i:hover {
+  opacity: 0.75;
+}
+input.segment_name_edit {
+  width: 100%;
+  height: 52px;
+}
+input.segment_time_edit {
+  width: 100%;
+  height: 52px;
+  text-align: right;
+}
+
+#flow_pane .controls {
+  position: absolute;
+    bottom: 0;
+  display: block;
+  width: 100%;
+  height: 50px;
+  background: #282828;
+  text-align: right;
+}
+
+/**
+ * Sidebar
+ *
+ * @author      :: Steve Stone
+ * @description :: Preview, Alert list, Call list
+ * 
+ */
+
+#sidebar {
+  position: absolute;
+    top: 150px;
+    right: 0;
+  display: block;
+  width: 380px;
+}
+#sidebar #preview {
+  display: block;
+  margin: 0;
+  padding: 0;
+  height: 214px;
+  background: #1c1c1c;
+  font-family: 'PT Sans', sans-serif;
+}
+#sidebar #preview #time {
+  position: absolute;
+    top: 0;
+    right: 20px;
+  display: block;
+  color: #71cafd;
+  font-size: 36px;
+  font-family: 'BebasNeueRegular';
+}
+#sidebar #preview #time span#period {
+  margin-left: 5px;
+  font-size: 28px;
+}
+#sidebar #preview #currentTimer {
+  position: absolute;
+    top: 15px;
+    right: 0;
+    left: 45px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  height: auto;
+  /* color: #5e5e5e; */
+  letter-spacing: -3px;
+  /* font-weight: bold; */
+  font-size: 124px;
+  font-family: 'BebasNeueRegular';
+}
+#sidebar #preview #currentTimer.inTheRed {
+  color: #d12727;
+}
+#sidebar #preview #currentTitle {
+  position: absolute;
+    top: 136px;
+    left: 45px;
+  display: block;
+  color: #8e8e8e;
+  color: #fcb800;
+  font-size: 36px;
+  font-family: 'LeagueGothicRegular';
+}
+#sidebar h1 {
+  margin: 0;
+  padding: 6px 15px 4px 0;
+  background: #222;
+  color: #878686;
+  text-align: right;
+  font-weight: bold;
+  font-size: 11px;
+}
+#sidebar #alerts {
+  margin: 0;
+  min-height: 100px;
+  color: white;
+}
+#sidebar #alerts ul#alertList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  
+}
+#sidebar #alerts ul#alertList li.alert {
+  position: relative;
+  margin-bottom: 10px;
+  padding: 10px 15px 10px 10px;
+  min-height: 18px;
+  background: #d12727;
+  box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.8);
+  display: block;
+}
+#sidebar #alerts ul#alertList li.alert i.close {
+  position: absolute;
+    top: 10px;
+    right: 5px;
+  margin: 0;
+  display: block;
+  width: 24px;
+  height: 24px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  opacity: 0.5;
+}
+#sidebar #alerts ul#alertList li.alert a.close:hover {
+  opacity: 1;
+}
+
+#sidebar #calls {
+  min-height: 100px;
+  text-align: left;
+}
+#sidebar #notes {
+  min-height: 100px;
+  text-align: left;
+}

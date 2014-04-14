@@ -41,10 +41,10 @@ module.exports.adapters = {
 
   postgresql: {
     module: 'sails-postgresql',
-    host: process.env.PG_HOSTNAME || 'ec2-23-23-183-5.compute-1.amazonaws.com',
-    user: process.env.PG_USER || 'nkxurpotkfzgdn',
-    password: process.env.PG_PASSWORD || 'vkItQuncJp_k5Zgw1ws6Tsv_n6',
-    database: process.env.PG_DATABASE || 'd35u664kb0f17q',
+    host: process.env.PG_HOSTNAME || 'ec2-54-83-14-68.compute-1.amazonaws.com',
+    user: process.env.PG_USER || 'wwytrfbvbgtckh',
+    password: process.env.PG_PASSWORD || 'TKK558AvaGs20uP3tu3v5UdlEA',
+    database: process.env.PG_DATABASE || 'd9qvi5rbpp3tbr',
     port: process.env.PG_PORT || 5432,
     ssl: {
       rejectUnauthorized: false
