@@ -48,6 +48,10 @@ module.exports.routes = {
 
   // !- Events.
   'get /event/:id?' : 'MainController.event',
+  'get /event/add_segment/:id?' : 'EventsController.add_segment',
+  'get /event/reorder_segments/:id?' : 'EventsController.reorder_segments',
+  'get /event/edit_segment/:id?' : 'EventsController.edit_segment',
+  'get /event/remove_segment/:id?' : 'EventsController.remove_segment',
   
   // !- All Games.
   'get /play/:id?' : 'MainController.play',

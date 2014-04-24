@@ -46,6 +46,7 @@ ul#list_segments {
   position: absolute;
     top: 22px;
     bottom: 50px;
+  overflow-x: hidden; 
   overflow-y: scroll;
   margin: 0;
   padding: 0;

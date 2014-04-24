@@ -7,44 +7,87 @@
 
 module.exports = {
 
-	add_question: function (req, res) {
+	add_segment: function (req, res) {
 		id = req.param('id');
-		new_question = req.param('new_question');
-		Games.findOne(id).done(function(err, game) {
-			var new_id = new_question.id;
-			var new_results = {a:0,b:0,c:0,d:0,e:0,f:0,g:0,h:0};
-			game.data.questions.push(new_question);
-			game.results[new_id] = new_results;
-			new_id++;
-			game.settings.next_id = new_id;
-			game.save(function(error) {
+		new_segment = req.param('new_segment');
+		Events.findOne(id).done(function(err, event) {
+			var segments = event.segments.segments;
+			segments.push(new_segment);
+			event.segments.segments = segments;
+			var next_new_segment_id = event.settings.next_new_segment_id;
+			next_new_segment_id = next_new_segment_id + 1;
+			event.settings.next_new_segment_id = next_new_segment_id;
+			event.save(function(error) {
 				// console.log(error);
-			});
-
-			Games.publishUpdate( id, {
-				status: 'add_question',
-				game: game
+				Events.publishUpdate( id, {
+					status: 'add_segment',
+					event: event
+				});
 			});
 		});
 	},
 
-	change_question: function (req, res) {
+	reorder_segments: function (req, res) {
 		id = req.param('id');
-		var param = req.param('message');
-		Games.publishUpdate( id, {
-			status: 'change_question',
-			question_id: param
-    });
-    Games.findOne(id).done(function(err, game) {
-			game.settings.current_question_id = param;
-			game.save(function(error) {
+		reordered_segment_id_array = req.param('reordered_segment_id_array');
+		Events.findOne(id).done(function(err, event) {
+			var segments = event.segments.segments;
+			for(var i=0; i<segments.length; i++) {
+				segments[i].order = reordered_segment_id_array.indexOf(String(segments[i].id));
+			}
+			event.segments.segments = segments;
+			event.save(function(error) {
 				// console.log(error);
+				Events.publishUpdate( id, {
+					status: 'reorder_segments',
+					event: event
+				});
 			});
-    });
-    res.json({
-      success: true,
-      message: param
-    });
+		});
+	},
+
+	edit_segment: function (req, res) {
+		id = req.param('id');
+		edit_segment = req.param('edit_segment');
+		var edit_segment_id = edit_segment.id;
+		Events.findOne(id).done(function(err, event) {
+			var segments = event.segments.segments;
+			console.log(edit_segment_id);
+			for(var i=0; i<segments.length; i++) {
+				if(parseInt(segments[i].id, 10) === parseInt(edit_segment_id, 10)) {
+					segments[i] = edit_segment;
+				}
+			}
+			event.segments.segments = segments;
+			event.save(function(error) {
+				// console.log(error);
+				Events.publishUpdate( id, {
+					status: 'edit_segment',
+					event: event
+				});
+			});
+		});
+	},
+
+	remove_segment: function (req, res) {
+		id = req.param('id');
+		remove_segment_id = req.param('remove_segment_id');
+		Events.findOne(id).done(function(err, event) {
+			var segments = event.segments.segments;
+			for(var i=0; i<segments.length; i++) {
+				if(parseInt(segments[i].id, 10) === parseInt(remove_segment_id, 10)) {
+					segments.splice(i);
+				}
+			}
+			event.segments.segments = segments;
+			event.save(function(error) {
+				// console.log(error);
+				Events.publishUpdate( id, {
+					status: 'remove_segment',
+					event: event
+				});
+			});
+		});
 	}
 
 };

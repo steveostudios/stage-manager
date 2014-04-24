@@ -4,24 +4,120 @@
 		"selected_items":
 		[
 			[
+				"redis",
+				"redistogo"
+			],
+			[
+				"se",
+				"settings"
+			],
+			[
+				"ser",
+				"service"
+			],
+			[
+				"ne",
+				"next_new_segment_id"
+			],
+			[
+				"n",
+				"new_segment"
+			],
+			[
+				"new",
+				"new_segment"
+			],
+			[
+				"service",
+				"service_settings"
+			],
+			[
+				"data",
+				"data"
+			],
+			[
+				"Se",
+				"ServiceController"
+			],
+			[
+				"seg",
+				"segment_name_edit"
+			],
+			[
+				"fa",
+				"fa-bars"
+			],
+			[
+				"li",
+				"li_options"
+			],
+			[
+				"set",
+				"setInterval"
+			],
+			[
+				"pre",
+				"preventDefault"
+			],
+			[
 				"mar",
-				"margin-top"
+				"margin-right"
+			],
+			[
+				"op",
+				"opacity"
+			],
+			[
+				"ma",
+				"margin-right"
+			],
+			[
+				"lis",
+				"list_flow"
+			],
+			[
+				"h",
+				"height"
+			],
+			[
+				"s",
+				"service_settings"
+			],
+			[
+				"current",
+				"current_segment_id"
+			],
+			[
+				"curren",
+				"current_segment_id"
+			],
+			[
+				"cur",
+				"current_segment_id"
+			],
+			[
+				"cu",
+				"current_segment_id"
+			],
+			[
+				"if",
+				"ife	if … else"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
 			],
 			[
 				"re",
 				"reveal_answer"
 			],
 			[
-				"ma",
-				"margin-bottom"
-			],
-			[
 				"dis",
 				"display_xes"
-			],
-			[
-				"set",
-				"set_reveal_answer"
 			],
 			[
 				"send",
@@ -36,10 +132,6 @@
 				"game_settings"
 			],
 			[
-				"for",
-				"for	for (…) {…} (Improved Native For-Loop)"
-			],
-			[
 				"con",
 				"console"
 			],
@@ -50,10 +142,6 @@
 			[
 				"e",
 				"e"
-			],
-			[
-				"cu",
-				"current_question"
 			],
 			[
 				"a",
@@ -78,10 +166,6 @@
 			[
 				"rgb",
 				"rgba()"
-			],
-			[
-				"lis",
-				"list_buttons"
 			],
 			[
 				"co",
@@ -152,16 +236,8 @@
 				"data"
 			],
 			[
-				"new",
-				"new_id"
-			],
-			[
 				"save_",
 				"save_settings"
-			],
-			[
-				"current",
-				"current_question_id"
 			],
 			[
 				"curr",
@@ -224,20 +300,12 @@
 				"function"
 			],
 			[
-				"n",
-				"next_id"
-			],
-			[
 				"nex",
 				"next_id"
 			],
 			[
 				"sor",
 				"sorted_questions"
-			],
-			[
-				"li",
-				"list_questions"
 			],
 			[
 				"bui",
@@ -248,24 +316,12 @@
 				"btn_edit_question_deny"
 			],
 			[
-				"cur",
-				"current_poll_id"
-			],
-			[
-				"se",
-				"settings"
-			],
-			[
 				"questi",
 				"question_lookup"
 			],
 			[
 				"questio",
 				"question"
-			],
-			[
-				"if",
-				"if	if"
 			],
 			[
 				"bt",
@@ -384,10 +440,6 @@
 				"length"
 			],
 			[
-				"ne",
-				"next_prize_id"
-			],
-			[
 				"sl",
 				"splice"
 			],
@@ -416,10 +468,6 @@
 				"Spinthatwheel"
 			],
 			[
-				"s",
-				"script	Tag"
-			],
-			[
 				"j",
 				"javascript"
 			],
@@ -439,23 +487,7 @@
 			"file": "config/routes.js",
 			"settings":
 			{
-				"buffer_size": 6694,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/main/index.ejs",
-			"settings":
-			{
-				"buffer_size": 278,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/main/account.ejs",
-			"settings":
-			{
-				"buffer_size": 898,
+				"buffer_size": 6149,
 				"line_ending": "Unix"
 			}
 		},
@@ -463,39 +495,55 @@
 			"file": "api/controllers/MainController.js",
 			"settings":
 			{
-				"buffer_size": 6497,
+				"buffer_size": 6044,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/Users/steves/Library/Application Support/Sublime Text 2/Packages/User/JavaScript/austin.sublime-snippet",
+			"file": "api/controllers/EventsController.js",
 			"settings":
 			{
-				"buffer_size": 307,
+				"buffer_size": 1062,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/layouts/login.ejs",
+			"file": "assets/js/event.js",
 			"settings":
 			{
-				"buffer_size": 1544,
+				"buffer_size": 3717,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "api/models/Users.js",
+			"file": "assets/styles/event.css",
 			"settings":
 			{
-				"buffer_size": 334,
+				"buffer_size": 4489,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/layout.ejs",
+			"file": "views/main/event.ejs",
 			"settings":
 			{
-				"buffer_size": 2533,
+				"buffer_size": 1759,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/layouts/event.ejs",
+			"settings":
+			{
+				"buffer_size": 3167,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "assets/js/stagemanager.js",
+			"settings":
+			{
+				"buffer_size": 997,
 				"line_ending": "Unix"
 			}
 		}
@@ -600,6 +648,38 @@
 	},
 	"file_history":
 	[
+		"/Users/steves/Sites/_digitalstache/stagemanager/api/models/Events.js",
+		"/Users/steves/Sites/_digitalstache/stagemanager/views/layouts/event.ejs",
+		"/Users/steves/Sites/_digitalstache/stagemanager/views/layout.ejs",
+		"/Users/steves/Sites/_digitalstache/stagemanager/views/main/index.ejs",
+		"/Users/steves/Sites/_digitalstache/stagemanager/views/main/login.ejs",
+		"/Users/steves/Sites/_digitalstache/stagemanager/views/layouts/remote.ejs",
+		"/Users/steves/Sites/_digitalstache/stagemanager/assets/js/stagemanager.js",
+		"/Users/steves/Sites/_digitalstache/stagemanager/config/session.js",
+		"/Users/steves/Sites/_digitalstache/stagemanager/assets/styles/stagemanager.css",
+		"/Users/steves/Sites/_digitalstache/stagemanager/config/sockets.js",
+		"/Users/steves/Sites/_digitalstache/stagemanager/api/models/Users.js",
+		"/Users/steves/Sites/_digitalstache/stagemanager/config/adapters.js",
+		"/Users/steves/Sites/_digitalstache/stagemanager/config/app.js",
+		"/Users/steves/Sites/_digitalstache/stagemanager/package.json",
+		"/Users/steves/Sites/_digitalstache/stagemanager/stagemanager.sublime-project",
+		"/Users/steves/Sites/_digitalstache/stagemanager/.gitignore",
+		"/Users/steves/Sites/_digitalstache/stagemanager/assets/styles/service.css",
+		"/Users/steves/Sites/_digitalstache/stagemanager/views/main/service.ejs",
+		"/Users/steves/Sites/_digitalstache/stagemanager/views/layouts/app.ejs",
+		"/Users/steves/Sites/_digitalstache/stagemanager/api/models/Services.js",
+		"/Users/steves/Sites/_digitalstache/stagemanager/api/controllers/ServiceController.js",
+		"/Users/steves/Sites/_digitalstache/stagemanager/assets/js/service.js",
+		"/Users/steves/Sites/_digitalstache/stagemanager/assets/js/global.js",
+		"/Users/steves/Sites/_digitalstache/stagemanager/app/views/articles/edit.jade",
+		"/Users/steves/Sites/_digitalstache/stagemanager/api/controllers/MainController.js",
+		"/Users/steves/Sites/_digitalstache/stagemanager/config/routes.js",
+		"/Users/steves/Library/Application Support/Sublime Text 2/Packages/User/CSS/BlockComment.sublime-snippet",
+		"/Users/steves/Sites/_digitalstache/stagemanager/assets/games/survey/js/game.js",
+		"/Users/steves/Sites/_digitalstache/stagemanager/assets/js/gameshowhub.js",
+		"/Users/steves/Sites/_digitalstache/stagemanager/views/main/code.ejs",
+		"/Users/steves/Sites/_digitalstache/stagemanager/views/main/list.ejs",
+		"/Users/steves/Sites/_digitalstache/stagemanager/views/survey/index.ejs",
 		"/Users/steves/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/Users/steves/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/Users/steves/Sites/_digitalstache/gameshowhub/views/survey/remote.ejs",
@@ -695,23 +775,7 @@
 		"/Users/steves/Sites/gameshow/config/views.js",
 		"/Users/steves/Sites/gameshow/package.json",
 		"/Users/steves/Sites/gameshow/views/game/index.ejs",
-		"/Users/steves/Sites/gameshow/api/models/Game.js",
-		"/Users/steves/Sites/gameshow/api/controllers/GameController.js",
-		"/Users/steves/Sites/gameshow/api/models/User.js",
-		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/package.json",
-		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/views/home/index.ejs",
-		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/views/home/partials/header.ejs",
-		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/views/home/partials/footer.ejs",
-		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/views/games/spinthatwheel/index.ejs",
-		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/views/games/spinthatwheel/index.ejs.php",
-		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/views/index.ejs",
-		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/views/home/index_old.ejs",
-		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/app.js",
-		"/Users/steves/Sites/gameshowhub_sails/gameshowhub/config/routes.js",
-		"/Users/steves/Dropbox_Steveostudios/Dropbox/Apps/Byword/_steveostudios.tv/_ideas/Definition of Worship.md",
-		"/Users/steves/Dropbox_Steveostudios/Dropbox/Apps/Byword/_steveostudios.tv/steveostudios_blog.sublime-project",
-		"/Users/steves/Dropbox_Steveostudios/Dropbox/Apps/Byword/_steveostudios.tv/_project/steveostudios_blog.sublime-project",
-		"/Users/steves/Dropbox_Steveostudios/Dropbox/Apps/Byword/_steveostudios.tv/Definition of Worship.md"
+		"/Users/steves/Sites/gameshow/api/models/Game.js"
 	],
 	"find":
 	{
@@ -727,9 +791,54 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"list_flow",
+			"list_segments",
+			"gameshowhub",
+			"app",
+			"flow",
+			"service",
+			"game",
+			"gameshowhub",
+			"Games",
+			"games",
+			"myGames",
+			"flow",
+			"data['data']",
+			"data['data'];",
+			"new_id",
+			"id",
+			"game",
+			"Games",
+			" href=\"#\"",
+			"game",
+			"currentSeconds",
+			"readable_time",
+			"currentTime",
+			"div#sidebar",
+			"  #",
+			"/a",
+			"a",
+			"btn_grey",
+			"li.segment",
+			"body",
+			"div#flow_pane",
+			"segment_pane",
+			"flow",
+			"service_element",
+			"obj",
+			"validation_messages",
+			"game",
+			"myLists",
+			"list",
+			"lists",
+			"Lists",
+			"lists",
+			"Lists",
+			"myGames",
+			"game",
 			"group",
 			"exampleInputEmail1",
 			"exampleInputPassword1",
@@ -812,55 +921,10 @@
 			"questions",
 			"text",
 			"prize_lookup",
-			"prizes",
-			"color_picker",
-			"myFluxcapacitorGames",
-			"exampleInputEmail1",
-			"/');",
-			"JSON",
-			"5",
-			"socket",
-			"sails",
-			"sock",
-			"page_head",
-			"game",
-			"color_picker",
-			"mySpinthatwheelGames",
-			"spinthatwheel",
-			"Spinthatwheel",
-			"spinthatwheel",
-			"Spinthatwheel",
-			"resul",
-			"remove_this_prize",
-			"has",
-			"remove_this",
-			"alert",
-			"add_prize_color",
-			"333333",
-			"00aab5",
-			"c9e000",
-			"ed4200",
-			"remove_this",
-			"SortByID",
-			"key",
-			"	  ",
-			"      ",
-			"     ",
-			"    ",
-			"      ",
-			"     ",
-			"    ",
-			"	  ",
-			"lookup",
-			"current_prize",
-			"watch",
-			"initWheel",
-			"return",
-			"msie",
-			"         "
+			"prizes"
 		],
 		"highlight": true,
-		"in_selection": true,
+		"in_selection": false,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
@@ -875,6 +939,7 @@
 	"groups":
 	[
 		{
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -882,15 +947,15 @@
 					"file": "config/routes.js",
 					"settings":
 					{
-						"buffer_size": 6694,
+						"buffer_size": 6149,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1139,
-								1139
+								1707,
+								1707
 							]
 						],
 						"settings":
@@ -989,25 +1054,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 228.0,
+						"translation.y": 393.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "views/main/index.ejs",
+					"file": "api/controllers/MainController.js",
 					"settings":
 					{
-						"buffer_size": 278,
+						"buffer_size": 6044,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								278,
-								278
+								3480,
+								3480
 							]
 						],
 						"settings":
@@ -1101,30 +1166,30 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/EJS/EJS_alternative.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1117.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "views/main/account.ejs",
+					"file": "api/controllers/EventsController.js",
 					"settings":
 					{
-						"buffer_size": 898,
+						"buffer_size": 1062,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								898,
-								898
+								1058,
+								1058
 							]
 						],
 						"settings":
@@ -1218,9 +1283,8 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/EJS/EJS_alternative.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1230,18 +1294,18 @@
 				},
 				{
 					"buffer": 3,
-					"file": "api/controllers/MainController.js",
+					"file": "assets/js/event.js",
 					"settings":
 					{
-						"buffer_size": 6497,
+						"buffer_size": 3717,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3374,
-								3374
+								406,
+								406
 							]
 						],
 						"settings":
@@ -1336,29 +1400,28 @@
 							},
 							"sublimelinter_wrap_find": true,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1400.0,
+						"translation.y": 50.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "/Users/steves/Library/Application Support/Sublime Text 2/Packages/User/JavaScript/austin.sublime-snippet",
+					"file": "assets/styles/event.css",
 					"settings":
 					{
-						"buffer_size": 307,
+						"buffer_size": 4489,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								49,
-								49
+								705,
+								705
 							]
 						],
 						"settings":
@@ -1403,7 +1466,6 @@
 								"vendor-prefix": true,
 								"zero-units": "warning"
 							},
-							"default_extension": "sublime-snippet",
 							"gjslint_ignore":
 							[
 								110.0
@@ -1453,7 +1515,9 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/XML/XML.tmLanguage"
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1463,18 +1527,18 @@
 				},
 				{
 					"buffer": 5,
-					"file": "views/layouts/login.ejs",
+					"file": "views/main/event.ejs",
 					"settings":
 					{
-						"buffer_size": 1544,
+						"buffer_size": 1759,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1503,
-								1503
+								43,
+								43
 							]
 						],
 						"settings":
@@ -1569,7 +1633,7 @@
 							},
 							"sublimelinter_wrap_find": true,
 							"syntax": "Packages/EJS/EJS_alternative.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -1580,133 +1644,18 @@
 				},
 				{
 					"buffer": 6,
-					"file": "api/models/Users.js",
+					"file": "views/layouts/event.ejs",
 					"settings":
 					{
-						"buffer_size": 334,
+						"buffer_size": 3167,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								250,
-								250
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110.0
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2.0,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "views/layout.ejs",
-					"settings":
-					{
-						"buffer_size": 2533,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2513,
-								2502
+								1138,
+								1138
 							]
 						],
 						"settings":
@@ -1801,6 +1750,123 @@
 							},
 							"sublimelinter_wrap_find": true,
 							"syntax": "Packages/EJS/EJS_alternative.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "assets/js/stagemanager.js",
+					"settings":
+					{
+						"buffer_size": 997,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								997,
+								997
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -2001,6 +2067,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 326.0,
+	"side_bar_width": 178.0,
 	"status_bar_visible": true
 }
