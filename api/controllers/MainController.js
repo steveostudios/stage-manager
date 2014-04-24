@@ -10,8 +10,8 @@ module.exports = {
   index: function (req, res) {
     if (req.session.user) {
       async.auto({
-        games: function (cb) {
-          Games.find()
+        events: function (cb) {
+          Events.find()
             .where({'owner':req.session.user.id})
             .limit(15)
             .sort('createdAt DESC')
@@ -20,10 +20,10 @@ module.exports = {
       },
       function allDone (err, async_data) {
         if (err) return res.serverError(err);
-        var games = async_data.games;
+        var events = async_data.events;
         res.view({
           username: req.session.user.username,
-          myGames: games
+          events: events
         });
       });
     } else {
@@ -121,23 +121,19 @@ module.exports = {
     }
   },
 
-  play: function (req, res) {
+  event: function (req, res) {
     var id = req.param('id');
     if (id === undefined) {
       res.redirect('/code');
     } else {
-      Games.findOne(id).exec(function(err, game) {
-
+      Events.findOne(id).exec(function(err, event) {
         //if (req.session.user) { // !- TODO: Needed for sessionig - KEEP.
-          res.view(game.type, {
-            _layoutFile: '../layouts/game.ejs',
-            appname: 'Spin That Wheel',
-            appslug: game.type,
+          res.view({
+            _layoutFile: '../layouts/event.ejs',
             //username: req.session.user.username, // !- TODO: Needed for sessionig - KEEP.
-            game_id: id,
-            game_data: game.data,
-            game_settings: game.settings,
-            game_results: game.results
+            event_id: id,
+            event_segments: event.segments,
+            event_settings: event.settings
           });
         //} else { // !- TODO: Needed for sessionig - KEEP.
           //res.redirect('/'); // !- TODO: Needed for sessionig - KEEP.
@@ -186,21 +182,6 @@ module.exports = {
     });
   },
 
-  set_results: function (req, res) {
-    var id = req.param('id');
-    var results = req.param('results');
-    Games.findOne(id).done(function(err, game) {
-      game.results = results;
-      game.save(function(error) {
-        // console.log(error);
-      });
-      res.json({
-        success: true,
-        new_results: results
-      });
-    });
-  },
-
   remote: function (req, res) {
     var id = req.param('id');
     if (id === undefined) {
@@ -230,8 +211,8 @@ module.exports = {
 
   subscribe: function (req, res) {
     var id = req.param('id');
-    Games.findOne(id).exec(function(err, game) {
-      Games.subscribe(req.socket , game);
+    Events.findOne(id).exec(function(err, event) {
+      Events.subscribe(req.socket , event);
       // console.log('subscribed');
     });
   },

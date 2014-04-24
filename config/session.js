@@ -27,11 +27,12 @@ module.exports.session = {
   // Read more about options at: https://github.com/visionmedia/connect-redis
   //
 
-  host: process.env.REDIS_HOST,
-  port: process.env.REDIS_PORT,
+
+  host: process.env.REDIS_HOST || 'barreleye.redistogo.com',
+  port: process.env.REDIS_PORT || '11242',
   // ttl: <redis session TTL in seconds>,
-  db: process.env.REDIS_DB,
-  pass: process.env.REDIS_PASS,
+  db: process.env.REDIS_DB || 'redistogo',
+  pass: process.env.REDIS_PASS || 'ff4c616f6809e8da6ab364c9d618f0eb',
   // prefix: 'sess:'
 
 

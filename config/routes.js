@@ -45,6 +45,13 @@ module.exports.routes = {
   '/doLogin': 'MainController.doLogin',
   '/logout': 'MainController.logout',
   '/account': 'MainController.account',
+
+  // !- Events.
+  'get /event/:id?' : 'MainController.event',
+  'get /event/add_segment/:id?' : 'EventsController.add_segment',
+  'get /event/reorder_segments/:id?' : 'EventsController.reorder_segments',
+  'get /event/edit_segment/:id?' : 'EventsController.edit_segment',
+  'get /event/remove_segment/:id?' : 'EventsController.remove_segment',
   
   // !- All Games.
   'get /play/:id?' : 'MainController.play',
@@ -56,19 +63,6 @@ module.exports.routes = {
   'put /set_settings/:id?' : 'MainController.set_settings',
   'get /get_data/:id?' : 'MainController.get_data',// !- TODO: NOT COMPLETE - Haven't used yet, so haven't needed it yet.
   'put /set_data/:id?' : 'MainController.set_data',
-  'get /get_results/:id?' : 'MainController.get_results',// !- TODO: NOT COMPLETE - Haven't used yet, so haven't needed it yet.
-  'put /set_results/:id?' : 'MainController.set_results',
-
-
-  // !- Wheel Specific.
-  'get /wheel/spin/:id?' : 'WheelController.spin',
-  'get /wheel/spin_complete/:id?' : 'WheelController.spin_complete',
-
-  // !- Poll Specific.
-  'get /poll/change_question/:id?' : 'PollController.change_question',
-  'put /poll/add_question/:id?' : 'PollController.add_question',
-  'put /poll/clear_results/:id?' : 'PollController.clear_results',
-  'put /poll/vote/:id?' : 'PollController.vote',
 
   // !- Survey Specific.
   'get /survey/change_question/:id?' : 'SurveyController.change_question',
